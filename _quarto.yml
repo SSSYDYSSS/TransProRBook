@@ -7,16 +7,25 @@ book:
   favicon: TransProR_rlogo.png
   description: TransProR User Manual.
   keyword: TransProR, DL, transformer, data science, data engineering
+  url: https://sssydysss.github.io/TransProRBook/
   date: "2023/10/18"
   sidebar: 
-    background: "#F5F5F5"
+    background: "#b6c4b5"
     logo: TransProR_rlogo.png
     search: true
+  repo-url: https://github.com/SSSYDYSSS/TransProRBook
   repo-subdir: book
   repo-branch: master
   repo-actions: [edit, issue, source]
   sharing: [twitter, facebook, linkedin]
   image: TransProR_rlogo.png
+  comments:
+    giscus:
+      repo: SSSYDYSSS/TransProRBook
+  open-graph:
+    image: https://github.com/SSSYDYSSS/TransProRBook/blob/main/TransProR_rlogo.png
+    description: R package TransProR.
+
   chapters:
     - index.qmd
     - intro.qmd
