@@ -32,6 +32,9 @@ format:
     css: custom.css
     backgroundcolor: "#F5F5F5"
 
+execute:
+  freeze: auto
+
 
 
 
