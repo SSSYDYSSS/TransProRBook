@@ -1,0 +1,37 @@
+project:
+  type: book
+
+book:
+  title: "TransProRBook"
+  author: "Dongyue Yu"
+  favicon: TransProR_rlogo.png
+  description: TransProR User Manual.
+  keyword: TransProR, DL, transformer, data science, data engineering
+  date: "2023/10/18"
+  sidebar: 
+    background: "#F5F5F5"
+    logo: TransProR_rlogo.png
+    search: true
+  repo-subdir: book
+  repo-branch: master
+  repo-actions: [edit, issue, source]
+  sharing: [twitter, facebook, linkedin]
+  image: TransProR_rlogo.png
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    code-fold: false
+    css: custom.css
+    backgroundcolor: "#F5F5F5"
+
+
+
+
