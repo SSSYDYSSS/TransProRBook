@@ -20,7 +20,7 @@ book:
   image: TransProR_rlogo.png
   comments:
     giscus:
-      repo: kevinheavey/modern-polars
+      repo: SSSYDYSSS/TransProRBook
   open-graph:
     image: https://github.com/SSSYDYSSS/TransProRBook/blob/main/TransProR_rlogo.png
     description: R package TransProR.
