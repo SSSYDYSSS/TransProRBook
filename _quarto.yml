@@ -15,7 +15,7 @@ book:
     search: true
   repo-url: https://github.com/SSSYDYSSS/TransProRBook
   repo-subdir: book
-  repo-branch: master
+  repo-branch: main
   repo-actions: [edit, issue, source]
   sharing: [twitter, facebook, linkedin]
   image: TransProR_rlogo.png
