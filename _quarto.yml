@@ -10,7 +10,7 @@ book:
   url: https://sssydysss.github.io/TransProRBook/
   date: "2023/10/18"
   sidebar: 
-    background: "#b6c4b5"
+    background: "#cad4ca"
     logo: TransProR_rlogo.png
     search: true
   repo-url: https://github.com/SSSYDYSSS/TransProRBook
@@ -20,7 +20,7 @@ book:
   image: TransProR_rlogo.png
   comments:
     giscus:
-      repo: SSSYDYSSS/TransProRBook
+      repo: kevinheavey/modern-polars
   open-graph:
     image: https://github.com/SSSYDYSSS/TransProRBook/blob/main/TransProR_rlogo.png
     description: R package TransProR.
