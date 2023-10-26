@@ -10,5 +10,11 @@
   },
   "references.qmd": {
     "references.html": "3bc83b9b"
+  },
+  "pipeline.qmd": {
+    "pipeline.html": "91cc8ed6"
+  },
+  "summar.qmd": {
+    "summar.html": "d8af751e"
   }
 }

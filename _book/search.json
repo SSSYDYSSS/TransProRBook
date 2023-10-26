@@ -9,14 +9,14 @@
   {
     "objectID": "intro.html",
     "href": "intro.html",
-    "title": "1  Introduction",
+    "title": "Introduction",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "1.Data Source and Introduction"
   },
   {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "2  Summary",
+    "title": "1  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever."
   },
@@ -53,6 +53,90 @@
     "href": "index.html#ucsc-xena-data-download",
     "title": "TransProRBook",
     "section": "UCSC Xena Data Download",
-    "text": "UCSC Xena Data Download\n\npipline\n\n\n\nLog in to the official website: http://xena.ucsc.edu/\nClick “Launch Xena” to enter the main interface: https://xenabrowser.net/\nClick “DATA SETS” to enter the dataset interface: https://xenabrowser.net/datapages/\nTCGA and GTEX Data Download:\n\nGDC TCGA Breast Cancer (BRCA) (20 datasets)\n\nHTSeq - Counts (n=1,217) GDC Hub\n\ndownload (Download link, copyable)\nID/Gene Mapping (Download link, copyable)\n\n\nGDC TCGA Melanoma (SKCM) (14 datasets)\n\nHTSeq - Counts (n=472) GDC Hub\n\ndownload (Download link, copyable)\nID/Gene Mapping (Download link, copyable)\n\n\nGTEX\n\nTOIL RSEM expected_count (n=7,845) UCSC Toil RNA-seq Recompute\n\ndownload (Download link, copyable)\nID/Gene Mapping (Download link, copyable)"
+    "text": "UCSC Xena Data Download\n\npipline\n\n\nLog in to the official website: http://xena.ucsc.edu/\nClick “Launch Xena” to enter the main interface: https://xenabrowser.net/\nClick “DATA SETS” to enter the dataset interface: https://xenabrowser.net/datapages/\nTCGA and GTEX Data Download:\n\nGDC TCGA Breast Cancer (BRCA) (20 datasets)\n\nHTSeq - Counts (n=1,217) GDC Hub\n\ndownload (Download link, copyable)\nID/Gene Mapping (Download link, copyable)\n\nPhenotype (n=1,284) GDC Hub\n\ndownload (Download link, copyable)\n\nsurvival data (n=1,260) GDC Hub\n\ndownload (Download link, copyable)\n\n\nGDC TCGA Melanoma (SKCM) (14 datasets)\n\nHTSeq - Counts (n=472) GDC Hub\n\ndownload (Download link, copyable)\nID/Gene Mapping (Download link, copyable)\n\nPhenotype (n=477) GDC Hub\n\ndownload (Download link, copyable)\n\nsurvival data (n=463) GDC Hub\n\ndownload (Download link, copyable)\n\n\nGTEX\n\nTOIL RSEM expected_count (n=7,845) UCSC Toil RNA-seq Recompute\n\ndownload (Download link, copyable)\nID/Gene Mapping (Download link, copyable)\n\nGTEX phenotype (n=9,783) UCSC Toil RNA-seq Recompute\n\ndownload (Download link, copyable)"
+  },
+  {
+    "objectID": "index.html#data-type",
+    "href": "index.html#data-type",
+    "title": "TransProRBook",
+    "section": "Data Type",
+    "text": "Data Type\n\ncount\nIn the context of RNA-seq data analysis, “Count” is an important concept. It represents the number of times each gene or transcript is measured in an RNA-seq experiment. Typically, these counts are obtained through sequencing machines, which measure the number of fragments associated with each gene or transcript, also known as “reads count” or “fragment count,” which indicates how many times each gene or transcript is covered or mapped in the sequencing data. These count data serve as the starting point for RNA-seq data analysis, providing raw information about the expression of genes or transcripts in different samples.\n\nUse Cases:\n\n\nGene Expression Analysis: Count data can be used to compare the relative expression levels of different genes. By tallying the counts for each gene, we can determine which genes are expressed more or less in various samples, identifying key genes.\nDifferential Expression Analysis: Differential expression analysis aims to study changes in gene expression levels between different conditions or groups. In this context, count data is employed to compare gene expression levels under different conditions, often requiring statistical models to identify genes with significant differences.\nClustering Analysis: Count data can also be used for clustering analysis to identify groups of genes or samples with similar expression patterns. Through clustering analysis, genes with similar expression patterns can be grouped together.\nGene Annotation: Count data helps determine which genes or transcripts have evidence of measurement in the sequencing data, which is crucial for gene annotation.\n\n\n\n\nAdvantages:\n\n\nIntuitiveness: Count data is obtained directly from RNA-seq experiments, providing an intuitive and straightforward representation of gene expression.\nFlexibility: Count data is versatile and applicable to various RNA-seq data analysis tasks, including basic gene expression analysis and more complex differential expression analysis.\n\n\n\n\nDisadvantages:\n\n\nImpact of Sequencing Depth and Gene Length: Count data is influenced by sequencing depth and gene length, necessitating standardization when comparing expression levels between different samples or genes.\nZero Inflation: For lowly expressed genes, count data may exhibit zero inflation, where counts are predominantly zero. Specialized statistical methods are required to address this issue.\nResource-Intensive: Handling raw count data can demand significant computational resources and storage space, particularly for large-scale RNA-seq datasets.\n\n\nIn summary, count data plays a pivotal role in RNA-seq data analysis but typically requires further standardization and analysis to derive meaningful results. It is suitable for use with RNA-seq data types, particularly for gene expression analysis and differential expression analysis.\n\n\n\nAdditional Recommendations：\nIn the TransPro data analysis suite, each R package (e.g., TransProR) and Python package (e.g., TransProPy) involves a vast array of mathematical algorithms, integrated machine learning techniques, and various deep learning modules. Therefore, our initial design’s focus for data selection was on the following aspects: ensuring a sufficiently large volume of data, comprehensive and diversified annotation files, balanced data distribution, and the feasibility of cross-database data integration. However, please note that to ensure the reproducibility and robustness of our technology, we ultimately chose publicly available data from TCGA and CTEX—specifically, BRCA data (large volume, publicly available, well-annotated) and SKCM data (fairly large volume, public, and balanced data distribution) as our initial data sets. We then performed a series of algorithmic explorations to uncover data features and designed visual representations of the results.\nAlthough we have batch-normalized all the data, please be aware that users can directly analyze their test data, which is acceptable. However, if you intend to merge public data from major databases, please carefully review the data processing procedures and quality control metrics of different databases in advance (for the generation of TCGA and GTEX data, please see the reference)! We recommend conducting combined analyses only under relatively similar conditions. We further suggest obtaining the original fastq files from the databases. This way, TransPro users can generate count data with uniform methods and parameters, significantly minimizing the noise caused by batch effects and enhancing the accuracy and authenticity of the results."
+  },
+  {
+    "objectID": "index.html#ucsc-xena-data-download-pipeline",
+    "href": "index.html#ucsc-xena-data-download-pipeline",
+    "title": "TransProRBook",
+    "section": "UCSC Xena Data Download pipeline：",
+    "text": "UCSC Xena Data Download pipeline：\n\n\nLog in to the official website: http://xena.ucsc.edu/\nClick “Launch Xena” to enter the main interface: https://xenabrowser.net/\nClick “DATA SETS” to enter the dataset interface: https://xenabrowser.net/datapages/\nTCGA and GTEX Data Download:\n\nGDC TCGA Breast Cancer (BRCA) (20 datasets)\n\nHTSeq - Counts (n=1,217) GDC Hub\n\ndownload (Download link, copyable)\nID/Gene Mapping (Download link, copyable)\n\nPhenotype (n=1,284) GDC Hub\n\ndownload (Download link, copyable)\n\nsurvival data (n=1,260) GDC Hub\n\ndownload (Download link, copyable)\n\n\nGDC TCGA Melanoma (SKCM) (14 datasets)\n\nHTSeq - Counts (n=472) GDC Hub\n\ndownload (Download link, copyable)\nID/Gene Mapping (Download link, copyable)\n\nPhenotype (n=477) GDC Hub\n\ndownload (Download link, copyable)\n\nsurvival data (n=463) GDC Hub\n\ndownload (Download link, copyable)\n\n\nGTEX\n\nTOIL RSEM expected_count (n=7,845) UCSC Toil RNA-seq Recompute\n\ndownload (Download link, copyable)\nID/Gene Mapping (Download link, copyable)\n\nGTEX phenotype (n=9,783) UCSC Toil RNA-seq Recompute\n\ndownload (Download link, copyable)"
+  },
+  {
+    "objectID": "index.html#tcga-count-data",
+    "href": "index.html#tcga-count-data",
+    "title": "TransProRBook",
+    "section": "TCGA Count Data",
+    "text": "TCGA Count Data\n\n\nSTAR Alignment and Counting: The primary counting data in TCGA is generated by STAR, which provides gene ID, unstranded, and stranded counts data following alignment.\nMulti-dimensional Data Collection: TCGA collects many types of data including molecular characterization data for over 20,000 tumor and normal samples, contributing to the count data."
+  },
+  {
+    "objectID": "index.html#gtex-expected-count-data",
+    "href": "index.html#gtex-expected-count-data",
+    "title": "TransProRBook",
+    "section": "GTEx Expected Count Data",
+    "text": "GTEx Expected Count Data\n\n\nPipeline Components for RNA-seq Alignment, Quantification: GTEx utilizes a pipeline for RNA-seq alignment, quantification, and quality control among other analysis tasks, which lead to the generation of expected count data.\nAlignment and Expression Quantification: GTEx RNA-seq pipeline involves alignment (STAR), QC (RNA-SeQC), and expression quantification (RSEM & RNA-SeQC) for generating expected count data.\n76-base, Paired-end Illumina TruSeq RNA Protocol: GTEx uses a 76-base, paired-end Illumina TruSeq RNA protocol, averaging around 50 million aligned reads per sample for RNA sequencing."
+  },
+  {
+    "objectID": "intro.html#characteristics-of-the-tcga-database",
+    "href": "intro.html#characteristics-of-the-tcga-database",
+    "title": "Introduction",
+    "section": "Characteristics of the TCGA Database:",
+    "text": "Characteristics of the TCGA Database:\n\nRich Cancer Tissue Sample Data:\n\n\nThe TCGA (The Cancer Genome Atlas) database amasses a substantial volume of tissue sample data across a variety of cancer types, encompassing multi-dimensional data such as genomics, transcriptomics, and proteomics. This repository serves as a valuable resource for cancer research, enabling researchers to delve into the biological mechanisms of cancer at multiple levels.\n\n\nPrimary Focus on Cancer Types:\n\n\nThe core objective of TCGA is to unveil the molecular mechanisms, pathogenic genes, and mutation frequencies of different cancer types through integrative analysis, thereby providing a robust scientific basis for the diagnosis, treatment, and prevention of cancer.\n\n\nLimited Quantity of Normal Tissue Samples:\n\n\nDespite the richness of cancer sample data, TCGA has a relatively limited number of normal tissue samples, which to some extent, restricts its application in comparative studies between normal and cancerous tissues."
+  },
+  {
+    "objectID": "intro.html#characteristics-of-the-gtex-database",
+    "href": "intro.html#characteristics-of-the-gtex-database",
+    "title": "Introduction",
+    "section": "Characteristics of the GTEx Database:",
+    "text": "Characteristics of the GTEx Database:\n\nCovers Normal Tissue Sample Data from Multiple Organs and Tissues:\n\n\nThe GTEx (Genotype-Tissue Expression) database, by collecting samples from a variety of organs and tissues, offers an extensive gene expression data resource. This is crucial for understanding the heterogeneity of gene expression across different tissues and the functionality of genes under normal physiological conditions.\n\n\nFocus on Gene Expression Patterns in Normal Tissues:\n\n\nGTEx aims to reveal the patterns and variations of gene expression in normal tissues, providing a valuable foundation for researching gene functionality and regulatory mechanisms."
+  },
+  {
+    "objectID": "intro.html#demands-and-challenges-of-joint-analysis",
+    "href": "intro.html#demands-and-challenges-of-joint-analysis",
+    "title": "Introduction",
+    "section": "Demands and Challenges of Joint Analysis:",
+    "text": "Demands and Challenges of Joint Analysis:\n\nNeed to Augment Normal Tissue Sample Volume:\n\n\nGiven the limited number of normal tissue samples in the TCGA database, it’s essential to source additional normal tissue samples from other databases like GTEx, for a more comprehensive and accurate cancer research.\n\n\nComplexity of Data Integration:\n\n\nThe joint analysis of the TCGA and GTEx databases entails data integration and standardization, requiring a meticulous and scientific approach to ensure the efficacy of data integration and the accuracy of analysis results. This may include data cleansing, standardization, and a unified analysis workflow to ensure that data obtained from different databases can be accurately and effectively combined for analysis."
+  },
+  {
+    "objectID": "intro.html#ucsc-xena-data-download-pipeline",
+    "href": "intro.html#ucsc-xena-data-download-pipeline",
+    "title": "Introduction",
+    "section": "UCSC Xena Data Download pipeline：",
+    "text": "UCSC Xena Data Download pipeline：\n\n\nLog in to the official website: http://xena.ucsc.edu/\nClick “Launch Xena” to enter the main interface: https://xenabrowser.net/\nClick “DATA SETS” to enter the dataset interface: https://xenabrowser.net/datapages/\nTCGA and GTEX Data Download:\n\nGDC TCGA Breast Cancer (BRCA) (20 datasets)\n\nHTSeq - Counts (n=1,217) GDC Hub\n\ndownload (Download link, copyable)\nID/Gene Mapping (Download link, copyable)\n\nPhenotype (n=1,284) GDC Hub\n\ndownload (Download link, copyable)\n\nsurvival data (n=1,260) GDC Hub\n\ndownload (Download link, copyable)\n\n\nGDC TCGA Melanoma (SKCM) (14 datasets)\n\nHTSeq - Counts (n=472) GDC Hub\n\ndownload (Download link, copyable)\nID/Gene Mapping (Download link, copyable)\n\nPhenotype (n=477) GDC Hub\n\ndownload (Download link, copyable)\n\nsurvival data (n=463) GDC Hub\n\ndownload (Download link, copyable)\n\n\nGTEX\n\nTOIL RSEM expected_count (n=7,845) UCSC Toil RNA-seq Recompute\n\ndownload (Download link, copyable)\nID/Gene Mapping (Download link, copyable)\n\nGTEX phenotype (n=9,783) UCSC Toil RNA-seq Recompute\n\ndownload (Download link, copyable)"
+  },
+  {
+    "objectID": "intro.html#data-type",
+    "href": "intro.html#data-type",
+    "title": "Introduction",
+    "section": "Data Type",
+    "text": "Data Type\n\ncount\nIn the context of RNA-seq data analysis, “Count” is an important concept. It represents the number of times each gene or transcript is measured in an RNA-seq experiment. Typically, these counts are obtained through sequencing machines, which measure the number of fragments associated with each gene or transcript, also known as “reads count” or “fragment count,” which indicates how many times each gene or transcript is covered or mapped in the sequencing data. These count data serve as the starting point for RNA-seq data analysis, providing raw information about the expression of genes or transcripts in different samples.\n\nUse Cases:\n\n\nGene Expression Analysis: Count data can be used to compare the relative expression levels of different genes. By tallying the counts for each gene, we can determine which genes are expressed more or less in various samples, identifying key genes.\nDifferential Expression Analysis: Differential expression analysis aims to study changes in gene expression levels between different conditions or groups. In this context, count data is employed to compare gene expression levels under different conditions, often requiring statistical models to identify genes with significant differences.\nClustering Analysis: Count data can also be used for clustering analysis to identify groups of genes or samples with similar expression patterns. Through clustering analysis, genes with similar expression patterns can be grouped together.\nGene Annotation: Count data helps determine which genes or transcripts have evidence of measurement in the sequencing data, which is crucial for gene annotation.\n\n\n\n\nAdvantages:\n\n\nIntuitiveness: Count data is obtained directly from RNA-seq experiments, providing an intuitive and straightforward representation of gene expression.\nFlexibility: Count data is versatile and applicable to various RNA-seq data analysis tasks, including basic gene expression analysis and more complex differential expression analysis.\n\n\n\n\nDisadvantages:\n\n\nImpact of Sequencing Depth and Gene Length: Count data is influenced by sequencing depth and gene length, necessitating standardization when comparing expression levels between different samples or genes.\nZero Inflation: For lowly expressed genes, count data may exhibit zero inflation, where counts are predominantly zero. Specialized statistical methods are required to address this issue.\nResource-Intensive: Handling raw count data can demand significant computational resources and storage space, particularly for large-scale RNA-seq datasets.\n\n\nIn summary, count data plays a pivotal role in RNA-seq data analysis but typically requires further standardization and analysis to derive meaningful results. It is suitable for use with RNA-seq data types, particularly for gene expression analysis and differential expression analysis.\n\n\n\nAdditional Recommendations：\nIn the TransPro data analysis suite, each R package (e.g., TransProR) and Python package (e.g., TransProPy) involves a vast array of mathematical algorithms, integrated machine learning techniques, and various deep learning modules. Therefore, our initial design’s focus for data selection was on the following aspects: ensuring a sufficiently large volume of data, comprehensive and diversified annotation files, balanced data distribution, and the feasibility of cross-database data integration. However, please note that to ensure the reproducibility and robustness of our technology, we ultimately chose publicly available data from TCGA and CTEX—specifically, BRCA data (large volume, publicly available, well-annotated) and SKCM data (fairly large volume, public, and balanced data distribution) as our initial data sets. We then performed a series of algorithmic explorations to uncover data features and designed visual representations of the results.\nAlthough we have batch-normalized all the data, please be aware that users can directly analyze their test data, which is acceptable. However, if you intend to merge public data from major databases, please carefully review the data processing procedures and quality control metrics of different databases in advance (for the generation of TCGA and GTEX data, please see the reference)! We recommend conducting combined analyses only under relatively similar conditions. We further suggest obtaining the original fastq files from the databases. This way, TransPro users can generate count data with uniform methods and parameters, significantly minimizing the noise caused by batch effects and enhancing the accuracy and authenticity of the results."
+  },
+  {
+    "objectID": "intro.html#tcga-count-data",
+    "href": "intro.html#tcga-count-data",
+    "title": "Introduction",
+    "section": "TCGA Count Data",
+    "text": "TCGA Count Data\n\n\nSTAR Alignment and Counting: The primary counting data in TCGA is generated by STAR, which provides gene ID, unstranded, and stranded counts data following alignment.\nMulti-dimensional Data Collection: TCGA collects many types of data including molecular characterization data for over 20,000 tumor and normal samples, contributing to the count data."
+  },
+  {
+    "objectID": "intro.html#gtex-expected-count-data",
+    "href": "intro.html#gtex-expected-count-data",
+    "title": "Introduction",
+    "section": "GTEx Expected Count Data",
+    "text": "GTEx Expected Count Data\n\n\nPipeline Components for RNA-seq Alignment, Quantification: GTEx utilizes a pipeline for RNA-seq alignment, quantification, and quality control among other analysis tasks, which lead to the generation of expected count data.\nAlignment and Expression Quantification: GTEx RNA-seq pipeline involves alignment (STAR), QC (RNA-SeQC), and expression quantification (RSEM & RNA-SeQC) for generating expected count data.\n76-base, Paired-end Illumina TruSeq RNA Protocol: GTEx uses a 76-base, paired-end Illumina TruSeq RNA protocol, averaging around 50 million aligned reads per sample for RNA sequencing."
+  },
+  {
+    "objectID": "summar.html",
+    "href": "summar.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever."
   }
 ]
