@@ -4,7 +4,35 @@
     "href": "index.html",
     "title": "TransProRBook",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books."
+    "text": "Data Source and Introduction"
+  },
+  {
+    "objectID": "index.html#characteristics-of-the-tcga-database",
+    "href": "index.html#characteristics-of-the-tcga-database",
+    "title": "TransProRBook",
+    "section": "Characteristics of the TCGA Database:",
+    "text": "Characteristics of the TCGA Database:\n\nRich Cancer Tissue Sample Data:\n\n\nThe TCGA (The Cancer Genome Atlas) database amasses a substantial volume of tissue sample data across a variety of cancer types, encompassing multi-dimensional data such as genomics, transcriptomics, and proteomics. This repository serves as a valuable resource for cancer research, enabling researchers to delve into the biological mechanisms of cancer at multiple levels.\n\n\nPrimary Focus on Cancer Types:\n\n\nThe core objective of TCGA is to unveil the molecular mechanisms, pathogenic genes, and mutation frequencies of different cancer types through integrative analysis, thereby providing a robust scientific basis for the diagnosis, treatment, and prevention of cancer.\n\n\nLimited Quantity of Normal Tissue Samples:\n\n\nDespite the richness of cancer sample data, TCGA has a relatively limited number of normal tissue samples, which to some extent, restricts its application in comparative studies between normal and cancerous tissues."
+  },
+  {
+    "objectID": "index.html#characteristics-of-the-gtex-database",
+    "href": "index.html#characteristics-of-the-gtex-database",
+    "title": "TransProRBook",
+    "section": "Characteristics of the GTEx Database:",
+    "text": "Characteristics of the GTEx Database:\n\nCovers Normal Tissue Sample Data from Multiple Organs and Tissues:\n\n\nThe GTEx (Genotype-Tissue Expression) database, by collecting samples from a variety of organs and tissues, offers an extensive gene expression data resource. This is crucial for understanding the heterogeneity of gene expression across different tissues and the functionality of genes under normal physiological conditions.\n\n\nFocus on Gene Expression Patterns in Normal Tissues:\n\n\nGTEx aims to reveal the patterns and variations of gene expression in normal tissues, providing a valuable foundation for researching gene functionality and regulatory mechanisms."
+  },
+  {
+    "objectID": "index.html#demands-and-challenges-of-joint-analysis",
+    "href": "index.html#demands-and-challenges-of-joint-analysis",
+    "title": "TransProRBook",
+    "section": "Demands and Challenges of Joint Analysis:",
+    "text": "Demands and Challenges of Joint Analysis:\n\nNeed to Augment Normal Tissue Sample Volume:\n\n\nGiven the limited number of normal tissue samples in the TCGA database, it’s essential to source additional normal tissue samples from other databases like GTEx, for a more comprehensive and accurate cancer research.\n\n\nComplexity of Data Integration:\n\n\nThe joint analysis of the TCGA and GTEx databases entails data integration and standardization, requiring a meticulous and scientific approach to ensure the efficacy of data integration and the accuracy of analysis results. This may include data cleansing, standardization, and a unified analysis workflow to ensure that data obtained from different databases can be accurately and effectively combined for analysis."
+  },
+  {
+    "objectID": "index.html#ucsc-xena-data-download",
+    "href": "index.html#ucsc-xena-data-download",
+    "title": "TransProRBook",
+    "section": "UCSC Xena Data Download",
+    "text": "UCSC Xena Data Download\n\npipline\n\n\n\nLog in to the official website: http://xena.ucsc.edu/\nClick “Launch Xena” to enter the main interface: https://xenabrowser.net/\nClick “DATA SETS” to enter the dataset interface: https://xenabrowser.net/datapages/\nTCGA and GTEX Data Download:\n\nGDC TCGA Breast Cancer (BRCA) (20 datasets)\n\nHTSeq - Counts (n=1,217) GDC Hub\n\ndownload (Download link, copyable)\nID/Gene Mapping (Download link, copyable)\n\n\nGDC TCGA Melanoma (SKCM) (14 datasets)\n\nHTSeq - Counts (n=472) GDC Hub\n\ndownload (Download link, copyable)\nID/Gene Mapping (Download link, copyable)\n\n\nGTEX\n\nTOIL RSEM expected_count (n=7,845) UCSC Toil RNA-seq Recompute\n\ndownload (Download link, copyable)\nID/Gene Mapping (Download link, copyable)"
   },
   {
     "objectID": "intro.html",
