@@ -156,6 +156,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pipeline</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -178,7 +184,17 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#data-download-and-processing-statement" id="toc-data-download-and-processing-statement" class="nav-link" data-scroll-target="#data-download-and-processing-statement">Data Download and Processing Statement</a>
   <ul class="collapse">
-  <li><a href="#ucsc-xena-data-download" id="toc-ucsc-xena-data-download" class="nav-link" data-scroll-target="#ucsc-xena-data-download">UCSC Xena Data Download</a></li>
+  <li><a href="#ucsc-xena-data-download-pipeline" id="toc-ucsc-xena-data-download-pipeline" class="nav-link" data-scroll-target="#ucsc-xena-data-download-pipeline">UCSC Xena Data Download pipeline：</a></li>
+  <li><a href="#data-type" id="toc-data-type" class="nav-link" data-scroll-target="#data-type">Data Type</a>
+  <ul class="collapse">
+  <li><a href="#count" id="toc-count" class="nav-link" data-scroll-target="#count">count</a></li>
+  <li><a href="#additional-recommendations" id="toc-additional-recommendations" class="nav-link" data-scroll-target="#additional-recommendations">Additional Recommendations：</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a>
+  <ul class="collapse">
+  <li><a href="#tcga-count-data" id="toc-tcga-count-data" class="nav-link" data-scroll-target="#tcga-count-data">TCGA Count Data</a></li>
+  <li><a href="#gtex-expected-count-data" id="toc-gtex-expected-count-data" class="nav-link" data-scroll-target="#gtex-expected-count-data">GTEx Expected Count Data</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SSSYDYSSS/TransProRBook/edit/main/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/blob/main/index.qmd" class="toc-action">View source</a></p></div></div></nav>
@@ -276,11 +292,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="data-download-and-processing-statement" class="level1">
 <h1>Data Download and Processing Statement</h1>
-<section id="ucsc-xena-data-download" class="level2">
-<h2 class="anchored" data-anchor-id="ucsc-xena-data-download">UCSC Xena Data Download</h2>
-<ul>
-<li>pipline</li>
-</ul>
+<section id="ucsc-xena-data-download-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="ucsc-xena-data-download-pipeline">UCSC Xena Data Download pipeline：</h2>
 <blockquote class="blockquote">
 <ul>
 <li>Log in to the official website: <a href="http://xena.ucsc.edu/" style="color: #6a926b; font-style: italic; font-weight: bold;">http://xena.ucsc.edu/</a></li>
@@ -295,6 +308,14 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-BRCA.htseq_counts.tsv.gz; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a></li>
 <li><a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/gencode.v22.annotation.gene.probeMap; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">ID/Gene Mapping (Download link, copyable)</a></li>
 </ul></li>
+<li><a href="https://xenabrowser.net/datapages/?dataset=TCGA-SKCM.GDC_phenotype.tsv&amp;host=https%3A%2F%2Fgdc.xenahubs.net&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold; ">Phenotype (n=1,284) GDC Hub</a>
+<ul>
+<li><a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-BRCA.GDC_phenotype.tsv.gz; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a></li>
+</ul></li>
+<li><a href="https://xenabrowser.net/datapages/?dataset=TCGA-SKCM.survival.tsv&amp;host=https%3A%2F%2Fgdc.xenahubs.net&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold; ">survival data (n=1,260) GDC Hub</a>
+<ul>
+<li><a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-BRCA.survival.tsv; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a></li>
+</ul></li>
 </ul></li>
 <li><a href="https://xenabrowser.net/datapages/?cohort=GDC%20TCGA%20Melanoma%20(SKCM)&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold;">GDC TCGA Melanoma (SKCM) (14 datasets)</a>
 <ul>
@@ -302,6 +323,14 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-SKCM.htseq_counts.tsv.gz; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a></li>
 <li><a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/gencode.v22.annotation.gene.probeMap; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">ID/Gene Mapping (Download link, copyable)</a></li>
+</ul></li>
+<li><a href="https://xenabrowser.net/datapages/?dataset=TCGA-SKCM.GDC_phenotype.tsv&amp;host=https%3A%2F%2Fgdc.xenahubs.net&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold; ">Phenotype (n=477) GDC Hub</a>
+<ul>
+<li><a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-SKCM.GDC_phenotype.tsv.gz; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a></li>
+</ul></li>
+<li><a href="https://xenabrowser.net/datapages/?dataset=TCGA-SKCM.survival.tsv&amp;host=https%3A%2F%2Fgdc.xenahubs.net&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold; ">survival data (n=463) GDC Hub</a>
+<ul>
+<li><a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-SKCM.survival.tsv; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a></li>
 </ul></li>
 </ul></li>
 <li><a href="https://xenabrowser.net/datapages/?cohort=GTEX&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold;">GTEX</a>
@@ -311,8 +340,77 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://toil-xena-hub.s3.us-east-1.amazonaws.com/download/gtex_gene_expected_count.gz; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a></li>
 <li><a href="https://toil-xena-hub.s3.us-east-1.amazonaws.com/download/probeMap%2Fgencode.v23.annotation.gene.probemap; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">ID/Gene Mapping (Download link, copyable)</a></li>
 </ul></li>
+<li><a href="https://xenabrowser.net/datapages/?dataset=GTEX_phenotype&amp;host=https%3A%2F%2Ftoil.xenahubs.net&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold; ">GTEX phenotype (n=9,783) UCSC Toil RNA-seq Recompute</a>
+<ul>
+<li><a href="https://toil-xena-hub.s3.us-east-1.amazonaws.com/download/GTEX_phenotype.gz; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a></li>
 </ul></li>
 </ul></li>
+</ul></li>
+</ul>
+</blockquote>
+</section>
+<section id="data-type" class="level2">
+<h2 class="anchored" data-anchor-id="data-type">Data Type</h2>
+<section id="count" class="level3">
+<h3 class="anchored" data-anchor-id="count">count</h3>
+<p>In the context of RNA-seq data analysis, “Count” is an important concept. It represents the number of times each gene or transcript is measured in an RNA-seq experiment. Typically, these counts are obtained through sequencing machines, which measure the number of fragments associated with each gene or transcript, also known as “reads count” or “fragment count,” which indicates how many times each gene or transcript is covered or mapped in the sequencing data. These count data serve as the starting point for RNA-seq data analysis, providing raw information about the expression of genes or transcripts in different samples.</p>
+<section id="use-cases" class="level4">
+<h4 class="anchored" data-anchor-id="use-cases">Use Cases:</h4>
+<blockquote class="blockquote">
+<ul>
+<li>Gene Expression Analysis: Count data can be used to compare the relative expression levels of different genes. By tallying the counts for each gene, we can determine which genes are expressed more or less in various samples, identifying key genes.</li>
+<li>Differential Expression Analysis: Differential expression analysis aims to study changes in gene expression levels between different conditions or groups. In this context, count data is employed to compare gene expression levels under different conditions, often requiring statistical models to identify genes with significant differences.</li>
+<li>Clustering Analysis: Count data can also be used for clustering analysis to identify groups of genes or samples with similar expression patterns. Through clustering analysis, genes with similar expression patterns can be grouped together.</li>
+<li>Gene Annotation: Count data helps determine which genes or transcripts have evidence of measurement in the sequencing data, which is crucial for gene annotation.</li>
+</ul>
+</blockquote>
+</section>
+<section id="advantages" class="level4">
+<h4 class="anchored" data-anchor-id="advantages">Advantages:</h4>
+<blockquote class="blockquote">
+<ul>
+<li>Intuitiveness: Count data is obtained directly from RNA-seq experiments, providing an intuitive and straightforward representation of gene expression.</li>
+<li>Flexibility: Count data is versatile and applicable to various RNA-seq data analysis tasks, including basic gene expression analysis and more complex differential expression analysis.</li>
+</ul>
+</blockquote>
+</section>
+<section id="disadvantages" class="level4">
+<h4 class="anchored" data-anchor-id="disadvantages">Disadvantages:</h4>
+<blockquote class="blockquote">
+<ul>
+<li>Impact of Sequencing Depth and Gene Length: Count data is influenced by sequencing depth and gene length, necessitating standardization when comparing expression levels between different samples or genes.</li>
+<li>Zero Inflation: For lowly expressed genes, count data may exhibit zero inflation, where counts are predominantly zero. Specialized statistical methods are required to address this issue.</li>
+<li>Resource-Intensive: Handling raw count data can demand significant computational resources and storage space, particularly for large-scale RNA-seq datasets.</li>
+</ul>
+</blockquote>
+<p>In summary, count data plays a pivotal role in RNA-seq data analysis but typically requires further standardization and analysis to derive meaningful results. It is suitable for use with RNA-seq data types, particularly for gene expression analysis and differential expression analysis.</p>
+</section>
+</section>
+<section id="additional-recommendations" class="level3">
+<h3 class="anchored" data-anchor-id="additional-recommendations">Additional Recommendations：</h3>
+<p>In the TransPro data analysis suite, each R package (e.g., TransProR) and Python package (e.g., TransProPy) involves a vast array of mathematical algorithms, integrated machine learning techniques, and various deep learning modules. Therefore, our initial design’s focus for data selection was on the following aspects: <b style="color: #6a926b;">ensuring a sufficiently large volume of data, comprehensive and diversified annotation files, balanced data distribution, and the feasibility of cross-database data integration</b>. However, please note that to ensure the reproducibility and robustness of our technology, we ultimately chose publicly available data from TCGA and CTEX—specifically, BRCA data (large volume, publicly available, well-annotated) and SKCM data (fairly large volume, public, and balanced data distribution) as our initial data sets. We then performed a series of algorithmic explorations to uncover data features and designed visual representations of the results.</p>
+<p>Although we have batch-normalized all the data, please be aware that users can directly analyze their test data, which is acceptable. However, if you intend to merge public data from major databases, please carefully review the data processing procedures and quality control metrics of different databases in advance (for the generation of TCGA and GTEX data, please see the reference)! We <b style="color: #6a926b;">recommend</b> conducting combined analyses only under <b style="color: #6a926b;">relatively similar conditions</b>. We <b style="color: #6a926b;">further suggest obtaining the original fastq files</b> from the databases. This way, TransPro users can generate count data with uniform methods and parameters, significantly minimizing the noise caused by batch effects and enhancing the accuracy and authenticity of the results.</p>
+</section>
+</section>
+</section>
+<section id="reference" class="level1">
+<h1>Reference</h1>
+<section id="tcga-count-data" class="level2">
+<h2 class="anchored" data-anchor-id="tcga-count-data">TCGA Count Data</h2>
+<blockquote class="blockquote">
+<ul>
+<li><a href="https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/" style="color: #758b76; font-weight: bold;">STAR Alignment and Counting</a>: The primary counting data in TCGA is generated by STAR, which provides gene ID, unstranded, and stranded counts data following alignment.</li>
+<li><a href="https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga" style="color: #758b76; font-weight: bold;">Multi-dimensional Data Collection</a>: TCGA collects many types of data including molecular characterization data for over 20,000 tumor and normal samples, contributing to the count data.</li>
+</ul>
+</blockquote>
+</section>
+<section id="gtex-expected-count-data" class="level2">
+<h2 class="anchored" data-anchor-id="gtex-expected-count-data">GTEx Expected Count Data</h2>
+<blockquote class="blockquote">
+<ul>
+<li><a href="https://github.com/broadinstitute/gtex-pipeline" style="color: #758b76; font-weight: bold;">Pipeline Components for RNA-seq Alignment, Quantification</a>: GTEx utilizes a pipeline for RNA-seq alignment, quantification, and quality control among other analysis tasks, which lead to the generation of expected count data.</li>
+<li><a href="https://hub.docker.com/r/broadinstitute/gtex_rnaseq" style="color: #758b76; font-weight: bold;">Alignment and Expression Quantification</a>: GTEx RNA-seq pipeline involves alignment (STAR), QC (RNA-SeQC), and expression quantification (RSEM &amp; RNA-SeQC) for generating expected count data.</li>
+<li><a href="https://www.nature.com/articles/ng.2653" style="color: #758b76; font-weight: bold;">76-base, Paired-end Illumina TruSeq RNA Protocol</a>: GTEx uses a 76-base, paired-end Illumina TruSeq RNA protocol, averaging around 50 million aligned reads per sample for RNA sequencing.</li>
 </ul>
 </blockquote>
 
