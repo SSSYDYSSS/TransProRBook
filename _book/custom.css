@@ -8,13 +8,17 @@
 tbody tr:hover {background: rgba(66, 165, 245, 0.2);}
 
 .title {
-    color: #335f34 !important;
+    color: #204f22 !important;
 }
 
 .description {
-    color: #335f34 !important;
+    color: #204f22 !important;
 }
 
-h1, h2 {
-    color: #335f34;
+h1 {
+    color: hwb(117 10% 58%);
+}
+
+h2 {
+    color: hwb(78 10% 45%);
 }
