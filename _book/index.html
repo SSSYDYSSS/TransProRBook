@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Data Source and Introduction</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -139,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">Data Source and Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -170,7 +170,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#data-source-and-introduction" id="toc-data-source-and-introduction" class="nav-link active" data-scroll-target="#data-source-and-introduction">Data Source and Introduction</a>
+  <ul class="collapse">
+  <li><a href="#characteristics-of-the-tcga-database" id="toc-characteristics-of-the-tcga-database" class="nav-link" data-scroll-target="#characteristics-of-the-tcga-database">Characteristics of the TCGA Database:</a></li>
+  <li><a href="#characteristics-of-the-gtex-database" id="toc-characteristics-of-the-gtex-database" class="nav-link" data-scroll-target="#characteristics-of-the-gtex-database">Characteristics of the GTEx Database:</a></li>
+  <li><a href="#demands-and-challenges-of-joint-analysis" id="toc-demands-and-challenges-of-joint-analysis" class="nav-link" data-scroll-target="#demands-and-challenges-of-joint-analysis">Demands and Challenges of Joint Analysis:</a></li>
+  </ul></li>
+  <li><a href="#data-download-and-processing-statement" id="toc-data-download-and-processing-statement" class="nav-link" data-scroll-target="#data-download-and-processing-statement">Data Download and Processing Statement</a>
+  <ul class="collapse">
+  <li><a href="#ucsc-xena-data-download" id="toc-ucsc-xena-data-download" class="nav-link" data-scroll-target="#ucsc-xena-data-download">UCSC Xena Data Download</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SSSYDYSSS/TransProRBook/edit/main/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/blob/main/index.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
@@ -211,12 +220,104 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This is a Quarto book.</p>
-<p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
+<section id="data-source-and-introduction" class="level1 unnumbered">
+<h1 class="unnumbered">Data Source and Introduction</h1>
+<section id="characteristics-of-the-tcga-database" class="level2">
+<h2 class="anchored" data-anchor-id="characteristics-of-the-tcga-database">Characteristics of the TCGA Database:</h2>
+<ul>
+<li>Rich Cancer Tissue Sample Data:</li>
+</ul>
+<blockquote class="blockquote">
+<p>The TCGA (The Cancer Genome Atlas) database amasses a substantial volume of tissue sample data across a variety of cancer types, encompassing multi-dimensional data such as genomics, transcriptomics, and proteomics. This repository serves as a valuable resource for cancer research, enabling researchers to delve into the biological mechanisms of cancer at multiple levels.</p>
+</blockquote>
+<ul>
+<li>Primary Focus on Cancer Types:</li>
+</ul>
+<blockquote class="blockquote">
+<p>The core objective of TCGA is to unveil the molecular mechanisms, pathogenic genes, and mutation frequencies of different cancer types through integrative analysis, thereby providing a robust scientific basis for the diagnosis, treatment, and prevention of cancer.</p>
+</blockquote>
+<ul>
+<li>Limited Quantity of Normal Tissue Samples:</li>
+</ul>
+<blockquote class="blockquote">
+<p>Despite the richness of cancer sample data, TCGA has a relatively limited number of normal tissue samples, which to some extent, restricts its application in comparative studies between normal and cancerous tissues.</p>
+</blockquote>
+</section>
+<section id="characteristics-of-the-gtex-database" class="level2">
+<h2 class="anchored" data-anchor-id="characteristics-of-the-gtex-database">Characteristics of the GTEx Database:</h2>
+<ul>
+<li>Covers Normal Tissue Sample Data from Multiple Organs and Tissues:</li>
+</ul>
+<blockquote class="blockquote">
+<p>The GTEx (Genotype-Tissue Expression) database, by collecting samples from a variety of organs and tissues, offers an extensive gene expression data resource. This is crucial for understanding the heterogeneity of gene expression across different tissues and the functionality of genes under normal physiological conditions.</p>
+</blockquote>
+<ul>
+<li>Focus on Gene Expression Patterns in Normal Tissues:</li>
+</ul>
+<blockquote class="blockquote">
+<p>GTEx aims to reveal the patterns and variations of gene expression in normal tissues, providing a valuable foundation for researching gene functionality and regulatory mechanisms.</p>
+</blockquote>
+</section>
+<section id="demands-and-challenges-of-joint-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="demands-and-challenges-of-joint-analysis">Demands and Challenges of Joint Analysis:</h2>
+<ul>
+<li>Need to Augment Normal Tissue Sample Volume:</li>
+</ul>
+<blockquote class="blockquote">
+<p>Given the limited number of normal tissue samples in the TCGA database, it’s essential to source additional normal tissue samples from other databases like GTEx, for a more comprehensive and accurate cancer research.</p>
+</blockquote>
+<ul>
+<li>Complexity of Data Integration:</li>
+</ul>
+<blockquote class="blockquote">
+<p>The joint analysis of the TCGA and GTEx databases entails data integration and standardization, requiring a meticulous and scientific approach to ensure the efficacy of data integration and the accuracy of analysis results. This may include data cleansing, standardization, and a unified analysis workflow to ensure that data obtained from different databases can be accurately and effectively combined for analysis.</p>
+</blockquote>
+</section>
+</section>
+<section id="data-download-and-processing-statement" class="level1">
+<h1>Data Download and Processing Statement</h1>
+<section id="ucsc-xena-data-download" class="level2">
+<h2 class="anchored" data-anchor-id="ucsc-xena-data-download">UCSC Xena Data Download</h2>
+<ul>
+<li>pipline</li>
+</ul>
+<blockquote class="blockquote">
+<ul>
+<li>Log in to the official website: <a href="http://xena.ucsc.edu/" style="color: #5d8155; font-style: italic; font-weight: bold;">http://xena.ucsc.edu/</a></li>
+<li>Click “Launch Xena” to enter the main interface: <a href="https://xenabrowser.net/" style="color: #5d8155; font-style: italic; font-weight: bold;">https://xenabrowser.net/</a></li>
+<li>Click “DATA SETS” to enter the dataset interface: <a href="https://xenabrowser.net/datapages/" style="color: #5d8155; font-style: italic; font-weight: bold;">https://xenabrowser.net/datapages/</a></li>
+<li>TCGA and GTEX Data Download:
+<ul>
+<li><a href="https://xenabrowser.net/datapages/?cohort=GDC%20TCGA%20Breast%20Cancer%20(BRCA)&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #5d8155; font-style: italic; font-weight: bold;">GDC TCGA Breast Cancer (BRCA) (20 datasets)</a>
+<ul>
+<li><a href="https://xenabrowser.net/datapages/?dataset=TCGA-BRCA.htseq_counts.tsv&amp;host=https%3A%2F%2Fgdc.xenahubs.net&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #5d8155; font-style: italic; font-weight: bold; ">HTSeq - Counts (n=1,217) GDC Hub</a>
+<ul>
+<li><a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-BRCA.htseq_counts.tsv.gz; Full metadata" style="color: #5d8155; font-style: italic; font-weight: bold;">download (Download link, copyable)</a></li>
+<li><a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/gencode.v22.annotation.gene.probeMap; Full metadata" style="color: #5d8155; font-style: italic; font-weight: bold;">ID/Gene Mapping (Download link, copyable)</a></li>
+</ul></li>
+</ul></li>
+<li><a href="https://xenabrowser.net/datapages/?cohort=GDC%20TCGA%20Melanoma%20(SKCM)&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #5d8155; font-style: italic; font-weight: bold;">GDC TCGA Melanoma (SKCM) (14 datasets)</a>
+<ul>
+<li><a href="https://xenabrowser.net/datapages/?dataset=TCGA-SKCM.htseq_counts.tsv&amp;host=https%3A%2F%2Fgdc.xenahubs.net&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #5d8155; font-style: italic; font-weight: bold; ">HTSeq - Counts (n=472) GDC Hub</a>
+<ul>
+<li><a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-SKCM.htseq_counts.tsv.gz; Full metadata" style="color: #5d8155; font-style: italic; font-weight: bold;">download (Download link, copyable)</a></li>
+<li><a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/gencode.v22.annotation.gene.probeMap; Full metadata" style="color: #5d8155; font-style: italic; font-weight: bold;">ID/Gene Mapping (Download link, copyable)</a></li>
+</ul></li>
+</ul></li>
+<li><a href="https://xenabrowser.net/datapages/?cohort=GTEX&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #5d8155; font-style: italic; font-weight: bold;">GTEX</a>
+<ul>
+<li><a href="https://xenabrowser.net/datapages/?dataset=gtex_gene_expected_count&amp;host=https%3A%2F%2Ftoil.xenahubs.net&amp;removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #5d8155; font-style: italic; font-weight: bold;">TOIL RSEM expected_count (n=7,845) UCSC Toil RNA-seq Recompute</a>
+<ul>
+<li><a href="https://toil-xena-hub.s3.us-east-1.amazonaws.com/download/gtex_gene_expected_count.gz; Full metadata" style="color: #5d8155; font-style: italic; font-weight: bold;">download (Download link, copyable)</a></li>
+<li><a href="https://toil-xena-hub.s3.us-east-1.amazonaws.com/download/probeMap%2Fgencode.v23.annotation.gene.probemap; Full metadata" style="color: #5d8155; font-style: italic; font-weight: bold;">ID/Gene Mapping (Download link, copyable)</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</blockquote>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

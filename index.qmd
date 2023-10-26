@@ -1,5 +1,61 @@
-# Preface {.unnumbered}
+# Data Source and Introduction {.unnumbered}
 
-This is a Quarto book.
+## Characteristics of the TCGA Database:
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+- Rich Cancer Tissue Sample Data:
+
+> The TCGA (The Cancer Genome Atlas) database amasses a substantial volume of tissue sample data across a variety of cancer types, encompassing multi-dimensional data such as genomics, transcriptomics, and proteomics. This repository serves as a valuable resource for cancer research, enabling researchers to delve into the biological mechanisms of cancer at multiple levels.
+  
+- Primary Focus on Cancer Types:
+
+> The core objective of TCGA is to unveil the molecular mechanisms, pathogenic genes, and mutation frequencies of different cancer types through integrative analysis, thereby providing a robust scientific basis for the diagnosis, treatment, and prevention of cancer.
+  
+- Limited Quantity of Normal Tissue Samples:
+
+> Despite the richness of cancer sample data, TCGA has a relatively limited number of normal tissue samples, which to some extent, restricts its application in comparative studies between normal and cancerous tissues.
+  
+## Characteristics of the GTEx Database:
+
+- Covers Normal Tissue Sample Data from Multiple Organs and Tissues:
+
+> The GTEx (Genotype-Tissue Expression) database, by collecting samples from a variety of organs and tissues, offers an extensive gene expression data resource. This is crucial for understanding the heterogeneity of gene expression across different tissues and the functionality of genes under normal physiological conditions.
+
+- Focus on Gene Expression Patterns in Normal Tissues:
+
+> GTEx aims to reveal the patterns and variations of gene expression in normal tissues, providing a valuable foundation for researching gene functionality and regulatory mechanisms.
+  
+## Demands and Challenges of Joint Analysis:
+
+- Need to Augment Normal Tissue Sample Volume:
+
+> Given the limited number of normal tissue samples in the TCGA database, it's essential to source additional normal tissue samples from other databases like GTEx, for a more comprehensive and accurate cancer research.
+  
+- Complexity of Data Integration:
+
+> The joint analysis of the TCGA and GTEx databases entails data integration and standardization, requiring a meticulous and scientific approach to ensure the efficacy of data integration and the accuracy of analysis results. This may include data cleansing, standardization, and a unified analysis workflow to ensure that data obtained from different databases can be accurately and effectively combined for analysis.
+
+
+# Data Download and Processing Statement
+
+## UCSC Xena Data Download
+
+- pipline
+
+> - Log in to the official website: <a href="http://xena.ucsc.edu/" style="color: #5d8155; font-style: italic; font-weight: bold;">http://xena.ucsc.edu/</a>
+> - Click "Launch Xena" to enter the main interface: <a href="https://xenabrowser.net/" style="color: #5d8155; font-style: italic; font-weight: bold;">https://xenabrowser.net/</a>
+> - Click "DATA SETS" to enter the dataset interface: <a href="https://xenabrowser.net/datapages/" style="color: #5d8155; font-style: italic; font-weight: bold;">https://xenabrowser.net/datapages/</a>
+> - TCGA and GTEX Data Download:
+>   - <a href="https://xenabrowser.net/datapages/?cohort=GDC%20TCGA%20Breast%20Cancer%20(BRCA)&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #5d8155; font-style: italic; font-weight: bold;">GDC TCGA Breast Cancer (BRCA) (20 datasets)</a>
+>     - <a href="https://xenabrowser.net/datapages/?dataset=TCGA-BRCA.htseq_counts.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #5d8155; font-style: italic; font-weight: bold; ">HTSeq - Counts (n=1,217) GDC Hub</a>   
+>       - <a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-BRCA.htseq_counts.tsv.gz; Full metadata" style="color: #5d8155; font-style: italic; font-weight: bold;">download (Download link, copyable)</a> 
+>       - <a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/gencode.v22.annotation.gene.probeMap; Full metadata" style="color: #5d8155; font-style: italic; font-weight: bold;">ID/Gene Mapping (Download link, copyable)</a>
+> 
+>   - <a href="https://xenabrowser.net/datapages/?cohort=GDC%20TCGA%20Melanoma%20(SKCM)&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #5d8155; font-style: italic; font-weight: bold;">GDC TCGA Melanoma (SKCM) (14 datasets)</a>
+>     - <a href="https://xenabrowser.net/datapages/?dataset=TCGA-SKCM.htseq_counts.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #5d8155; font-style: italic; font-weight: bold; ">HTSeq - Counts (n=472) GDC Hub</a>   
+>       - <a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-SKCM.htseq_counts.tsv.gz; Full metadata" style="color: #5d8155; font-style: italic; font-weight: bold;">download (Download link, copyable)</a> 
+>       - <a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/gencode.v22.annotation.gene.probeMap; Full metadata" style="color: #5d8155; font-style: italic; font-weight: bold;">ID/Gene Mapping (Download link, copyable)</a> 
+>  
+>   - <a href="https://xenabrowser.net/datapages/?cohort=GTEX&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #5d8155; font-style: italic; font-weight: bold;">GTEX</a>
+>     - <a href="https://xenabrowser.net/datapages/?dataset=gtex_gene_expected_count&host=https%3A%2F%2Ftoil.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #5d8155; font-style: italic; font-weight: bold;">TOIL RSEM expected_count (n=7,845) UCSC Toil RNA-seq Recompute</a>   
+>       - <a href="https://toil-xena-hub.s3.us-east-1.amazonaws.com/download/gtex_gene_expected_count.gz; Full metadata" style="color: #5d8155; font-style: italic; font-weight: bold;">download (Download link, copyable)</a> 
+>       - <a href="https://toil-xena-hub.s3.us-east-1.amazonaws.com/download/probeMap%2Fgencode.v23.annotation.gene.probemap; Full metadata" style="color: #5d8155; font-style: italic; font-weight: bold;">ID/Gene Mapping (Download link, copyable)</a>        

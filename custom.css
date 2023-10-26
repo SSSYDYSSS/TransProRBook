@@ -6,3 +6,15 @@
     text-align: right;
 }
 tbody tr:hover {background: rgba(66, 165, 245, 0.2);}
+
+.title {
+    color: #335f34 !important;
+}
+
+.description {
+    color: #335f34 !important;
+}
+
+h1, h2 {
+    color: #335f34;
+}
