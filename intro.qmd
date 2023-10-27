@@ -1,2 +1,386 @@
-# Introduction
+# Data Source and Introduction {.unnumbered}
+## Characteristics of the TCGA Database:
+
+- Rich Cancer Tissue Sample Data:
+
+> The TCGA (The Cancer Genome Atlas) database amasses a substantial volume of tissue sample data across a variety of cancer types, encompassing multi-dimensional data such as genomics, transcriptomics, and proteomics. This repository serves as a valuable resource for cancer research, enabling researchers to delve into the biological mechanisms of cancer at multiple levels.
+  
+- Primary Focus on Cancer Types:
+
+> The core objective of TCGA is to unveil the molecular mechanisms, pathogenic genes, and mutation frequencies of different cancer types through integrative analysis, thereby providing a robust scientific basis for the diagnosis, treatment, and prevention of cancer.
+  
+- Limited Quantity of Normal Tissue Samples:
+
+> Despite the richness of cancer sample data, TCGA has a relatively limited number of normal tissue samples, which to some extent, restricts its application in comparative studies between normal and cancerous tissues.
+  
+## Characteristics of the GTEx Database:
+
+- Covers Normal Tissue Sample Data from Multiple Organs and Tissues:
+
+> The GTEx (Genotype-Tissue Expression) database, by collecting samples from a variety of organs and tissues, offers an extensive gene expression data resource. This is crucial for understanding the heterogeneity of gene expression across different tissues and the functionality of genes under normal physiological conditions.
+
+- Focus on Gene Expression Patterns in Normal Tissues:
+
+> GTEx aims to reveal the patterns and variations of gene expression in normal tissues, providing a valuable foundation for researching gene functionality and regulatory mechanisms.
+  
+## Demands and Challenges of Joint Analysis:
+
+- Need to Augment Normal Tissue Sample Volume:
+
+> Given the limited number of normal tissue samples in the TCGA database, it's essential to source additional normal tissue samples from other databases like GTEx, for a more comprehensive and accurate cancer research.
+  
+- Complexity of Data Integration:
+
+> The joint analysis of the TCGA and GTEx databases entails data integration and standardization, requiring a meticulous and scientific approach to ensure the efficacy of data integration and the accuracy of analysis results. This may include data cleansing, standardization, and a unified analysis workflow to ensure that data obtained from different databases can be accurately and effectively combined for analysis.
+
+
+# Data Download and Processing Statement
+
+## UCSC Xena Data Download pipeline：
+
+> - Log in to the official website: <a href="http://xena.ucsc.edu/" style="color: #6a926b; font-style: italic; font-weight: bold;">http://xena.ucsc.edu/</a>
+> - Click "Launch Xena" to enter the main interface: <a href="https://xenabrowser.net/" style="color: #6a926b; font-style: italic; font-weight: bold;">https://xenabrowser.net/</a>
+> - Click "DATA SETS" to enter the dataset interface: <a href="https://xenabrowser.net/datapages/" style="color: #6a926b; font-style: italic; font-weight: bold;">https://xenabrowser.net/datapages/</a>
+> - TCGA and GTEX Data Download:
+>   - <a href="https://xenabrowser.net/datapages/?cohort=GDC%20TCGA%20Breast%20Cancer%20(BRCA)&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold;">GDC TCGA Breast Cancer (BRCA) (20 datasets)</a>
+>     - <a href="https://xenabrowser.net/datapages/?dataset=TCGA-BRCA.htseq_counts.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold; ">HTSeq - Counts (n=1,217) GDC Hub</a>   
+>       - <a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-BRCA.htseq_counts.tsv.gz; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a> 
+>       - <a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/gencode.v22.annotation.gene.probeMap; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">ID/Gene Mapping (Download link, copyable)</a>
+>
+>     - <a href="https://xenabrowser.net/datapages/?dataset=TCGA-SKCM.GDC_phenotype.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold; ">Phenotype (n=1,284) GDC Hub</a>   
+>       - <a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-BRCA.GDC_phenotype.tsv.gz; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a> 
+>
+>     - <a href="https://xenabrowser.net/datapages/?dataset=TCGA-SKCM.survival.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold; ">survival data (n=1,260) GDC Hub</a>   
+>       - <a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-BRCA.survival.tsv; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a> 
+> 
+>   - <a href="https://xenabrowser.net/datapages/?cohort=GDC%20TCGA%20Melanoma%20(SKCM)&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold;">GDC TCGA Melanoma (SKCM) (14 datasets)</a>
+>     - <a href="https://xenabrowser.net/datapages/?dataset=TCGA-SKCM.htseq_counts.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold; ">HTSeq - Counts (n=472) GDC Hub</a>   
+>       - <a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-SKCM.htseq_counts.tsv.gz; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a> 
+>       - <a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/gencode.v22.annotation.gene.probeMap; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">ID/Gene Mapping (Download link, copyable)</a> 
+>   
+>     - <a href="https://xenabrowser.net/datapages/?dataset=TCGA-SKCM.GDC_phenotype.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold; ">Phenotype (n=477) GDC Hub</a>   
+>       - <a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-SKCM.GDC_phenotype.tsv.gz; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a> 
+>
+>     - <a href="https://xenabrowser.net/datapages/?dataset=TCGA-SKCM.survival.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold; ">survival data (n=463) GDC Hub</a>   
+>       - <a href="https://gdc-hub.s3.us-east-1.amazonaws.com/download/TCGA-SKCM.survival.tsv; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a> 
+>   
+>   - <a href="https://xenabrowser.net/datapages/?cohort=GTEX&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold;">GTEX</a>
+>     - <a href="https://xenabrowser.net/datapages/?dataset=gtex_gene_expected_count&host=https%3A%2F%2Ftoil.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold;">TOIL RSEM expected_count (n=7,845) UCSC Toil RNA-seq Recompute</a>   
+>       - <a href="https://toil-xena-hub.s3.us-east-1.amazonaws.com/download/gtex_gene_expected_count.gz; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a> 
+>       - <a href="https://toil-xena-hub.s3.us-east-1.amazonaws.com/download/probeMap%2Fgencode.v23.annotation.gene.probemap; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">ID/Gene Mapping (Download link, copyable)</a>        
+> 
+>     - <a href="https://xenabrowser.net/datapages/?dataset=GTEX_phenotype&host=https%3A%2F%2Ftoil.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold; ">GTEX phenotype (n=9,783) UCSC Toil RNA-seq Recompute</a>   
+>       - <a href="https://toil-xena-hub.s3.us-east-1.amazonaws.com/download/GTEX_phenotype.gz; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a> 
+
+## Data Type
+
+### count 
+
+In the context of RNA-seq data analysis, "Count" is an important concept. It represents the number of times each gene or transcript is measured in an RNA-seq experiment. Typically, these counts are obtained through sequencing machines, which measure the number of fragments associated with each gene or transcript, also known as "reads count" or "fragment count," which indicates how many times each gene or transcript is covered or mapped in the sequencing data. These count data serve as the starting point for RNA-seq data analysis, providing raw information about the expression of genes or transcripts in different samples.
+
+#### Use Cases:
+
+- Gene Expression Analysis: 
+  
+>Count data can be used to compare the relative expression levels of different genes. By tallying the counts for each gene, we can determine which genes are expressed more or less in various samples, identifying key genes.
+
+- Differential Expression Analysis: 
+  
+> Differential expression analysis aims to study changes in gene expression levels between different conditions or groups. In this context, count data is employed to compare gene expression levels under different conditions, often requiring statistical models to identify genes with significant differences.
+
+- Clustering Analysis: 
+
+> Count data can also be used for clustering analysis to identify groups of genes or samples with similar expression patterns. Through clustering analysis, genes with similar expression patterns can be grouped together.
+
+- Gene Annotation: 
+
+>Count data helps determine which genes or transcripts have evidence of measurement in the sequencing data, which is crucial for gene annotation.
+
+#### Advantages:
+
+- Intuitiveness: 
+
+> Count data is obtained directly from RNA-seq experiments, providing an intuitive and straightforward representation of gene expression.
+
+- Flexibility: 
+
+> Count data is versatile and applicable to various RNA-seq data analysis tasks, including basic gene expression analysis and more complex differential expression analysis.
+
+#### Disadvantages:
+
+- Impact of Sequencing Depth and Gene Length: 
+
+> Count data is influenced by sequencing depth and gene length, necessitating standardization when comparing expression levels between different samples or genes.
+
+- Zero Inflation: 
+
+> For lowly expressed genes, count data may exhibit zero inflation, where counts are predominantly zero. Specialized statistical methods are required to address this issue.
+
+- Resource-Intensive: 
+
+> Handling raw count data can demand significant computational resources and storage space, particularly for large-scale RNA-seq datasets.
+
+In summary, count data plays a pivotal role in RNA-seq data analysis but typically requires further standardization and analysis to derive meaningful results. It is suitable for use with RNA-seq data types, particularly for gene expression analysis and differential expression analysis.
+
+### RPKM
+RPKM (Reads Per Kilobase of transcript per Million mapped reads) is a method used for quantifying gene expression. This technique overcomes two major barriers: the differences in sequencing depth between samples and the comparison of genes of different lengths. Below is a deeper analysis of the concept, calculation, and application of RPKM, as well as some of its limitations.
+
+#### Principle and Calculation of RPKM:
+- Principle: 
+  
+>The RPKM method corrects the read data in sequencing experiments, making it unaffected by sequencing depth and gene length differences, thereby allowing for a more accurate comparison of gene expression levels under different conditions.
+
+- Calculation Formula: 
+$$
+RPKM = \frac{10^9 \times C}{N \times L}
+$$
+
+- Where:
+
+> ***C*** is the read count for a specific gene.
+> 
+> ***N*** is the total number of mapped reads in the sequencing experiment.
+> 
+> ***L*** is the transcript length (gene length in base pairs).
+> 
+> The $\boldsymbol{10^9}$ in the formula is a standardization factor used to adjust the units, making the results more comprehensible.
+
+
+#### Application Scenarios:
+- Transcriptomic Studies: 
+  
+> In transcriptome sequencing (RNA-seq), researchers often use RPKM to quantify gene expression, especially when comparing samples from different species, different tissues, or under different treatment conditions.
+
+- Quantitative Studies of Gene Expression: 
+  
+> RPKM provides a way to standardize gene expression data, allowing data obtained from different experiments or under different conditions to be compared.
+
+### Advantages:
+
+   - Correction for Gene Length: 
+    
+   > RPKM takes into account the length of the genes, allowing for a fair comparison of expression levels between long and short genes, resolving the issue of read count bias.
+   - Normalization for Sequencing Depth: 
+   
+   > By standardizing the total mapped reads, RPKM allows researchers to compare data from different sequencing experiments.
+
+#### Challenges:
+
+  - Bias in Low-Abundance Transcripts: 
+  
+  > RPKM may overestimate the expression levels for genes with low expression because their expression could be amplified due to statistical fluctuations or limitations in sequencing depth.
+
+  - No Correction for Technical Variations: 
+  
+  > RPKM does not correct for technical biases that may occur during library preparation or sequencing, and additional statistical methods may be required to correct these biases.
+
+  - Not Suitable for Transcript Diversity: 
+  
+  > If a gene has multiple isoforms, RPKM calculation may not reflect the true expression status of each transcript variant.
+
+Therefore, while RPKM is an important tool in RNA-seq data analysis, researchers need to consider its limitations when using it and consider employing other complementary methods, such as TPM (Transcripts Per Million) or more advanced quantification methods like model-based methods (e.g., DESeq2 or edgeR), which can handle differences and variations in data under different samples and conditions more effectively.
+
+### FPKM
+FPKM (Fragments Per Kilobase of transcript, per Million mapped fragments) is an enhancement over RPKM, accounting for the number of sequenced fragments instead of just read counts. This modification is crucial, particularly when a single read might encompass multiple fragments due to events like "split reads" or "spliced reads" in sequencing data.
+
+#### FPKM Calculation:
+
+- The formula for calculating FPKM is:
+$$
+FPKM = \frac{\text{Number of fragments mapped to a gene}}{(\frac{\text{Total mapped fragments}}{1,000,000}) \times (\frac{\text{Length of the gene}}{1,000})}
+$$
+
+ 
+
+- Where:
+
+>***"Fragment count of gene"*** refers to the number of fragments for a specific gene.
+>
+>***"Gene length in kilobases"*** is the measurement of the gene length, using kilobases (thousands of base pairs) as the unit.
+>
+>***"Total mapped fragments in millions"*** represents the summation of all fragments aligned with the reference genome, expressed in millions.
+
+#### Suitability:
+
+FPKM is utilized in situations similar to RPKM, primarily in RNA-seq data analysis, especially when comparing expression levels across genes or between different samples. FPKM allows a more equitable comparison of gene expression by taking into account both gene length and sequencing depth.
+
+#### Advantages:
+
+>Recognizes gene length, making it suitable for comparing expression levels across genes of diverse lengths.By normalizing per million mapped fragments, FPKM enables more fair comparisons between different samples.
+
+#### Disadvantages:
+
+>It may misrepresent low-abundance genes, as the total number of mapped fragments in the denominator could lead to inflated FPKM values for these genes.It doesn't account for potential biases, such as discrepancies in sequencing depth, necessitating further adjustments.
+
+#### RPKM vs. FPKM:
+
+Though they appear similar, the necessity for FPKM in addition to RPKM comes from their unique applications and methods of calculation.
+
+-  Differences:
+
+  - Calculation Basis: 
+  
+  > While RPKM normalizes gene expression levels based on read counts, gene length, and total reads, FPKM does so using fragment counts. This approach is essential for instances where a single read may correspond to multiple fragments.
+
+  - Reads vs. Fragments: 
+  
+  > RPKM, the earlier introduced method, accounts for read counts. FPKM, an advancement over RPKM, considers fragment counts, which is vital for scenarios involving "split reads" or "spliced reads."
+
+  - Nomenclature: 
+  
+  > RPKM (Reads Per Kilobase of transcript, per Million mapped reads) emphasizes normalization using read counts, whereas FPKM highlights normalization based on fragment counts.
+
+#### Why FPKM?
+
+>- RPKM is tailored for single-end sequencing, whereas FPKM is more applicable for paired-end RNA-seq because it takes into account that two reads can map to a single fragment, thus avoiding duplication in counting.
+>- FPKM is generally preferred over RPKM as it offers more precision by including fragment counts, which is particularly important for genes undergoing splicing events.
+
+#### Choosing Between RPKM and FPKM:
+
+While FPKM is generally a better choice due to its enhanced accuracy, the advent of more modern methods like TPM (Transcripts Per Million) has overshadowed both RPKM and FPKM in RNA-seq data analysis. TPM normalizes expression levels based on every million mapped transcripts and is not influenced by gene length or sequencing depth, providing a more reliable reflection of relative expression levels.
+
+
+### TPM
+
+TPM (Transcripts Per Million) is an accurate method for measuring gene expression levels, capable of eliminating the effects of sequencing depth and transcript length differences between various samples.
+
+To calculate TPM, we first need to obtain the normalized read counts for each transcript, which are then standardized per million transcripts. The steps are as follows:
+
+Calculate the read counts for each transcript, considering the effective length of the transcript (i.e., excluding the length of non-coding regions).
+
+Compute the ratio of each transcript's read count to its effective length, then multiply this ratio by a normalization factor to enable comparisons between samples.
+
+#### TPM calculation formula is as follows:
+$$
+TPM_i = \left( \frac{x_i}{l_i} \right) \left( \frac{1}{\sum_j \frac{x_j}{l_j}} \right) 10^6
+$$
+
+#### Where:
+
+> $\boldsymbol{x_i}$ represents the read count of a specific transcript.
+> 
+> $\boldsymbol{l_i}$ is the effective length of the transcript (in kilobases).
+> 
+> Subscripts $\boldsymbol{i}$ and $\boldsymbol{j}$ denote different transcripts.
+> 
+> $\boldsymbol{\sum_j \frac{x_j}{l_j}}$ is the sum of all transcript read counts ratios to their effective lengths.
+
+
+#### The main differences between TPM and RPKM/FPKM:
+
+- Calculation method: 
+  
+>With TPM, the expression level of each transcript is first normalized to the length of the transcript, then standardized to the total transcript expression in the sample. In contrast, RPKM/FPKM directly utilize the read counts of transcripts or fragments, normalizing based on transcript length and total read counts.
+
+- Normalization target: 
+
+>After calculating TPM, the total of the TPM values for all transcripts will be 1,000,000, facilitating comparisons between different samples. The total for RPKM/FPKM is not consistent, as they are based on read counts.
+
+- Impact of gene length: 
+  
+>TPM normalizes the effect of gene length on expression level calculations by considering transcript length, making comparisons between transcripts of varying lengths more equitable. Although RPKM/FPKM also standardize based on length, they do not entirely eliminate the influence of gene length when comparing between samples.
+
+#### The preference for TPM is primarily based on the following reasons:
+
+- Accuracy:
+
+> TPM more accurately reflects the actual expression levels of transcripts, without biases due to differences in sequencing depth or gene length between samples.
+
+- Comparability: 
+  
+>TPM values, after standardization, allow for direct comparisons of transcript expression levels between different samples and experiments.
+
+- Universality: 
+
+>The TPM calculation method is suitable for various transcriptomic studies, including gene expression quantification, differential expression analysis, and more.
+
+In summary, while RPKM/FPKM remain useful in certain contexts, TPM is more widely accepted and utilized in modern transcriptomic analyses due to its accuracy and comparability.
+
+### CPM
+CPM (Counts Per Million) is another prevalent normalization method for assessing gene or transcript expression levels, alongside other techniques such as RPKM, FPKM, and TPM. The principle behind CPM is to standardize the number of times a gene or transcript is measured (counts), allowing for the comparison of expression levels across different genes or transcripts while accounting for the total number of measurements. By normalizing each gene or transcript's expression levels to per million measurements, CPM minimizes the impact of sequencing depth and differences between samples.
+
+The calculation formula for CPM is as follows:
+$$
+CPM = \frac{\text{Counts of gene/transcript} \times 10^6}{\sum (\text{Counts of all genes/transcripts})}
+$$
+
+#### Where:
+
+>***"Counts of gene/transcript"*** refers to the number of measurements (counts) for a particular gene or transcript.
+>
+>"$\boldsymbol{\sum}$" represents the summation symbol, calculating the total counts for all genes or transcripts.
+
+#### CPM is applicable for:
+
+- Comparing relative expression levels of different genes or transcripts.
+- Comparing gene expression levels between samples, particularly when considering variations in sequencing depth and among samples.
+
+#### Advantages:
+
+> - CPM is a straightforward and intuitive method of normalization, easy to understand and compute.
+> 
+> - It's suitable for comparisons between different samples, enabling a fairer assessment of gene expression differences.
+
+#### Disadvantages:
+
+>- CPM may encounter issues with lowly expressed genes because the denominator includes the total counts. For these genes, a smaller denominator might inflate the CPM value, leading to inaccuracies.
+>
+>- CPM does not account for factors like gene length and sequencing depth, potentially compromising accuracy in certain scenarios.
+
+Despite its limitations, CPM stands as a relatively rapid and simplistic normalization technique, fitting for basic RNA-seq data analysis tasks. For instance, during differential analysis, it's sometimes necessary to eliminate low-expression genes. Here, CPM calculations become relevant, aiding in the exclusion of these genes based on set criteria. For straightforward adjustments of counts, one can utilize the cpm() function within the edgeR package.
+
+### RSEM
+
+Here, we delve further into the core principles and computational methods of RSEM (RNA-Seq by Expectation-Maximization). 
+RSEM stands as a powerful tool for accurately estimating the expression levels of genes or transcripts. It is particularly proficient in handling RNA sequencing data, resolving issues of multimapping and accounting for sequence mismatches.
+At the heart of RSEM is the Expectation-Maximization (EM) algorithm, a statistical technique used for estimating the parameters of a probability model, especially in cases where the model involves latent variables that are not directly observable. By maximizing the log-likelihood function of the data, RSEM enables more accurate inference of the relative abundance of transcripts.
+
+#### The computation process of RSEM:
+
+- 1.E-step (Expectation):
+  
+>Utilizing the current estimates of the parameters, RSEM calculates the expected value of each transcript being sequenced. This step takes into account the sequencing error rate and the multimapping of reads.
+
+- 2.M-step (Maximization): 
+  
+>Based on the data generated in the E-step, RSEM updates the parameter estimates to maximize the likelihood of the read data.
+
+Given the complexity of the calculations and models involved in RSEM, specialized software tools are usually employed for execution. These tools have built-in necessary mathematical models and numerical optimization methods, relieving the user from delving into the intricate details behind them.
+
+#### Scope of Application:
+
+>- High-precision estimation of transcript abundance, suitable for complex samples with a large number of genes and transcripts, and high heterogeneity.
+>- Quantitative comparison of gene expression differences between different samples and studying variations between isoforms of transcripts.
+  
+#### Advantages:
+
+>- RSEM accurately handles multimapped reads, offering a more precise expression level estimate compared to traditional methods.
+>- Through sophisticated statistical models, RSEM fully considers the uncertainties of reads and potential errors during the sequencing process.
+
+#### Disadvantages:
+
+>- The RSEM calculation process is resource-intensive and time-consuming, potentially unsuitable for large-scale samples or rapid analysis workflows.
+>- It requires high-quality data input and is sensitive to low-quality or highly biased data.
+
+In practice, there's an essential distinction between RSEM's "expected_count" and the conventional raw "count." The "expected_count" in RSEM is a statistically estimated floating-point number considering the uncertainties of read assignment, while traditional "count" is merely an integer read count based on raw sequencing data. This difference enables RSEM to provide more in-depth and accurate information on transcript abundance in certain scenarios.
+
+
+# Additional Recommendations：
+
+In the TransPro data analysis suite, each R package (e.g., TransProR) and Python package (e.g., TransProPy) involves a vast array of mathematical algorithms, integrated machine learning techniques, and various deep learning modules. Therefore, our initial design's focus for data selection was on the following aspects: <b style="color: #6a926b;">ensuring a sufficiently large volume of data, comprehensive and diversified annotation files, balanced data distribution, and the feasibility of cross-database data integration</b>. However, please note that to ensure the reproducibility and robustness of our technology, we ultimately chose publicly available data from TCGA and CTEX—specifically, BRCA data (large volume, publicly available, well-annotated) and SKCM data (fairly large volume, public, and balanced data distribution) as our initial data sets. We then performed a series of algorithmic explorations to uncover data features and designed visual representations of the results.
+
+Although we have batch-normalized all the data, please be aware that users can directly analyze their test data, which is acceptable. However, if you intend to merge public data from major databases, please carefully review the data processing procedures and quality control metrics of different databases in advance (for the generation of TCGA and GTEX data, please see the reference)! We <b style="color: #6a926b;">recommend</b> conducting combined analyses only under <b style="color: #6a926b;">relatively similar conditions</b>. We <b style="color: #6a926b;">further suggest obtaining the original fastq files</b> from the databases. This way, TransPro users can generate count data with uniform methods and parameters, significantly minimizing the noise caused by batch effects and enhancing the accuracy and authenticity of the results.
+
+# Reference
+
+## TCGA Count Data
+>   - <a href="https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/" style="color: #758b76; font-weight: bold;">STAR Alignment and Counting</a>: The primary counting data in TCGA is generated by STAR, which provides gene ID, unstranded, and stranded counts data following alignment.
+>   - <a href="https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga" style="color: #758b76; font-weight: bold;">Multi-dimensional Data Collection</a>: TCGA collects many types of data including molecular characterization data for over 20,000 tumor and normal samples, contributing to the count data.
+
+## GTEx Expected Count Data
+>   - <a href="https://github.com/broadinstitute/gtex-pipeline" style="color: #758b76; font-weight: bold;">Pipeline Components for RNA-seq Alignment, Quantification</a>: GTEx utilizes a pipeline for RNA-seq alignment, quantification, and quality control among other analysis tasks, which lead to the generation of expected count data.
+>   - <a href="https://hub.docker.com/r/broadinstitute/gtex_rnaseq" style="color: #758b76; font-weight: bold;">Alignment and Expression Quantification</a>: GTEx RNA-seq pipeline involves alignment (STAR), QC (RNA-SeQC), and expression quantification (RSEM & RNA-SeQC) for generating expected count data.
+>   - <a href="https://www.nature.com/articles/ng.2653" style="color: #758b76; font-weight: bold;">76-base, Paired-end Illumina TruSeq RNA Protocol</a>: GTEx uses a 76-base, paired-end Illumina TruSeq RNA protocol, averaging around 50 million aligned reads per sample for RNA sequencing.
+
+
 

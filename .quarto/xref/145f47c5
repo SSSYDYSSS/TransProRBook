@@ -1,1 +1,1 @@
-{"headings":["data-source-and-introduction","characteristics-of-the-tcga-database","characteristics-of-the-gtex-database","demands-and-challenges-of-joint-analysis","data-download-and-processing-statement","ucsc-xena-data-download-pipeline","data-type","count","use-cases","advantages","disadvantages","additional-recommendations","reference","tcga-count-data","gtex-expected-count-data"],"options":{"chapters":true},"entries":[]}
+{"entries":[],"headings":["preface","who-is-this-for","why","credit","running-the-code-yourself","data","contributing"],"options":{"chapters":true}}
