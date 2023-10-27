@@ -1,4 +1,4 @@
-# Data Source and Introduction {#sec-indexing}
+# Data Source and Introduction
 ## Characteristics of the TCGA Database:
 
 - Rich Cancer Tissue Sample Data:
