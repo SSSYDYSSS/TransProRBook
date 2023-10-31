@@ -31,3 +31,57 @@ h4 {
     color: #758b76;
 }
 
+.callout-tip {
+    border: 3px solid #b378b0 !important;
+    background-color: #e4cfe3 !important;
+}
+
+.callout-note {
+    border: 3px solid #dfa665 !important;
+    background-color: #f3dfc6 !important;
+}
+
+.callout-tip .callout-header {
+    background-color: #c090bd !important; 
+}
+
+.callout-note .callout-header {
+    background-color: #e2ad71 !important; 
+}
+
+/* 改变Tip框中的标题颜色 */
+.callout-tip .callout-title-container {
+    color: #873991 !important; /* 例如，更改为绿色 */
+}
+
+/* 改变Note框中的标题颜色 */
+.callout-note .callout-title-container {
+    color: #766143 !important; /* 例如，更改为黄色 */
+}
+
+.panel-tabset {
+    background-color: #cfdad0;
+}
+
+.panel-tabset .tab-content {
+    background-color: #e7ede7; 
+}
+
+.panel-tabset {
+    border: 3px solid #b1c1b0;
+}
+
+
+/* Change the color of code inside the note callout */
+.callout-note code {
+    color: #dea76d !important;  /* You can choose any color value you prefer */
+}
+
+/* Change the color of code inside the tip callout */
+.callout-tip code {
+    color: #a767a3 !important;  /* You can choose any color value you prefer */
+}
+
+
+
+

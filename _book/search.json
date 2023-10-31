@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "TransProRBook",
     "section": "",
-    "text": "Preface\nThis is a side-by-side comparison of the Polars and Pandas dataframe libraries, based on Modern Pandas by Tom Augsburger.\n(In case you haven’t heard, Polars is a very fast and elegant dataframe libary that does the same kinds of things Pandas does.)\nThe bulk of this book is structured examples of idiomatic Polars and Pandas code, with commentary on the API and performance of both.\nFor the most part, I argue that Polars is “better” than Pandas, though I do try and make it clear when Polars is lacking a Pandas feature or is otherwise disappointing."
+    "text": "Preface\nAnalysis and visualization of multi-omics data. In ongoing development: multi-modal fusion, sparse learning, and spatio-temporal effects…"
   },
   {
     "objectID": "intro.html",
@@ -18,7 +18,7 @@
     "href": "summary.html",
     "title": "2  Summary",
     "section": "",
-    "text": "In summary, this book has no content whatsoever."
+    "text": "In summary, this book has no content whatsoever.\n\n\n\n\n\n\nNote\n\n\n\nPolars works fine with Matplotlib, Plotly, and Altair, but it doesn’t work with Seaborn, nor does it have its own .plot method. The latter two are very convenient for exploratory data analysis, so for these examples we’ll just use to_pandas followed by plot or a Seaborn function after doing all the data manipulation in Polars.\n\n\n\nTab 1Tab 2\n\n\nContent for the first tab.\n\n\nContent for the second tab.\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nPolars works fine with Matplotlib, Plotly, and Altair, but it doesn’t work with Seaborn, nor does it have its own .plot method. The latter two are very convenient for exploratory data analysis, so for these examples we’ll just use to_pandas followed by plot or a Seaborn function after doing all the data manipulation in Polars."
   },
   {
     "objectID": "references.html",
@@ -144,14 +144,14 @@
     "href": "index.html#who-is-this-for",
     "title": "TransProRBook",
     "section": "Who is this for?",
-    "text": "Who is this for?\nThis is not a beginner’s introduction to data programming, though you certainly don’t need to be an expert to read it. If you have some familiarity with any dataframe library, most of the examples should make sense, but if you’re familiar with Pandas they’ll make even more sense because all the Polars code is accompanied by the equivalent Pandas code.\nYou don’t need to have read Modern Pandas, though I of course think it’s a great read."
+    "text": "Who is this for?\ntobecontinue"
   },
   {
     "objectID": "index.html#why",
     "href": "index.html#why",
     "title": "TransProRBook",
     "section": "Why?",
-    "text": "Why?\nThere’s this weird phenomenon where people write data programming code as if they hate themselves. Many of them are academic or quant types who seem to have some complex about being “bad at coding”. Armchair psychology aside, lots of clever folk keep doing really dumb stuff with Pandas, and at some point you have to wonder if the Pandas API is too difficult for its users.\nAt the very least, articles like Minimally Sufficient Pandas make a compelling case for Pandas having too much going on.\nHaving used Pandas a lot, I think Polars is more intuitive and does a better job of having One Obvious Way to do stuff. It’s also much faster at most things, even when you do Pandas the right way.\nHopefully this work shows you how, why and when to prefer Polars."
+    "text": "Why?\ntobecontinue"
   },
   {
     "objectID": "index.html#credit",
@@ -172,7 +172,7 @@
     "href": "index.html#contributing",
     "title": "TransProRBook",
     "section": "Contributing",
-    "text": "Contributing\nThis book is free and open source, so please do open an issue if you notice a problem!"
+    "text": "Contributing\nThis manual is free and open source, so please do open an issue if you notice a problem!"
   },
   {
     "objectID": "Data Source and Introduction.html",
@@ -229,5 +229,12 @@
     "title": "1  Data Source and Introduction",
     "section": "4.2 GTEx Expected Count Data",
     "text": "4.2 GTEx Expected Count Data\n\n\nPipeline Components for RNA-seq Alignment, Quantification: GTEx utilizes a pipeline for RNA-seq alignment, quantification, and quality control among other analysis tasks, which lead to the generation of expected count data.\nAlignment and Expression Quantification: GTEx RNA-seq pipeline involves alignment (STAR), QC (RNA-SeQC), and expression quantification (RSEM & RNA-SeQC) for generating expected count data.\n76-base, Paired-end Illumina TruSeq RNA Protocol: GTEx uses a 76-base, paired-end Illumina TruSeq RNA protocol, averaging around 50 million aligned reads per sample for RNA sequencing."
+  },
+  {
+    "objectID": "index.html#reference-resources",
+    "href": "index.html#reference-resources",
+    "title": "TransProRBook",
+    "section": "Reference resources",
+    "text": "Reference resources\ntobecontinue\n\nData\nFor an introduction to data classification, processing procedures, and user recommendations, please click here."
   }
 ]
