@@ -4,42 +4,35 @@
     "href": "index.html",
     "title": "TransProRBook",
     "section": "",
-    "text": "Preface\nThis is a side-by-side comparison of the Polars and Pandas dataframe libraries, based on Modern Pandas by Tom Augsburger.\n(In case you haven’t heard, Polars is a very fast and elegant dataframe libary that does the same kinds of things Pandas does.)\nThe bulk of this book is structured examples of idiomatic Polars and Pandas code, with commentary on the API and performance of both.\nFor the most part, I argue that Polars is “better” than Pandas, though I do try and make it clear when Polars is lacking a Pandas feature or is otherwise disappointing."
+    "text": "Preface\nAnalysis and visualization of multi-omics data. In ongoing development: multi-modal fusion, sparse learning, and spatio-temporal effects…"
   },
   {
     "objectID": "index.html#who-is-this-for",
     "href": "index.html#who-is-this-for",
     "title": "TransProRBook",
     "section": "Who is this for?",
-    "text": "Who is this for?\nThis is not a beginner’s introduction to data programming, though you certainly don’t need to be an expert to read it. If you have some familiarity with any dataframe library, most of the examples should make sense, but if you’re familiar with Pandas they’ll make even more sense because all the Polars code is accompanied by the equivalent Pandas code.\nYou don’t need to have read Modern Pandas, though I of course think it’s a great read."
+    "text": "Who is this for?\ntobecontinue"
   },
   {
     "objectID": "index.html#why",
     "href": "index.html#why",
     "title": "TransProRBook",
     "section": "Why?",
-    "text": "Why?\nThere’s this weird phenomenon where people write data programming code as if they hate themselves. Many of them are academic or quant types who seem to have some complex about being “bad at coding”. Armchair psychology aside, lots of clever folk keep doing really dumb stuff with Pandas, and at some point you have to wonder if the Pandas API is too difficult for its users.\nAt the very least, articles like Minimally Sufficient Pandas make a compelling case for Pandas having too much going on.\nHaving used Pandas a lot, I think Polars is more intuitive and does a better job of having One Obvious Way to do stuff. It’s also much faster at most things, even when you do Pandas the right way.\nHopefully this work shows you how, why and when to prefer Polars."
+    "text": "Why?\ntobecontinue"
   },
   {
-    "objectID": "index.html#credit",
-    "href": "index.html#credit",
+    "objectID": "index.html#reference-resources",
+    "href": "index.html#reference-resources",
     "title": "TransProRBook",
-    "section": "Credit",
-    "text": "Credit\nThe Pandas examples are mostly lifted from Tom’s articles, with some updates for data that’s no longer available, and some code changes to reflect how Pandas is written in 2023. This isn’t just me being lazy - I want to draw on Pandas examples that quite a lot of people are already familiar with.\nSo credit goes to Tom for the Pandas examples, for most of the data fetching code and for the general structure of the articles. Meanwhile the text content and the Polars examples are from me."
-  },
-  {
-    "objectID": "index.html#running-the-code-yourself",
-    "href": "index.html#running-the-code-yourself",
-    "title": "TransProRBook",
-    "section": "Running the code yourself",
-    "text": "Running the code yourself\nYou can install the exact packages that the book uses with the env.yml file:\nmamba env create -f env.yml\nIf you’re not using mamba/conda you can install the following package versions and it should work:\npolars: 0.19.9\npyarrow: 10.0.1\npandas: 2.1.1\nnumpy: 1.23.5\nfsspec: 2022.11.0\nmatplotlib: 3.8.0\nseaborn: 0.13.0\nstatsmodels: 0.14.0\nfilprofiler: 2022.11.0\n\nData\nAll the data fetching code is included, but will eventually break as websites change or shut down. The smaller datasets have been checked in here for posterity."
+    "section": "Reference resources",
+    "text": "Reference resources\ntobecontinue\n\nData\nFor an introduction to data classification, processing procedures, and user recommendations, please click here."
   },
   {
     "objectID": "index.html#contributing",
     "href": "index.html#contributing",
     "title": "TransProRBook",
     "section": "Contributing",
-    "text": "Contributing\nThis book is free and open source, so please do open an issue if you notice a problem!"
+    "text": "Contributing\nThis manual is free and open source, so please do open an issue if you notice a problem!"
   },
   {
     "objectID": "Data Source and Introduction.html",
@@ -102,6 +95,6 @@
     "href": "summary.html",
     "title": "2  Summary",
     "section": "",
-    "text": "In summary, this book has no content whatsoever."
+    "text": "In summary, this book has no content whatsoever.\n\n\n\n\n\n\nNote\n\n\n\nPolars works fine with Matplotlib, Plotly, and Altair, but it doesn’t work with Seaborn, nor does it have its own .plot method. The latter two are very convenient for exploratory data analysis, so for these examples we’ll just use to_pandas followed by plot or a Seaborn function after doing all the data manipulation in Polars.\n\n\n\nTab 1Tab 2\n\n\nContent for the first tab.\n\n\nContent for the second tab.\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nPolars works fine with Matplotlib, Plotly, and Altair, but it doesn’t work with Seaborn, nor does it have its own .plot method. The latter two are very convenient for exploratory data analysis, so for these examples we’ll just use to_pandas followed by plot or a Seaborn function after doing all the data manipulation in Polars."
   }
 ]
