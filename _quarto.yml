@@ -28,6 +28,7 @@ book:
   chapters:
     - index.qmd
     - Data Source and Introduction.qmd
+    - Data Preprocessing.qmd
     - summary.qmd
     - pipeline.qmd
     - references.qmd

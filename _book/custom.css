@@ -51,12 +51,12 @@ h4 {
 
 /* 改变Tip框中的标题颜色 */
 .callout-tip .callout-title-container {
-    color: #873991 !important; /* 例如，更改为绿色 */
+    color: #873991 !important; 
 }
 
 /* 改变Note框中的标题颜色 */
 .callout-note .callout-title-container {
-    color: #766143 !important; /* 例如，更改为黄色 */
+    color: #766143 !important;
 }
 
 .panel-tabset {
@@ -83,5 +83,10 @@ h4 {
 }
 
 
-
-
+.code-block, .sourceCode {
+    border: 3px solid #b2c1b1;
+    padding: 8px;
+    border-radius: 5px;  
+    background-color: #cad4ca;
+    white-space: pre-wrap !important;
+}
