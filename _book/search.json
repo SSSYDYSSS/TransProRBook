@@ -68,5 +68,54 @@
     "title": "3  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever.\n\n\n\n\n\n\nNote\n\n\n\nPolars works fine with Matplotlib, Plotly, and Altair, but it doesn’t work with Seaborn, nor does it have its own .plot method. The latter two are very convenient for exploratory data analysis, so for these examples we’ll just use to_pandas followed by plot or a Seaborn function after doing all the data manipulation in Polars.\n\n\n\nTab 1Tab 2\n\n\nContent for the first tab.\n\n\nContent for the second tab.\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nPolars works fine with Matplotlib, Plotly, and Altair, but it doesn’t work with Seaborn, nor does it have its own .plot method. The latter two are very convenient for exploratory data analysis, so for these examples we’ll just use to_pandas followed by plot or a Seaborn function after doing all the data manipulation in Polars."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "TransProRBook",
+    "section": "",
+    "text": "Preface\nAnalysis and visualization of multi-omics data. In ongoing development: multi-modal fusion, sparse learning, and spatio-temporal effects…"
+  },
+  {
+    "objectID": "index.html#transpror-installation",
+    "href": "index.html#transpror-installation",
+    "title": "TransProRBook",
+    "section": "TransProR Installation",
+    "text": "TransProR Installation\nYou can install the released version of TransProR from CRAN with:\ninstall.packages(\"TransProR\")\nYou can install the development version of TransProR like so:\ninstall.packages(\"devtools\")\ndevtools::install_github(\"SSSYDYSSS/TransProR\")\n\ninstall.packages(\"remotes\")\ndevtools::install_github(\"SSSYDYSSS/TransProR\")"
+  },
+  {
+    "objectID": "index.html#system-requirements",
+    "href": "index.html#system-requirements",
+    "title": "TransProRBook",
+    "section": "System Requirements",
+    "text": "System Requirements\n\nPython version 3.10 or higher is required."
+  },
+  {
+    "objectID": "index.html#python-dependencies",
+    "href": "index.html#python-dependencies",
+    "title": "TransProRBook",
+    "section": "Python Dependencies",
+    "text": "Python Dependencies\nThis package requires several Python libraries to function properly. The following are the main dependencies:\n\nTransProPy\n\nPlease ensure these Python libraries are installed in your environment before you proceed with using this package. You can quickly install them using the command below:"
+  },
+  {
+    "objectID": "index.html#environment-setup",
+    "href": "index.html#environment-setup",
+    "title": "TransProRBook",
+    "section": "Environment Setup",
+    "text": "Environment Setup\nTo run this project, we recommend using conda, a popular Python environment and package manager. Please follow the steps below to set up your environment:"
+  },
+  {
+    "objectID": "index.html#creating-the-environment",
+    "href": "index.html#creating-the-environment",
+    "title": "TransProRBook",
+    "section": "Creating the Environment",
+    "text": "Creating the Environment\nFirst, if you have not installed conda yet, please visit the Miniconda website and follow the instructions for installation. Once you have conda installed, you can create a new environment named “TransPro” that includes all the dependencies required to run this project.\nRun the following command in your command line to create a new environment:\nconda create --name TransPro python=3.10 # or higher version if preferred.\npip3 install TransProPy \nThis version helps guide users through the installation process more smoothly, taking into account various common scenarios they might encounter. It suggests considering the environment management system and potential system-specific quirks, improving the overall user experience.\nFor more detailed information or troubleshooting, please refer to the documentation of each individual Python package."
+  },
+  {
+    "objectID": "index.html#contributing",
+    "href": "index.html#contributing",
+    "title": "TransProRBook",
+    "section": "Contributing",
+    "text": "Contributing\nThis manual is free and open source, so please do open an issue if you notice a problem!"
   }
 ]
