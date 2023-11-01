@@ -25,7 +25,7 @@ jobs:
 
       - name: Install rmarkdown package
         run: |
-          Rscript -e 'install.packages("rmarkdown", "remotes")'
+          Rscript -e 'install.packages(c("rmarkdown", "remotes"))'
 
       # 使用remotes从GitHub上安装TransProR包
       - name: Install TransProR from GitHub
