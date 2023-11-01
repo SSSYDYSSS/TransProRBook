@@ -25,7 +25,12 @@ jobs:
 
       - name: Install rmarkdown package
         run: |
-          Rscript -e 'install.packages("rmarkdown")'
+          Rscript -e 'install.packages("rmarkdown", "remotes")'
+
+      # 使用remotes从GitHub上安装TransProR包
+      - name: Install TransProR from GitHub
+        run: |
+          Rscript -e 'remotes::install_github("SSSYDYSSS/TransProR", build_vignettes = TRUE, auth_token = "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")'
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
