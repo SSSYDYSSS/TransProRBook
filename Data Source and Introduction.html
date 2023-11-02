@@ -710,7 +710,19 @@ CPM = \frac{\text{Counts of gene/transcript} \times 10^6}{\sum (\text{Counts of 
 </section>
 <section id="additional-recommendations" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Additional Recommendations：</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>In the TransPro data analysis suite, each R package (e.g., TransProR) and Python package (e.g., TransProPy) involves a vast array of mathematical algorithms, integrated machine learning techniques, and various deep learning modules. Therefore, our initial design’s focus for data selection was on the following aspects: <b style="color: #6a926b;">ensuring a sufficiently large volume of data, comprehensive and diversified annotation files, balanced data distribution, and the feasibility of cross-database data integration</b>. However, please note that to ensure the reproducibility and robustness of our technology, we ultimately chose publicly available data from TCGA and CTEX—specifically, BRCA data (large volume, publicly available, well-annotated) and SKCM data (fairly large volume, public, and balanced data distribution) as our initial data sets. We then performed a series of algorithmic explorations to uncover data features and designed visual representations of the results.</p>
+</div>
+</div>
 <p>Although we have batch-normalized all the data, please be aware that users can directly analyze their test data, which is acceptable. However, if you intend to merge public data from major databases, please carefully review the data processing procedures and quality control metrics of different databases in advance (for the generation of TCGA and GTEX data, please see the reference)! We <b style="color: #6a926b;">recommend</b> conducting combined analyses only under <b style="color: #6a926b;">relatively similar conditions</b>. We <b style="color: #6a926b;">further suggest obtaining the original fastq files</b> from the databases. This way, TransPro users can generate count data with uniform methods and parameters, significantly minimizing the noise caused by batch effects and enhancing the accuracy and authenticity of the results.</p>
 </section>
 <section id="reference" class="level1" data-number="4">
