@@ -1,8 +1,157 @@
 # Data Preprocessing
 
-## library package
+## Library Package
 
 ```{r}
 library(TransProR)
 print(paste("TransProR version:", packageVersion("TransProR")))
 ```
+
+## Seek Gtex Organ
+```{r}
+SeekGtexOrgan <- seek_gtex_organ(path = "../test_TransProR/download_data/GTEX_phenotype")
+print(SeekGtexOrgan)
+```
+
+## Get Tcga Exp
+
+### SKCM-Skin-TCGA
+```{r}
+SKCM_exp <- get_tcga_exp(
+  counts_file_path = "../test_TransProR/download_data/TCGA-SKCM.htseq_counts.tsv", 
+  gene_probes_file_path = "../test_TransProR/download_data/TCGA_gencode.v22.annotation.gene.probeMap",
+  phenotype_file_path = "../test_TransProR/download_data/TCGA-skcm.GDC_phenotype.tsv", 
+  output_file_path = '../test_TransProR/generated_data1/SKCM_Skin_TCGA_exp.rds'
+)
+head(SKCM_exp[["tumor_tcga_data"]])[1:5, 1:5]
+head(SKCM_exp[["normal_tcga_data"]], n = 10) # Because there is only one column.
+```
+
+### BRCA-Breast-TCGA
+```{r}
+BRCA_exp <- get_tcga_exp(
+  counts_file_path = "../test_TransProR/download_data/TCGA-BRCA.htseq_counts.tsv", 
+  gene_probes_file_path = "../test_TransProR/download_data/TCGA_gencode.v22.annotation.gene.probeMap",
+  phenotype_file_path = "../test_TransProR/download_data/TCGA-BRCA.GDC_phenotype.tsv", 
+  output_file_path = '../test_TransProR/generated_data1/BRCA_Breast_TCGA_exp.rds'
+)
+head(BRCA_exp[["tumor_tcga_data"]])[1:5, 1:5]
+head(BRCA_exp[["normal_tcga_data"]])[1:5, 1:5]
+```
+
+### LGG-Brain-TCGA
+```{r}
+LGG_exp <- get_tcga_exp(
+  counts_file_path = "../test_TransProR/download_data/TCGA-LGG.htseq_counts.tsv", 
+  gene_probes_file_path = "../test_TransProR/download_data/TCGA_gencode.v22.annotation.gene.probeMap",
+  phenotype_file_path = "../test_TransProR/download_data/TCGA-LGG.GDC_phenotype.tsv", 
+  output_file_path = '../test_TransProR/generated_data1/LGG_Brain_TCGA_exp.rds'
+)
+head(LGG_exp[["tumor_tcga_data"]])[1:5, 1:5]
+LGG_exp[["normal_tcga_data"]]
+```
+
+### THCA-Thyroid-TCGA
+```{r}
+THCA_exp <- get_tcga_exp(
+  counts_file_path = "../test_TransProR/download_data/TCGA-THCA.htseq_counts.tsv", 
+  gene_probes_file_path = "../test_TransProR/download_data/TCGA_gencode.v22.annotation.gene.probeMap",
+  phenotype_file_path = "../test_TransProR/download_data/TCGA-THCA.GDC_phenotype.tsv", 
+  output_file_path = '../test_TransProR/generated_data1/THCA_Thyroid_TCGA_exp.rds'
+)
+head(THCA_exp[["tumor_tcga_data"]])[1:5, 1:5]
+head(THCA_exp[["normal_tcga_data"]])[1:5, 1:5]
+```
+
+## Get Gtex Exp
+
+### Skin-SKCM-Gtex
+```{r}
+Skin_SKCM_gtex <- get_gtex_exp(
+  organ_specific = "Skin",
+  file_path = "../test_TransProR/download_data/gtex_gene_expected_count", 
+  probe_map_path = "../test_TransProR/download_data/gtex_probeMap_gencode.v23.annotation.gene.probemap",
+  pheno_path = "../test_TransProR/download_data/GTEX_phenotype", 
+  output_path = '../test_TransProR/generated_data1/Skin_SKCM_Gtex.rds'
+)
+head(Skin_SKCM_gtex)[1:5, 1:5]
+```
+
+### Brain-LGG-Gtex
+```{r}
+Brain_LGG_gtex <- get_gtex_exp(
+  organ_specific = "Brain",
+  file_path = "../test_TransProR/download_data/gtex_gene_expected_count", 
+  probe_map_path = "../test_TransProR/download_data/gtex_probeMap_gencode.v23.annotation.gene.probemap",
+  pheno_path = "../test_TransProR/download_data/GTEX_phenotype", 
+  output_path = '../test_TransProR/generated_data1/Brain_LGG_Gtex.rds'
+)
+head(Brain_LGG_gtex)[1:5, 1:5]
+```
+
+### Breast-BRCA-Gtex
+```{r}
+Breast_BRCA_gtex <- get_gtex_exp(
+  organ_specific = "Breast",
+  file_path = "../test_TransProR/download_data/gtex_gene_expected_count", 
+  probe_map_path = "../test_TransProR/download_data/gtex_probeMap_gencode.v23.annotation.gene.probemap",
+  pheno_path = "../test_TransProR/download_data/GTEX_phenotype", 
+  output_path = '../test_TransProR/generated_data1/Breast_BRCA_Gtex.rds'
+)
+head(Breast_BRCA_gtex)[1:5, 1:5]
+```
+
+### Thyroid-THCA-Gtex
+```{r}
+Thyroid_THCA_gtex <- get_gtex_exp(
+  organ_specific = "Thyroid",
+  file_path = "../test_TransProR/download_data/gtex_gene_expected_count", 
+  probe_map_path = "../test_TransProR/download_data/gtex_probeMap_gencode.v23.annotation.gene.probemap",
+  pheno_path = "../test_TransProR/download_data/GTEX_phenotype", 
+  output_path = '../test_TransProR/generated_data1/Thyroid_THCA_Gtex.rds'
+)
+head(Thyroid_THCA_gtex)[1:5, 1:5]
+```
+
+## Normal Merge Gtex Tcga 
+
+## Normal-SKCM-Skin-Gtex-Tcga
+```{r}
+normal_skcm_Skin_gtex_tcga <- merge_gtex_tcga(
+  gtex_data_path = "../test_TransProR/generated_data1/Skin_SKCM_Gtex.rds",
+  tcga_exp_path = "../test_TransProR/generated_data1/SKCM_Skin_TCGA_exp_normal.rds",
+  output_path = "../test_TransProR/generated_data1/merged_normal_kscm_skin_gtex_tcga_data.rds"
+)
+head(normal_skcm_Skin_gtex_tcga)[1:5, 1:5]
+```
+
+## Normal-LGG-Brain-Gtex-Tcga
+```{r}
+normal_LGG_Brain_gtex_tcga <- merge_gtex_tcga(
+  gtex_data_path = "../test_TransProR/generated_data1/Brain_LGG_Gtex.rds",
+  tcga_exp_path = "../test_TransProR/generated_data1/LGG_Brain_TCGA_exp_normal.rds",
+  output_path = "../test_TransProR/generated_data1/merged_normal_LGG_Brain_gtex_tcga_data.rds"
+)
+head(normal_LGG_Brain_gtex_tcga)[1:5, 1:5]
+```
+
+## Normal-BRCA-Breast-Gtex-Tcga
+```{r}
+normal_BRCA_Breast_gtex_tcga <- merge_gtex_tcga(
+  gtex_data_path = "../test_TransProR/generated_data1/Breast_BRCA_Gtex.rds",
+  tcga_exp_path = "../test_TransProR/generated_data1/BRCA_Breast_TCGA_exp_normal.rds",
+  output_path = "../test_TransProR/generated_data1/merged_normal_BRCA_Breast_gtex_tcga_data.rds"
+)
+head(normal_BRCA_Breast_gtex_tcga)[1:5, 1:5]
+```
+
+## Normal-THCA-Thyroid-Gtex-Tcga
+```{r}
+normal_THCA_Thyroid_gtex_tcga <- merge_gtex_tcga(
+  gtex_data_path = "../test_TransProR/generated_data1/Thyroid_THCA_Gtex.rds",
+  tcga_exp_path = "../test_TransProR/generated_data1/THCA_Thyroid_TCGA_exp_normal.rds",
+  output_path = "../test_TransProR/generated_data1/merged_normal_THCA_Thyroid_gtex_tcga_data.rds"
+)
+head(normal_THCA_Thyroid_gtex_tcga)[1:5, 1:5]
+```
+

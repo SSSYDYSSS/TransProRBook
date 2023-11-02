@@ -33,12 +33,12 @@ h4 {
 
 .callout-tip {
     border: 3px solid #b378b0 !important;
-    background-color: #e4cfe3 !important;
+    background-color: #f0e5f0 !important;
 }
 
 .callout-note {
     border: 3px solid #dfa665 !important;
-    background-color: #f3dfc6 !important;
+    background-color: #f7ebdd !important;
 }
 
 .callout-tip .callout-header {
