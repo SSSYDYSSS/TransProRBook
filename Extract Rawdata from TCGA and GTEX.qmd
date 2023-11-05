@@ -1,4 +1,4 @@
-# Data Preprocessing
+# Extract Rawdata from TCGA and GTEX
 
 ## Library Package
 
@@ -112,46 +112,3 @@ Thyroid_THCA_gtex <- get_gtex_exp(
 )
 head(Thyroid_THCA_gtex)[1:5, 1:5]
 ```
-
-## Normal Merge Gtex Tcga 
-
-## Normal-SKCM-Skin-Gtex-Tcga
-```{r}
-normal_skcm_Skin_gtex_tcga <- merge_gtex_tcga(
-  gtex_data_path = "../test_TransProR/generated_data1/Skin_SKCM_Gtex.rds",
-  tcga_exp_path = "../test_TransProR/generated_data1/SKCM_Skin_TCGA_exp_normal.rds",
-  output_path = "../test_TransProR/generated_data1/merged_normal_kscm_skin_gtex_tcga_data.rds"
-)
-head(normal_skcm_Skin_gtex_tcga)[1:5, 1:5]
-```
-
-## Normal-LGG-Brain-Gtex-Tcga
-```{r}
-normal_LGG_Brain_gtex_tcga <- merge_gtex_tcga(
-  gtex_data_path = "../test_TransProR/generated_data1/Brain_LGG_Gtex.rds",
-  tcga_exp_path = "../test_TransProR/generated_data1/LGG_Brain_TCGA_exp_normal.rds",
-  output_path = "../test_TransProR/generated_data1/merged_normal_LGG_Brain_gtex_tcga_data.rds"
-)
-head(normal_LGG_Brain_gtex_tcga)[1:5, 1:5]
-```
-
-## Normal-BRCA-Breast-Gtex-Tcga
-```{r}
-normal_BRCA_Breast_gtex_tcga <- merge_gtex_tcga(
-  gtex_data_path = "../test_TransProR/generated_data1/Breast_BRCA_Gtex.rds",
-  tcga_exp_path = "../test_TransProR/generated_data1/BRCA_Breast_TCGA_exp_normal.rds",
-  output_path = "../test_TransProR/generated_data1/merged_normal_BRCA_Breast_gtex_tcga_data.rds"
-)
-head(normal_BRCA_Breast_gtex_tcga)[1:5, 1:5]
-```
-
-## Normal-THCA-Thyroid-Gtex-Tcga
-```{r}
-normal_THCA_Thyroid_gtex_tcga <- merge_gtex_tcga(
-  gtex_data_path = "../test_TransProR/generated_data1/Thyroid_THCA_Gtex.rds",
-  tcga_exp_path = "../test_TransProR/generated_data1/THCA_Thyroid_TCGA_exp_normal.rds",
-  output_path = "../test_TransProR/generated_data1/merged_normal_THCA_Thyroid_gtex_tcga_data.rds"
-)
-head(normal_THCA_Thyroid_gtex_tcga)[1:5, 1:5]
-```
-

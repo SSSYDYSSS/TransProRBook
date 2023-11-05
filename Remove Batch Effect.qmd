@@ -1,0 +1,126 @@
+# Remove Batch Effect
+
+::: {.callout-note}
+
+- The output is a dataframe that has been back-transformed from \( \log_{2} \), with integers retained.
+
+- Users <b style="color: #6a926b;">do not</b> need to input parameters like <b style="color: #6a926b;">auto_mode</b> and <b style="color: #6a926b;">default_input</b>. During the function execution, there will be interactive outputs. Users can choose sample types that are more numerous and filter out samples that are less numerous. This prevents the noise from individual data points from being too large or affecting batch correction.
+
+- <b style="color: #6a926b;">Please pay special attention!</b> The primary purpose of the examples in this chapter is merely to illustrate using public data. However, in actual applications, different batches and groupings might vary. The premise for batch correction in the functions shown in this chapter is based on a broad assumption that different tumor types have different batches. Users can replace it based on their actual situation.
+
+- If the database lacks the target sample type, users can input <b style="color: #6a926b;"> "skip"</b> in the default_input parameter of the Combat_Normal function.
+:::
+
+::: {.callout-tip}
+
+- The ComBat_seq function called within requires the input data to be in <b style="color: #6a926b;">matrix form</b>, not a dataframe. If users want to change the function settings, they should take note of this key point during the modification.
+
+- The function converts the result back to a <b style="color: #6a926b;">dataframe</b> for the output, making it convenient for users' subsequent data analysis.
+
+- The batch and group parameters inside the function are <b style="color: #6a926b;">vectors</b>. Users can directly set these vectors, but they must ensure they are <b style="color: #6a926b;">consistent with the order of the count samples.</b>
+
+- Numbers 01 to 09 represent different types of tumor samples, and 10 to 19 represent different types of normal samples.
+
+- 01 (primary solid tumors) and 11 (normal solid tissues) are the most common, while 06 represents metastasis.
+
+- It is generally recommended that users select 01, 06, and 11 during interaction. The decision to choose other numbers depends on the specific situation. <b style="color: #6a926b;">Types with too few samples might contribute more noise than value to the overall data, making them less meaningful. They are not suitable for batch correction and are therefore not recommended for selection.</b>
+:::
+
+## Different tumor types in TCGA
+
+```{r setup, include=FALSE}
+library(TransProR)
+```
+
+### SKCM_combat_count
+```{r}
+SKCM_combat_count<-combat_tumor(
+    tumor_data_path="../test_TransProR/generated_data1/SKCM_Skin_TCGA_exp_tumor.rds", 
+    CombatTumor_output_path="../test_TransProR/generated_data1/removebatch_SKCM_Skin_TCGA_exp_tumor.rds",
+    auto_mode = T,
+    default_input = "01,06"
+)
+head(SKCM_combat_count)[1:5, 1:5]
+```
+
+### BRCA_combat_count
+```{r}
+BRCA_combat_count<-combat_tumor(
+    tumor_data_path="../test_TransProR/generated_data1/BRCA_Breast_TCGA_exp_tumor.rds", 
+    CombatTumor_output_path="../test_TransProR/generated_data1/removebatch_BRCA_Breast_TCGA_exp_tumor.rds",
+    auto_mode = T,
+    default_input = "01"
+)
+head(BRCA_combat_count)[1:5, 1:5]
+```
+
+### LGG_combat_count
+```{r}
+LGG_combat_count<-combat_tumor(
+    tumor_data_path="../test_TransProR/generated_data1/LGG_Brain_TCGA_exp_tumor.rds", 
+    CombatTumor_output_path="../test_TransProR/generated_data1/removebatch_LGG_Brain_TCGA_exp_tumor.rds",
+    auto_mode = T,
+    default_input = "01"
+)
+head(LGG_combat_count)[1:5, 1:5]
+```
+
+### THCA_combat_count
+```{r}
+THCA_combat_count<-combat_tumor(
+    tumor_data_path="../test_TransProR/generated_data1/THCA_Thyroid_TCGA_exp_tumor.rds", 
+    CombatTumor_output_path="../test_TransProR/generated_data1/removebatch_THCA_Thyroid_TCGA_exp_tumor.rds",
+    auto_mode = T,
+    default_input = "01"
+)
+head(THCA_combat_count)[1:5, 1:5]
+```
+
+## GTEX and TGCA's normal tissue
+### SKCM_Skin_Combat_Normal_TCGA_GTEX_count
+```{r}
+SKCM_Skin_Combat_Normal_TCGA_GTEX_count <- Combat_Normal(
+    TCGA_normal_data_path="../test_TransProR/generated_data1/SKCM_Skin_TCGA_exp_normal.rds", 
+    gtex_data_path='../test_TransProR/generated_data1/Skin_SKCM_Gtex.rds', 
+    CombatNormal_output_path='../test_TransProR/generated_data1/removebatch_SKCM_Skin_Normal_TCGA_GTEX_count.rds',
+    auto_mode = T,
+    default_input = "skip"
+)
+head(SKCM_Skin_Combat_Normal_TCGA_GTEX_count)[1:5, 1:5]
+```
+
+### BRCA_Breast_Combat_Normal_TCGA_GTEX_count
+```{r}
+BRCA_Breast_Combat_Normal_TCGA_GTEX_count <- Combat_Normal(
+    TCGA_normal_data_path="../test_TransProR/generated_data1/BRCA_Breast_TCGA_exp_normal.rds", 
+    gtex_data_path='../test_TransProR/generated_data1/Breast_BRCA_Gtex.rds', 
+    CombatNormal_output_path='../test_TransProR/generated_data1/removebatch_BRCA_Breast_Normal_TCGA_GTEX_count.rds',
+    auto_mode = T,
+    default_input = "11"
+)
+head(BRCA_Breast_Combat_Normal_TCGA_GTEX_count)[1:5, 1:5]
+```
+
+### LGG_Brain_Combat_Normal_TCGA_GTEX_count 
+```{r}
+LGG_Brain_Combat_Normal_TCGA_GTEX_count <- Combat_Normal(
+    TCGA_normal_data_path="../test_TransProR/generated_data1/LGG_Brain_TCGA_exp_normal.rds", 
+    gtex_data_path='../test_TransProR/generated_data1/Brain_LGG_Gtex.rds', 
+    CombatNormal_output_path='../test_TransProR/generated_data1/removebatch_LGG_Brain_Normal_TCGA_GTEX_count.rds',
+    auto_mode = T,
+    default_input = "skip"
+)
+head(LGG_Brain_Combat_Normal_TCGA_GTEX_count)[1:5, 1:5]
+```
+
+### THCA_Thyroid_Combat_Normal_TCGA_GTEX_count
+```{r}
+THCA_Thyroid_Combat_Normal_TCGA_GTEX_count <- Combat_Normal(
+    TCGA_normal_data_path="../test_TransProR/generated_data1/THCA_Thyroid_TCGA_exp_normal.rds", 
+    gtex_data_path='../test_TransProR/generated_data1/Thyroid_THCA_Gtex.rds', 
+    CombatNormal_output_path='../test_TransProR/generated_data1/removebatch_THCA_Thyroid_Normal_TCGA_GTEX_count.rds',
+    auto_mode = T,
+    default_input = "11"
+)
+head(THCA_Thyroid_Combat_Normal_TCGA_GTEX_count)[1:5, 1:5]
+```

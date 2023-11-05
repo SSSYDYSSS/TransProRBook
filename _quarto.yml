@@ -28,7 +28,9 @@ book:
   chapters:
     - index.qmd
     - Data Source and Introduction.qmd
-    - Data Preprocessing.qmd
+    - Extract Rawdata from TCGA and GTEX.qmd
+    - Remove Batch Effect.qmd
+    - Select DEGs.qmd
     - summary.qmd
     - pipeline.qmd
     - references.qmd

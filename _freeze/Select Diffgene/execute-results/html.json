@@ -1,0 +1,14 @@
+{
+  "hash": "7fc4242aa0f8827238c027951f724cb7",
+  "result": {
+    "markdown": "# Select Diffgene\n\n## factor\n\n::: {.cell}\n\n:::\n\n\n\n特别请注意！！！！！！这步的示例初衷只是为了用公共数据给用户举例子，但实际应用中，不同批次和不同分组可能不一样，本示例的前提是广义上认为不同类型的肿瘤存在不同批次。\n用户可以根据自己的真实情况进行替换即可\n\nComBat_seq函数要求输入的数据为matrix，如果是数据框，则会返回一个不知道是啥的list，所以这里要注意\nbatch和group参数都是一个向量，可以直接设置向量，但是要注意与count样本顺序保持一致\n\n01 到 09 表示不同类型的肿瘤样本，10 到 19 表示不同类型的正常样本\n01（原发性实体瘤）和 11（实体正常组织）是最常见的，06 则表示转移\n在这里，我想让函数输出“table(TumorHistologicalTypes)”后的结果，然后让用户选择保留那些继续运行代码，比如这这里，\n用户想保留01 和06。因为太少的没什么意义，不适合去批次。\n\n\nDESeq2：https://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html\nedgeR：https://www.bioconductor.org/packages/release/bioc/vignettes/edgeR/inst/doc/edgeRUsersGuide.pdf\nlimma：https://www.bioconductor.org/packages/release/bioc/vignettes/limma/inst/doc/usersguide.pdf\n\n\n\n\n## merge_gtex_tcga这是一个函数",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

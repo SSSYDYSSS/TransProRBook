@@ -25,5 +25,17 @@
   },
   "Data Preprocessing.qmd": {
     "Data Preprocessing.html": "b554c60b"
+  },
+  "Select Diffgene.qmd": {
+    "Select Diffgene.html": "71273402"
+  },
+  "Extract Rawdata from TCGA and GTEX.qmd": {
+    "Extract Rawdata from TCGA and GTEX.html": "b32885d0"
+  },
+  "Select DEGs.qmd": {
+    "Select DEGs.html": "b5bf2ed4"
+  },
+  "Remove Batch Effect.qmd": {
+    "Remove Batch Effect.html": "531d2896"
   }
 }

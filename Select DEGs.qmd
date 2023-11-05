@@ -1,0 +1,9 @@
+# Select DEGs
+
+
+# Reference
+
+>   - **DESeq2**:<a href="https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/" style="color: #758b76; font-weight: bold;">Differential gene expression analysis based on the negative binomial distribution</a>
+>   - **edgeR**:<a href="https://www.bioconductor.org/packages/release/bioc/vignettes/edgeR/inst/doc/edgeRUsersGuide.pdf" style="color: #758b76; font-weight: bold;">edgeR: differential analysis
+of sequence read count data</a>
+>   - **limma**:<a href="https://www.bioconductor.org/packages/release/bioc/vignettes/limma/inst/doc/usersguide.pdf" style="color: #758b76; font-weight: bold;">Linear Models for Microarray and RNA-Seq Data User’s Guide</a>

@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Data Preprocessing.html" rel="next">
+<link href="./Extract Rawdata from TCGA and GTEX.html" rel="next">
 <link href="./index.html" rel="prev">
 <link href="./TransProR_rlogo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -151,20 +151,32 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Data Preprocessing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Preprocessing</span></span></a>
+  <a href="./Extract Rawdata from TCGA and GTEX.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract Rawdata from TCGA and GTEX</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Remove Batch Effect.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Remove Batch Effect</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Select DEGs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Select DEGs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./pipeline.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">pipeline</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">pipeline</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -723,7 +735,19 @@ Note
 <p>In the TransPro data analysis suite, each R package (e.g., TransProR) and Python package (e.g., TransProPy) involves a vast array of mathematical algorithms, integrated machine learning techniques, and various deep learning modules. Therefore, our initial design’s focus for data selection was on the following aspects: <b style="color: #6a926b;">ensuring a sufficiently large volume of data, comprehensive and diversified annotation files, balanced data distribution, and the feasibility of cross-database data integration</b>. However, please note that to ensure the reproducibility and robustness of our technology, we ultimately chose publicly available data from TCGA and CTEX—specifically, BRCA data (large volume, publicly available, well-annotated) and SKCM data (fairly large volume, public, and balanced data distribution) as our initial data sets. We then performed a series of algorithmic explorations to uncover data features and designed visual representations of the results.</p>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Although we have batch-normalized all the data, please be aware that users can directly analyze their test data, which is acceptable. However, if you intend to merge public data from major databases, please carefully review the data processing procedures and quality control metrics of different databases in advance (for the generation of TCGA and GTEX data, please see the reference)! We <b style="color: #6a926b;">recommend</b> conducting combined analyses only under <b style="color: #6a926b;">relatively similar conditions</b>. We <b style="color: #6a926b;">further suggest obtaining the original fastq files</b> from the databases. This way, TransPro users can generate count data with uniform methods and parameters, significantly minimizing the noise caused by batch effects and enhancing the accuracy and authenticity of the results.</p>
+</div>
+</div>
 </section>
 <section id="reference" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Reference</h1>
@@ -745,6 +769,7 @@ Note
 <li><a href="https://www.nature.com/articles/ng.2653" style="color: #758b76; font-weight: bold;">76-base, Paired-end Illumina TruSeq RNA Protocol</a>: GTEx uses a 76-base, paired-end Illumina TruSeq RNA protocol, averaging around 50 million aligned reads per sample for RNA sequencing.</li>
 </ul>
 </blockquote>
+<p>:::</p>
 
 
 </section>
@@ -993,8 +1018,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Data Preprocessing.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Preprocessing</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Extract Rawdata from TCGA and GTEX.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract Rawdata from TCGA and GTEX</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
