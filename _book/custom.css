@@ -88,5 +88,6 @@ h4 {
     padding: 8px;
     border-radius: 5px;  
     background-color: #cad4ca;
-    white-space: pre-wrap !important;
+    /* white-space: pre-wrap !important; */
 }
+
