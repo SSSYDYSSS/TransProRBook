@@ -2,7 +2,7 @@
 
 ::: {.callout-note}
 
-- The output is a dataframe that has been back-transformed from \( \log_{2} \), with integers retained.
+- The output is a dataframe that has been back-transformed from $\log_{2}$, with integers retained.
 
 - Users <b style="color: #6a926b;">do not</b> need to input parameters like <b style="color: #6a926b;">auto_mode</b> and <b style="color: #6a926b;">default_input</b>. During the function execution, there will be interactive outputs. Users can choose sample types that are more numerous and filter out samples that are less numerous. This prevents the noise from individual data points from being too large or affecting batch correction.
 
