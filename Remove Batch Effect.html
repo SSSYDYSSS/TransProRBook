@@ -98,6 +98,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="custom.css">
 <meta property="og:title" content="TransProRBook - 3&nbsp; Remove Batch Effect">
@@ -275,7 +277,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><p>The output is a dataframe that has been back-transformed from ( _{2} ), with integers retained.</p></li>
+<li><p>The output is a dataframe that has been back-transformed from <span class="math inline">\(\log_{2}\)</span>, with integers retained.</p></li>
 <li><p>Users <b style="color: #6a926b;">do not</b> need to input parameters like <b style="color: #6a926b;">auto_mode</b> and <b style="color: #6a926b;">default_input</b>. During the function execution, there will be interactive outputs. Users can choose sample types that are more numerous and filter out samples that are less numerous. This prevents the noise from individual data points from being too large or affecting batch correction.</p></li>
 <li><p><b style="color: #6a926b;">Please pay special attention!</b> The primary purpose of the examples in this chapter is merely to illustrate using public data. However, in actual applications, different batches and groupings might vary. The premise for batch correction in the functions shown in this chapter is based on a broad assumption that different tumor types have different batches. Users can replace it based on their actual situation.</p></li>
 <li><p>If the database lacks the target sample type, users can input <b style="color: #6a926b;"> “skip”</b> in the default_input parameter of the Combat_Normal function.</p></li>
