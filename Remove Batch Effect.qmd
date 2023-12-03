@@ -27,6 +27,7 @@
 :::
 
 ## Different tumor types in TCGA
+<b style="color: #b279ad;">Please note</b>: The TumorHistologicalTypes/NormalHistologicalTypes classifications are specific to the data in the TCGA database.
 
 ```{r setup, include=FALSE}
 library(TransProR)
