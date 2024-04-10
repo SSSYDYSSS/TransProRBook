@@ -1,0 +1,104 @@
+# Comparison of Six Methods
+>* In this comprehensive analysis, we delve into the comparative evaluation of six distinct methods for feature selection, central to enhancing the robustness of our data-driven insights. The first comparison, captured within `five_degs_venn1`, encompasses five methods: `DESeq2`, `edgeR`, `limma`, `Wilcoxon_test`, and the `AutoFeatureSelection` algorithm. These methods have been meticulously selected to represent a spectrum of statistical and computational approaches in the identification of differentially expressed genes.
+>
+>* The second ensemble, `five_degs_venn2`, extends the comparison by integrating `NewMACCfmain`, a cutting-edge method purported to provide refined feature selection through advanced modeling techniques.
+>
+>* Both assemblages are visually represented through Venn diagrams, meticulously crafted using `Contrast_Venn` function, which not only juxtaposes the unique and shared features identified by each method but also renders the comparative efficacy through a harmonious interplay of color schemes—articulated by `edge_colors`, `name_color`, and `fill_colors`. The selected palette achieves a delicate balance, ensuring clarity in differentiation while maintaining aesthetic harmony, thereby facilitating an intuitive understanding of complex, multi-faceted data.
+>
+>* This juxtaposition underscores the nuanced variances in feature selection across different methods, providing a robust framework for researchers to discern methodological alignments with their specific research objectives and data characteristics.
+
+```{r setup, include=FALSE}
+library(TransProR)
+library(tidyverse)
+```
+
+## Load data
+```{r}
+four_methods_degs_union_combined_features <- read_csv("../test_TransProR/four_methods_degs_union_combined_features.csv")
+all_degs_count_exp_gene_feature_auc_mapping_0_5_0_9 <- read_csv("../test_TransProR/all_degs_count_exp_gene_feature_auc_mapping_0.5_0.9.csv")
+all_degs_count_exp_gene_feature_auc_mapping_0_9 <- read_csv("../test_TransProR/all_degs_count_exp_gene_feature_auc_mapping_0.9.csv")
+
+NewMACFCmain<- four_methods_degs_union_combined_features$Feature
+
+AutoFeatureSelection_0_5_0_9<- all_degs_count_exp_gene_feature_auc_mapping_0_5_0_9$Gene
+AutoFeatureSelection_0_9<- all_degs_count_exp_gene_feature_auc_mapping_0_9$Gene
+
+AutoFeatureSelection <- c(AutoFeatureSelection_0_5_0_9, AutoFeatureSelection_0_9)
+
+DEG_deseq2 <- readRDS("../test_TransProR/Select DEGs/DEG_deseq2.Rdata")
+DEG_edgeR <- readRDS("../test_TransProR/Select DEGs/DEG_deseq2.Rdata")
+DEG_limma_voom <- readRDS("../test_TransProR/Select DEGs/DEG_limma_voom.Rdata")
+outRst <- readRDS("../test_TransProR/Select DEGs/Wilcoxon_rank_sum_testoutRst.Rdata")
+
+```
+
+
+## Comparison of AutoFeatureSelection and four other methods
+```{r}
+five_degs_venn1 <- list(DESeq2 = deg_filter(DEG_deseq2), 
+                         edgeR = deg_filter(DEG_edgeR), 
+                         limma = deg_filter(DEG_limma_voom), 
+                         Wilcoxon_test = deg_filter(outRst),
+                         AutoFeatureSelection = AutoFeatureSelection)
+
+edge_colors <- c(alpha("#1b64bb", 0.5), alpha("#13828e", 0.5), alpha("#337c3a", 0.5), alpha("#9e9d39", 0.5), alpha("#0288d1", 0.5))
+
+name_color <- alpha(c("#1b64bb","#13828e","#337c3a","#9e9d39","#0288d1"), 0.8)
+
+fill_colors <- c("#e1f2f1", "#11786b")
+
+AutoFeatureSelection_FourMethods_ContrastVenn <- Contrast_Venn(five_degs_venn1, edge_colors, name_color, fill_colors, label_size = 2.5)
+
+AutoFeatureSelection_FourMethods_ContrastVenn
+```
+
+## Comparison of AutoFeatureSelection and four other methods
+```{r}
+five_degs_venn2 <- list(DESeq2 = deg_filter(DEG_deseq2), 
+                         edgeR = deg_filter(DEG_edgeR), 
+                         limma = deg_filter(DEG_limma_voom), 
+                         Wilcoxon_test = deg_filter(outRst),
+                         NewMACFCmain = NewMACFCmain)
+
+edge_colors <- c(alpha("#1b64bb", 0.5), alpha("#13828e", 0.5), alpha("#337c3a", 0.5), alpha("#9e9d39", 0.5), alpha("#303f9f", 0.5))
+
+name_color <- alpha(c("#1b64bb","#13828e","#337c3a","#9e9d39","#303f9f"), 0.8)
+
+fill_colors <- c("#e1f2f1", "#11786b")
+
+NewMACFCmain_FourMethods_ContrastVenn <- Contrast_Venn(five_degs_venn2, edge_colors, name_color, fill_colors, label_size = 2.5)
+
+NewMACFCmain_FourMethods_ContrastVenn
+```
+
+
+::: {.callout-note}
+In the domain of feature selection methodologies within the TransPro project, the TransProR and TransProPy components respectively introduce two distinct classes of approaches.
+:::
+
+::: {.panel-tabset}
+
+## TransProR
+The first class, as represented in TransProR, includes methods such as DESeq2, edgeR, limma, and the Wilcoxon rank-sum test, which focus on univariate statistical tests. These techniques evaluate the independent correlation between individual features, like gene expression levels, and outcome variables such as disease status. Defined by their unique statistical models and assumptions about data distribution and variability, these methods do not incorporate direct considerations for interactions between features. Their forte lies in identifying features that statistically stand out from control conditions.
+
+## TransProPy
+Conversely, the second class, encapsulated within TransProPy, employs more sophisticated methodologies. This includes the mvAUC metric, MACFC algorithm, and the integration of advanced machine learning techniques seen in AutoGluon and the auto_feature_selection function. This suite of approaches goes beyond assessing the utility of solitary features, instead appraising their collective interactions and complementarity. They seek to discern sets of features that act in concert to influence the outcome variable.
+
+* The mvAUC metric evaluates the global complementarity among features, ascertaining the enhancement of classification capability when features are combined.
+
+* The method called New_MACFCmain, stemming from TransProPy, employs the MACFC algorithm, which in turn utilizes mvAUC to measure feature redundancy accurately. It captures both novel class-relevant information and the degree of redundancy across variables. This facilitates the algorithm in efficiently identifying complementary features and selecting effective combinations thereof.
+
+* Incorporating techniques like ensemble learning and recursive feature elimination, AutoGluon and TransProPy’s auto_feature_selection approach accounts for the comprehensive performance of features within a predictive model framework.
+
+:::
+
+::: {.callout-tip}
+Thus, while the second class of methods adopts a more integrated and multifaceted perspective, involving multivariable analyses and ensemble learning to account for feature dependencies, the first is more inclined towards identifying individual or a small set of features with substantial influence, which may offer a more streamlined and swift resolution for certain analytical scenarios.
+:::
+
+
+
+# Reference
+>   - <a href="https://ggplot2.tidyverse.org/" style="color: #758b76; font-weight: bold;">H. Wickham. ggplot2</a>: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
+>   - <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/imt2.177" style="color: #758b76; font-weight: bold;">ggVennDiagram:</a>: intuitive Venn diagram software extended. iMeta 3, 69.
+>   - <a href="https://www.frontiersin.org/journals/genetics/articles/10.3389/fgene.2021.706907/full" style="color: #758b76; font-weight: bold;">ggVennDiagram:</a>: An Intuitive, Easy-to-Use, and Highly Customizable R Package to Generate Venn Diagram. Frontiers in Genetics 12, 1598.

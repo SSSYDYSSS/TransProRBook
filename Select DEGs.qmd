@@ -88,13 +88,13 @@ all_degs_venn <- list(
     limma = deg_filter(DEG_limma_voom), 
     Wilcoxon_test = deg_filter(outRst)
 )
-
 four_degs_venn <- four_degs_venn(all_degs_venn)
 four_degs_venn
 ```
-# Reference
 
 
+
+## Reference
 > - **DESeq2**:
 >
 >> <a href="https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/Expression_mRNA_Pipeline/" style="color: #758b76; font-weight: bold;">Differential gene expression analysis based on the negative binomial distribution</a>

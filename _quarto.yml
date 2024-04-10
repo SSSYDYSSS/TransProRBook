@@ -31,6 +31,7 @@ book:
     - Extract Rawdata from TCGA and GTEX.qmd
     - Remove Batch Effect.qmd
     - Select DEGs.qmd
+    - Comparison of Six Methods.qmd
     - summary.qmd
     - pipeline.qmd
     - references.qmd
