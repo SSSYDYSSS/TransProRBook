@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "TransProRBook",
     "section": "",
-    "text": "Preface\nAnalysis and visualization of multi-omics data. In ongoing development: multi-modal fusion, sparse learning, and spatio-temporal effects…"
+    "text": "Preface\nAnalysis and visualization of transcriptomic data are currently in progress. Future directions include multi-modal fusion, sparse learning, and the investigation of spatio-temporal effects."
   },
   {
     "objectID": "index.html#transpror-installation",
@@ -189,6 +189,13 @@
     "text": "4.6 Reference\n\n\nDESeq2:\n\n\nDifferential gene expression analysis based on the negative binomial distribution\nLove, M. I., Huber, W., & Anders, S. (2014). Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. Genome Biology, 15(12), 550.\n\n\nedgeR:\n\n\nedgeR: differential analysis of sequence read count data\nRobinson, M. D., McCarthy, D. J., & Smyth, G. K. (2010). edgeR: a Bioconductor package for differential expression analysis of digital gene expression data. Bioinformatics, 26(1), 139-140. \n\n\nlimma:\n\n\nLinear Models for Microarray and RNA-Seq Data User’s Guide\nRitchie, M. E., Phipson, B., Wu, D., Hu, Y., Law, C. W., Shi, W., & Smyth, G. K. (2015). limma powers differential expression analyses for RNA-sequencing and microarray studies. Nucleic Acids Research, 43(7),e47-e47.\n\n\nWilcoxon Rank-Sum Test:\n\n\nLi, Y., Ge, X., Peng, F., Li, W., & Li, J. J. (2022). Exaggerated false positives by popular differential expression methods when analyzing human population samples. Genome Biology, 23(1), 79."
   },
   {
+    "objectID": "Comparison of Six Methods.html",
+    "href": "Comparison of Six Methods.html",
+    "title": "5  Comparison of Six Methods",
+    "section": "",
+    "text": "6 Reference"
+  },
+  {
     "objectID": "Comparison of Six Methods.html#load-data",
     "href": "Comparison of Six Methods.html#load-data",
     "title": "5  Comparison of Six Methods",
@@ -215,12 +222,5 @@
     "title": "6  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever.\n\n\n\n\n\n\nNote\n\n\n\nPolars works fine with Matplotlib, Plotly, and Altair, but it doesn’t work with Seaborn, nor does it have its own .plot method. The latter two are very convenient for exploratory data analysis, so for these examples we’ll just use to_pandas followed by plot or a Seaborn function after doing all the data manipulation in Polars.\n\n\n\nTab 1Tab 2\n\n\nContent for the first tab.\n\n\nContent for the second tab.\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nPolars works fine with Matplotlib, Plotly, and Altair, but it doesn’t work with Seaborn, nor does it have its own .plot method. The latter two are very convenient for exploratory data analysis, so for these examples we’ll just use to_pandas followed by plot or a Seaborn function after doing all the data manipulation in Polars."
-  },
-  {
-    "objectID": "Comparison of Six Methods.html",
-    "href": "Comparison of Six Methods.html",
-    "title": "5  Comparison of Six Methods",
-    "section": "",
-    "text": "6 Reference"
   }
 ]
