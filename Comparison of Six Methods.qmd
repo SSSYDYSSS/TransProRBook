@@ -98,8 +98,6 @@ Thus, while the second class of methods adopts a more integrated and multifacete
 :::
 
 
-
-
 # Reference
 >   - <a href="https://ggplot2.tidyverse.org/" style="color: #758b76; font-weight: bold;">H. Wickham. ggplot2</a>: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
 >   - <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/imt2.177" style="color: #758b76; font-weight: bold;">ggVennDiagram:</a>: intuitive Venn diagram software extended. iMeta 3, 69.
