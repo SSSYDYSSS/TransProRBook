@@ -80,6 +80,7 @@ outRst <- Wilcoxon_analyze(
 head(outRst, 5)
 ```
 
+
 ## four degs venn
 ```{r}
 all_degs_venn <- list(
@@ -91,8 +92,6 @@ all_degs_venn <- list(
 four_degs_venn <- four_degs_venn(all_degs_venn)
 four_degs_venn
 ```
-
-
 
 
 

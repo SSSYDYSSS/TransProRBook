@@ -82,6 +82,7 @@ In the domain of feature selection methodologies within the TransPro project, th
 ## TransProR
 The first class, as represented in TransProR, includes methods such as DESeq2, edgeR, limma, and the Wilcoxon rank-sum test, which focus on univariate statistical tests. These techniques evaluate the independent correlation between individual features, like gene expression levels, and outcome variables such as disease status. Defined by their unique statistical models and assumptions about data distribution and variability, these methods do not incorporate direct considerations for interactions between features. Their forte lies in identifying features that statistically stand out from control conditions.
 
+
 ## TransProPy
 Conversely, the second class, encapsulated within TransProPy, employs more sophisticated methodologies. This includes the mvAUC metric, MACFC algorithm, and the integration of advanced machine learning techniques seen in AutoGluon and the auto_feature_selection function. This suite of approaches goes beyond assessing the utility of solitary features, instead appraising their collective interactions and complementarity. They seek to discern sets of features that act in concert to influence the outcome variable.
 
@@ -96,6 +97,7 @@ Conversely, the second class, encapsulated within TransProPy, employs more sophi
 ::: {.callout-tip}
 Thus, while the second class of methods adopts a more integrated and multifaceted perspective, involving multivariable analyses and ensemble learning to account for feature dependencies, the first is more inclined towards identifying individual or a small set of features with substantial influence, which may offer a more streamlined and swift resolution for certain analytical scenarios.
 :::
+
 
 
 # Reference
