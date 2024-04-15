@@ -8,7 +8,7 @@
 
 <meta name="description" content="TransProR User Manual.">
 
-<title>TransProRBook - 5&nbsp; Comparison of Six Methods</title>
+<title>TransProRBook - 6&nbsp; Comparison of Six Methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./summary.html" rel="next">
-<link href="./Select DEGs.html" rel="prev">
+<link href="./Comparison of Four Methods.html" rel="prev">
 <link href="./TransProR_rlogo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -100,7 +100,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="custom.css">
-<meta property="og:title" content="TransProRBook - 5&nbsp; Comparison of Six Methods">
+<meta property="og:title" content="TransProRBook - 6&nbsp; Comparison of Six Methods">
 <meta property="og:description" content="R package TransProR.">
 <meta property="og:image" content="https://github.com/SSSYDYSSS/TransProRBook/blob/main/TransProR_rlogo.png">
 <meta property="og:site-name" content="TransProRBook">
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Comparison of Six Methods.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Comparison of Six Methods</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Comparison of Six Methods.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Comparison of Six Methods</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -201,20 +201,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Comparison of Four Methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Comparison of Four Methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Comparison of Six Methods.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Comparison of Six Methods</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Comparison of Six Methods</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./pipeline.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">pipeline</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">pipeline</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -233,10 +239,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#load-data" id="toc-load-data" class="nav-link active" data-scroll-target="#load-data"><span class="header-section-number">5.1</span> Load data</a></li>
-  <li><a href="#comparison-of-autofeatureselection-and-four-other-methods" id="toc-comparison-of-autofeatureselection-and-four-other-methods" class="nav-link" data-scroll-target="#comparison-of-autofeatureselection-and-four-other-methods"><span class="header-section-number">5.2</span> Comparison of AutoFeatureSelection and four other methods</a></li>
-  <li><a href="#comparison-of-autofeatureselection-and-four-other-methods-1" id="toc-comparison-of-autofeatureselection-and-four-other-methods-1" class="nav-link" data-scroll-target="#comparison-of-autofeatureselection-and-four-other-methods-1"><span class="header-section-number">5.3</span> Comparison of AutoFeatureSelection and four other methods</a></li>
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">6</span> Reference</a></li>
+  <li><a href="#load-data" id="toc-load-data" class="nav-link active" data-scroll-target="#load-data"><span class="header-section-number">6.1</span> Load data</a></li>
+  <li><a href="#comparison-of-autofeatureselection-and-four-other-methods" id="toc-comparison-of-autofeatureselection-and-four-other-methods" class="nav-link" data-scroll-target="#comparison-of-autofeatureselection-and-four-other-methods"><span class="header-section-number">6.2</span> Comparison of AutoFeatureSelection and four other methods</a></li>
+  <li><a href="#comparison-of-autofeatureselection-and-four-other-methods-1" id="toc-comparison-of-autofeatureselection-and-four-other-methods-1" class="nav-link" data-scroll-target="#comparison-of-autofeatureselection-and-four-other-methods-1"><span class="header-section-number">6.3</span> Comparison of AutoFeatureSelection and four other methods</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">7</span> Reference</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SSSYDYSSS/TransProRBook/edit/main/Comparison of Six Methods.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/blob/main/Comparison of Six Methods.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
@@ -245,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Comparison of Six Methods</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Comparison of Six Methods</span></h1>
 </div>
 
 
@@ -268,8 +274,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>This juxtaposition underscores the nuanced variances in feature selection across different methods, providing a robust framework for researchers to discern methodological alignments with their specific research objectives and data characteristics.</p></li>
 </ul>
 </blockquote>
-<section id="load-data" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="load-data"><span class="header-section-number">5.1</span> Load data</h2>
+<section id="load-data" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="load-data"><span class="header-section-number">6.1</span> Load data</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>four_methods_degs_union_combined_features <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../test_TransProR/four_methods_degs_union_combined_features.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -316,8 +322,8 @@ dbl (2): Feature, AUC
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>outRst <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"../test_TransProR/Select DEGs/Wilcoxon_rank_sum_testoutRst.Rdata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="comparison-of-autofeatureselection-and-four-other-methods" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="comparison-of-autofeatureselection-and-four-other-methods"><span class="header-section-number">5.2</span> Comparison of AutoFeatureSelection and four other methods</h2>
+<section id="comparison-of-autofeatureselection-and-four-other-methods" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="comparison-of-autofeatureselection-and-four-other-methods"><span class="header-section-number">6.2</span> Comparison of AutoFeatureSelection and four other methods</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>five_degs_venn1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">DESeq2 =</span> <span class="fu">deg_filter</span>(DEG_deseq2), </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">edgeR =</span> <span class="fu">deg_filter</span>(DEG_edgeR), </span>
@@ -339,8 +345,8 @@ dbl (2): Feature, AUC
 </div>
 </div>
 </section>
-<section id="comparison-of-autofeatureselection-and-four-other-methods-1" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="comparison-of-autofeatureselection-and-four-other-methods-1"><span class="header-section-number">5.3</span> Comparison of AutoFeatureSelection and four other methods</h2>
+<section id="comparison-of-autofeatureselection-and-four-other-methods-1" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="comparison-of-autofeatureselection-and-four-other-methods-1"><span class="header-section-number">6.3</span> Comparison of AutoFeatureSelection and four other methods</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>five_degs_venn2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">DESeq2 =</span> <span class="fu">deg_filter</span>(DEG_deseq2), </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">edgeR =</span> <span class="fu">deg_filter</span>(DEG_edgeR), </span>
@@ -404,8 +410,8 @@ Tip
 </div>
 </div>
 </section>
-<section id="reference" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Reference</h1>
+<section id="reference" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Reference</h1>
 <blockquote class="blockquote">
 <ul>
 <li><a href="https://ggplot2.tidyverse.org/" style="color: #758b76; font-weight: bold;">H. Wickham. ggplot2</a>: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.</li>
@@ -655,13 +661,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Select DEGs.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Select DEGs</span></span>
+      <a href="./Comparison of Four Methods.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Comparison of Four Methods</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./summary.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
