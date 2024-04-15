@@ -1,0 +1,301 @@
+# Comparison of Four Methods
+
+
+```{r setup, include=FALSE}
+library(TransProR)
+library(dplyr)
+```
+
+```{r}
+DEG_deseq2 <- prep_deseq2(
+    "../test_TransProR/Select DEGs/DEG_deseq2.Rdata"
+)
+head(DEG_deseq2, 5)
+```
+
+```{r}
+DEG_edgeR <- prep_edgeR(
+    "../test_TransProR/Select DEGs/DEG_edgeR.Rdata"
+)
+head(DEG_edgeR, 5)
+```
+
+```{r}
+limma <- prep_limma(
+    "../test_TransProR/Select DEGs/DEG_limma_voom.Rdata"
+)
+head(limma, 5)
+```
+
+```{r}
+Wilcoxon <- prep_wilcoxon(
+    "../test_TransProR/Select DEGs/Wilcoxon_rank_sum_testoutRst.Rdata"
+)
+head(Wilcoxon, 5)
+```
+
+
+
+```{r}
+deseq2_edgeR <-compare_merge(
+  df1 = DEG_deseq2, 
+  df2 = DEG_edgeR, 
+  by_gene = "Gene", 
+  compare_col = "change", 
+  suffixes = c("_1", "_2"), 
+  df_name = "deseq2_edgeR"
+)
+head(deseq2_edgeR, 5)
+```
+
+
+```{r}
+deseq2_limma <-compare_merge(
+  df1 = DEG_deseq2, 
+  df2 = limma, 
+  by_gene = "Gene", 
+  compare_col = "change", 
+  suffixes = c("_1", "_2"), 
+  df_name = "deseq2_limma"
+)
+head(deseq2_edgeR, 5)
+```
+
+
+```{r}
+deseq2_Wilcoxon <-compare_merge(
+  df1 = DEG_deseq2, 
+  df2 = Wilcoxon, 
+  by_gene = "Gene", 
+  compare_col = "change", 
+  suffixes = c("_1", "_2"), 
+  df_name = "deseq2_Wilcoxon"
+)
+head(deseq2_edgeR, 5)
+```
+
+
+```{r}
+edgeR_limma <-compare_merge(
+  df1 = DEG_edgeR, 
+  df2 = limma, 
+  by_gene = "Gene", 
+  compare_col = "change", 
+  suffixes = c("_1", "_2"), 
+  df_name = "edgeR_limma"
+)
+head(deseq2_edgeR, 5)
+```
+
+```{r}
+edgeR_Wilcoxon <-compare_merge(
+  df1 = DEG_edgeR, 
+  df2 = Wilcoxon, 
+  by_gene = "Gene", 
+  compare_col = "change", 
+  suffixes = c("_1", "_2"), 
+  df_name = "edgeR_Wilcoxon"
+)
+head(deseq2_edgeR, 5)
+```
+
+
+```{r}
+limma_Wilcoxon <-compare_merge(
+  df1 = limma, 
+  df2 = Wilcoxon, 
+  by_gene = "Gene", 
+  compare_col = "change", 
+  suffixes = c("_1", "_2"), 
+  df_name = "limma_Wilcoxon"
+)
+head(deseq2_edgeR, 5)
+```
+
+
+
+```{r}
+combined_df <- bind_rows(deseq2_edgeR, deseq2_limma, deseq2_Wilcoxon, edgeR_limma, edgeR_Wilcoxon, limma_Wilcoxon)
+pal1 = c("#3949ab","#1e88e5","#039be5","#00897b","#43a047","#7cb342")
+pal2 = c("#2787e0","#1a9ae0","#1dabbf","#00897b","#43a047","#7cb342")
+pal3 = c("#00897b","#c0ca33")
+pal4 = c("#1e88e5","#7cb342")
+```
+
+
+
+## group_var = "name"
+### merge, show_points = FALSE
+```{r warning=FALSE}
+all_density_foldchange_name1 <- merge_density_foldchange(
+  data = combined_df,
+  x_var = "logFC_1",
+  y_var = "logFC_2",
+  group_var = "name",
+  palette = pal1,
+  show_points = FALSE,
+  point_size = 2.5,
+  point_alpha = 0.1,
+  x_lim = c(0, 20),
+  y_lim = c(0, 20),
+  cor_method = "pearson",
+  line_size = 1.6,
+  cor_label_pos = c("left", "top")
+)
+
+all_density_foldchange_name1
+```
+
+### merge, show_points = TRUE
+```{r warning=FALSE}
+all_density_foldchange_name2 <- merge_density_foldchange(
+  data = combined_df,
+  x_var = "logFC_1",
+  y_var = "logFC_2",
+  group_var = "name",
+  palette = pal1,
+  show_points = TRUE,
+  point_size = 2.5,
+  point_alpha = 0.2,
+  x_lim = c(0, 20),
+  y_lim = c(0, 20),
+  cor_method = "pearson",
+  line_size = 1.6,
+  cor_label_pos = c("left", "top")
+)
+
+all_density_foldchange_name2
+```
+
+
+### facet, show_points = FALSE, show_density = TRUE
+```{r warning=FALSE}
+all_facet_density_foldchange_name3 <- facet_density_foldchange(
+  data = combined_df,
+  x_var = "logFC_1",
+  y_var = "logFC_2",
+  group_var = "name",
+  facet_var = "name",
+  palette = pal2,
+  show_points = FALSE,
+  show_density = TRUE,
+  point_size = 2.5,
+  point_alpha = 0.1,
+  line_size = 1.6,
+  cor_method = "pearson",
+  cor_label_pos = c("left", "top"),
+  cor_vjust = 1
+)
+
+all_facet_density_foldchange_name3
+```
+
+### facet, show_points = TRUE, show_density = FALSE
+```{r warning=FALSE}
+all_facet_density_foldchange_name4 <- facet_density_foldchange(
+  data = combined_df,
+  x_var = "logFC_1",
+  y_var = "logFC_2",
+  group_var = "name",
+  facet_var = "name",
+  palette = pal2,
+  show_points = TRUE,
+  show_density = FALSE,
+  point_size = 2,
+  point_alpha = 0.1,
+  line_size = 1.6,
+  cor_method = "pearson",
+  cor_label_pos = c("left", "top"),
+  cor_vjust = 1
+)
+
+all_facet_density_foldchange_name4
+```
+
+
+## group_var = "change"
+### merge, show_points = FALSE
+```{r warning=FALSE}
+all_density_foldchange_name5 <- merge_density_foldchange(
+  data = combined_df,
+  x_var = "logFC_1",
+  y_var = "logFC_2",
+  group_var = "change",
+  palette = pal3,
+  show_points = FALSE,
+  point_size = 2.5,
+  point_alpha = 0.1,
+  x_lim = c(0, 20),
+  y_lim = c(0, 20),
+  cor_method = "pearson",
+  line_size = 1.6,
+  cor_label_pos = c("left", "top")
+)
+
+all_density_foldchange_name5
+```
+
+### merge, show_points = TRUE
+```{r warning=FALSE}
+all_density_foldchange_name6 <- merge_density_foldchange(
+  data = combined_df,
+  x_var = "logFC_1",
+  y_var = "logFC_2",
+  group_var = "change",
+  palette = pal3,
+  show_points = TRUE,
+  point_size = 2.5,
+  point_alpha = 0.2,
+  x_lim = c(0, 20),
+  y_lim = c(0, 20),
+  cor_method = "pearson",
+  line_size = 1.6,
+  cor_label_pos = c("left", "top")
+)
+
+all_density_foldchange_name6
+```
+
+
+### facet, show_points = FALSE, show_density = TRUE
+```{r warning=FALSE}
+all_facet_density_foldchange_name7 <- facet_density_foldchange(
+  data = combined_df,
+  x_var = "logFC_1",
+  y_var = "logFC_2",
+  group_var = "change",
+  facet_var = "name",
+  palette = pal3,
+  show_points = FALSE,
+  show_density = TRUE,
+  point_size = 2.5,
+  point_alpha = 0.1,
+  line_size = 1.6,
+  cor_method = "pearson",
+  cor_label_pos = c("left", "top")
+)
+
+all_facet_density_foldchange_name7
+```
+
+
+### facet, show_points = TRUE, show_density = FALSE
+```{r warning=FALSE}
+all_facet_density_foldchange_name8 <- facet_density_foldchange(
+  data = combined_df,
+  x_var = "logFC_1",
+  y_var = "logFC_2",
+  group_var = "change",
+  facet_var = "name",
+  palette = pal3,
+  show_points = TRUE,
+  show_density = FALSE,
+  point_size = 2,
+  point_alpha = 0.1,
+  line_size = 1.6,
+  cor_method = "pearson",
+  cor_label_pos = c("left", "top")
+)
+
+all_facet_density_foldchange_name8
+```
