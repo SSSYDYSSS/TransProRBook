@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="TransProR User Manual.">
+
+<title>TransProRBook - 13&nbsp; Enrichment Circlize</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Contact.html" rel="next">
+<link href="./Circos Fruit.html" rel="prev">
+<link href="./TransProR_rlogo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="custom.css">
+<meta property="og:title" content="TransProRBook - 13&nbsp; Enrichment Circlize">
+<meta property="og:description" content="R package TransProR.">
+<meta property="og:image" content="https://github.com/SSSYDYSSS/TransProRBook/blob/main/TransProR_rlogo.png">
+<meta property="og:site-name" content="TransProRBook">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Enrichment Circlize.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Enrichment Circlize</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./TransProR_rlogo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">TransProRBook</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/SSSYDYSSS/TransProRBook" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data Source and Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Source and Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Extract Rawdata from TCGA and GTEX.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract Rawdata from TCGA and GTEX</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Remove Batch Effect.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Remove Batch Effect</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Select DEGs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Select DEGs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Comparison of Four Methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Comparison of Four Methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Comparison of Six Methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Comparison of Six Methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Merging TransProR and TransProPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Merging TransProR and TransProPy</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Enrichment ggtree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Enrichment ggtree</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Enrichment ggraph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Enrichment ggraph</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Enrichment Circos Bar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Enrichment Circos Bar</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./EnrichPolarBubble.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">New Enrichment Polar Bubble</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Circos Fruit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Circos Fruit</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Enrichment Circlize.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Enrichment Circlize</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Contact.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Contact</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#genelist" id="toc-genelist" class="nav-link active" data-scroll-target="#genelist"><span class="header-section-number">13.1</span> geneList</a></li>
+  <li><a href="#symbols.gmt" id="toc-symbols.gmt" class="nav-link" data-scroll-target="#symbols.gmt"><span class="header-section-number">13.2</span> symbols.gmt</a></li>
+  <li><a href="#fgseahallmarksgokegg" id="toc-fgseahallmarksgokegg" class="nav-link" data-scroll-target="#fgseahallmarksgokegg"><span class="header-section-number">13.3</span> fgsea:hallmarks/go/kegg</a>
+  <ul class="collapse">
+  <li><a href="#deseq2" id="toc-deseq2" class="nav-link" data-scroll-target="#deseq2"><span class="header-section-number">13.3.1</span> deseq2</a></li>
+  <li><a href="#edger" id="toc-edger" class="nav-link" data-scroll-target="#edger"><span class="header-section-number">13.3.2</span> edgeR</a></li>
+  <li><a href="#limma" id="toc-limma" class="nav-link" data-scroll-target="#limma"><span class="header-section-number">13.3.3</span> limma</a></li>
+  </ul></li>
+  <li><a href="#adjustment" id="toc-adjustment" class="nav-link" data-scroll-target="#adjustment"><span class="header-section-number">13.4</span> Adjustment</a>
+  <ul class="collapse">
+  <li><a href="#deseq2-1" id="toc-deseq2-1" class="nav-link" data-scroll-target="#deseq2-1"><span class="header-section-number">13.4.1</span> deseq2</a></li>
+  <li><a href="#edger-1" id="toc-edger-1" class="nav-link" data-scroll-target="#edger-1"><span class="header-section-number">13.4.2</span> edgeR</a></li>
+  <li><a href="#limma-1" id="toc-limma-1" class="nav-link" data-scroll-target="#limma-1"><span class="header-section-number">13.4.3</span> limma</a></li>
+  </ul></li>
+  <li><a href="#common_elements" id="toc-common_elements" class="nav-link" data-scroll-target="#common_elements"><span class="header-section-number">13.5</span> common_elements</a></li>
+  <li><a href="#merge-data" id="toc-merge-data" class="nav-link" data-scroll-target="#merge-data"><span class="header-section-number">13.6</span> Merge data</a>
+  <ul class="collapse">
+  <li><a href="#hallmarks" id="toc-hallmarks" class="nav-link" data-scroll-target="#hallmarks"><span class="header-section-number">13.6.1</span> Hallmarks</a></li>
+  <li><a href="#go" id="toc-go" class="nav-link" data-scroll-target="#go"><span class="header-section-number">13.6.2</span> GO</a></li>
+  <li><a href="#kegg" id="toc-kegg" class="nav-link" data-scroll-target="#kegg"><span class="header-section-number">13.6.3</span> KEGG</a></li>
+  <li><a href="#calculate-the-total-number-of-genes" id="toc-calculate-the-total-number-of-genes" class="nav-link" data-scroll-target="#calculate-the-total-number-of-genes"><span class="header-section-number">13.6.4</span> Calculate the total number of genes</a></li>
+  </ul></li>
+  <li><a href="#convert-to-long-format" id="toc-convert-to-long-format" class="nav-link" data-scroll-target="#convert-to-long-format"><span class="header-section-number">13.7</span> Convert to long format</a></li>
+  <li><a href="#enrichment-circlize" id="toc-enrichment-circlize" class="nav-link" data-scroll-target="#enrichment-circlize"><span class="header-section-number">13.8</span> Enrichment Circlize</a>
+  <ul class="collapse">
+  <li><a href="#prepare-data" id="toc-prepare-data" class="nav-link" data-scroll-target="#prepare-data"><span class="header-section-number">13.8.1</span> prepare data</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SSSYDYSSS/TransProRBook/edit/main/Enrichment Circlize.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/blob/main/Enrichment Circlize.qmd" class="toc-action">View source</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Enrichment Circlize</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(TransProR)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GSVA)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fgsea)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="genelist" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="genelist"><span class="header-section-number">13.1</span> geneList</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>DEG_deseq2 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">'../test_TransProR/Select DEGs/DEG_deseq2.Rdata'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>DEG_edgeR <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">'../test_TransProR/Select DEGs/DEG_edgeR.Rdata'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>DEG_limma_voom <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">'../test_TransProR/Select DEGs/DEG_limma_voom.Rdata'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Wilcoxon_rank_sum_testoutRst <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">'../test_TransProR/Select DEGs/Wilcoxon_rank_sum_testoutRst.Rdata'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>DEG_deseq2_geneList <span class="ot">&lt;-</span> DEG_deseq2<span class="sc">$</span>log2FoldChange</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(DEG_deseq2_geneList) <span class="ot">=</span> <span class="fu">row.names</span>(DEG_deseq2)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>DEG_deseq2_geneList <span class="ot">=</span> <span class="fu">sort</span>(DEG_deseq2_geneList, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DEG_deseq2_geneList)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     HTN3 LINC01502     MT-TP      HTN1    MAGEA4  MTRNR2L1 
+ 13.30557  13.26522  13.22724  12.69964  12.46226  12.42012 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>DEG_edgeR_geneList <span class="ot">&lt;-</span> DEG_edgeR<span class="sc">$</span>logFC</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(DEG_edgeR_geneList) <span class="ot">=</span> <span class="fu">row.names</span>(DEG_edgeR)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>DEG_edgeR_geneList <span class="ot">=</span> <span class="fu">sort</span>(DEG_edgeR_geneList, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DEG_edgeR_geneList)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    HTN3    MT-TP   RN7SL2     HTN1    BANCR   MAGEA4 
+14.33849 14.29320 12.44780 12.30199 12.05221 11.96610 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>DEG_limma_voom_geneList <span class="ot">&lt;-</span> DEG_limma_voom<span class="sc">$</span>logFC</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(DEG_limma_voom_geneList) <span class="ot">=</span> <span class="fu">row.names</span>(DEG_limma_voom)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>DEG_limma_voom_geneList <span class="ot">=</span> <span class="fu">sort</span>(DEG_limma_voom_geneList, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DEG_limma_voom_geneList)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        PRAME         MT-TP RP11-599J14.2        RN7SL2    LHFPL3-AS1 
+    11.897366     10.952225      9.753235      9.524066      9.006715 
+         SPP1 
+     8.678482 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Wilcoxon_rank_sum_testoutRst_geneList <span class="ot">&lt;-</span> Wilcoxon_rank_sum_testoutRst<span class="sc">$</span>log2foldChange</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(Wilcoxon_rank_sum_testoutRst_geneList) <span class="ot">=</span> <span class="fu">row.names</span>(Wilcoxon_rank_sum_testoutRst)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Wilcoxon_rank_sum_testoutRst_geneList <span class="ot">=</span> <span class="fu">sort</span>(Wilcoxon_rank_sum_testoutRst_geneList, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Wilcoxon_rank_sum_testoutRst_geneList)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   MT-TP    BANCR   RN7SL2    PRAME    IGHGP   MAGEA3 
+13.52891 11.68135 11.67955 11.32951 11.00800 10.93607 </code></pre>
+</div>
+</div>
+</section>
+<section id="symbols.gmt" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="symbols.gmt"><span class="header-section-number">13.2</span> symbols.gmt</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>hallmarks_pathways <span class="ot">&lt;-</span> <span class="fu">gmtPathways</span>(<span class="st">"../gmt/h.all.v7.4.symbols.gmt"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>go_pathways <span class="ot">&lt;-</span> <span class="fu">gmtPathways</span>(<span class="st">"../gmt/c5.go.v7.4.symbols.gmt"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>kegg_pathways <span class="ot">&lt;-</span> <span class="fu">gmtPathways</span>(<span class="st">"../gmt/c2.cp.kegg.v7.4.symbols.gmt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="fgseahallmarksgokegg" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="fgseahallmarksgokegg"><span class="header-section-number">13.3</span> fgsea:hallmarks/go/kegg</h2>
+<section id="deseq2" class="level3" data-number="13.3.1">
+<h3 data-number="13.3.1" class="anchored" data-anchor-id="deseq2"><span class="header-section-number">13.3.1</span> deseq2</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">11</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>deseq2_hallmarks_fgseaRes <span class="ot">&lt;-</span> <span class="fu">fgsea</span>(hallmarks_pathways, DEG_deseq2_geneList, <span class="at">minSize=</span><span class="dv">15</span>, <span class="at">maxSize=</span><span class="dv">500</span>, <span class="at">nperm =</span> <span class="dv">10000</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="do">### Calculate genecount</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>deseq2_hallmarks_fgseaRes<span class="sc">$</span>leadingEdge <span class="ot">&lt;-</span> <span class="fu">as.character</span>(deseq2_hallmarks_fgseaRes<span class="sc">$</span>leadingEdge)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>deseq2_hallmarks_fgseaRes<span class="sc">$</span>genecount <span class="ot">&lt;-</span> <span class="cn">NA</span>  <span class="co"># Initialize new column</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(deseq2_hallmarks_fgseaRes)){</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  term <span class="ot">=</span> deseq2_hallmarks_fgseaRes<span class="sc">$</span>leadingEdge[i]</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Split</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  term_split <span class="ot">=</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(term, <span class="at">split=</span><span class="st">","</span>, <span class="at">fixed=</span><span class="cn">TRUE</span>))</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add gene count calculation</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  deseq2_hallmarks_fgseaRes<span class="sc">$</span>genecount[i] <span class="ot">=</span> <span class="fu">length</span>(term_split)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>deseq2_go_fgseaRes <span class="ot">&lt;-</span> <span class="fu">fgsea</span>(go_pathways, DEG_deseq2_geneList, <span class="at">minSize=</span><span class="dv">15</span>, <span class="at">maxSize=</span><span class="dv">500</span>, <span class="at">nperm =</span> <span class="dv">10000</span>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="do">### Calculate genecount</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>deseq2_go_fgseaRes<span class="sc">$</span>leadingEdge <span class="ot">&lt;-</span> <span class="fu">as.character</span>(deseq2_go_fgseaRes<span class="sc">$</span>leadingEdge)</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>deseq2_go_fgseaRes<span class="sc">$</span>genecount <span class="ot">&lt;-</span> <span class="cn">NA</span>  <span class="co"># Initialize new column</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(deseq2_go_fgseaRes)){</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  term <span class="ot">=</span> deseq2_go_fgseaRes<span class="sc">$</span>leadingEdge[i]</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Split</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  term_split <span class="ot">=</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(term, <span class="at">split=</span><span class="st">","</span>, <span class="at">fixed=</span><span class="cn">TRUE</span>))</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add gene count calculation</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  deseq2_go_fgseaRes<span class="sc">$</span>genecount[i] <span class="ot">=</span> <span class="fu">length</span>(term_split)</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">13</span>)</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>deseq2_kegg_fgseaRes <span class="ot">&lt;-</span> <span class="fu">fgsea</span>(kegg_pathways, DEG_deseq2_geneList, <span class="at">minSize=</span><span class="dv">15</span>, <span class="at">maxSize=</span><span class="dv">500</span>, <span class="at">nperm =</span> <span class="dv">10000</span>)</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="do">### Calculate genecount</span></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>deseq2_kegg_fgseaRes<span class="sc">$</span>leadingEdge <span class="ot">&lt;-</span> <span class="fu">as.character</span>(deseq2_kegg_fgseaRes<span class="sc">$</span>leadingEdge)</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>deseq2_kegg_fgseaRes<span class="sc">$</span>genecount <span class="ot">&lt;-</span> <span class="cn">NA</span>  <span class="co"># Initialize new column</span></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(deseq2_kegg_fgseaRes)){</span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>  term <span class="ot">=</span> deseq2_kegg_fgseaRes<span class="sc">$</span>leadingEdge[i]</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Split</span></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>  term_split <span class="ot">=</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(term, <span class="at">split=</span><span class="st">","</span>, <span class="at">fixed=</span><span class="cn">TRUE</span>))</span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add gene count calculation</span></span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>  deseq2_kegg_fgseaRes<span class="sc">$</span>genecount[i] <span class="ot">=</span> <span class="fu">length</span>(term_split)</span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="edger" class="level3" data-number="13.3.2">
+<h3 data-number="13.3.2" class="anchored" data-anchor-id="edger"><span class="header-section-number">13.3.2</span> edgeR</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">21</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>edgeR_hallmarks_fgseaRes <span class="ot">&lt;-</span> <span class="fu">fgsea</span>(hallmarks_pathways, DEG_edgeR_geneList, <span class="at">minSize=</span><span class="dv">15</span>, <span class="at">maxSize=</span><span class="dv">500</span>, <span class="at">nperm =</span> <span class="dv">10000</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="do">### Calculate genecount</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>edgeR_hallmarks_fgseaRes<span class="sc">$</span>leadingEdge <span class="ot">&lt;-</span> <span class="fu">as.character</span>(edgeR_hallmarks_fgseaRes<span class="sc">$</span>leadingEdge)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>edgeR_hallmarks_fgseaRes<span class="sc">$</span>genecount <span class="ot">&lt;-</span> <span class="cn">NA</span>  <span class="co"># Initialize new column</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(edgeR_hallmarks_fgseaRes)){</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  term <span class="ot">=</span> edgeR_hallmarks_fgseaRes<span class="sc">$</span>leadingEdge[i]</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Split</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  term_split <span class="ot">=</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(term, <span class="at">split=</span><span class="st">","</span>, <span class="at">fixed=</span><span class="cn">TRUE</span>))</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add gene count calculation</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  edgeR_hallmarks_fgseaRes<span class="sc">$</span>genecount[i] <span class="ot">=</span> <span class="fu">length</span>(term_split)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">22</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>edgeR_go_fgseaRes <span class="ot">&lt;-</span> <span class="fu">fgsea</span>(go_pathways, DEG_edgeR_geneList, <span class="at">minSize=</span><span class="dv">15</span>, <span class="at">maxSize=</span><span class="dv">500</span>, <span class="at">nperm =</span> <span class="dv">10000</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="do">### Calculate genecount</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>edgeR_go_fgseaRes<span class="sc">$</span>leadingEdge <span class="ot">&lt;-</span> <span class="fu">as.character</span>(edgeR_go_fgseaRes<span class="sc">$</span>leadingEdge)</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>edgeR_go_fgseaRes<span class="sc">$</span>genecount <span class="ot">&lt;-</span> <span class="cn">NA</span>  <span class="co"># Initialize new column</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(edgeR_go_fgseaRes)){</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>  term <span class="ot">=</span> edgeR_go_fgseaRes<span class="sc">$</span>leadingEdge[i]</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Split</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>  term_split <span class="ot">=</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(term, <span class="at">split=</span><span class="st">","</span>, <span class="at">fixed=</span><span class="cn">TRUE</span>))</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add gene count calculation</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  edgeR_go_fgseaRes<span class="sc">$</span>genecount[i] <span class="ot">=</span> <span class="fu">length</span>(term_split)</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">23</span>)</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>edgeR_kegg_fgseaRes <span class="ot">&lt;-</span> <span class="fu">fgsea</span>(kegg_pathways, DEG_edgeR_geneList, <span class="at">minSize=</span><span class="dv">15</span>, <span class="at">maxSize=</span><span class="dv">500</span>, <span class="at">nperm =</span> <span class="dv">10000</span>)</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a><span class="do">### Calculate genecount</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>edgeR_kegg_fgseaRes<span class="sc">$</span>leadingEdge <span class="ot">&lt;-</span> <span class="fu">as.character</span>(edgeR_kegg_fgseaRes<span class="sc">$</span>leadingEdge)</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>edgeR_kegg_fgseaRes<span class="sc">$</span>genecount <span class="ot">&lt;-</span> <span class="cn">NA</span>  <span class="co"># Initialize new column</span></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(edgeR_kegg_fgseaRes)){</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>  term <span class="ot">=</span> edgeR_kegg_fgseaRes<span class="sc">$</span>leadingEdge[i]</span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Split</span></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>  term_split <span class="ot">=</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(term, <span class="at">split=</span><span class="st">","</span>, <span class="at">fixed=</span><span class="cn">TRUE</span>))</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add gene count calculation</span></span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>  edgeR_kegg_fgseaRes<span class="sc">$</span>genecount[i] <span class="ot">=</span> <span class="fu">length</span>(term_split)</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="limma" class="level3" data-number="13.3.3">
+<h3 data-number="13.3.3" class="anchored" data-anchor-id="limma"><span class="header-section-number">13.3.3</span> limma</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">31</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>limma_hallmarks_fgseaRes <span class="ot">&lt;-</span> <span class="fu">fgsea</span>(hallmarks_pathways, DEG_limma_voom_geneList, <span class="at">minSize=</span><span class="dv">15</span>, <span class="at">maxSize=</span><span class="dv">500</span>, <span class="at">nperm =</span> <span class="dv">10000</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="do">### Calculate genecount</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>limma_hallmarks_fgseaRes<span class="sc">$</span>leadingEdge <span class="ot">&lt;-</span> <span class="fu">as.character</span>(limma_hallmarks_fgseaRes<span class="sc">$</span>leadingEdge)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>limma_hallmarks_fgseaRes<span class="sc">$</span>genecount <span class="ot">&lt;-</span> <span class="cn">NA</span>  <span class="co"># Initialize new column</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(limma_hallmarks_fgseaRes)){</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  term <span class="ot">=</span> limma_hallmarks_fgseaRes<span class="sc">$</span>leadingEdge[i]</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Split</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  term_split <span class="ot">=</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(term, <span class="at">split=</span><span class="st">","</span>, <span class="at">fixed=</span><span class="cn">TRUE</span>))</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add gene count calculation</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  limma_hallmarks_fgseaRes<span class="sc">$</span>genecount[i] <span class="ot">=</span> <span class="fu">length</span>(term_split)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">32</span>)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>limma_go_fgseaRes <span class="ot">&lt;-</span> <span class="fu">fgsea</span>(go_pathways, DEG_limma_voom_geneList, <span class="at">minSize=</span><span class="dv">15</span>, <span class="at">maxSize=</span><span class="dv">500</span>, <span class="at">nperm =</span> <span class="dv">10000</span>)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="do">### Calculate genecount</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>limma_go_fgseaRes<span class="sc">$</span>leadingEdge <span class="ot">&lt;-</span> <span class="fu">as.character</span>(limma_go_fgseaRes<span class="sc">$</span>leadingEdge)</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>limma_go_fgseaRes<span class="sc">$</span>genecount <span class="ot">&lt;-</span> <span class="cn">NA</span>  <span class="co"># Initialize new column</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(limma_go_fgseaRes)){</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>  term <span class="ot">=</span> limma_go_fgseaRes<span class="sc">$</span>leadingEdge[i]</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Split</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  term_split <span class="ot">=</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(term, <span class="at">split=</span><span class="st">","</span>, <span class="at">fixed=</span><span class="cn">TRUE</span>))</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add gene count calculation</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>  limma_go_fgseaRes<span class="sc">$</span>genecount[i] <span class="ot">=</span> <span class="fu">length</span>(term_split)</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">33</span>)</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>limma_kegg_fgseaRes <span class="ot">&lt;-</span> <span class="fu">fgsea</span>(kegg_pathways, DEG_limma_voom_geneList, <span class="at">minSize=</span><span class="dv">15</span>, <span class="at">maxSize=</span><span class="dv">500</span>, <span class="at">nperm =</span> <span class="dv">10000</span>)</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="do">### Calculate genecount</span></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>limma_kegg_fgseaRes<span class="sc">$</span>leadingEdge <span class="ot">&lt;-</span> <span class="fu">as.character</span>(limma_kegg_fgseaRes<span class="sc">$</span>leadingEdge)</span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>limma_kegg_fgseaRes<span class="sc">$</span>genecount <span class="ot">&lt;-</span> <span class="cn">NA</span>  <span class="co"># Initialize new column</span></span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(limma_kegg_fgseaRes)){</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>  term <span class="ot">=</span> limma_kegg_fgseaRes<span class="sc">$</span>leadingEdge[i]</span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Split</span></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>  term_split <span class="ot">=</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(term, <span class="at">split=</span><span class="st">","</span>, <span class="at">fixed=</span><span class="cn">TRUE</span>))</span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add gene count calculation</span></span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>  limma_kegg_fgseaRes<span class="sc">$</span>genecount[i] <span class="ot">=</span> <span class="fu">length</span>(term_split)</span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="adjustment" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="adjustment"><span class="header-section-number">13.4</span> Adjustment</h2>
+<section id="deseq2-1" class="level3" data-number="13.4.1">
+<h3 data-number="13.4.1" class="anchored" data-anchor-id="deseq2-1"><span class="header-section-number">13.4.1</span> deseq2</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">adjust_export_pathway</span>(<span class="at">fgseaRes =</span>deseq2_hallmarks_fgseaRes, <span class="at">nTop =</span> <span class="dv">10</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>deseq2_hallmarks_UpDown_topPathways <span class="ot">&lt;-</span> result<span class="sc">$</span>combinedPathways</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>deseq2_hallmarks_fgseaRes <span class="ot">&lt;-</span> result<span class="sc">$</span>fgseaRes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">adjust_export_pathway</span>(<span class="at">fgseaRes =</span>deseq2_go_fgseaRes, <span class="at">nTop =</span> <span class="dv">100</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>deseq2_go_UpDown_topPathways <span class="ot">&lt;-</span> result<span class="sc">$</span>combinedPathways</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>deseq2_go_fgseaRes <span class="ot">&lt;-</span> result<span class="sc">$</span>fgseaRes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">adjust_export_pathway</span>(<span class="at">fgseaRes =</span>deseq2_kegg_fgseaRes, <span class="at">nTop =</span> <span class="dv">10</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>deseq2_kegg_UpDown_topPathways <span class="ot">&lt;-</span> result<span class="sc">$</span>combinedPathways</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>deseq2_kegg_fgseaRes <span class="ot">&lt;-</span> result<span class="sc">$</span>fgseaRes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="edger-1" class="level3" data-number="13.4.2">
+<h3 data-number="13.4.2" class="anchored" data-anchor-id="edger-1"><span class="header-section-number">13.4.2</span> edgeR</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">adjust_export_pathway</span>(<span class="at">fgseaRes =</span>edgeR_hallmarks_fgseaRes, <span class="at">nTop =</span> <span class="dv">10</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>edgeR_hallmarks_UpDown_topPathways <span class="ot">&lt;-</span> result<span class="sc">$</span>combinedPathways</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>edgeR_hallmarks_fgseaRes <span class="ot">&lt;-</span> result<span class="sc">$</span>fgseaRes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">adjust_export_pathway</span>(<span class="at">fgseaRes =</span>edgeR_go_fgseaRes, <span class="at">nTop =</span> <span class="dv">100</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>edgeR_go_UpDown_topPathways <span class="ot">&lt;-</span> result<span class="sc">$</span>combinedPathways</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>edgeR_go_fgseaRes <span class="ot">&lt;-</span> result<span class="sc">$</span>fgseaRes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">adjust_export_pathway</span>(<span class="at">fgseaRes =</span>edgeR_kegg_fgseaRes, <span class="at">nTop =</span> <span class="dv">10</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>edgeR_kegg_UpDown_topPathways <span class="ot">&lt;-</span> result<span class="sc">$</span>combinedPathways</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>edgeR_kegg_fgseaRes <span class="ot">&lt;-</span> result<span class="sc">$</span>fgseaRes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="limma-1" class="level3" data-number="13.4.3">
+<h3 data-number="13.4.3" class="anchored" data-anchor-id="limma-1"><span class="header-section-number">13.4.3</span> limma</h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">adjust_export_pathway</span>(<span class="at">fgseaRes =</span>limma_hallmarks_fgseaRes, <span class="at">nTop =</span> <span class="dv">10</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>limma_hallmarks_UpDown_topPathways <span class="ot">&lt;-</span> result<span class="sc">$</span>combinedPathways</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>limma_hallmarks_fgseaRes <span class="ot">&lt;-</span> result<span class="sc">$</span>fgseaRes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">adjust_export_pathway</span>(<span class="at">fgseaRes =</span>limma_go_fgseaRes, <span class="at">nTop =</span> <span class="dv">100</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>limma_go_UpDown_topPathways <span class="ot">&lt;-</span> result<span class="sc">$</span>combinedPathways</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>limma_go_fgseaRes <span class="ot">&lt;-</span> result<span class="sc">$</span>fgseaRes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">adjust_export_pathway</span>(<span class="at">fgseaRes =</span>limma_kegg_fgseaRes, <span class="at">nTop =</span> <span class="dv">10</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>limma_kegg_UpDown_topPathways <span class="ot">&lt;-</span> result<span class="sc">$</span>combinedPathways</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>limma_kegg_fgseaRes <span class="ot">&lt;-</span> result<span class="sc">$</span>fgseaRes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="common_elements" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="common_elements"><span class="header-section-number">13.5</span> common_elements</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use Reduce and intersect to calculate the intersection of all vectors</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>kegg_UpDown_common_elements <span class="ot">&lt;-</span> <span class="fu">Reduce</span>(intersect, <span class="fu">list</span>(limma_kegg_UpDown_topPathways, </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                                                      edgeR_kegg_UpDown_topPathways, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                                                      deseq2_kegg_UpDown_topPathways))</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the intersection results</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(kegg_UpDown_common_elements)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Primary Immunodeficiency"                    
+ [2] "Allograft Rejection"                         
+ [3] "Graft Versus Host Disease"                   
+ [4] "Autoimmune Thyroid Disease"                  
+ [5] "Type I Diabetes Mellitus"                    
+ [6] "Systemic Lupus Erythematosus"                
+ [7] "Antigen Processing And Presentation"         
+ [8] "Arachidonic Acid Metabolism"                 
+ [9] "Metabolism Of Xenobiotics By Cytochrome P450"
+[10] "Drug Metabolism Cytochrome P450"             
+[11] "Retinol Metabolism"                          </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use Reduce and intersect to calculate the intersection of all vectors</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>go_UpDown_common_elements <span class="ot">&lt;-</span> <span class="fu">Reduce</span>(intersect, <span class="fu">list</span>(limma_go_UpDown_topPathways,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                                                    edgeR_go_UpDown_topPathways,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                                                    deseq2_go_UpDown_topPathways))</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the intersection results</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(go_UpDown_common_elements)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Mhc Protein Complex"                                                                                
+ [2] "Mhc Protein Complex Binding"                                                                        
+ [3] "Peptide Antigen Binding"                                                                            
+ [4] "Lumenal Side Of Endoplasmic Reticulum Membrane"                                                     
+ [5] "Tolerance Induction"                                                                                
+ [6] "T Cell Receptor Complex"                                                                            
+ [7] "Positive Regulation Of Interleukin 2 Production"                                                    
+ [8] "Immunoglobulin Complex Circulating"                                                                 
+ [9] "Regulatory T Cell Differentiation"                                                                  
+[10] "Lumenal Side Of Membrane"                                                                           
+[11] "Immunoglobulin Receptor Binding"                                                                    
+[12] "Positive T Cell Selection"                                                                          
+[13] "Regulation Of Natural Killer Cell Mediated Immunity"                                                
+[14] "T Cell Mediated Cytotoxicity"                                                                       
+[15] "Regulation Of T Cell Receptor Signaling Pathway"                                                    
+[16] "Immunological Synapse"                                                                              
+[17] "Cellular Defense Response"                                                                          
+[18] "T Cell Selection"                                                                                   
+[19] "Phagocytosis Recognition"                                                                           
+[20] "Negative Regulation Of Viral Genome Replication"                                                    
+[21] "Positive Regulation Of Cell Killing"                                                                
+[22] "Pigment Biosynthetic Process"                                                                       
+[23] "Immunoglobulin Complex"                                                                             
+[24] "Regulation Of B Cell Proliferation"                                                                 
+[25] "Positive Regulation Of Alpha Beta T Cell Activation"                                                
+[26] "Regulation Of Antigen Receptor Mediated Signaling Pathway"                                          
+[27] "Regulation Of Complement Activation"                                                                
+[28] "Positive Regulation Of Interferon Gamma Production"                                                 
+[29] "Regulation Of Leukocyte Mediated Cytotoxicity"                                                      
+[30] "Tertiary Granule Membrane"                                                                          
+[31] "B Cell Proliferation"                                                                               
+[32] "Regulation Of Cell Killing"                                                                         
+[33] "Specific Granule Membrane"                                                                          
+[34] "Humoral Immune Response Mediated By Circulating Immunoglobulin"                                     
+[35] "Positive Regulation Of T Cell Proliferation"                                                        
+[36] "B Cell Receptor Signaling Pathway"                                                                  
+[37] "Antigen Binding"                                                                                    
+[38] "Regulation Of Alpha Beta T Cell Activation"                                                         
+[39] "Regulation Of Humoral Immune Response"                                                              
+[40] "Complement Activation"                                                                              
+[41] "Membrane Invagination"                                                                              
+[42] "Positive Regulation Of B Cell Activation"                                                           
+[43] "Alpha Beta T Cell Differentiation"                                                                  
+[44] "Blood Microparticle"                                                                                
+[45] "Positive Regulation Of Leukocyte Mediated Immunity"                                                 
+[46] "Epithelial Cell Proliferation"                                                                      
+[47] "Endopeptidase Activity"                                                                             
+[48] "Fatty Acid Metabolic Process"                                                                       
+[49] "Epidermis Development"                                                                              
+[50] "Skin Development"                                                                                   
+[51] "Epidermal Cell Differentiation"                                                                     
+[52] "Contractile Fiber"                                                                                  
+[53] "Fat Cell Differentiation"                                                                           
+[54] "Keratinocyte Differentiation"                                                                       
+[55] "Hormone Metabolic Process"                                                                          
+[56] "Serine Hydrolase Activity"                                                                          
+[57] "Intermediate Filament Cytoskeleton"                                                                 
+[58] "Keratinization"                                                                                     
+[59] "Response To Xenobiotic Stimulus"                                                                    
+[60] "Intermediate Filament"                                                                              
+[61] "Striated Muscle Cell Development"                                                                   
+[62] "Primary Alcohol Metabolic Process"                                                                  
+[63] "Cellular Component Assembly Involved In Morphogenesis"                                              
+[64] "Skin Epidermis Development"                                                                         
+[65] "Desmosome"                                                                                          
+[66] "Regulation Of Water Loss Via Skin"                                                                  
+[67] "Aromatase Activity"                                                                                 
+[68] "Cell Cell Junction"                                                                                 
+[69] "Regulation Of Systemic Arterial Blood Pressure"                                                     
+[70] "Epithelial Cell Development"                                                                        
+[71] "Oxidoreductase Activity Acting On Paired Donors With Incorporation Or Reduction Of Molecular Oxygen"
+[72] "Lipid Catabolic Process"                                                                            
+[73] "Cellular Modified Amino Acid Metabolic Process"                                                     
+[74] "Heart Morphogenesis"                                                                                
+[75] "Cell Cell Junction Organization"                                                                    
+[76] "Cardiac Muscle Tissue Development"                                                                  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use Reduce and intersect to calculate the intersection of all vectors</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>hallmarks_UpDown_common_elements <span class="ot">&lt;-</span> <span class="fu">Reduce</span>(intersect, <span class="fu">list</span>(limma_hallmarks_UpDown_topPathways,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                                                          edgeR_hallmarks_UpDown_topPathways,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                                                          deseq2_hallmarks_UpDown_topPathways))</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the intersection results</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hallmarks_UpDown_common_elements)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Interferon Alpha Response"         "Allograft Rejection"              
+ [3] "Complement"                        "Inflammatory Response"            
+ [5] "Interferon Gamma Response"         "G2m Checkpoint"                   
+ [7] "E2f Targets"                       "Il6 Jak Stat3 Signaling"          
+ [9] "Estrogen Response Early"           "Estrogen Response Late"           
+[11] "Myogenesis"                        "Kras Signaling Dn"                
+[13] "P53 Pathway"                       "Hypoxia"                          
+[15] "Epithelial Mesenchymal Transition" "Apical Junction"                  
+[17] "Xenobiotic Metabolism"            </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Randomly select 10 pathways from the provided list, ensuring that each pathway name does not exceed 10 words.</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>hallmarks_selected_pathways <span class="ot">&lt;-</span> <span class="fu">selectPathways</span>(hallmarks_UpDown_common_elements, <span class="at">max_words =</span> <span class="dv">10</span>, <span class="at">num_select =</span> <span class="dv">10</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hallmarks_selected_pathways)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Complement"                "Estrogen Response Late"   
+ [3] "Kras Signaling Dn"         "Allograft Rejection"      
+ [5] "P53 Pathway"               "Myogenesis"               
+ [7] "Interferon Gamma Response" "G2m Checkpoint"           
+ [9] "Estrogen Response Early"   "Interferon Alpha Response"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>go_selected_pathways <span class="ot">&lt;-</span> <span class="fu">selectPathways</span>(go_UpDown_common_elements, <span class="at">max_words =</span> <span class="dv">10</span>, <span class="at">num_select =</span> <span class="dv">10</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(go_selected_pathways)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Epidermal Cell Differentiation"                 
+ [2] "Alpha Beta T Cell Differentiation"              
+ [3] "Desmosome"                                      
+ [4] "Membrane Invagination"                          
+ [5] "Regulation Of Water Loss Via Skin"              
+ [6] "Regulation Of T Cell Receptor Signaling Pathway"
+ [7] "Positive Regulation Of B Cell Activation"       
+ [8] "Immunological Synapse"                          
+ [9] "Intermediate Filament Cytoskeleton"             
+[10] "Skin Development"                               </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>kegg_selected_pathways <span class="ot">&lt;-</span> <span class="fu">selectPathways</span>(kegg_UpDown_common_elements, <span class="at">max_words =</span> <span class="dv">10</span>, <span class="at">num_select =</span> <span class="dv">10</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(kegg_selected_pathways)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Metabolism Of Xenobiotics By Cytochrome P450"
+ [2] "Retinol Metabolism"                          
+ [3] "Primary Immunodeficiency"                    
+ [4] "Allograft Rejection"                         
+ [5] "Type I Diabetes Mellitus"                    
+ [6] "Autoimmune Thyroid Disease"                  
+ [7] "Drug Metabolism Cytochrome P450"             
+ [8] "Systemic Lupus Erythematosus"                
+ [9] "Arachidonic Acid Metabolism"                 
+[10] "Antigen Processing And Presentation"         </code></pre>
+</div>
+</div>
+</section>
+<section id="merge-data" class="level2" data-number="13.6">
+<h2 data-number="13.6" class="anchored" data-anchor-id="merge-data"><span class="header-section-number">13.6</span> Merge data</h2>
+<section id="hallmarks" class="level3" data-number="13.6.1">
+<h3 data-number="13.6.1" class="anchored" data-anchor-id="hallmarks"><span class="header-section-number">13.6.1</span> Hallmarks</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>deseq2_hallmarks_filtered_fgseaRes <span class="ot">&lt;-</span> deseq2_hallmarks_fgseaRes[deseq2_hallmarks_fgseaRes<span class="sc">$</span>pathway <span class="sc">%in%</span> hallmarks_selected_pathways, ]</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 'pathway' and 'genecount' columns</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>deseq2_hallmarks_filtered_10fgseaRes <span class="ot">&lt;-</span> deseq2_hallmarks_filtered_fgseaRes[, <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"genecount"</span>)]</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(deseq2_hallmarks_filtered_10fgseaRes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      pathway genecount
+                       &lt;char&gt;     &lt;int&gt;
+ 1:            G2m Checkpoint       113
+ 2:   Estrogen Response Early        71
+ 3:    Estrogen Response Late        70
+ 4:                Myogenesis        56
+ 5: Interferon Alpha Response        53
+ 6: Interferon Gamma Response        99
+ 7:                Complement        81
+ 8:               P53 Pathway        52
+ 9:       Allograft Rejection        83
+10:         Kras Signaling Dn        65</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(deseq2_hallmarks_filtered_10fgseaRes) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"deseq2"</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>edgeR_hallmarks_filtered_fgseaRes <span class="ot">&lt;-</span> edgeR_hallmarks_fgseaRes[edgeR_hallmarks_fgseaRes<span class="sc">$</span>pathway <span class="sc">%in%</span> hallmarks_selected_pathways, ]</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 'pathway' and 'genecount' columns</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>edgeR_hallmarks_filtered_10fgseaRes <span class="ot">&lt;-</span> edgeR_hallmarks_filtered_fgseaRes[, <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"genecount"</span>)]</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(edgeR_hallmarks_filtered_10fgseaRes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      pathway genecount
+                       &lt;char&gt;     &lt;int&gt;
+ 1:            G2m Checkpoint       112
+ 2:   Estrogen Response Early        70
+ 3:    Estrogen Response Late        68
+ 4:                Myogenesis        59
+ 5: Interferon Alpha Response        50
+ 6: Interferon Gamma Response        95
+ 7:                Complement        79
+ 8:               P53 Pathway        52
+ 9:       Allograft Rejection        82
+10:         Kras Signaling Dn        54</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(edgeR_hallmarks_filtered_10fgseaRes) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"edgeR"</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>limma_hallmarks_filtered_fgseaRes <span class="ot">&lt;-</span> limma_hallmarks_fgseaRes[limma_hallmarks_fgseaRes<span class="sc">$</span>pathway <span class="sc">%in%</span> hallmarks_selected_pathways, ]</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 'pathway' and 'genecount' columns</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>limma_hallmarks_filtered_10fgseaRes <span class="ot">&lt;-</span> limma_hallmarks_filtered_fgseaRes[, <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"genecount"</span>)]</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(limma_hallmarks_filtered_10fgseaRes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      pathway genecount
+                       &lt;char&gt;     &lt;int&gt;
+ 1:            G2m Checkpoint        70
+ 2:   Estrogen Response Early        74
+ 3:    Estrogen Response Late        67
+ 4:                Myogenesis        62
+ 5: Interferon Alpha Response        52
+ 6: Interferon Gamma Response        86
+ 7:                Complement        56
+ 8:               P53 Pathway        61
+ 9:       Allograft Rejection        88
+10:         Kras Signaling Dn        63</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(limma_hallmarks_filtered_10fgseaRes) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"limma"</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use full_join to merge dataframes</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>hallmarks_combined_df <span class="ot">&lt;-</span> deseq2_hallmarks_filtered_10fgseaRes <span class="sc">%&gt;%</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(edgeR_hallmarks_filtered_10fgseaRes, <span class="at">by =</span> <span class="st">"pathway"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(limma_hallmarks_filtered_10fgseaRes, <span class="at">by =</span> <span class="st">"pathway"</span>)</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="co"># View the merged dataframe</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hallmarks_combined_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      pathway deseq2 edgeR limma
+                       &lt;char&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1:            G2m Checkpoint    113   112    70
+ 2:   Estrogen Response Early     71    70    74
+ 3:    Estrogen Response Late     70    68    67
+ 4:                Myogenesis     56    59    62
+ 5: Interferon Alpha Response     53    50    52
+ 6: Interferon Gamma Response     99    95    86
+ 7:                Complement     81    79    56
+ 8:               P53 Pathway     52    52    61
+ 9:       Allograft Rejection     83    82    88
+10:         Kras Signaling Dn     65    54    63</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a prefix "hallmarks." to the pathway column</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>hallmarks_combined_df <span class="ot">&lt;-</span> hallmarks_combined_df <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pathway =</span> <span class="fu">paste</span>(<span class="st">"Hallmarks."</span>, pathway))</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the modified dataframe to view results</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hallmarks_combined_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                 pathway deseq2 edgeR limma
+                                  &lt;char&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1:            Hallmarks. G2m Checkpoint    113   112    70
+ 2:   Hallmarks. Estrogen Response Early     71    70    74
+ 3:    Hallmarks. Estrogen Response Late     70    68    67
+ 4:                Hallmarks. Myogenesis     56    59    62
+ 5: Hallmarks. Interferon Alpha Response     53    50    52
+ 6: Hallmarks. Interferon Gamma Response     99    95    86
+ 7:                Hallmarks. Complement     81    79    56
+ 8:               Hallmarks. P53 Pathway     52    52    61
+ 9:       Hallmarks. Allograft Rejection     83    82    88
+10:         Hallmarks. Kras Signaling Dn     65    54    63</code></pre>
+</div>
+</div>
+</section>
+<section id="go" class="level3" data-number="13.6.2">
+<h3 data-number="13.6.2" class="anchored" data-anchor-id="go"><span class="header-section-number">13.6.2</span> GO</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>deseq2_go_filtered_fgseaRes <span class="ot">&lt;-</span> deseq2_go_fgseaRes[deseq2_go_fgseaRes<span class="sc">$</span>pathway <span class="sc">%in%</span> go_selected_pathways, ]</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 'pathway' and 'genecount' columns</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>deseq2_go_filtered_10fgseaRes <span class="ot">&lt;-</span> deseq2_go_filtered_fgseaRes[, <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"genecount"</span>)]</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(deseq2_go_filtered_10fgseaRes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                            pathway genecount
+                                             &lt;char&gt;     &lt;int&gt;
+ 1:                  Epidermal Cell Differentiation       209
+ 2:                           Membrane Invagination        60
+ 3:               Regulation Of Water Loss Via Skin        18
+ 4:                                Skin Development       224
+ 5:               Alpha Beta T Cell Differentiation        43
+ 6: Regulation Of T Cell Receptor Signaling Pathway        19
+ 7:        Positive Regulation Of B Cell Activation        76
+ 8:                           Immunological Synapse        21
+ 9:                                       Desmosome        14
+10:              Intermediate Filament Cytoskeleton       128</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(deseq2_go_filtered_10fgseaRes) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"deseq2"</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>edgeR_go_filtered_fgseaRes <span class="ot">&lt;-</span> edgeR_go_fgseaRes[edgeR_go_fgseaRes<span class="sc">$</span>pathway <span class="sc">%in%</span> go_selected_pathways, ]</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 'pathway' and 'genecount' columns</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>edgeR_go_filtered_10fgseaRes <span class="ot">&lt;-</span> edgeR_go_filtered_fgseaRes[, <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"genecount"</span>)]</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(edgeR_go_filtered_10fgseaRes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                            pathway genecount
+                                             &lt;char&gt;     &lt;int&gt;
+ 1:                  Epidermal Cell Differentiation       204
+ 2:                           Membrane Invagination        58
+ 3:               Regulation Of Water Loss Via Skin        18
+ 4:                                Skin Development       216
+ 5:               Alpha Beta T Cell Differentiation        44
+ 6: Regulation Of T Cell Receptor Signaling Pathway        19
+ 7:        Positive Regulation Of B Cell Activation        68
+ 8:                           Immunological Synapse        21
+ 9:                                       Desmosome        14
+10:              Intermediate Filament Cytoskeleton       131</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(edgeR_go_filtered_10fgseaRes) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"edgeR"</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>limma_go_filtered_fgseaRes <span class="ot">&lt;-</span> limma_go_fgseaRes[limma_go_fgseaRes<span class="sc">$</span>pathway <span class="sc">%in%</span> go_selected_pathways, ]</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 'pathway' and 'genecount' columns</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>limma_go_filtered_10fgseaRes <span class="ot">&lt;-</span> limma_go_filtered_fgseaRes[, <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"genecount"</span>)]</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(limma_go_filtered_10fgseaRes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                            pathway genecount
+                                             &lt;char&gt;     &lt;int&gt;
+ 1:                  Epidermal Cell Differentiation       117
+ 2:                           Membrane Invagination        42
+ 3:               Regulation Of Water Loss Via Skin        14
+ 4:                                Skin Development       136
+ 5:               Alpha Beta T Cell Differentiation        36
+ 6: Regulation Of T Cell Receptor Signaling Pathway        17
+ 7:        Positive Regulation Of B Cell Activation        46
+ 8:                           Immunological Synapse        21
+ 9:                                       Desmosome        12
+10:              Intermediate Filament Cytoskeleton        48</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(limma_go_filtered_10fgseaRes) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"limma"</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use full_join to merge dataframes</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>go_combined_df <span class="ot">&lt;-</span> deseq2_go_filtered_10fgseaRes <span class="sc">%&gt;%</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(edgeR_go_filtered_10fgseaRes, <span class="at">by =</span> <span class="st">"pathway"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(limma_go_filtered_10fgseaRes, <span class="at">by =</span> <span class="st">"pathway"</span>)</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="co"># View the merged dataframe</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(go_combined_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                            pathway deseq2 edgeR limma
+                                             &lt;char&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1:                  Epidermal Cell Differentiation    209   204   117
+ 2:                           Membrane Invagination     60    58    42
+ 3:               Regulation Of Water Loss Via Skin     18    18    14
+ 4:                                Skin Development    224   216   136
+ 5:               Alpha Beta T Cell Differentiation     43    44    36
+ 6: Regulation Of T Cell Receptor Signaling Pathway     19    19    17
+ 7:        Positive Regulation Of B Cell Activation     76    68    46
+ 8:                           Immunological Synapse     21    21    21
+ 9:                                       Desmosome     14    14    12
+10:              Intermediate Filament Cytoskeleton    128   131    48</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a prefix "GO." to the pathway column</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>go_combined_df <span class="ot">&lt;-</span> go_combined_df <span class="sc">%&gt;%</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pathway =</span> <span class="fu">paste</span>(<span class="st">"GO."</span>, pathway))</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the modified dataframe to view results</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(go_combined_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                pathway deseq2 edgeR limma
+                                                 &lt;char&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1:                  GO. Epidermal Cell Differentiation    209   204   117
+ 2:                           GO. Membrane Invagination     60    58    42
+ 3:               GO. Regulation Of Water Loss Via Skin     18    18    14
+ 4:                                GO. Skin Development    224   216   136
+ 5:               GO. Alpha Beta T Cell Differentiation     43    44    36
+ 6: GO. Regulation Of T Cell Receptor Signaling Pathway     19    19    17
+ 7:        GO. Positive Regulation Of B Cell Activation     76    68    46
+ 8:                           GO. Immunological Synapse     21    21    21
+ 9:                                       GO. Desmosome     14    14    12
+10:              GO. Intermediate Filament Cytoskeleton    128   131    48</code></pre>
+</div>
+</div>
+</section>
+<section id="kegg" class="level3" data-number="13.6.3">
+<h3 data-number="13.6.3" class="anchored" data-anchor-id="kegg"><span class="header-section-number">13.6.3</span> KEGG</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>deseq2_kegg_filtered_fgseaRes <span class="ot">&lt;-</span> deseq2_kegg_fgseaRes[deseq2_kegg_fgseaRes<span class="sc">$</span>pathway <span class="sc">%in%</span> kegg_selected_pathways, ]</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 'pathway' and 'genecount' columns</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>deseq2_kegg_filtered_10fgseaRes <span class="ot">&lt;-</span> deseq2_kegg_filtered_fgseaRes[, <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"genecount"</span>)]</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(deseq2_kegg_filtered_10fgseaRes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                         pathway genecount
+                                          &lt;char&gt;     &lt;int&gt;
+ 1:                  Arachidonic Acid Metabolism        25
+ 2:                 Systemic Lupus Erythematosus        25
+ 3:                     Primary Immunodeficiency        22
+ 4:                           Retinol Metabolism        31
+ 5: Metabolism Of Xenobiotics By Cytochrome P450        37
+ 6:              Drug Metabolism Cytochrome P450        37
+ 7:          Antigen Processing And Presentation        54
+ 8:                     Type I Diabetes Mellitus        28
+ 9:                   Autoimmune Thyroid Disease        26
+10:                          Allograft Rejection        27</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(deseq2_kegg_filtered_10fgseaRes) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"deseq2"</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>edgeR_kegg_filtered_fgseaRes <span class="ot">&lt;-</span> edgeR_kegg_fgseaRes[edgeR_kegg_fgseaRes<span class="sc">$</span>pathway <span class="sc">%in%</span> kegg_selected_pathways, ]</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 'pathway' and 'genecount' columns</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>edgeR_kegg_filtered_10fgseaRes <span class="ot">&lt;-</span> edgeR_kegg_filtered_fgseaRes[, <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"genecount"</span>)]</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(edgeR_kegg_filtered_10fgseaRes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                         pathway genecount
+                                          &lt;char&gt;     &lt;int&gt;
+ 1:                  Arachidonic Acid Metabolism        23
+ 2:                 Systemic Lupus Erythematosus        27
+ 3:                     Primary Immunodeficiency        22
+ 4:                           Retinol Metabolism        30
+ 5: Metabolism Of Xenobiotics By Cytochrome P450        36
+ 6:              Drug Metabolism Cytochrome P450        36
+ 7:          Antigen Processing And Presentation        43
+ 8:                     Type I Diabetes Mellitus        27
+ 9:                   Autoimmune Thyroid Disease        25
+10:                          Allograft Rejection        26</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(edgeR_kegg_filtered_10fgseaRes) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"edgeR"</span>)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>limma_kegg_filtered_fgseaRes <span class="ot">&lt;-</span> limma_kegg_fgseaRes[limma_kegg_fgseaRes<span class="sc">$</span>pathway <span class="sc">%in%</span> kegg_selected_pathways, ]</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 'pathway' and 'genecount' columns</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>limma_kegg_filtered_10fgseaRes <span class="ot">&lt;-</span> limma_kegg_filtered_fgseaRes[, <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"genecount"</span>)]</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(limma_kegg_filtered_10fgseaRes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                         pathway genecount
+                                          &lt;char&gt;     &lt;int&gt;
+ 1:                  Arachidonic Acid Metabolism        19
+ 2:                 Systemic Lupus Erythematosus        26
+ 3:                     Primary Immunodeficiency        16
+ 4:                           Retinol Metabolism        19
+ 5: Metabolism Of Xenobiotics By Cytochrome P450        22
+ 6:              Drug Metabolism Cytochrome P450        24
+ 7:          Antigen Processing And Presentation        35
+ 8:                     Type I Diabetes Mellitus        26
+ 9:                   Autoimmune Thyroid Disease        25
+10:                          Allograft Rejection        24</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(limma_kegg_filtered_10fgseaRes) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pathway"</span>, <span class="st">"limma"</span>)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use full_join to merge dataframes</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>kegg_combined_df <span class="ot">&lt;-</span> deseq2_kegg_filtered_10fgseaRes <span class="sc">%&gt;%</span></span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(edgeR_kegg_filtered_10fgseaRes, <span class="at">by =</span> <span class="st">"pathway"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(limma_kegg_filtered_10fgseaRes, <span class="at">by =</span> <span class="st">"pathway"</span>)</span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="co"># View the merged dataframe</span></span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(kegg_combined_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                         pathway deseq2 edgeR limma
+                                          &lt;char&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1:                  Arachidonic Acid Metabolism     25    23    19
+ 2:                 Systemic Lupus Erythematosus     25    27    26
+ 3:                     Primary Immunodeficiency     22    22    16
+ 4:                           Retinol Metabolism     31    30    19
+ 5: Metabolism Of Xenobiotics By Cytochrome P450     37    36    22
+ 6:              Drug Metabolism Cytochrome P450     37    36    24
+ 7:          Antigen Processing And Presentation     54    43    35
+ 8:                     Type I Diabetes Mellitus     28    27    26
+ 9:                   Autoimmune Thyroid Disease     26    25    25
+10:                          Allograft Rejection     27    26    24</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a prefix "KEGG." to the pathway column</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>kegg_combined_df <span class="ot">&lt;-</span> kegg_combined_df <span class="sc">%&gt;%</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pathway =</span> <span class="fu">paste</span>(<span class="st">"KEGG."</span>, pathway))</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the modified dataframe to view results</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(kegg_combined_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                               pathway deseq2 edgeR limma
+                                                &lt;char&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1:                  KEGG. Arachidonic Acid Metabolism     25    23    19
+ 2:                 KEGG. Systemic Lupus Erythematosus     25    27    26
+ 3:                     KEGG. Primary Immunodeficiency     22    22    16
+ 4:                           KEGG. Retinol Metabolism     31    30    19
+ 5: KEGG. Metabolism Of Xenobiotics By Cytochrome P450     37    36    22
+ 6:              KEGG. Drug Metabolism Cytochrome P450     37    36    24
+ 7:          KEGG. Antigen Processing And Presentation     54    43    35
+ 8:                     KEGG. Type I Diabetes Mellitus     28    27    26
+ 9:                   KEGG. Autoimmune Thyroid Disease     26    25    25
+10:                          KEGG. Allograft Rejection     27    26    24</code></pre>
+</div>
+</div>
+</section>
+<section id="calculate-the-total-number-of-genes" class="level3" data-number="13.6.4">
+<h3 data-number="13.6.4" class="anchored" data-anchor-id="calculate-the-total-number-of-genes"><span class="header-section-number">13.6.4</span> Calculate the total number of genes</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the total number of genes across different samples/methods for the same pathway</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Add 'hallmarks_count' column to the dataframe</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>hallmarks_combined_count_df <span class="ot">&lt;-</span> hallmarks_combined_df <span class="sc">%&gt;%</span></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hallmarks_count =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(., deseq2, edgeR, limma), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>hallmarks_combined_count_df <span class="ot">&lt;-</span> hallmarks_combined_count_df <span class="sc">%&gt;%</span></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(hallmarks_count)  <span class="co"># Sort in ascending order by default</span></span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hallmarks_combined_count_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                 pathway deseq2 edgeR limma hallmarks_count
+                                  &lt;char&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;           &lt;num&gt;
+ 1: Hallmarks. Interferon Alpha Response     53    50    52             155
+ 2:               Hallmarks. P53 Pathway     52    52    61             165
+ 3:                Hallmarks. Myogenesis     56    59    62             177
+ 4:         Hallmarks. Kras Signaling Dn     65    54    63             182
+ 5:    Hallmarks. Estrogen Response Late     70    68    67             205
+ 6:   Hallmarks. Estrogen Response Early     71    70    74             215
+ 7:                Hallmarks. Complement     81    79    56             216
+ 8:       Hallmarks. Allograft Rejection     83    82    88             253
+ 9: Hallmarks. Interferon Gamma Response     99    95    86             280
+10:            Hallmarks. G2m Checkpoint    113   112    70             295</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the total number of genes across different samples/methods for the same pathway</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Add 'go_count' column to the dataframe</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>go_combined_count_df <span class="ot">&lt;-</span> go_combined_df <span class="sc">%&gt;%</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">go_count =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(., deseq2, edgeR, limma), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>go_combined_count_df <span class="ot">&lt;-</span> go_combined_count_df <span class="sc">%&gt;%</span></span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(go_count)  <span class="co"># Sort in ascending order by default</span></span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(go_combined_count_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                pathway deseq2 edgeR limma
+                                                 &lt;char&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1:                                       GO. Desmosome     14    14    12
+ 2:               GO. Regulation Of Water Loss Via Skin     18    18    14
+ 3: GO. Regulation Of T Cell Receptor Signaling Pathway     19    19    17
+ 4:                           GO. Immunological Synapse     21    21    21
+ 5:               GO. Alpha Beta T Cell Differentiation     43    44    36
+ 6:                           GO. Membrane Invagination     60    58    42
+ 7:        GO. Positive Regulation Of B Cell Activation     76    68    46
+ 8:              GO. Intermediate Filament Cytoskeleton    128   131    48
+ 9:                  GO. Epidermal Cell Differentiation    209   204   117
+10:                                GO. Skin Development    224   216   136
+    go_count
+       &lt;num&gt;
+ 1:       40
+ 2:       50
+ 3:       55
+ 4:       63
+ 5:      123
+ 6:      160
+ 7:      190
+ 8:      307
+ 9:      530
+10:      576</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the total number of genes across different samples/methods for the same pathway</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Add 'kegg_count' column to the dataframe</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>kegg_combined_count_df <span class="ot">&lt;-</span> kegg_combined_df <span class="sc">%&gt;%</span></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">kegg_count =</span> <span class="fu">rowSums</span>(<span class="fu">select</span>(., deseq2, edgeR, limma), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>kegg_combined_count_df <span class="ot">&lt;-</span> kegg_combined_count_df <span class="sc">%&gt;%</span></span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(kegg_count)  <span class="co"># Sort in ascending order by default</span></span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(kegg_combined_count_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                               pathway deseq2 edgeR limma
+                                                &lt;char&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1:                     KEGG. Primary Immunodeficiency     22    22    16
+ 2:                  KEGG. Arachidonic Acid Metabolism     25    23    19
+ 3:                   KEGG. Autoimmune Thyroid Disease     26    25    25
+ 4:                          KEGG. Allograft Rejection     27    26    24
+ 5:                 KEGG. Systemic Lupus Erythematosus     25    27    26
+ 6:                           KEGG. Retinol Metabolism     31    30    19
+ 7:                     KEGG. Type I Diabetes Mellitus     28    27    26
+ 8: KEGG. Metabolism Of Xenobiotics By Cytochrome P450     37    36    22
+ 9:              KEGG. Drug Metabolism Cytochrome P450     37    36    24
+10:          KEGG. Antigen Processing And Presentation     54    43    35
+    kegg_count
+         &lt;num&gt;
+ 1:         60
+ 2:         67
+ 3:         76
+ 4:         77
+ 5:         78
+ 6:         80
+ 7:         81
+ 8:         95
+ 9:         97
+10:        132</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="convert-to-long-format" class="level2" data-number="13.7">
+<h2 data-number="13.7" class="anchored" data-anchor-id="convert-to-long-format"><span class="header-section-number">13.7</span> Convert to long format</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pivot_longer to convert from wide to long format</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>kegg_long_df <span class="ot">&lt;-</span> kegg_combined_count_df <span class="sc">%&gt;%</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(limma, deseq2, edgeR, kegg_count),</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"method/group"</span>,</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"genecount"</span></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the transformed long format dataframe</span></span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(kegg_long_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 40 × 3
+   pathway                           `method/group` genecount
+   &lt;chr&gt;                             &lt;chr&gt;              &lt;dbl&gt;
+ 1 KEGG. Primary Immunodeficiency    limma                 16
+ 2 KEGG. Primary Immunodeficiency    deseq2                22
+ 3 KEGG. Primary Immunodeficiency    edgeR                 22
+ 4 KEGG. Primary Immunodeficiency    kegg_count            60
+ 5 KEGG. Arachidonic Acid Metabolism limma                 19
+ 6 KEGG. Arachidonic Acid Metabolism deseq2                25
+ 7 KEGG. Arachidonic Acid Metabolism edgeR                 23
+ 8 KEGG. Arachidonic Acid Metabolism kegg_count            67
+ 9 KEGG. Autoimmune Thyroid Disease  limma                 25
+10 KEGG. Autoimmune Thyroid Disease  deseq2                26
+# ℹ 30 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pivot_longer to convert from wide to long format</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>go_long_df <span class="ot">&lt;-</span> go_combined_count_df <span class="sc">%&gt;%</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(limma, deseq2, edgeR, go_count),</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"method/group"</span>,</span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"genecount"</span></span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the transformed long format dataframe</span></span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(go_long_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 40 × 3
+   pathway                                             `method/group` genecount
+   &lt;chr&gt;                                               &lt;chr&gt;              &lt;dbl&gt;
+ 1 GO. Desmosome                                       limma                 12
+ 2 GO. Desmosome                                       deseq2                14
+ 3 GO. Desmosome                                       edgeR                 14
+ 4 GO. Desmosome                                       go_count              40
+ 5 GO. Regulation Of Water Loss Via Skin               limma                 14
+ 6 GO. Regulation Of Water Loss Via Skin               deseq2                18
+ 7 GO. Regulation Of Water Loss Via Skin               edgeR                 18
+ 8 GO. Regulation Of Water Loss Via Skin               go_count              50
+ 9 GO. Regulation Of T Cell Receptor Signaling Pathway limma                 17
+10 GO. Regulation Of T Cell Receptor Signaling Pathway deseq2                19
+# ℹ 30 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pivot_longer to convert from wide to long format</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>hallmarks_long_df <span class="ot">&lt;-</span> hallmarks_combined_count_df <span class="sc">%&gt;%</span></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(limma, deseq2, edgeR, hallmarks_count),</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"method/group"</span>,</span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"genecount"</span></span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the transformed long format dataframe</span></span>
+<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hallmarks_long_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 40 × 3
+   pathway                              `method/group`  genecount
+   &lt;chr&gt;                                &lt;chr&gt;               &lt;dbl&gt;
+ 1 Hallmarks. Interferon Alpha Response limma                  52
+ 2 Hallmarks. Interferon Alpha Response deseq2                 53
+ 3 Hallmarks. Interferon Alpha Response edgeR                  50
+ 4 Hallmarks. Interferon Alpha Response hallmarks_count       155
+ 5 Hallmarks. P53 Pathway               limma                  61
+ 6 Hallmarks. P53 Pathway               deseq2                 52
+ 7 Hallmarks. P53 Pathway               edgeR                  52
+ 8 Hallmarks. P53 Pathway               hallmarks_count       165
+ 9 Hallmarks. Myogenesis                limma                  62
+10 Hallmarks. Myogenesis                deseq2                 56
+# ℹ 30 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use rbind to merge these three dataframes</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>all_combined_df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(kegg_long_df, hallmarks_long_df, go_long_df)</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the merged dataframe to check the results</span></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(all_combined_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 120 × 3
+   pathway                           `method/group` genecount
+   &lt;chr&gt;                             &lt;chr&gt;              &lt;dbl&gt;
+ 1 KEGG. Primary Immunodeficiency    limma                 16
+ 2 KEGG. Primary Immunodeficiency    deseq2                22
+ 3 KEGG. Primary Immunodeficiency    edgeR                 22
+ 4 KEGG. Primary Immunodeficiency    kegg_count            60
+ 5 KEGG. Arachidonic Acid Metabolism limma                 19
+ 6 KEGG. Arachidonic Acid Metabolism deseq2                25
+ 7 KEGG. Arachidonic Acid Metabolism edgeR                 23
+ 8 KEGG. Arachidonic Acid Metabolism kegg_count            67
+ 9 KEGG. Autoimmune Thyroid Disease  limma                 25
+10 KEGG. Autoimmune Thyroid Disease  deseq2                26
+# ℹ 110 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(all_combined_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"from"</span>, <span class="st">"to"</span>, <span class="st">"value"</span>)</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract and deduplicate the 'from' column</span></span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>unique_from <span class="ot">&lt;-</span> <span class="fu">unique</span>(all_combined_df<span class="sc">$</span>from)</span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Unique 'from' values:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Unique 'from' values:"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(unique_from)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "KEGG. Primary Immunodeficiency"                     
+ [2] "KEGG. Arachidonic Acid Metabolism"                  
+ [3] "KEGG. Autoimmune Thyroid Disease"                   
+ [4] "KEGG. Allograft Rejection"                          
+ [5] "KEGG. Systemic Lupus Erythematosus"                 
+ [6] "KEGG. Retinol Metabolism"                           
+ [7] "KEGG. Type I Diabetes Mellitus"                     
+ [8] "KEGG. Metabolism Of Xenobiotics By Cytochrome P450" 
+ [9] "KEGG. Drug Metabolism Cytochrome P450"              
+[10] "KEGG. Antigen Processing And Presentation"          
+[11] "Hallmarks. Interferon Alpha Response"               
+[12] "Hallmarks. P53 Pathway"                             
+[13] "Hallmarks. Myogenesis"                              
+[14] "Hallmarks. Kras Signaling Dn"                       
+[15] "Hallmarks. Estrogen Response Late"                  
+[16] "Hallmarks. Estrogen Response Early"                 
+[17] "Hallmarks. Complement"                              
+[18] "Hallmarks. Allograft Rejection"                     
+[19] "Hallmarks. Interferon Gamma Response"               
+[20] "Hallmarks. G2m Checkpoint"                          
+[21] "GO. Desmosome"                                      
+[22] "GO. Regulation Of Water Loss Via Skin"              
+[23] "GO. Regulation Of T Cell Receptor Signaling Pathway"
+[24] "GO. Immunological Synapse"                          
+[25] "GO. Alpha Beta T Cell Differentiation"              
+[26] "GO. Membrane Invagination"                          
+[27] "GO. Positive Regulation Of B Cell Activation"       
+[28] "GO. Intermediate Filament Cytoskeleton"             
+[29] "GO. Epidermal Cell Differentiation"                 
+[30] "GO. Skin Development"                               </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract and deduplicate the 'to' column</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>unique_to <span class="ot">&lt;-</span> <span class="fu">unique</span>(all_combined_df<span class="sc">$</span>to)</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Unique 'to' values:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Unique 'to' values:"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(unique_to)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "limma"           "deseq2"          "edgeR"           "kegg_count"     
+[5] "hallmarks_count" "go_count"       </code></pre>
+</div>
+</div>
+</section>
+<section id="enrichment-circlize" class="level2" data-number="13.8">
+<h2 data-number="13.8" class="anchored" data-anchor-id="enrichment-circlize"><span class="header-section-number">13.8</span> Enrichment Circlize</h2>
+<section id="prepare-data" class="level3" data-number="13.8.1">
+<h3 data-number="13.8.1" class="anchored" data-anchor-id="prepare-data"><span class="header-section-number">13.8.1</span> prepare data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>original_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">KEGG. Primary Immunodeficiency</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#0d47a1"</span>,</span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">KEGG. Arachidonic Acid Metabolism</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#2058ab"</span>,</span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">KEGG. Autoimmune Thyroid Disease</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#3469b5"</span>,</span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">KEGG. Allograft Rejection</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#4779bf"</span>,</span>
+<span id="cb87-6"><a href="#cb87-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">KEGG. Systemic Lupus Erythematosus</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#5a8ac9"</span>,</span>
+<span id="cb87-7"><a href="#cb87-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">KEGG. Retinol Metabolism</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#6e9bd3"</span>,</span>
+<span id="cb87-8"><a href="#cb87-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">KEGG. Type I Diabetes Mellitus</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#81acdd"</span>,</span>
+<span id="cb87-9"><a href="#cb87-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">KEGG. Metabolism Of Xenobiotics By Cytochrome P450</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#94bce7"</span>,</span>
+<span id="cb87-10"><a href="#cb87-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">KEGG. Drug Metabolism Cytochrome P450</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#a8cdf1"</span>,</span>
+<span id="cb87-11"><a href="#cb87-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">KEGG. Antigen Processing And Presentation</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#bbdefb"</span>,</span>
+<span id="cb87-12"><a href="#cb87-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Hallmarks. Interferon Alpha Response</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#1b5e20"</span>,</span>
+<span id="cb87-13"><a href="#cb87-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Hallmarks. P53 Pathway</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#2e6d33"</span>,</span>
+<span id="cb87-14"><a href="#cb87-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Hallmarks. Myogenesis</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#417c46"</span>,</span>
+<span id="cb87-15"><a href="#cb87-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Hallmarks. Kras Signaling Dn</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#558b58"</span>,</span>
+<span id="cb87-16"><a href="#cb87-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Hallmarks. Estrogen Response Late</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#689a6b"</span>,</span>
+<span id="cb87-17"><a href="#cb87-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Hallmarks. Estrogen Response Early</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#7baa7e"</span>,</span>
+<span id="cb87-18"><a href="#cb87-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Hallmarks. Complement</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#8eb991"</span>,</span>
+<span id="cb87-19"><a href="#cb87-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Hallmarks. Allograft Rejection</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#a2c8a3"</span>,</span>
+<span id="cb87-20"><a href="#cb87-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Hallmarks. Interferon Gamma Response</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#b5d7b6"</span>,</span>
+<span id="cb87-21"><a href="#cb87-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Hallmarks. G2m Checkpoint</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#c8e6c9"</span>,</span>
+<span id="cb87-22"><a href="#cb87-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">GO. Desmosome</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#ff6f00"</span>,</span>
+<span id="cb87-23"><a href="#cb87-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">GO. Regulation Of Water Loss Via Skin</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#ff7d14"</span>,</span>
+<span id="cb87-24"><a href="#cb87-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">GO. Regulation Of T Cell Receptor Signaling Pathway</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#ff8b28"</span>,</span>
+<span id="cb87-25"><a href="#cb87-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">GO. Immunological Synapse</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#ff993c"</span>,</span>
+<span id="cb87-26"><a href="#cb87-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">GO. Alpha Beta T Cell Differentiation</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#ffa750"</span>,</span>
+<span id="cb87-27"><a href="#cb87-27" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">GO. Membrane Invagination</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#ffb463"</span>,</span>
+<span id="cb87-28"><a href="#cb87-28" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">GO. Positive Regulation Of B Cell Activation</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#ffc277"</span>,</span>
+<span id="cb87-29"><a href="#cb87-29" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">GO. Intermediate Filament Cytoskeleton</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#ffd08b"</span>,</span>
+<span id="cb87-30"><a href="#cb87-30" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">GO. Epidermal Cell Differentiation</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#ffde9f"</span>,</span>
+<span id="cb87-31"><a href="#cb87-31" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">GO. Skin Development</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#ffecb3"</span>,</span>
+<span id="cb87-32"><a href="#cb87-32" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">limma</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#ab47bc"</span>,</span>
+<span id="cb87-33"><a href="#cb87-33" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">deseq2</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#7e57c2"</span>,</span>
+<span id="cb87-34"><a href="#cb87-34" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">edgeR</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#3f51b5"</span>,</span>
+<span id="cb87-35"><a href="#cb87-35" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">kegg_count</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#4979bb"</span>,</span>
+<span id="cb87-36"><a href="#cb87-36" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">hallmarks_count</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#6a9a6f"</span>,</span>
+<span id="cb87-37"><a href="#cb87-37" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">go_count</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"#fda85d"</span></span>
+<span id="cb87-38"><a href="#cb87-38" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb87-39"><a href="#cb87-39" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb87-40"><a href="#cb87-40" aria-hidden="true" tabindex="-1"></a>  <span class="st">"KEGG. Primary Immunodeficiency"</span>,                     </span>
+<span id="cb87-41"><a href="#cb87-41" aria-hidden="true" tabindex="-1"></a>  <span class="st">"KEGG. Arachidonic Acid Metabolism"</span>,                  </span>
+<span id="cb87-42"><a href="#cb87-42" aria-hidden="true" tabindex="-1"></a>  <span class="st">"KEGG. Autoimmune Thyroid Disease"</span>,                   </span>
+<span id="cb87-43"><a href="#cb87-43" aria-hidden="true" tabindex="-1"></a>  <span class="st">"KEGG. Allograft Rejection"</span>,                          </span>
+<span id="cb87-44"><a href="#cb87-44" aria-hidden="true" tabindex="-1"></a>  <span class="st">"KEGG. Systemic Lupus Erythematosus"</span>,                 </span>
+<span id="cb87-45"><a href="#cb87-45" aria-hidden="true" tabindex="-1"></a>  <span class="st">"KEGG. Retinol Metabolism"</span>,                           </span>
+<span id="cb87-46"><a href="#cb87-46" aria-hidden="true" tabindex="-1"></a>  <span class="st">"KEGG. Type I Diabetes Mellitus"</span>,                     </span>
+<span id="cb87-47"><a href="#cb87-47" aria-hidden="true" tabindex="-1"></a>  <span class="st">"KEGG. Metabolism Of Xenobiotics By Cytochrome P450"</span>, </span>
+<span id="cb87-48"><a href="#cb87-48" aria-hidden="true" tabindex="-1"></a>  <span class="st">"KEGG. Drug Metabolism Cytochrome P450"</span>,              </span>
+<span id="cb87-49"><a href="#cb87-49" aria-hidden="true" tabindex="-1"></a>  <span class="st">"KEGG. Antigen Processing And Presentation"</span>,          </span>
+<span id="cb87-50"><a href="#cb87-50" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hallmarks. Interferon Alpha Response"</span>,               </span>
+<span id="cb87-51"><a href="#cb87-51" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hallmarks. P53 Pathway"</span>,                             </span>
+<span id="cb87-52"><a href="#cb87-52" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hallmarks. Myogenesis"</span>,                              </span>
+<span id="cb87-53"><a href="#cb87-53" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hallmarks. Kras Signaling Dn"</span>,                       </span>
+<span id="cb87-54"><a href="#cb87-54" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hallmarks. Estrogen Response Late"</span>,                  </span>
+<span id="cb87-55"><a href="#cb87-55" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hallmarks. Estrogen Response Early"</span>,                 </span>
+<span id="cb87-56"><a href="#cb87-56" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hallmarks. Complement"</span>,                              </span>
+<span id="cb87-57"><a href="#cb87-57" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hallmarks. Allograft Rejection"</span>,                     </span>
+<span id="cb87-58"><a href="#cb87-58" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hallmarks. Interferon Gamma Response"</span>,               </span>
+<span id="cb87-59"><a href="#cb87-59" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hallmarks. G2m Checkpoint"</span>,                          </span>
+<span id="cb87-60"><a href="#cb87-60" aria-hidden="true" tabindex="-1"></a>  <span class="st">"GO. Desmosome"</span>,                                      </span>
+<span id="cb87-61"><a href="#cb87-61" aria-hidden="true" tabindex="-1"></a>  <span class="st">"GO. Regulation Of Water Loss Via Skin"</span>,              </span>
+<span id="cb87-62"><a href="#cb87-62" aria-hidden="true" tabindex="-1"></a>  <span class="st">"GO. Regulation Of T Cell Receptor Signaling Pathway"</span>,</span>
+<span id="cb87-63"><a href="#cb87-63" aria-hidden="true" tabindex="-1"></a>  <span class="st">"GO. Immunological Synapse"</span>,                          </span>
+<span id="cb87-64"><a href="#cb87-64" aria-hidden="true" tabindex="-1"></a>  <span class="st">"GO. Alpha Beta T Cell Differentiation"</span>,              </span>
+<span id="cb87-65"><a href="#cb87-65" aria-hidden="true" tabindex="-1"></a>  <span class="st">"GO. Membrane Invagination"</span>,                         </span>
+<span id="cb87-66"><a href="#cb87-66" aria-hidden="true" tabindex="-1"></a>  <span class="st">"GO. Positive Regulation Of B Cell Activation"</span>,       </span>
+<span id="cb87-67"><a href="#cb87-67" aria-hidden="true" tabindex="-1"></a>  <span class="st">"GO. Intermediate Filament Cytoskeleton"</span>,             </span>
+<span id="cb87-68"><a href="#cb87-68" aria-hidden="true" tabindex="-1"></a>  <span class="st">"GO. Epidermal Cell Differentiation"</span>,                 </span>
+<span id="cb87-69"><a href="#cb87-69" aria-hidden="true" tabindex="-1"></a>  <span class="st">"GO. Skin Development"</span>                  </span>
+<span id="cb87-70"><a href="#cb87-70" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb87-71"><a href="#cb87-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-72"><a href="#cb87-72" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义颜色</span></span>
+<span id="cb87-73"><a href="#cb87-73" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb87-74"><a href="#cb87-74" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#0d47a1"</span>,</span>
+<span id="cb87-75"><a href="#cb87-75" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#2058ab"</span>,</span>
+<span id="cb87-76"><a href="#cb87-76" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#3469b5"</span>,</span>
+<span id="cb87-77"><a href="#cb87-77" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#4779bf"</span>,</span>
+<span id="cb87-78"><a href="#cb87-78" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#5a8ac9"</span>,</span>
+<span id="cb87-79"><a href="#cb87-79" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#6e9bd3"</span>,</span>
+<span id="cb87-80"><a href="#cb87-80" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#81acdd"</span>,</span>
+<span id="cb87-81"><a href="#cb87-81" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#94bce7"</span>,</span>
+<span id="cb87-82"><a href="#cb87-82" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#a8cdf1"</span>,</span>
+<span id="cb87-83"><a href="#cb87-83" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#bbdefb"</span>,</span>
+<span id="cb87-84"><a href="#cb87-84" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#1b5e20"</span>,</span>
+<span id="cb87-85"><a href="#cb87-85" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#2e6d33"</span>,</span>
+<span id="cb87-86"><a href="#cb87-86" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#417c46"</span>,</span>
+<span id="cb87-87"><a href="#cb87-87" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#558b58"</span>,</span>
+<span id="cb87-88"><a href="#cb87-88" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#689a6b"</span>,</span>
+<span id="cb87-89"><a href="#cb87-89" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#7baa7e"</span>,</span>
+<span id="cb87-90"><a href="#cb87-90" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#8eb991"</span>,</span>
+<span id="cb87-91"><a href="#cb87-91" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#a2c8a3"</span>,</span>
+<span id="cb87-92"><a href="#cb87-92" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#b5d7b6"</span>,</span>
+<span id="cb87-93"><a href="#cb87-93" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#c8e6c9"</span>,</span>
+<span id="cb87-94"><a href="#cb87-94" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#ff6f00"</span>,</span>
+<span id="cb87-95"><a href="#cb87-95" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#ff7d14"</span>,</span>
+<span id="cb87-96"><a href="#cb87-96" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#ff8b28"</span>,</span>
+<span id="cb87-97"><a href="#cb87-97" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#ff993c"</span>,</span>
+<span id="cb87-98"><a href="#cb87-98" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#ffa750"</span>,</span>
+<span id="cb87-99"><a href="#cb87-99" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#ffb463"</span>,</span>
+<span id="cb87-100"><a href="#cb87-100" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#ffc277"</span>,</span>
+<span id="cb87-101"><a href="#cb87-101" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#ffd08b"</span>,</span>
+<span id="cb87-102"><a href="#cb87-102" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#ffde9f"</span>,</span>
+<span id="cb87-103"><a href="#cb87-103" aria-hidden="true" tabindex="-1"></a>  <span class="st">"#ffecb3"</span></span>
+<span id="cb87-104"><a href="#cb87-104" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb87-105"><a href="#cb87-105" aria-hidden="true" tabindex="-1"></a>labels2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"limma"</span>,</span>
+<span id="cb87-106"><a href="#cb87-106" aria-hidden="true" tabindex="-1"></a>            <span class="st">"deseq2"</span>,</span>
+<span id="cb87-107"><a href="#cb87-107" aria-hidden="true" tabindex="-1"></a>            <span class="st">"edgeR"</span>,</span>
+<span id="cb87-108"><a href="#cb87-108" aria-hidden="true" tabindex="-1"></a>            <span class="st">"kegg_count"</span>,</span>
+<span id="cb87-109"><a href="#cb87-109" aria-hidden="true" tabindex="-1"></a>            <span class="st">"hallmarks_count"</span>,</span>
+<span id="cb87-110"><a href="#cb87-110" aria-hidden="true" tabindex="-1"></a>            <span class="st">"go_count"</span>)</span>
+<span id="cb87-111"><a href="#cb87-111" aria-hidden="true" tabindex="-1"></a>colors2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#ab47bc"</span>,</span>
+<span id="cb87-112"><a href="#cb87-112" aria-hidden="true" tabindex="-1"></a>            <span class="st">"#7e57c2"</span>,</span>
+<span id="cb87-113"><a href="#cb87-113" aria-hidden="true" tabindex="-1"></a>            <span class="st">"#3f51b5"</span>,</span>
+<span id="cb87-114"><a href="#cb87-114" aria-hidden="true" tabindex="-1"></a>            <span class="st">"#4979bb"</span>,</span>
+<span id="cb87-115"><a href="#cb87-115" aria-hidden="true" tabindex="-1"></a>            <span class="st">"#6a9a6f"</span>,</span>
+<span id="cb87-116"><a href="#cb87-116" aria-hidden="true" tabindex="-1"></a>            <span class="st">"#fda85d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">enrichment_circlize</span>(all_combined_df, original_colors, labels, colors, labels2, colors2, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Enrichment-Circlize_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="SSSYDYSSS/TransProRBook" data-repo-id="R_kgDOKiXTww" data-category="General" data-category-id="DIC_kwDOKiXTw84CaRd5" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Circos Fruit.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Circos Fruit</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Contact.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Contact</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

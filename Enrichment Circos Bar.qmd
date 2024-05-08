@@ -1,0 +1,262 @@
+# Enrichment Circos Bar
+::: {.callout-tip}
+
+This script primarily carries out the reading and merging of transcriptomic data from tumor and normal samples, and processes this data through logarithmic transformation. Subsequently, it reads and handles differentially expressed gene data, performing multiple biological enrichment analyses, including <b style="color: #6a926b;">biological processes, molecular functions, cellular components, KEGG pathways, disease ontology, and Reactome pathways.</b> Finally, the script filters specific enrichment results and uses ggplot2 to create a circular bar chart to visualize these results, effectively displaying differences in gene expression across various categories. This provides valuable insights for biomedical research, especially in exploring the expression differences between tumors and normal tissues.
+:::
+
+
+```{r setup, include=FALSE}
+library(TransProR)
+library(TransProR)
+library(clusterProfiler)
+library(org.Hs.eg.db)
+library(DOSE)
+library(ReactomePA)
+library(dplyr)
+```
+
+```r 
+library(TransProR)
+library(TransProR)
+library(clusterProfiler)
+library(org.Hs.eg.db)
+library(DOSE)
+library(ReactomePA)
+library(dplyr)
+```
+
+
+## Load data
+```{r}
+tumor <- readRDS("../test_TransProR/generated_data1/removebatch_SKCM_Skin_TCGA_exp_tumor.rds")
+normal <- readRDS('../test_TransProR/generated_data1/removebatch_SKCM_Skin_Normal_TCGA_GTEX_count.rds')
+# Merge the datasets, ensuring both have genes as row names
+all_count_exp <- merge(tumor, normal, by = "row.names")
+all_count_exp <- tibble::column_to_rownames(all_count_exp, var = "Row.names")  # Set the row names
+
+# Drawing data
+all_count_exp <- log_transform(all_count_exp)
+DEG_deseq2 <- readRDS('../test_TransProR/Select DEGs/DEG_deseq2.Rdata')
+#head(all_count_exp, 1)
+head(DEG_deseq2, 5)
+```
+
+## Convert from SYMBOL to ENTREZID
+```{r}
+# Convert from SYMBOL to ENTREZID for convenient enrichment analysis later. It's crucial to do this now as a direct conversion may result in a reduced set of genes due to non-one-to-one correspondence.
+
+# DEG_deseq2
+# Retrieve gene list
+gene <- rownames(DEG_deseq2)
+# Perform conversion
+gene = bitr(gene, fromType="SYMBOL", toType="ENTREZID", OrgDb="org.Hs.eg.db")
+# Remove duplicates and merge
+gene <- dplyr::distinct(gene, SYMBOL, .keep_all=TRUE)
+# Extract the SYMBOL column as a vector from the first dataset
+symbols_vector <- gene$SYMBOL
+# Use the SYMBOL column to filter corresponding rows from the second dataset by row names
+DEG_deseq2 <- DEG_deseq2[rownames(DEG_deseq2) %in% symbols_vector, ]
+head(DEG_deseq2, 5)
+```
+
+## Select differentially expressed genes
+```{r}
+Diff_deseq2 <- filter_diff_genes(
+  DEG_deseq2, 
+  p_val_col = "pvalue", 
+  log_fc_col = "log2FoldChange",
+  p_val_threshold = 0.01, 
+  log_fc_threshold = 8
+  )
+# First, obtain a list of gene names from the row names of the first dataset
+gene_names <- rownames(Diff_deseq2)
+# Find the matching rows in the second dataframe
+matched_rows <- all_count_exp[gene_names, ]
+# Calculate the mean for each row
+averages <- rowMeans(matched_rows, na.rm = TRUE)
+# Append the averages as a new column to the first dataframe
+Diff_deseq2$average <- averages
+Diff_deseq2$ID <- rownames(Diff_deseq2)
+Diff_deseq2$changetype <- ifelse(Diff_deseq2$change == 'up', 1, -1)
+# Define a small threshold value
+small_value <- .Machine$double.xmin
+# Before calculating -log10, replace zeroes with the small threshold value and assign it to a new column
+Diff_deseq2$log_pvalue <- ifelse(Diff_deseq2$pvalue == 0, -log10(small_value), -log10(Diff_deseq2$pvalue))
+# Extract the expression data corresponding to the differentially expressed genes
+heatdata_deseq2 <- all_count_exp[rownames(Diff_deseq2), ]
+#head(heatdata_deseq2, 1)
+```
+
+
+## Diff_deseq2 Enrichment Analysis
+### Obtain the list of genes
+```{r}
+gene <- rownames(Diff_deseq2)
+## Convert
+gene = bitr(gene, fromType="SYMBOL", toType="ENTREZID", OrgDb="org.Hs.eg.db")
+## Remove duplicates and merge
+gene <- dplyr::distinct(gene, SYMBOL, .keep_all=TRUE)
+gene_df <- data.frame(logFC=Diff_deseq2$log2FoldChange,
+                      SYMBOL = rownames(Diff_deseq2))
+gene_df <- merge(gene_df, gene, by="SYMBOL")
+GO_deseq2 <- gene_df$ENTREZID
+```
+
+### GO Analysis for Biological Processes (BP)
+```{r}
+# Perform gene enrichment analysis
+erich.go.BP_deseq2 <- enrichGO(
+  gene = GO_deseq2,
+  OrgDb = org.Hs.eg.db,
+  keyType = "ENTREZID",
+  ont = 'BP', # Other categories: "CC", "MF" for molecular function
+  pvalueCutoff = 0.05,
+  qvalueCutoff = 0.05,
+  readable = TRUE)
+erich.go.BP.outdata_deseq2 <- as.data.frame(erich.go.BP_deseq2)
+# Uncomment to write output to CSV
+# write.csv(erich.go.BP.outdata_deseq2, "E:/fruit/erich.go.BP.outdata.csv")
+head(erich.go.BP.outdata_deseq2, 5)
+```
+
+
+### GO Analysis for Molecular Functions (MF)
+```{r}
+# Perform gene enrichment analysis
+erich.go.MF_deseq2 <- enrichGO(
+  gene = GO_deseq2,
+  OrgDb = org.Hs.eg.db,
+  keyType = "ENTREZID",
+  ont = 'MF', # Other categories: "CC", "MF" for molecular function
+  pvalueCutoff = 0.05,
+  qvalueCutoff = 0.05,
+  readable = TRUE)
+
+erich.go.MF.outdata_deseq2 <- as.data.frame(erich.go.MF_deseq2)
+# Uncomment to write output to CSV
+# write.csv(erich.go.MF.outdata_deseq2, "E:/fruit/erich.go.MF.outdata.csv")
+
+head(erich.go.MF.outdata_deseq2, 5)
+```
+
+
+
+### GO Analysis for Cellular Components (CC)
+```{r}
+# Perform gene enrichment analysis
+erich.go.CC_deseq2 <- enrichGO(
+  gene = GO_deseq2,
+  OrgDb = org.Hs.eg.db,
+  keyType = "ENTREZID",
+  ont = 'CC', # Other categories: "CC", "MF" for molecular function
+  pvalueCutoff = 0.05,
+  qvalueCutoff = 0.05,
+  readable = TRUE)
+
+erich.go.CC.outdata_deseq2 <- as.data.frame(erich.go.CC_deseq2)
+# Uncomment to write output to CSV
+# write.csv(erich.go.CC.outdata_deseq2, "E:/fruit/erich.go.CC.outdata.csv")
+```
+
+
+### KEGG Analysis 
+```{r}
+kegg.out_deseq2 = enrichKEGG(
+  gene = GO_deseq2,
+  organism = "hsa",
+  keyType = "kegg",
+  pvalueCutoff = 0.15,
+  pAdjustMethod = "BH",
+  qvalueCutoff = 0.15)
+kegg.out.outdata_deseq2 <- as.data.frame(kegg.out_deseq2)
+# Uncomment to export the data, which are in ENTREZID format
+# write.csv(kegg.out.outdata_deseq2, "E:/kegg.out.outdata.csv")
+
+##### Convert numeric Entrez gene IDs or Ensembl gene IDs from above code to symbols
+library(org.Hs.eg.db)
+kegg.out1_deseq2 = as.data.frame(kegg.out_deseq2)
+ENTREZID = strsplit(kegg.out1_deseq2$geneID, "/")
+symbol = sapply(ENTREZID, function(x) {
+  y = bitr(x, fromType = "ENTREZID", toType = "SYMBOL", OrgDb = "org.Hs.eg.db")
+  # In case of multiple matches, take the first one
+  y = y[!duplicated(y$ENTREZID), -1]
+  y = paste(y, collapse = "/")
+})
+kegg.out1_deseq2$geneID = symbol
+kegg.out1.outdata_deseq2 <- as.data.frame(kegg.out1_deseq2)
+# Uncomment to export the converted data
+# write.csv(kegg.out1.outdata_deseq2, "E:/fruit/kegg.out1.outdata.csv")
+head(kegg.out.outdata_deseq2, 5)
+head(kegg.out1.outdata_deseq2, 5)
+```
+
+
+### DO Analysis
+```{r}
+erich.go.DO_deseq2 = enrichDO(gene = GO_deseq2,
+                              ont = "DO", # Other categories: "CC", "MF" for molecular function
+                              pvalueCutoff = 0.5,
+                              qvalueCutoff = 0.5,
+                              readable = TRUE)
+
+erich.go.DO.outdata_deseq2 <- as.data.frame(erich.go.DO_deseq2)
+# Uncomment to export the data
+# write.csv(erich.go.DO.outdata_deseq2, "E:/fruit/erich.go.DO.outdata.csv")
+head(erich.go.DO.outdata_deseq2, 5)
+```
+
+
+### Reactome Pathway Analysis 
+```{r}
+erich.go.Reactome_deseq2 <- enrichPathway(gene = GO_deseq2, pvalueCutoff = 0.05, readable = TRUE)
+
+erich.go.Reactome.outdata_deseq2 <- as.data.frame(erich.go.Reactome_deseq2)
+# Uncomment to export the data
+# write.csv(erich.go.Reactome.outdata_deseq2, "E:/fruit/erich.go.Reactome.outdata.csv")
+head(erich.go.Reactome.outdata_deseq2, 5)
+```
+
+
+### Usage example
+```{r}
+# Suppose you have a dataframe named data and a list of descriptions you want to filter
+descriptions_to_filter <- c("immunoglobulin production", "B cell mediated immunity")
+filtered_data_BP <- extract_descriptions_counts(erich.go.BP.outdata_deseq2, descriptions_to_filter, "#009688")
+print(filtered_data_BP)
+
+descriptions_to_filter <- c("immunoglobulin complex", "keratin filament", "IgG immunoglobulin complex")
+filtered_data_CC <- extract_descriptions_counts(erich.go.CC.outdata_deseq2, descriptions_to_filter, "#3f51b5")
+print(filtered_data_CC)
+
+descriptions_to_filter <- c("integumentary system benign neoplasm", "prostatic hypertrophy")
+filtered_data_DO <- extract_descriptions_counts(erich.go.DO.outdata_deseq2, descriptions_to_filter, "#673ab7")
+print(filtered_data_DO)
+
+descriptions_to_filter <- c("antigen binding", "immunoglobulin receptor binding")
+filtered_data_MF <- extract_descriptions_counts(erich.go.MF.outdata_deseq2, descriptions_to_filter, "#4caf50")
+print(filtered_data_MF)
+
+descriptions_to_filter <- c("Keratinization", "Formation of the cornified envelope")
+filtered_data_Reactome <- extract_descriptions_counts(erich.go.Reactome.outdata_deseq2, descriptions_to_filter, "#ffc107")
+print(filtered_data_Reactome)
+
+descriptions_to_filter <- c("Staphylococcus aureus infection", "Salivary secretion")
+filtered_data_kegg <- extract_descriptions_counts(kegg.out1.outdata_deseq2, descriptions_to_filter, "#ff9800")
+print(filtered_data_kegg)
+
+```
+
+
+## enrich_circo_bar
+```{r, fig.width=10, fig.height=10, out.width='100%'}
+data_list <- list(
+  filtered_data_BP, 
+  filtered_data_CC, 
+  filtered_data_DO,
+  filtered_data_MF, 
+  filtered_data_Reactome, 
+  filtered_data_kegg
+)
+combined_and_visualized_data <- enrich_circo_bar(data_list)
+print(combined_and_visualized_data)
+```

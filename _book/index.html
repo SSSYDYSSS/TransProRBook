@@ -214,20 +214,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  <a href="./Merging TransProR and TransProPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Merging TransProR and TransProPy</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pipeline.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">pipeline</span></span></a>
+  <a href="./Enrichment ggtree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Enrichment ggtree</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./Enrichment ggraph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Enrichment ggraph</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Enrichment Circos Bar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Enrichment Circos Bar</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./EnrichPolarBubble.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">New Enrichment Polar Bubble</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Circos Fruit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Circos Fruit</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Enrichment Circlize.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Enrichment Circlize</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Contact.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Contact</span></span></a>
   </div>
 </li>
     </ul>
@@ -244,9 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#transpror-installation" id="toc-transpror-installation" class="nav-link" data-scroll-target="#transpror-installation">TransProR Installation</a></li>
   <li><a href="#system-requirements" id="toc-system-requirements" class="nav-link" data-scroll-target="#system-requirements">System Requirements</a></li>
-  <li><a href="#python-dependencies" id="toc-python-dependencies" class="nav-link" data-scroll-target="#python-dependencies">Python Dependencies</a></li>
-  <li><a href="#environment-setup" id="toc-environment-setup" class="nav-link" data-scroll-target="#environment-setup">Environment Setup</a></li>
-  <li><a href="#creating-the-environment" id="toc-creating-the-environment" class="nav-link" data-scroll-target="#creating-the-environment">Creating the Environment</a></li>
+  <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
   <li><a href="#contributing" id="toc-contributing" class="nav-link" data-scroll-target="#contributing">Contributing</a></li>
   </ul></li>
   </ul>
@@ -306,29 +334,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="system-requirements" class="level2">
 <h2 class="anchored" data-anchor-id="system-requirements">System Requirements</h2>
 <ul>
-<li>Python version 3.10 or higher is required.</li>
+<li>R (&gt;= 2.10)</li>
 </ul>
 </section>
-<section id="python-dependencies" class="level2">
-<h2 class="anchored" data-anchor-id="python-dependencies">Python Dependencies</h2>
-<p>This package requires several Python libraries to function properly. The following are the main dependencies:</p>
-<ul>
-<li>TransProPy</li>
-</ul>
-<p>Please ensure these Python libraries are installed in your environment before you proceed with using this package. You can quickly install them using the command below:</p>
-</section>
-<section id="environment-setup" class="level2">
-<h2 class="anchored" data-anchor-id="environment-setup">Environment Setup</h2>
-<p>To run this project, we recommend using <code>conda</code>, a popular Python environment and package manager. Please follow the steps below to set up your environment:</p>
-</section>
-<section id="creating-the-environment" class="level2">
-<h2 class="anchored" data-anchor-id="creating-the-environment">Creating the Environment</h2>
-<p>First, if you have not installed <code>conda</code> yet, please visit the <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> website and follow the instructions for installation. Once you have <code>conda</code> installed, you can create a new environment named “TransPro” that includes all the dependencies required to run this project.</p>
-<p>Run the following command in your command line to create a new environment:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> TransPro python=3.10 <span class="co"># or higher version if preferred.</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install TransProPy </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This version helps guide users through the installation process more smoothly, taking into account various common scenarios they might encounter. It suggests considering the environment management system and potential system-specific quirks, improving the overall user experience.</p>
-<p>For more detailed information or troubleshooting, please refer to the documentation of each individual Python package.</p>
+<section id="citation" class="level2">
+<h2 class="anchored" data-anchor-id="citation">Citation</h2>
+<p>Yu Dongyue (2023). TransProR: Analysis and visualization of transcriptomic data are currently in progress. Future directions include multi-modal fusion, sparse learning, and the investigation of spatio-temporal effects. <a href="https://github.com/SSSYDYSSS/TransProR" class="uri">https://github.com/SSSYDYSSS/TransProR</a>, <a href="https://sssydysss.github.io/TransProRBook/" class="uri">https://sssydysss.github.io/TransProRBook/</a>.</p>
 </section>
 <section id="contributing" class="level2">
 <h2 class="anchored" data-anchor-id="contributing">Contributing</h2>

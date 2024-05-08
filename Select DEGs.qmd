@@ -22,6 +22,7 @@ DEG_deseq2 <- DESeq2_analyze(
 head(DEG_deseq2, 5)
 ```
 
+
 ## Performing differential analysis using edgeR
 <b style="color: #6a926b;">edgeR(Empirical Analysis of Digital Gene Expression Data in R)</b>
 

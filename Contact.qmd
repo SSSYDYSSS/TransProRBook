@@ -1,0 +1,21 @@
+# Contact
+
+Any problems encountered or inspiration gained from using this R package can be addressed by contacting me in the following ways. I am very willing to help you wholeheartedly.
+
+
+
+
+::: {.panel-tabset}
+
+## email
+yudongyue@mail.nankai.edu.cn
+
+## github
+https://github.com/SSSYDYSSS/TransProR
+
+:::
+
+
+::: {.callout-note}
+Should there be any omissions in the cited references that are significantly related to the content discussed herein, we would be **immensely grateful** to be informed by **our esteemed users**. Additionally, we sincerely apologize for any imperfections that may exist within this manual.
+:::

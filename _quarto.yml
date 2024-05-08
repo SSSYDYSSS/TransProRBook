@@ -33,9 +33,14 @@ book:
     - Select DEGs.qmd
     - Comparison of Four Methods.qmd
     - Comparison of Six Methods.qmd
-    - summary.qmd
-    - pipeline.qmd
-    - references.qmd
+    - Merging TransProR and TransProPy.qmd
+    - Enrichment ggtree.qmd
+    - Enrichment ggraph.qmd
+    - Enrichment Circos Bar.qmd
+    - EnrichPolarBubble.qmd
+    - Circos Fruit.qmd
+    - Enrichment Circlize.qmd
+    - Contact.qmd
 
 bibliography: references.bib
 

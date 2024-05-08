@@ -1,0 +1,365 @@
+# Circos Fruit
+::: {.callout-tip}
+Enhanced visualization integrating differential gene analysis, pathway-level GSVA (Gene Set Variation Analysis), and ssGSEA (single-sample Gene Set Enrichment Analysis).
+:::
+
+```{r setup, include=FALSE}
+library(TransProR)
+library(org.Hs.eg.db)
+library(clusterProfiler)
+library(tidyr)
+library(dplyr)
+library(ggtree)
+library(ggplot2)
+```
+
+```r 
+library(TransProR)
+library(org.Hs.eg.db)
+library(clusterProfiler)
+library(tidyr)
+library(dplyr)
+library(ggtree)
+library(ggplot2)
+```
+
+
+## Load data
+```{r}
+tumor <- readRDS("../test_TransProR/generated_data1/removebatch_SKCM_Skin_TCGA_exp_tumor.rds")
+normal <- readRDS('../test_TransProR/generated_data1/removebatch_SKCM_Skin_Normal_TCGA_GTEX_count.rds')
+# Merge the datasets, ensuring both have genes as row names
+all_count_exp <- merge(tumor, normal, by = "row.names")
+all_count_exp <- tibble::column_to_rownames(all_count_exp, var = "Row.names")  # Set the row names
+
+# Drawing data
+# all_count_exp <- log_transform(all_count_exp)
+DEG_deseq2 <- readRDS('../test_TransProR/Select DEGs/DEG_deseq2.Rdata')
+#head(all_count_exp, 1)
+head(DEG_deseq2, 5)
+```
+
+## Convert from SYMBOL to ENTREZID
+```{r}
+# Convert from SYMBOL to ENTREZID for convenient enrichment analysis later. It's crucial to do this now as a direct conversion may result in a reduced set of genes due to non-one-to-one correspondence.
+
+# DEG_deseq2
+# Retrieve gene list
+gene <- rownames(DEG_deseq2)
+# Perform conversion
+gene = bitr(gene, fromType="SYMBOL", toType="ENTREZID", OrgDb="org.Hs.eg.db")
+# Remove duplicates and merge
+gene <- dplyr::distinct(gene, SYMBOL, .keep_all=TRUE)
+# Extract the SYMBOL column as a vector from the first dataset
+symbols_vector <- gene$SYMBOL
+# Use the SYMBOL column to filter corresponding rows from the second dataset by row names
+DEG_deseq2 <- DEG_deseq2[rownames(DEG_deseq2) %in% symbols_vector, ]
+head(DEG_deseq2, 5)
+```
+
+## Select differentially expressed genes
+```{r}
+Diff_deseq2 <- filter_diff_genes(
+  DEG_deseq2, 
+  p_val_col = "pvalue", 
+  log_fc_col = "log2FoldChange",
+  p_val_threshold = 0.05, 
+  log_fc_threshold = 3
+  )
+# First, obtain a list of gene names from the row names of the first dataset
+gene_names <- rownames(Diff_deseq2)
+# Find the matching rows in the second dataframe
+matched_rows <- all_count_exp[gene_names, ]
+# Calculate the mean for each row
+averages <- rowMeans(matched_rows, na.rm = TRUE)
+# Append the averages as a new column to the first dataframe
+Diff_deseq2$average <- averages
+Diff_deseq2$ID <- rownames(Diff_deseq2)
+Diff_deseq2$changetype <- ifelse(Diff_deseq2$change == 'up', 1, -1)
+# Define a small threshold value
+small_value <- .Machine$double.xmin
+# Before calculating -log10, replace zeroes with the small threshold value and assign it to a new column
+Diff_deseq2$log_pvalue <- ifelse(Diff_deseq2$pvalue == 0, -log10(small_value), -log10(Diff_deseq2$pvalue))
+# Extract the expression data corresponding to the differentially expressed genes
+heatdata_deseq2 <- all_count_exp[rownames(Diff_deseq2), ]
+#head(heatdata_deseq2, 1)
+```
+
+
+
+```{r}
+set.seed(123)
+# Preparing heatdata for visualization
+HeatdataDeseq2 <- TransProR::process_heatdata(heatdata_deseq2, 
+                                              selection = 2, 
+                                              custom_names = NULL, 
+                                              num_names_per_group = 60, 
+                                              prefix_length = 4)
+HeatdataDeseq2 <- as.matrix(HeatdataDeseq2)
+
+library(msigdbr)
+## Using the msigdbr package to download and prepare for GSVA analysis with KEGG and GO gene sets
+## KEGG
+KEGG_df_all <- msigdbr(species = "Homo sapiens", # Homo sapiens or Mus musculus
+                        category = "C2",
+                        subcategory = "CP:KEGG") 
+KEGG_df <- dplyr::select(KEGG_df_all, gs_name, gs_exact_source, gene_symbol)
+kegg_list <- split(KEGG_df$gene_symbol, KEGG_df$gs_name) # Grouping gene symbols by gs_name
+head(kegg_list)
+
+## GO
+GO_df_all <- msigdbr(species = "Homo sapiens",
+                      category = "C5")  
+GO_df <- dplyr::select(GO_df_all, gs_name, gene_symbol, gs_exact_source, gs_subcat)
+GO_df <- GO_df[GO_df$gs_subcat != "HPO",]
+go_list <- split(GO_df$gene_symbol, GO_df$gs_name) # Grouping gene symbols by gs_name
+head(go_list)
+
+library(GSVA)
+gsva_kegg <- gsva(expr = HeatdataDeseq2, 
+                  gset.idx.list = kegg_list, 
+                  kcdf = "Poisson", #"Gaussian" for logCPM, logRPKM, logTPM, "Poisson" for counts
+                  verbose = TRUE
+                  #parallel.sz = parallel::detectCores() # Utilize all available cores
+                  )
+
+#write.csv(gsva_mat, "gsva_go_matrix.csv")
+
+gsva_go <- gsva(expr = HeatdataDeseq2, 
+                gset.idx.list = go_list, 
+                kcdf = "Poisson", #"Gaussian" for logCPM, logRPKM, logTPM, "Poisson" for counts
+                verbose = TRUE
+                #parallel.sz = parallel::detectCores() # Utilize all available cores
+                )
+
+#write.csv(gsva_mat, "gsva_go_matrix.csv")
+
+ssgsea_kegg <- gsva(expr = HeatdataDeseq2, 
+                    gset.idx.list = kegg_list, 
+                    kcdf = "Poisson", #"Gaussian" for logCPM, logRPKM, logTPM, "Poisson" for counts
+                    method = "ssgsea",
+                    verbose = TRUE
+                    #parallel.sz = parallel::detectCores() # Utilize all available cores
+)
+
+#write.csv(gsva_mat, "gsva_go_matrix.csv")
+
+ssgsea_go <- gsva(expr = HeatdataDeseq2, 
+                  gset.idx.list = go_list, 
+                  kcdf = "Poisson", #"Gaussian" for logCPM, logRPKM, logTPM, "Poisson" for counts
+                  method = "ssgsea",
+                  verbose = TRUE
+                  #parallel.sz = parallel::detectCores() # Utilize all available cores
+)
+
+#write.csv(gsva_mat, "gsva_go_matrix.csv")
+```
+
+```{r}
+# Data transformation for GSVA of KEGG
+#### Differential analysis using limma ####
+
+# Assigning group labels for tumor and normal samples
+group <- c(rep('tumor', 60), rep('normal', 60))
+group <- factor(group, levels = c("normal", "tumor"))
+
+# Constructing the design matrix
+design <- model.matrix(~0 + factor(group))
+colnames(design) <- levels(factor(group))
+rownames(design) <- colnames(gsva_kegg)
+
+# Forming the contrast matrix for differential analysis
+con <- paste(rev(levels(group)), collapse = "-")
+cont.matrix <- limma::makeContrasts(contrasts = c(con), levels = design)
+
+# Fitting the linear model
+fit <- limma::lmFit(gsva_kegg, design)
+fit2 <- limma::contrasts.fit(fit, cont.matrix)
+fit2 <- limma::eBayes(fit2)
+
+# Retrieving differential expression results
+tempOutput <- limma::topTable(fit2, coef = con, n = Inf)
+gsva_kegg_limma <- stats::na.omit(tempOutput)
+
+#### Visualization of differential analysis results from GSVA ####
+## Setting filtering thresholds
+padj_cutoff = 0.05
+log2FC_cutoff = log2(2)
+
+# Filtering significant gene sets
+keep <- rownames(gsva_kegg_limma[gsva_kegg_limma$adj.P.Val < padj_cutoff & abs(gsva_kegg_limma$logFC) > log2FC_cutoff, ])
+length(keep)
+
+# Extracting the top 10 elements from the limma analysis results
+keep_top10 <- keep[1:10]
+# Selecting rows in gsva_kegg that match the top 10 genes from keep
+gsva_kegg_limma_head10 <- gsva_kegg[rownames(gsva_kegg) %in% keep_top10, ]
+
+# Checking if row names are set, assuming the first column as row names if not set
+if (is.null(rownames(gsva_kegg_limma_head10))) {
+  gsva_kegg_limma_head10 <- gsva_kegg_limma_head10 %>%
+    mutate(RowID = row_number()) %>%  # Adding a row number for each row
+    column_to_rownames(var="RowID")  # Setting this row number as row names
+}
+
+gsva_kegg_limma_head10 <- as.data.frame(gsva_kegg_limma_head10)
+
+# To preserve row names in the long format data, first convert row names into a column of the data frame
+gsva_kegg_limma_head10 <- gsva_kegg_limma_head10 %>%
+  tibble::rownames_to_column(var = "Gene")  # Convert row names to a column named Gene
+
+# Transforming the dataframe from wide to long format, including the newly added row names column
+gsva_kegg_HeatdataDeseq <- gsva_kegg_limma_head10 %>%
+  pivot_longer(
+    cols = -Gene,    # Transforming all columns except the Gene column
+    names_to = "Sample",  # Creating a new column to store the original column names
+    values_to = "value"   # Creating a new column to store the values
+  )
+
+# Displaying the transformed data
+print(gsva_kegg_HeatdataDeseq)
+```
+
+
+
+```{r}
+# Subsetting the first 10 rows from HeatdataDeseq2
+HeatdataDeseq3 <- HeatdataDeseq2[1:10,]
+
+# Applying logarithmic transformation and converting to a data frame
+HeatdataDeseq3 <- as.data.frame(log_transform(HeatdataDeseq3))
+
+# Check if row names are set, if not, assume the first column as row names
+if (is.null(rownames(HeatdataDeseq3))) {
+  HeatdataDeseq3 <- HeatdataDeseq3 %>%
+    mutate(RowID = row_number()) %>%  # Add a row number to each row
+    column_to_rownames(var="RowID")   # Set this row number as row names
+}
+
+# To retain row names in a long format, first convert row names to a column in the data frame
+HeatdataDeseq3 <- HeatdataDeseq3 %>%
+  tibble::rownames_to_column(var = "Gene")  # Convert row names to a column named 'Gene'
+
+# Transforming the data frame from wide to long format, including the newly added row name column
+long_format_HeatdataDeseq <- HeatdataDeseq3 %>%
+  pivot_longer(
+    cols = -Gene,          # Transform all columns except for 'Gene'
+    names_to = "Sample",   # Create a new column to store original column names
+    values_to = "value"    # Create a new column to store values
+  )
+
+# Display the transformed data
+print(long_format_HeatdataDeseq)
+```
+
+
+
+```{r}
+# Selecting the top 10 rows from ssgsea_kegg for display
+ssgsea_kegg_head10 <- as.data.frame(ssgsea_kegg[1:10,])
+
+# Check if row names are set, if not, assume the first column as row names
+if (is.null(rownames(ssgsea_kegg_head10))) {
+  ssgsea_kegg_head10 <- ssgsea_kegg_head10 %>%
+    mutate(RowID = row_number()) %>%  # Add a row number to each row
+    column_to_rownames(var="RowID")   # Set this row number as row names
+}
+
+ssgsea_kegg_head10 <- as.data.frame(ssgsea_kegg_head10)
+
+# To preserve row names in the long format data, first convert row names into a column of the data frame
+ssgsea_kegg_head10 <- ssgsea_kegg_head10 %>%
+  tibble::rownames_to_column(var = "Gene")  # Convert row names to a column named Gene
+
+# Transforming the data frame from wide to long format, including the newly added row name column
+ssgsea_kegg_HeatdataDeseq <- ssgsea_kegg_head10 %>%
+  pivot_longer(
+    cols = -Gene,          # Transform all columns except for 'Gene'
+    names_to = "Sample",   # Create a new column to store original column names
+    values_to = "value"    # Create a new column to store values
+  )
+
+# Display the transformed data
+print(ssgsea_kegg_HeatdataDeseq)
+```
+
+
+
+```{r}
+values=c("#491588", "#301b8d", "#1a237a", "#11479c", "#0a5797","#0b5f63","#074d41","#1f5e27","#366928","#827729","#f28131","#fc7226","#e3551e","#bd3a1b", "#c62828", "#ad1457", "#6a1b9a")
+row.names(HeatdataDeseq3)<- HeatdataDeseq3$Gene
+HeatdataDeseq3$Gene <- NULL
+iindata<-as.data.frame(t(HeatdataDeseq3))
+heatdata.clust_new<-hclust(dist(iindata,method = "euclidean"),method = "complete")
+
+p1=ggtree(heatdata.clust_new,branch.length='none',layout="circular",size=0.3, xlim=c(30,NA))
+#p1
+p2<-p1+geom_text(aes(label=node))##watch node
+p2
+```
+
+
+
+```{r}
+p1<-p1+geom_hilight(node=137, fill = "#491588", alpha = .4, extend =107)+
+  geom_hilight(node=157, fill = "#1976d2", alpha = .3, extend =107)+
+  geom_hilight(node=161, fill = "#1976d2", alpha = .3, extend =106)+
+  geom_hilight(node=179, fill = "#388e3c", alpha = .4, extend =107)+
+  geom_hilight(node=127, fill = "#f9a825", alpha = .3, extend =107)+
+  geom_hilight(node=150, fill = "#491588", alpha = .4, extend =105)+
+  geom_hilight(node=128, fill = "#1976d2", alpha = .3, extend =107)+
+  geom_hilight(node=189, fill = "#388e3c", alpha = .4, extend =105)+
+  geom_hilight(node=131, fill = "#f9a825", alpha = .3, extend =106)
+
+p1
+```
+
+```{r, fig.width=16, fig.height=16, out.width='100%', warning=FALSE}
+gene_colors <- c("#491588", "#301b8d", "#1a237a", "#11479c", "#0a5797","#0b5f63","#074d41","#1f5e27","#366928","#827729")
+p2 <- create_base_plot(p1, long_format_HeatdataDeseq, gene_colors)
+p2
+```
+
+
+```{r, fig.width=16, fig.height=16, out.width='100%', warning=FALSE}
+# Add a boxplot layer to the base plot
+p3 <- add_boxplot(p2, long_format_HeatdataDeseq)
+p3
+```
+
+
+```{r, fig.width=16, fig.height=16, out.width='100%', warning=FALSE}
+gene_colors <- c("#491588", "#301b8d", "#1a237a", "#11479c", "#0a5797","#0b5f63","#074d41","#1f5e27","#366928","#827729")
+# Add a new tile layer for SSGSEA data
+p4 <- add_new_tile_layer(p3, ssgsea_kegg_HeatdataDeseq, gene_colors, "Ssgsea Term")
+p4
+```
+
+
+```{r, fig.width=16, fig.height=16, out.width='100%', warning=FALSE}
+# Add another boxplot layer with specific aesthetic adjustments
+p5 <- add_boxplot(p4, ssgsea_kegg_HeatdataDeseq, fill_color="#f28131", alpha=0.65, offset=0.32)
+p5
+```
+
+
+```{r, fig.width=16, fig.height=16, out.width='100%', warning=FALSE}
+gene_colors <- c("#491588", "#301b8d", "#1a237a", "#11479c", "#0a5797","#0b5f63","#074d41","#1f5e27","#366928","#827729")
+# Add a new tile layer for GSVA data with specific alpha and offset adjustments
+p6 <- add_new_tile_layer(p5, gsva_kegg_HeatdataDeseq, gene_colors, "Gsva Term", alpha_value=c(0.3, 0.9), offset=0.02)
+p6
+```
+
+
+
+```{r, fig.width=18, fig.height=18, out.width='100%', warning=FALSE}
+gene_colors <- c("#491588", "#301b8d", "#1a237a", "#11479c", "#0a5797","#0b5f63","#074d41","#1f5e27","#366928","#827729")
+p7 <- circos_fruits(p1,
+                            long_format_HeatdataDeseq,
+                            ssgsea_kegg_HeatdataDeseq,
+                            gsva_kegg_HeatdataDeseq,
+                            gene_colors)
+p_final <- p7 + geom_strip(25, 114, label="TCGA_GTEX", offset=100, barsize=2, extend=1, color="#9575cd", alpha=0.5, hjust="center", align=TRUE, offset.text=19, angle=-90)
+print(p_final)
+```
+

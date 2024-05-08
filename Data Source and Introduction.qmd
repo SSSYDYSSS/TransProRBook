@@ -375,6 +375,7 @@ In the TransPro data analysis suite, each R package (e.g., TransProR) and Python
 Although we have batch-normalized all the data, please be aware that users can directly analyze their test data, which is acceptable. However, if you intend to merge public data from major databases, please carefully review the data processing procedures and quality control metrics of different databases in advance (for the generation of TCGA and GTEX data, please see the reference)! We <b style="color: #6a926b;">recommend</b> conducting combined analyses only under <b style="color: #6a926b;">relatively similar conditions</b>. We <b style="color: #6a926b;">further suggest obtaining the original fastq files</b> from the databases. This way, TransPro users can generate count data with uniform methods and parameters, significantly minimizing the noise caused by batch effects and enhancing the accuracy and authenticity of the results.
 :::
 
+
 # Reference
 
 ## TCGA Count Data
@@ -388,7 +389,6 @@ Although we have batch-normalized all the data, please be aware that users can d
 >   - <a href="https://hub.docker.com/r/broadinstitute/gtex_rnaseq" style="color: #758b76; font-weight: bold;">Alignment and Expression Quantification</a>: GTEx RNA-seq pipeline involves alignment (STAR), QC (RNA-SeQC), and expression quantification (RSEM & RNA-SeQC) for generating expected count data.
 >   - <a href="https://www.nature.com/articles/ng.2653" style="color: #758b76; font-weight: bold;">76-base, Paired-end Illumina TruSeq RNA Protocol</a>: GTEx uses a 76-base, paired-end Illumina TruSeq RNA protocol, averaging around 50 million aligned reads per sample for RNA sequencing.
 
-:::
 
 
 

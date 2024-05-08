@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="TransProR User Manual.">
+
+<title>TransProRBook - 8&nbsp; New ggtree_DEG_deseq2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./summary.html" rel="next">
+<link href="./Merging TransProR and TransProPy.html" rel="prev">
+<link href="./TransProR_rlogo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="custom.css">
+<meta property="og:title" content="TransProRBook - 8&nbsp; New ggtree_DEG_deseq2">
+<meta property="og:description" content="R package TransProR.">
+<meta property="og:image" content="https://github.com/SSSYDYSSS/TransProRBook/blob/main/TransProR_rlogo.png">
+<meta property="og:site-name" content="TransProRBook">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./DEG_deseq2 New ggtree.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">New ggtree_DEG_deseq2</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./TransProR_rlogo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">TransProRBook</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/SSSYDYSSS/TransProRBook" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data Source and Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Source and Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Extract Rawdata from TCGA and GTEX.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract Rawdata from TCGA and GTEX</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Remove Batch Effect.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Remove Batch Effect</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Select DEGs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Select DEGs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Comparison of Four Methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Comparison of Four Methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Comparison of Six Methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Comparison of Six Methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Merging TransProR and TransProPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Merging TransProR and TransProPy</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DEG_deseq2 New ggtree.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">New ggtree_DEG_deseq2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">pipeline</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#load-data" id="toc-load-data" class="nav-link active" data-scroll-target="#load-data"><span class="header-section-number">8.1</span> Load data</a></li>
+  <li><a href="#convert-from-symbol-to-entrezid" id="toc-convert-from-symbol-to-entrezid" class="nav-link" data-scroll-target="#convert-from-symbol-to-entrezid"><span class="header-section-number">8.2</span> Convert from SYMBOL to ENTREZID</a></li>
+  <li><a href="#select-differentially-expressed-genes" id="toc-select-differentially-expressed-genes" class="nav-link" data-scroll-target="#select-differentially-expressed-genes"><span class="header-section-number">8.3</span> Select differentially expressed genes</a></li>
+  <li><a href="#process-heatdata-for-ggtree-plotting" id="toc-process-heatdata-for-ggtree-plotting" class="nav-link" data-scroll-target="#process-heatdata-for-ggtree-plotting"><span class="header-section-number">8.4</span> Process heatdata for ggtree plotting</a></li>
+  <li><a href="#check-nodes-requiring-staining" id="toc-check-nodes-requiring-staining" class="nav-link" data-scroll-target="#check-nodes-requiring-staining"><span class="header-section-number">8.5</span> Check nodes requiring staining</a></li>
+  <li><a href="#usage-example" id="toc-usage-example" class="nav-link" data-scroll-target="#usage-example"><span class="header-section-number">8.6</span> Usage Example</a></li>
+  <li><a href="#diff_deseq2-enrichment-analysis" id="toc-diff_deseq2-enrichment-analysis" class="nav-link" data-scroll-target="#diff_deseq2-enrichment-analysis"><span class="header-section-number">8.7</span> Diff_deseq2 Enrichment Analysis</a>
+  <ul class="collapse">
+  <li><a href="#obtain-the-list-of-genes" id="toc-obtain-the-list-of-genes" class="nav-link" data-scroll-target="#obtain-the-list-of-genes"><span class="header-section-number">8.7.1</span> Obtain the list of genes</a></li>
+  <li><a href="#go-analysis-for-biological-processes-bp" id="toc-go-analysis-for-biological-processes-bp" class="nav-link" data-scroll-target="#go-analysis-for-biological-processes-bp"><span class="header-section-number">8.7.2</span> GO Analysis for Biological Processes (BP)</a></li>
+  <li><a href="#go-analysis-for-molecular-functions-mf" id="toc-go-analysis-for-molecular-functions-mf" class="nav-link" data-scroll-target="#go-analysis-for-molecular-functions-mf"><span class="header-section-number">8.7.3</span> GO Analysis for Molecular Functions (MF)</a></li>
+  <li><a href="#go-analysis-for-cellular-components-cc" id="toc-go-analysis-for-cellular-components-cc" class="nav-link" data-scroll-target="#go-analysis-for-cellular-components-cc"><span class="header-section-number">8.7.4</span> GO Analysis for Cellular Components (CC)</a></li>
+  <li><a href="#kegg-analysis" id="toc-kegg-analysis" class="nav-link" data-scroll-target="#kegg-analysis"><span class="header-section-number">8.7.5</span> KEGG Analysis</a></li>
+  <li><a href="#do-analysis" id="toc-do-analysis" class="nav-link" data-scroll-target="#do-analysis"><span class="header-section-number">8.7.6</span> DO Analysis</a></li>
+  <li><a href="#reactome-pathway-analysis" id="toc-reactome-pathway-analysis" class="nav-link" data-scroll-target="#reactome-pathway-analysis"><span class="header-section-number">8.7.7</span> Reactome Pathway Analysis</a></li>
+  <li><a href="#filter-and-organize-data-by-setting-the-count-values-of-genes-in-pathways-or-by-selecting-pathway-names-of-interest-to-the-user." id="toc-filter-and-organize-data-by-setting-the-count-values-of-genes-in-pathways-or-by-selecting-pathway-names-of-interest-to-the-user." class="nav-link" data-scroll-target="#filter-and-organize-data-by-setting-the-count-values-of-genes-in-pathways-or-by-selecting-pathway-names-of-interest-to-the-user."><span class="header-section-number">8.7.8</span> Filter and organize data by setting the count values of genes in pathways or by selecting pathway names of interest to the user.</a></li>
+  <li><a href="#label-highly-and-lowly-expressed-genes-and-annotate-corresponding-colors" id="toc-label-highly-and-lowly-expressed-genes-and-annotate-corresponding-colors" class="nav-link" data-scroll-target="#label-highly-and-lowly-expressed-genes-and-annotate-corresponding-colors"><span class="header-section-number">8.7.9</span> Label highly and lowly expressed genes and annotate corresponding colors</a></li>
+  <li><a href="#heatmap" id="toc-heatmap" class="nav-link" data-scroll-target="#heatmap"><span class="header-section-number">8.7.10</span> heatmap</a></li>
+  <li><a href="#ggtreeextrageom_fruit" id="toc-ggtreeextrageom_fruit" class="nav-link" data-scroll-target="#ggtreeextrageom_fruit"><span class="header-section-number">8.7.11</span> ggtreeExtra::geom_fruit</a></li>
+  <li><a href="#bar-plot-section" id="toc-bar-plot-section" class="nav-link" data-scroll-target="#bar-plot-section"><span class="header-section-number">8.7.12</span> Bar plot section</a></li>
+  </ul></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">9</span> Reference</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SSSYDYSSS/TransProRBook/edit/main/DEG_deseq2 New ggtree.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/blob/main/DEG_deseq2 New ggtree.qmd" class="toc-action">View source</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">New ggtree_DEG_deseq2</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This image showcases an integrated scientific visualization, centralizing a circular phylogenetic tree with annotated nodes, surrounded by associated heatmaps and bar charts that represent gene expression data and functional pathway enrichments.</p>
+</div>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(TransProR)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtree)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtreeExtra)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ReactomePA)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggnewscale)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="load-data" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="load-data"><span class="header-section-number">8.1</span> Load data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tumor <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"../test_TransProR/generated_data1/removebatch_SKCM_Skin_TCGA_exp_tumor.rds"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>normal <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">'../test_TransProR/generated_data1/removebatch_SKCM_Skin_Normal_TCGA_GTEX_count.rds'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the datasets, ensuring both have genes as row names</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>all_count_exp <span class="ot">&lt;-</span> <span class="fu">merge</span>(tumor, normal, <span class="at">by =</span> <span class="st">"row.names"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>all_count_exp <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">column_to_rownames</span>(all_count_exp, <span class="at">var =</span> <span class="st">"Row.names"</span>)  <span class="co"># Set the row names</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Drawing data</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>all_count_exp <span class="ot">&lt;-</span> <span class="fu">log_transform</span>(all_count_exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "log2 transform finished"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>DEG_deseq2 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">'../test_TransProR/Select DEGs/DEG_deseq2.Rdata'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#head(all_count_exp, 1)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DEG_deseq2, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          baseMean log2FoldChange      lfcSE      stat pvalue padj change
+A1BG      134.6084      -2.549682 0.05677219 -44.91075      0    0   down
+A2M     30208.9912       3.251168 0.08394645  38.72907      0    0     up
+AADACL2   801.4538      -8.229956 0.18969649 -43.38486      0    0   down
+AARS2    1153.5493       1.624753 0.03283522  49.48202      0    0 stable
+AARSD1    567.8672      -2.082289 0.02275703 -91.50088      0    0 stable</code></pre>
+</div>
+</div>
+</section>
+<section id="convert-from-symbol-to-entrezid" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="convert-from-symbol-to-entrezid"><span class="header-section-number">8.2</span> Convert from SYMBOL to ENTREZID</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert from SYMBOL to ENTREZID for convenient enrichment analysis later. It's crucial to do this now as a direct conversion may result in a reduced set of genes due to non-one-to-one correspondence.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># DEG_deseq2</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve gene list</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">rownames</span>(DEG_deseq2)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform conversion</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>gene <span class="ot">=</span> <span class="fu">bitr</span>(gene, <span class="at">fromType=</span><span class="st">"SYMBOL"</span>, <span class="at">toType=</span><span class="st">"ENTREZID"</span>, <span class="at">OrgDb=</span><span class="st">"org.Hs.eg.db"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>'select()' returned 1:many mapping between keys and columns</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in bitr(gene, fromType = "SYMBOL", toType = "ENTREZID", OrgDb =
+"org.Hs.eg.db"): 43.37% of input gene IDs are fail to map...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove duplicates and merge</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>gene <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">distinct</span>(gene, SYMBOL, <span class="at">.keep_all=</span><span class="cn">TRUE</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the SYMBOL column as a vector from the first dataset</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>symbols_vector <span class="ot">&lt;-</span> gene<span class="sc">$</span>SYMBOL</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the SYMBOL column to filter corresponding rows from the second dataset by row names</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>DEG_deseq2 <span class="ot">&lt;-</span> DEG_deseq2[<span class="fu">rownames</span>(DEG_deseq2) <span class="sc">%in%</span> symbols_vector, ]</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DEG_deseq2, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          baseMean log2FoldChange      lfcSE      stat pvalue padj change
+A1BG      134.6084      -2.549682 0.05677219 -44.91075      0    0   down
+A2M     30208.9912       3.251168 0.08394645  38.72907      0    0     up
+AADACL2   801.4538      -8.229956 0.18969649 -43.38486      0    0   down
+AARS2    1153.5493       1.624753 0.03283522  49.48202      0    0 stable
+AARSD1    567.8672      -2.082289 0.02275703 -91.50088      0    0 stable</code></pre>
+</div>
+</div>
+</section>
+<section id="select-differentially-expressed-genes" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="select-differentially-expressed-genes"><span class="header-section-number">8.3</span> Select differentially expressed genes</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Diff_deseq2 <span class="ot">&lt;-</span> <span class="fu">filter_diff_genes</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  DEG_deseq2, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">p_val_col =</span> <span class="st">"pvalue"</span>, </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">log_fc_col =</span> <span class="st">"log2FoldChange"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">p_val_threshold =</span> <span class="fl">0.01</span>, </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">log_fc_threshold =</span> <span class="fl">9.1</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># First, obtain a list of gene names from the row names of the first dataset</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>gene_names <span class="ot">&lt;-</span> <span class="fu">rownames</span>(Diff_deseq2)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the matching rows in the second dataframe</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>matched_rows <span class="ot">&lt;-</span> all_count_exp[gene_names, ]</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean for each row</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>averages <span class="ot">&lt;-</span> <span class="fu">rowMeans</span>(matched_rows, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Append the averages as a new column to the first dataframe</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>Diff_deseq2<span class="sc">$</span>average <span class="ot">&lt;-</span> averages</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>Diff_deseq2<span class="sc">$</span>ID <span class="ot">&lt;-</span> <span class="fu">rownames</span>(Diff_deseq2)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>Diff_deseq2<span class="sc">$</span>changetype <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Diff_deseq2<span class="sc">$</span>change <span class="sc">==</span> <span class="st">'up'</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a small threshold value</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>small_value <span class="ot">&lt;-</span> .Machine<span class="sc">$</span>double.xmin</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Before calculating -log10, replace zeroes with the small threshold value and assign it to a new column</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>Diff_deseq2<span class="sc">$</span>log_pvalue <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Diff_deseq2<span class="sc">$</span>pvalue <span class="sc">==</span> <span class="dv">0</span>, <span class="sc">-</span><span class="fu">log10</span>(small_value), <span class="sc">-</span><span class="fu">log10</span>(Diff_deseq2<span class="sc">$</span>pvalue))</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the expression data corresponding to the differentially expressed genes</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>heatdata_deseq2 <span class="ot">&lt;-</span> all_count_exp[<span class="fu">rownames</span>(Diff_deseq2), ]</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="co">#head(heatdata_deseq2, 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="process-heatdata-for-ggtree-plotting" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="process-heatdata-for-ggtree-plotting"><span class="header-section-number">8.4</span> Process heatdata for ggtree plotting</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>HeatdataDeseq2 <span class="ot">&lt;-</span> <span class="fu">process_heatdata</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  heatdata_deseq2, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">selection =</span> <span class="dv">2</span>, </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">custom_names =</span> <span class="cn">NULL</span>, </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">num_names_per_group =</span> <span class="dv">4</span>, </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">prefix_length =</span> <span class="dv">4</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(HeatdataDeseq2, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  TCGA_1   TCGA_2   TCGA_3   TCGA_4    GTEX_1    GTEX_2
+ADIRF            0.00000  0.00000 0.000000 0.000000 10.426265  7.954196
+ATP6V1G2-DDX39B  0.00000  0.00000 0.000000 2.000000  8.044394 10.769011
+BANCR           10.82655 10.68299 8.997179 5.491853  0.000000  0.000000
+BOLA2            0.00000  0.00000 0.000000 0.000000  6.700440  7.693487
+C1QTNF5          0.00000  0.00000 0.000000 0.000000  8.134426  8.658211
+                   GTEX_3    GTEX_4
+ADIRF           10.194757 10.817783
+ATP6V1G2-DDX39B  5.554589  8.335390
+BANCR            0.000000  1.000000
+BOLA2            6.554589  7.066089
+C1QTNF5          7.266787  8.071462</code></pre>
+</div>
+</div>
+</section>
+<section id="check-nodes-requiring-staining" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="check-nodes-requiring-staining"><span class="header-section-number">8.5</span> Check nodes requiring staining</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>HclustDeseq2 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(HeatdataDeseq2, <span class="at">method =</span> <span class="st">"euclidean"</span>), <span class="at">method =</span> <span class="st">"complete"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">=</span> <span class="fu">ggtree</span>(HclustDeseq2, <span class="at">branch.length =</span> <span class="st">'none'</span>, <span class="at">layout =</span> <span class="st">"circular"</span>, <span class="at">size =</span> <span class="fl">0.2</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="cn">NA</span>))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="DEG_deseq2-New-ggtree_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine node points, note the x-coordinate in this df (tree_data)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert data generated by ggtree into a dataframe</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>tree_data <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(p1<span class="sc">$</span>data)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">rotate_tree</span>(p1, <span class="dv">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Coordinate system already present. Adding new coordinate system, which will
+replace the existing one.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="DEG_deseq2-New-ggtree_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Review nodes</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p2 <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> node)) <span class="sc">+</span> <span class="fu">geom_tiplab</span>(<span class="at">offset =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="DEG_deseq2-New-ggtree_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+</section>
+<section id="usage-example" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="usage-example"><span class="header-section-number">8.6</span> Usage Example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Please replace the following vectors with your specific values</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>nodes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">117</span>, <span class="dv">129</span>, <span class="dv">125</span>, <span class="dv">127</span>, <span class="dv">119</span>, <span class="dv">123</span>, <span class="dv">139</span>, <span class="dv">166</span>, <span class="dv">124</span>, <span class="dv">131</span>, <span class="dv">217</span>) <span class="co"># x-values of the nodes you want to highlight</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>fill_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#CD6600"</span>, <span class="st">"#CD6600"</span>, <span class="st">"#CD6600"</span>, <span class="st">"#CD6600"</span>, <span class="st">"#009933"</span>, <span class="st">"#009933"</span>, <span class="st">"#009933"</span>, <span class="st">"#009933"</span>, <span class="st">"#9B30FF"</span>, <span class="st">"#9B30FF"</span>, <span class="st">"#9B30FF"</span>) <span class="co"># Fill colors</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>alpha_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>) <span class="co"># Transparency values</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>extend_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">24</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">24</span>, <span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">24</span>, <span class="dv">24</span>) <span class="co"># Values for the 'extend' parameter</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, you can call this function to create your ggtree layer</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">highlight_by_node</span>(</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  p2, </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  nodes, </span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  fill_colors, </span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  alpha_values, </span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  extend_values</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="DEG_deseq2-New-ggtree_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="diff_deseq2-enrichment-analysis" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="diff_deseq2-enrichment-analysis"><span class="header-section-number">8.7</span> Diff_deseq2 Enrichment Analysis</h2>
+<section id="obtain-the-list-of-genes" class="level3" data-number="8.7.1">
+<h3 data-number="8.7.1" class="anchored" data-anchor-id="obtain-the-list-of-genes"><span class="header-section-number">8.7.1</span> Obtain the list of genes</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">rownames</span>(Diff_deseq2)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Convert</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>gene <span class="ot">=</span> <span class="fu">bitr</span>(gene, <span class="at">fromType=</span><span class="st">"SYMBOL"</span>, <span class="at">toType=</span><span class="st">"ENTREZID"</span>, <span class="at">OrgDb=</span><span class="st">"org.Hs.eg.db"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>'select()' returned 1:1 mapping between keys and columns</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Remove duplicates and merge</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>gene <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">distinct</span>(gene, SYMBOL, <span class="at">.keep_all=</span><span class="cn">TRUE</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>gene_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">logFC=</span>Diff_deseq2<span class="sc">$</span>log2FoldChange,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">SYMBOL =</span> <span class="fu">rownames</span>(Diff_deseq2))</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>gene_df <span class="ot">&lt;-</span> <span class="fu">merge</span>(gene_df, gene, <span class="at">by=</span><span class="st">"SYMBOL"</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>GO_deseq2 <span class="ot">&lt;-</span> gene_df<span class="sc">$</span>ENTREZID</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="go-analysis-for-biological-processes-bp" class="level3" data-number="8.7.2">
+<h3 data-number="8.7.2" class="anchored" data-anchor-id="go-analysis-for-biological-processes-bp"><span class="header-section-number">8.7.2</span> GO Analysis for Biological Processes (BP)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform gene enrichment analysis</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>erich.go.BP_deseq2 <span class="ot">&lt;-</span> <span class="fu">enrichGO</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene =</span> GO_deseq2,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">OrgDb =</span> org.Hs.eg.db,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">keyType =</span> <span class="st">"ENTREZID"</span>,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ont =</span> <span class="st">'BP'</span>, <span class="co"># Other categories: "CC", "MF" for molecular function</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pvalueCutoff =</span> <span class="fl">0.05</span>,</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">qvalueCutoff =</span> <span class="fl">0.05</span>,</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">readable =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>erich.go.BP.outdata_deseq2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(erich.go.BP_deseq2)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment to write output to CSV</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(erich.go.BP.outdata_deseq2, "E:/fruit/erich.go.BP.outdata.csv")</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(erich.go.BP.outdata_deseq2, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   ID
+GO:0016064 GO:0016064
+GO:0019724 GO:0019724
+GO:0002377 GO:0002377
+GO:0002449 GO:0002449
+GO:0002460 GO:0002460
+                                                                                                                         Description
+GO:0016064                                                                                   immunoglobulin mediated immune response
+GO:0019724                                                                                                  B cell mediated immunity
+GO:0002377                                                                                                 immunoglobulin production
+GO:0002449                                                                                              lymphocyte mediated immunity
+GO:0002460 adaptive immune response based on somatic recombination of immune receptors built from immunoglobulin superfamily domains
+           GeneRatio   BgRatio       pvalue     p.adjust       qvalue
+GO:0016064     14/80 205/18870 1.639824e-13 6.821238e-11 6.653066e-11
+GO:0019724     14/80 208/18870 2.003300e-13 6.821238e-11 6.653066e-11
+GO:0002377     12/80 196/18870 3.655475e-11 8.297927e-09 8.093349e-09
+GO:0002449     14/80 368/18870 4.233820e-10 7.208078e-08 7.030369e-08
+GO:0002460     14/80 380/18870 6.427551e-10 8.754324e-08 8.538494e-08
+                                                                                                                                 geneID
+GO:0016064 IGHV1-18/IGHV1-24/IGHV1-58/IGHV1-69/IGHV1-69-2/IGHV2-26/IGHV3-15/IGHV3-21/IGHV3-23/IGHV4-31/IGHV4-34/IGHV4-39/IGHV5-51/TREX1
+GO:0019724 IGHV1-18/IGHV1-24/IGHV1-58/IGHV1-69/IGHV1-69-2/IGHV2-26/IGHV3-15/IGHV3-21/IGHV3-23/IGHV4-31/IGHV4-34/IGHV4-39/IGHV5-51/TREX1
+GO:0002377                          IGKV1-16/IGKV4-1/IGLV1-40/IGLV2-23/IGLV3-10/IGLV3-19/IGLV3-21/IGLV3-25/IGLV4-60/IGLV4-69/TREX1/XBP1
+GO:0002449 IGHV1-18/IGHV1-24/IGHV1-58/IGHV1-69/IGHV1-69-2/IGHV2-26/IGHV3-15/IGHV3-21/IGHV3-23/IGHV4-31/IGHV4-34/IGHV4-39/IGHV5-51/TREX1
+GO:0002460 IGHV1-18/IGHV1-24/IGHV1-58/IGHV1-69/IGHV1-69-2/IGHV2-26/IGHV3-15/IGHV3-21/IGHV3-23/IGHV4-31/IGHV4-34/IGHV4-39/IGHV5-51/TREX1
+           Count
+GO:0016064    14
+GO:0019724    14
+GO:0002377    12
+GO:0002449    14
+GO:0002460    14</code></pre>
+</div>
+</div>
+</section>
+<section id="go-analysis-for-molecular-functions-mf" class="level3" data-number="8.7.3">
+<h3 data-number="8.7.3" class="anchored" data-anchor-id="go-analysis-for-molecular-functions-mf"><span class="header-section-number">8.7.3</span> GO Analysis for Molecular Functions (MF)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform gene enrichment analysis</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>erich.go.MF_deseq2 <span class="ot">&lt;-</span> <span class="fu">enrichGO</span>(</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene =</span> GO_deseq2,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">OrgDb =</span> org.Hs.eg.db,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">keyType =</span> <span class="st">"ENTREZID"</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ont =</span> <span class="st">'MF'</span>, <span class="co"># Other categories: "CC", "MF" for molecular function</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pvalueCutoff =</span> <span class="fl">0.05</span>,</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">qvalueCutoff =</span> <span class="fl">0.05</span>,</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">readable =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>erich.go.MF.outdata_deseq2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(erich.go.MF_deseq2)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment to write output to CSV</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(erich.go.MF.outdata_deseq2, "E:/fruit/erich.go.MF.outdata.csv")</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(erich.go.MF.outdata_deseq2, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   ID                              Description GeneRatio
+GO:0003823 GO:0003823                          antigen binding     21/87
+GO:0030280 GO:0030280 structural constituent of skin epidermis      4/87
+GO:0042826 GO:0042826              histone deacetylase binding      5/87
+             BgRatio       pvalue     p.adjust       qvalue
+GO:0003823 178/18496 5.857929e-24 7.146673e-22 7.146673e-22
+GO:0030280  36/18496 2.397665e-05 1.462576e-03 1.462576e-03
+GO:0042826 127/18496 3.322487e-04 1.351145e-02 1.351145e-02
+                                                                                                                                                                                                geneID
+GO:0003823 IGHV1-18/IGHV1-24/IGHV1-58/IGHV1-69/IGHV1-69-2/IGHV2-26/IGHV3-15/IGHV3-21/IGHV3-23/IGHV4-31/IGHV4-34/IGHV4-39/IGHV5-51/IGKV1-16/IGKV4-1/IGLV1-40/IGLV2-23/IGLV3-19/IGLV3-21/IGLV3-25/TRBV28
+GO:0030280                                                                                                                                                                   KRT2/KRT71/KRT85/KRTAP1-3
+GO:0042826                                                                                                                                                         MAGEA1/MAGEA12/MAGEA3/MAGEA4/MAGEA6
+           Count
+GO:0003823    21
+GO:0030280     4
+GO:0042826     5</code></pre>
+</div>
+</div>
+</section>
+<section id="go-analysis-for-cellular-components-cc" class="level3" data-number="8.7.4">
+<h3 data-number="8.7.4" class="anchored" data-anchor-id="go-analysis-for-cellular-components-cc"><span class="header-section-number">8.7.4</span> GO Analysis for Cellular Components (CC)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform gene enrichment analysis</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>erich.go.CC_deseq2 <span class="ot">&lt;-</span> <span class="fu">enrichGO</span>(</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene =</span> GO_deseq2,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">OrgDb =</span> org.Hs.eg.db,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">keyType =</span> <span class="st">"ENTREZID"</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ont =</span> <span class="st">'CC'</span>, <span class="co"># Other categories: "CC", "MF" for molecular function</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pvalueCutoff =</span> <span class="fl">0.05</span>,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">qvalueCutoff =</span> <span class="fl">0.05</span>,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">readable =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>erich.go.CC.outdata_deseq2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(erich.go.CC_deseq2)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment to write output to CSV</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(erich.go.CC.outdata_deseq2, "E:/fruit/erich.go.CC.outdata.csv")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="kegg-analysis" class="level3" data-number="8.7.5">
+<h3 data-number="8.7.5" class="anchored" data-anchor-id="kegg-analysis"><span class="header-section-number">8.7.5</span> KEGG Analysis</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>kegg.out_deseq2 <span class="ot">=</span> <span class="fu">enrichKEGG</span>(</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene =</span> GO_deseq2,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">organism =</span> <span class="st">"hsa"</span>,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">keyType =</span> <span class="st">"kegg"</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pvalueCutoff =</span> <span class="fl">0.05</span>,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">pAdjustMethod =</span> <span class="st">"BH"</span>,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">qvalueCutoff =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Reading KEGG annotation online: "https://rest.kegg.jp/link/hsa/pathway"...</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Reading KEGG annotation online: "https://rest.kegg.jp/list/pathway/hsa"...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>kegg.out.outdata_deseq2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(kegg.out_deseq2)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment to export the data, which are in ENTREZID format</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(kegg.out.outdata_deseq2, "E:/kegg.out.outdata.csv")</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="do">##### Convert numeric Entrez gene IDs or Ensembl gene IDs from above code to symbols</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>kegg.out1_deseq2 <span class="ot">=</span> <span class="fu">as.data.frame</span>(kegg.out_deseq2)</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>ENTREZID <span class="ot">=</span> <span class="fu">strsplit</span>(kegg.out1_deseq2<span class="sc">$</span>geneID, <span class="st">"/"</span>)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>symbol <span class="ot">=</span> <span class="fu">sapply</span>(ENTREZID, <span class="cf">function</span>(x) {</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">=</span> <span class="fu">bitr</span>(x, <span class="at">fromType =</span> <span class="st">"ENTREZID"</span>, <span class="at">toType =</span> <span class="st">"SYMBOL"</span>, <span class="at">OrgDb =</span> <span class="st">"org.Hs.eg.db"</span>)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># In case of multiple matches, take the first one</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">=</span> y[<span class="sc">!</span><span class="fu">duplicated</span>(y<span class="sc">$</span>ENTREZID), <span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">=</span> <span class="fu">paste</span>(y, <span class="at">collapse =</span> <span class="st">"/"</span>)</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>kegg.out1_deseq2<span class="sc">$</span>geneID <span class="ot">=</span> symbol</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>kegg.out1.outdata_deseq2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(kegg.out1_deseq2)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment to export the converted data</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(kegg.out1.outdata_deseq2, "E:/fruit/kegg.out1.outdata.csv")</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kegg.out.outdata_deseq2, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] category    subcategory ID          Description GeneRatio   BgRatio    
+ [7] pvalue      p.adjust    qvalue      geneID      Count      
+&lt;0 rows&gt; (or 0-length row.names)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kegg.out1.outdata_deseq2, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] category    subcategory ID          Description GeneRatio   BgRatio    
+ [7] pvalue      p.adjust    qvalue      geneID      Count      
+&lt;0 rows&gt; (or 0-length row.names)</code></pre>
+</div>
+</div>
+</section>
+<section id="do-analysis" class="level3" data-number="8.7.6">
+<h3 data-number="8.7.6" class="anchored" data-anchor-id="do-analysis"><span class="header-section-number">8.7.6</span> DO Analysis</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>erich.go.DO_deseq2 <span class="ot">=</span> <span class="fu">enrichDO</span>(<span class="at">gene =</span> GO_deseq2,</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">ont =</span> <span class="st">"DO"</span>, <span class="co"># Other categories: "CC", "MF" for molecular function</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">pvalueCutoff =</span> <span class="fl">0.05</span>,</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">qvalueCutoff =</span> <span class="fl">0.05</span>,</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">readable =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>erich.go.DO.outdata_deseq2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(erich.go.DO_deseq2)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment to export the data</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(erich.go.DO.outdata_deseq2, "E:/fruit/erich.go.DO.outdata.csv")</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(erich.go.DO.outdata_deseq2, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   ID           Description GeneRatio  BgRatio       pvalue
+DOID:11132 DOID:11132 prostatic hypertrophy      3/34 34/10312 0.0001827545
+             p.adjust     qvalue               geneID Count
+DOID:11132 0.02668216 0.02481614 MAGEA1/MAGEA3/MAGEA4     3</code></pre>
+</div>
+</div>
+</section>
+<section id="reactome-pathway-analysis" class="level3" data-number="8.7.7">
+<h3 data-number="8.7.7" class="anchored" data-anchor-id="reactome-pathway-analysis"><span class="header-section-number">8.7.7</span> Reactome Pathway Analysis</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>erich.go.Reactome_deseq2 <span class="ot">&lt;-</span> <span class="fu">enrichPathway</span>(<span class="at">gene =</span> GO_deseq2, <span class="at">pvalueCutoff =</span> <span class="fl">0.05</span>, <span class="at">readable =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>erich.go.Reactome.outdata_deseq2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(erich.go.Reactome_deseq2)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment to export the data</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(erich.go.Reactome.outdata_deseq2, "E:/fruit/erich.go.Reactome.outdata.csv")</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(erich.go.Reactome.outdata_deseq2, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                         ID                         Description GeneRatio
+R-HSA-6805567 R-HSA-6805567                      Keratinization     18/43
+R-HSA-6809371 R-HSA-6809371 Formation of the cornified envelope      6/43
+                BgRatio       pvalue     p.adjust       qvalue
+R-HSA-6805567 214/11009 3.032346e-20 2.850405e-18 2.649312e-18
+R-HSA-6809371 129/11009 9.843111e-06 4.626262e-04 4.299885e-04
+                                                                                                                                                        geneID
+R-HSA-6805567 CDSN/KRT2/KRT25/KRT35/KRT71/KRT85/KRTAP1-3/KRTAP10-5/KRTAP11-1/KRTAP2-1/KRTAP2-2/KRTAP2-4/KRTAP26-1/KRTAP3-3/KRTAP4-2/KRTAP8-1/KRTAP9-3/KRTAP9-8
+R-HSA-6809371                                                                                                                CDSN/KRT2/KRT25/KRT35/KRT71/KRT85
+              Count
+R-HSA-6805567    18
+R-HSA-6809371     6</code></pre>
+</div>
+</div>
+</section>
+<section id="filter-and-organize-data-by-setting-the-count-values-of-genes-in-pathways-or-by-selecting-pathway-names-of-interest-to-the-user." class="level3" data-number="8.7.8">
+<h3 data-number="8.7.8" class="anchored" data-anchor-id="filter-and-organize-data-by-setting-the-count-values-of-genes-in-pathways-or-by-selecting-pathway-names-of-interest-to-the-user."><span class="header-section-number">8.7.8</span> Filter and organize data by setting the count values of genes in pathways or by selecting pathway names of interest to the user.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DEG_deseq2</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Conversion</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>GO_deseq2 <span class="ot">=</span> <span class="fu">bitr</span>(GO_deseq2, <span class="at">fromType=</span><span class="st">"ENTREZID"</span>, <span class="at">toType=</span><span class="st">"SYMBOL"</span>, <span class="at">OrgDb=</span><span class="st">"org.Hs.eg.db"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>'select()' returned 1:1 mapping between keys and columns</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>GO_deseq2 <span class="ot">&lt;-</span> GO_deseq2<span class="sc">$</span>SYMBOL</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage Example</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># count</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>count_threshold <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>result_threshold_deseq2 <span class="ot">&lt;-</span> <span class="fu">pathway_count</span>(GO_deseq2, count_threshold, erich.go.BP.outdata_deseq2)</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result_threshold_deseq2, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Symble                             Description Exists
+1           ADIRF immunoglobulin mediated immune response      0
+2 ATP6V1G2-DDX39B immunoglobulin mediated immune response      0
+3           BANCR immunoglobulin mediated immune response      0
+4           BOLA2 immunoglobulin mediated immune response      0
+5         C1QTNF5 immunoglobulin mediated immune response      0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of selected pathway names</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>selected_pathways_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"immunoglobulin production"</span>, <span class="st">"production of molecular mediator of immune response"</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use function</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>result_names_deseq2 <span class="ot">&lt;-</span> <span class="fu">pathway_description</span>(GO_deseq2, selected_pathways_names, erich.go.BP.outdata_deseq2)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># View the results</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result_names_deseq2, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Symble               Description Exists
+1           ADIRF immunoglobulin production      0
+2 ATP6V1G2-DDX39B immunoglobulin production      0
+3           BANCR immunoglobulin production      0
+4           BOLA2 immunoglobulin production      0
+5         C1QTNF5 immunoglobulin production      0</code></pre>
+</div>
+</div>
+</section>
+<section id="label-highly-and-lowly-expressed-genes-and-annotate-corresponding-colors" class="level3" data-number="8.7.9">
+<h3 data-number="8.7.9" class="anchored" data-anchor-id="label-highly-and-lowly-expressed-genes-and-annotate-corresponding-colors"><span class="header-section-number">8.7.9</span> Label highly and lowly expressed genes and annotate corresponding colors</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>selected_genes_deseq2 <span class="ot">&lt;-</span> result_threshold_deseq2 <span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Exists <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Symble) <span class="sc">%&gt;%</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>()</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Invoke the function</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>result_deseq2 <span class="ot">&lt;-</span> <span class="fu">gene_color</span>(selected_genes_deseq2, Diff_deseq2, <span class="st">"#0000EE"</span>, <span class="st">"#fc4746"</span>)</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add gene highlights to the plot</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>add_gene_highlights_p3 <span class="ot">&lt;-</span> <span class="fu">highlight_genes</span>(p2, result_deseq2, <span class="at">hilight_extend =</span> <span class="dv">26</span>)</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>add_gene_highlights_p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="DEG_deseq2-New-ggtree_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="heatmap" class="level3" data-number="8.7.10">
+<h3 data-number="8.7.10" class="anchored" data-anchor-id="heatmap"><span class="header-section-number">8.7.10</span> heatmap</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>p4<span class="ot">&lt;-</span> <span class="fu">gheatmap</span>(</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  add_gene_highlights_p3<span class="sc">+</span> <span class="fu">geom_tiplab</span>(<span class="at">offset=</span><span class="dv">15</span>,<span class="at">size=</span><span class="fl">2.5</span>),</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  HeatdataDeseq2,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">1</span>, </span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">colnames_offset_y =</span> <span class="fl">0.5</span>,</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">font.size=</span> <span class="dv">2</span>, </span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">hjust =</span> <span class="dv">0</span>)<span class="sc">+</span> <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="at">low =</span> <span class="st">"#c2d5e5"</span>, <span class="at">high =</span> <span class="st">"steelblue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Scale for fill is already present.
+Adding another scale for fill, which will replace the existing scale.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>p4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="DEG_deseq2-New-ggtree_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+</section>
+<section id="ggtreeextrageom_fruit" class="level3" data-number="8.7.11">
+<h3 data-number="8.7.11" class="anchored" data-anchor-id="ggtreeextrageom_fruit"><span class="header-section-number">8.7.11</span> ggtreeExtra::geom_fruit</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Shorten a name that was too long</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>result_threshold_deseq2<span class="sc">$</span>Description <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"adaptive immune response based on somatic recombination of immune receptors built from immunoglobulin superfamily domains"</span>,</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"adaptive immune response"</span>, result_threshold_deseq2<span class="sc">$</span>Description)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Enhance the visualization with additional scale and elements</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>p7 <span class="ot">&lt;-</span> p4 <span class="sc">+</span> <span class="fu">new_scale_fill</span>() <span class="sc">+</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_fruit</span>(<span class="at">data =</span> result_threshold_deseq2, <span class="at">geom =</span> geom_tile,</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> Symble, <span class="at">x =</span> Description, <span class="at">alpha =</span> Exists, <span class="at">fill =</span> Description),</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"grey50"</span>, <span class="at">pwidth =</span> <span class="fl">0.5</span>, <span class="at">offset =</span> <span class="fl">1.02</span>, <span class="at">size =</span> <span class="fl">0.02</span>) <span class="sc">+</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_alpha_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.8</span>),</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>                          <span class="at">guide =</span> <span class="fu">guide_legend</span>(<span class="at">keywidth =</span> <span class="fl">0.3</span>, <span class="at">keyheight =</span> <span class="fl">0.3</span>,  <span class="at">order =</span> <span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#CD6600"</span>, <span class="st">"#009933"</span>, <span class="st">"#0000EE"</span>, <span class="st">"#9B30FF"</span>, <span class="st">"#FF4040"</span>), <span class="at">guide =</span> <span class="fu">guide_legend</span>(<span class="at">keywidth =</span> <span class="fl">0.3</span>, <span class="at">keyheight =</span> <span class="fl">0.3</span>, <span class="at">order =</span> <span class="dv">2</span>))</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>p7</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="DEG_deseq2-New-ggtree_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+</section>
+<section id="bar-plot-section" class="level3" data-number="8.7.12">
+<h3 data-number="8.7.12" class="anchored" data-anchor-id="bar-plot-section"><span class="header-section-number">8.7.12</span> Bar plot section</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># offset: Adjust the spacing between each bar</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>p8 <span class="ot">&lt;-</span> p7 <span class="sc">+</span> <span class="fu">new_scale_fill</span>() <span class="sc">+</span> </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_fruit</span>(<span class="at">data =</span> Diff_deseq2, <span class="at">geom =</span> geom_bar, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> ID, <span class="at">x =</span> log_pvalue, <span class="at">fill =</span> <span class="st">"log_pvalue"</span>), <span class="at">pwidth =</span> <span class="fl">0.3</span>, <span class="at">offset =</span> <span class="fl">0.1</span>, <span class="at">orientation =</span> <span class="st">"y"</span>, <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_fruit</span>(<span class="at">data =</span> Diff_deseq2, <span class="at">geom =</span> geom_bar, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> ID, <span class="at">x =</span> log2FoldChange, <span class="at">fill =</span> <span class="st">"log2FoldChange"</span>), <span class="at">pwidth =</span> <span class="fl">0.3</span>, <span class="at">offset =</span> <span class="fl">0.2</span>, <span class="at">orientation =</span> <span class="st">"y"</span>, <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_fruit</span>(<span class="at">data =</span> Diff_deseq2, <span class="at">geom =</span> geom_bar, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> ID, <span class="at">x =</span> average, <span class="at">fill =</span> <span class="st">"average"</span>), <span class="at">pwidth =</span> <span class="fl">0.3</span>, <span class="at">offset =</span> <span class="fl">0.04</span>, <span class="at">orientation =</span> <span class="st">"y"</span>, <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"log_pvalue"</span> <span class="ot">=</span> <span class="st">"#87CEFA"</span>, <span class="st">"log2FoldChange"</span> <span class="ot">=</span> <span class="st">"#FFC125"</span>, <span class="st">"average"</span> <span class="ot">=</span> <span class="st">"#7B68EE"</span>))</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>p8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="DEG_deseq2-New-ggtree_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="reference" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Reference</h1>
+<blockquote class="blockquote">
+<ul>
+<li><a href="https://doi.org/10.1111/2041-210X.12628" style="color: #758b76; font-weight: bold;">G Yu, DK Smith, H Zhu, Y Guan, TTY Lam*. ggtree: an R package for visualization and annotation of phylogenetic trees with their covariates and other associated data. Methods in Ecology and Evolution. 2017, 8(1):28-36.</a></li>
+<li><a href="https://doi.org/10.1093/molbev/msy194" style="color: #758b76; font-weight: bold;">G Yu<em>, TTY Lam, H Zhu, Y Guan</em>. Two methods for mapping and visualizing associated data on phylogeny using ggtree. Molecular Biology and Evolution, 2018, 35(2):3041-3043. </a></li>
+<li><a href="https://doi.org/10.1093/molbev/msab166" style="color: #758b76; font-weight: bold;">S Xu, Z Dai, P Guo, X Fu, S Liu, L Zhou, W Tang, T Feng, M Chen, L Zhan, T Wu, E Hu, Y Jiang<em>, X Bo</em> and G Yu*. ggtreeExtra: Compact visualization of richly annotated phylogenetic data. Molecular Biology and Evolution. 2021, 38(9):4039-4042. </a></li>
+<li><a href="https://doi.org/10.1016/j.xinn.2021.100141" style="color: #758b76; font-weight: bold;">T Wu#, E Hu#, S Xu, M Chen, P Guo, Z Dai, T Feng, L Zhou, W Tang, L Zhan, X Fu, S Liu, X Bo<em>, G Yu</em>. clusterProfiler 4.0: A universal enrichment tool for interpreting omics data. The Innovation. 2021, 2(3):100141. </a></li>
+<li><a href="https://pubs.rsc.org/en/content/articlelanding/2016/mb/c5mb00663e" style="color: #758b76; font-weight: bold;">G Yu, QY He*. ReactomePA: an R/Bioconductor package for reactome pathway analysis and visualization. Molecular BioSystems 2016, 12(2):477-479.</a></li>
+<li><a href="https://www.altmetric.com/details/2788597" style="color: #758b76; font-weight: bold;">G Yu, LG Wang, GR Yan, QY He. DOSE: an R/Bioconductor package for Disease Ontology Semantic and Enrichment analysis. Bioinformatics 2015, 31(4):608-609.</a></li>
+</ul>
+</blockquote>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="SSSYDYSSS/TransProRBook" data-repo-id="R_kgDOKiXTww" data-category="General" data-category-id="DIC_kwDOKiXTw84CaRd5" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Merging TransProR and TransProPy.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Merging TransProR and TransProPy</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./summary.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

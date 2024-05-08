@@ -41,12 +41,21 @@ h4 {
     background-color: #f7ebdd !important;
 }
 
+.callout-highlight {
+    border: 8px solid #759c78 !important;
+    background-color: #d7e4da !important;
+}
+
 .callout-tip .callout-header {
     background-color: #c090bd !important; 
 }
 
 .callout-note .callout-header {
     background-color: #e2ad71 !important; 
+}
+
+.callout-highlight .callout-header {
+    background-color: #688d6c !important; 
 }
 
 /* 改变Tip框中的标题颜色 */
@@ -57,6 +66,11 @@ h4 {
 /* 改变Note框中的标题颜色 */
 .callout-note .callout-title-container {
     color: #766143 !important;
+}
+
+/* 改变Note框中的标题颜色 */
+.callout-highlight .callout-title-container {
+    color: #4b704e !important;
 }
 
 .panel-tabset {
@@ -91,3 +105,7 @@ h4 {
     /* white-space: pre-wrap !important; */
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}

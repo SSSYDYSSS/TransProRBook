@@ -1,0 +1,884 @@
+# Enrichment Circlize
+
+```{r setup, include=FALSE}
+library(TransProR)
+library(clusterProfiler)
+library(readr)
+library(GSVA)
+library(fgsea)
+library(stringr)
+library(dplyr)
+library(tidyr)
+```
+
+```r 
+library(TransProR)
+library(clusterProfiler)
+library(readr)
+library(GSVA)
+library(fgsea)
+library(stringr)
+library(dplyr)
+library(tidyr)
+```
+## geneList 
+```{r}
+DEG_deseq2 <- readRDS('../test_TransProR/Select DEGs/DEG_deseq2.Rdata')
+DEG_edgeR <- readRDS('../test_TransProR/Select DEGs/DEG_edgeR.Rdata')
+DEG_limma_voom <- readRDS('../test_TransProR/Select DEGs/DEG_limma_voom.Rdata')
+Wilcoxon_rank_sum_testoutRst <- readRDS('../test_TransProR/Select DEGs/Wilcoxon_rank_sum_testoutRst.Rdata')
+
+
+DEG_deseq2_geneList <- DEG_deseq2$log2FoldChange
+names(DEG_deseq2_geneList) = row.names(DEG_deseq2)
+DEG_deseq2_geneList = sort(DEG_deseq2_geneList, decreasing = TRUE)
+head(DEG_deseq2_geneList)
+
+DEG_edgeR_geneList <- DEG_edgeR$logFC
+names(DEG_edgeR_geneList) = row.names(DEG_edgeR)
+DEG_edgeR_geneList = sort(DEG_edgeR_geneList, decreasing = TRUE)
+head(DEG_edgeR_geneList)
+
+DEG_limma_voom_geneList <- DEG_limma_voom$logFC
+names(DEG_limma_voom_geneList) = row.names(DEG_limma_voom)
+DEG_limma_voom_geneList = sort(DEG_limma_voom_geneList, decreasing = TRUE)
+head(DEG_limma_voom_geneList)
+
+Wilcoxon_rank_sum_testoutRst_geneList <- Wilcoxon_rank_sum_testoutRst$log2foldChange
+names(Wilcoxon_rank_sum_testoutRst_geneList) = row.names(Wilcoxon_rank_sum_testoutRst)
+Wilcoxon_rank_sum_testoutRst_geneList = sort(Wilcoxon_rank_sum_testoutRst_geneList, decreasing = TRUE)
+head(Wilcoxon_rank_sum_testoutRst_geneList)
+```
+
+## symbols.gmt
+```{r}
+hallmarks_pathways <- gmtPathways("../gmt/h.all.v7.4.symbols.gmt")
+go_pathways <- gmtPathways("../gmt/c5.go.v7.4.symbols.gmt")
+kegg_pathways <- gmtPathways("../gmt/c2.cp.kegg.v7.4.symbols.gmt")
+```
+
+## fgsea:hallmarks/go/kegg
+
+
+```{r, include=FALSE}
+set.seed(11)
+deseq2_hallmarks_fgseaRes <- fgsea(hallmarks_pathways, DEG_deseq2_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+deseq2_hallmarks_fgseaRes$leadingEdge <- as.character(deseq2_hallmarks_fgseaRes$leadingEdge)
+deseq2_hallmarks_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(deseq2_hallmarks_fgseaRes)){
+  print(i)
+  term = deseq2_hallmarks_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  deseq2_hallmarks_fgseaRes$genecount[i] = length(term_split)
+}
+
+set.seed(12)
+deseq2_go_fgseaRes <- fgsea(go_pathways, DEG_deseq2_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+deseq2_go_fgseaRes$leadingEdge <- as.character(deseq2_go_fgseaRes$leadingEdge)
+deseq2_go_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(deseq2_go_fgseaRes)){
+  print(i)
+  term = deseq2_go_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  deseq2_go_fgseaRes$genecount[i] = length(term_split)
+}
+
+set.seed(13)
+deseq2_kegg_fgseaRes <- fgsea(kegg_pathways, DEG_deseq2_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+deseq2_kegg_fgseaRes$leadingEdge <- as.character(deseq2_kegg_fgseaRes$leadingEdge)
+deseq2_kegg_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(deseq2_kegg_fgseaRes)){
+  print(i)
+  term = deseq2_kegg_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  deseq2_kegg_fgseaRes$genecount[i] = length(term_split)
+}
+
+```
+
+```{r, include=FALSE}
+set.seed(21)
+edgeR_hallmarks_fgseaRes <- fgsea(hallmarks_pathways, DEG_edgeR_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+edgeR_hallmarks_fgseaRes$leadingEdge <- as.character(edgeR_hallmarks_fgseaRes$leadingEdge)
+edgeR_hallmarks_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(edgeR_hallmarks_fgseaRes)){
+  print(i)
+  term = edgeR_hallmarks_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  edgeR_hallmarks_fgseaRes$genecount[i] = length(term_split)
+}
+
+set.seed(22)
+edgeR_go_fgseaRes <- fgsea(go_pathways, DEG_edgeR_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+edgeR_go_fgseaRes$leadingEdge <- as.character(edgeR_go_fgseaRes$leadingEdge)
+edgeR_go_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(edgeR_go_fgseaRes)){
+  print(i)
+  term = edgeR_go_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  edgeR_go_fgseaRes$genecount[i] = length(term_split)
+}
+
+set.seed(23)
+edgeR_kegg_fgseaRes <- fgsea(kegg_pathways, DEG_edgeR_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+edgeR_kegg_fgseaRes$leadingEdge <- as.character(edgeR_kegg_fgseaRes$leadingEdge)
+edgeR_kegg_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(edgeR_kegg_fgseaRes)){
+  print(i)
+  term = edgeR_kegg_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  edgeR_kegg_fgseaRes$genecount[i] = length(term_split)
+}
+
+```
+
+```{r, include=FALSE}
+set.seed(31)
+limma_hallmarks_fgseaRes <- fgsea(hallmarks_pathways, DEG_limma_voom_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+limma_hallmarks_fgseaRes$leadingEdge <- as.character(limma_hallmarks_fgseaRes$leadingEdge)
+limma_hallmarks_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(limma_hallmarks_fgseaRes)){
+  print(i)
+  term = limma_hallmarks_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  limma_hallmarks_fgseaRes$genecount[i] = length(term_split)
+}
+
+set.seed(32)
+limma_go_fgseaRes <- fgsea(go_pathways, DEG_limma_voom_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+limma_go_fgseaRes$leadingEdge <- as.character(limma_go_fgseaRes$leadingEdge)
+limma_go_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(limma_go_fgseaRes)){
+  print(i)
+  term = limma_go_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  limma_go_fgseaRes$genecount[i] = length(term_split)
+}
+
+set.seed(33)
+limma_kegg_fgseaRes <- fgsea(kegg_pathways, DEG_limma_voom_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+limma_kegg_fgseaRes$leadingEdge <- as.character(limma_kegg_fgseaRes$leadingEdge)
+limma_kegg_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(limma_kegg_fgseaRes)){
+  print(i)
+  term = limma_kegg_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  limma_kegg_fgseaRes$genecount[i] = length(term_split)
+}
+```
+
+### deseq2
+```r
+set.seed(11)
+deseq2_hallmarks_fgseaRes <- fgsea(hallmarks_pathways, DEG_deseq2_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+deseq2_hallmarks_fgseaRes$leadingEdge <- as.character(deseq2_hallmarks_fgseaRes$leadingEdge)
+deseq2_hallmarks_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(deseq2_hallmarks_fgseaRes)){
+  print(i)
+  term = deseq2_hallmarks_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  deseq2_hallmarks_fgseaRes$genecount[i] = length(term_split)
+}
+
+set.seed(12)
+deseq2_go_fgseaRes <- fgsea(go_pathways, DEG_deseq2_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+deseq2_go_fgseaRes$leadingEdge <- as.character(deseq2_go_fgseaRes$leadingEdge)
+deseq2_go_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(deseq2_go_fgseaRes)){
+  print(i)
+  term = deseq2_go_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  deseq2_go_fgseaRes$genecount[i] = length(term_split)
+}
+
+set.seed(13)
+deseq2_kegg_fgseaRes <- fgsea(kegg_pathways, DEG_deseq2_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+deseq2_kegg_fgseaRes$leadingEdge <- as.character(deseq2_kegg_fgseaRes$leadingEdge)
+deseq2_kegg_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(deseq2_kegg_fgseaRes)){
+  print(i)
+  term = deseq2_kegg_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  deseq2_kegg_fgseaRes$genecount[i] = length(term_split)
+}
+
+```
+
+### edgeR
+```r
+set.seed(21)
+edgeR_hallmarks_fgseaRes <- fgsea(hallmarks_pathways, DEG_edgeR_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+edgeR_hallmarks_fgseaRes$leadingEdge <- as.character(edgeR_hallmarks_fgseaRes$leadingEdge)
+edgeR_hallmarks_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(edgeR_hallmarks_fgseaRes)){
+  print(i)
+  term = edgeR_hallmarks_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  edgeR_hallmarks_fgseaRes$genecount[i] = length(term_split)
+}
+
+set.seed(22)
+edgeR_go_fgseaRes <- fgsea(go_pathways, DEG_edgeR_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+edgeR_go_fgseaRes$leadingEdge <- as.character(edgeR_go_fgseaRes$leadingEdge)
+edgeR_go_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(edgeR_go_fgseaRes)){
+  print(i)
+  term = edgeR_go_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  edgeR_go_fgseaRes$genecount[i] = length(term_split)
+}
+
+set.seed(23)
+edgeR_kegg_fgseaRes <- fgsea(kegg_pathways, DEG_edgeR_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+edgeR_kegg_fgseaRes$leadingEdge <- as.character(edgeR_kegg_fgseaRes$leadingEdge)
+edgeR_kegg_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(edgeR_kegg_fgseaRes)){
+  print(i)
+  term = edgeR_kegg_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  edgeR_kegg_fgseaRes$genecount[i] = length(term_split)
+}
+
+```
+
+### limma
+```r
+set.seed(31)
+limma_hallmarks_fgseaRes <- fgsea(hallmarks_pathways, DEG_limma_voom_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+limma_hallmarks_fgseaRes$leadingEdge <- as.character(limma_hallmarks_fgseaRes$leadingEdge)
+limma_hallmarks_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(limma_hallmarks_fgseaRes)){
+  print(i)
+  term = limma_hallmarks_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  limma_hallmarks_fgseaRes$genecount[i] = length(term_split)
+}
+
+set.seed(32)
+limma_go_fgseaRes <- fgsea(go_pathways, DEG_limma_voom_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+limma_go_fgseaRes$leadingEdge <- as.character(limma_go_fgseaRes$leadingEdge)
+limma_go_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(limma_go_fgseaRes)){
+  print(i)
+  term = limma_go_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  limma_go_fgseaRes$genecount[i] = length(term_split)
+}
+
+set.seed(33)
+limma_kegg_fgseaRes <- fgsea(kegg_pathways, DEG_limma_voom_geneList, minSize=15, maxSize=500, nperm = 10000)
+
+### Calculate genecount
+
+limma_kegg_fgseaRes$leadingEdge <- as.character(limma_kegg_fgseaRes$leadingEdge)
+limma_kegg_fgseaRes$genecount <- NA  # Initialize new column
+
+for(i in 1:nrow(limma_kegg_fgseaRes)){
+  print(i)
+  term = limma_kegg_fgseaRes$leadingEdge[i]
+  # 1. Split
+  term_split = unlist(strsplit(term, split=",", fixed=TRUE))
+  # Add gene count calculation
+  limma_kegg_fgseaRes$genecount[i] = length(term_split)
+}
+```
+
+## Adjustment
+### deseq2
+```r
+result <- adjust_export_pathway(fgseaRes =deseq2_hallmarks_fgseaRes, nTop = 10)
+deseq2_hallmarks_UpDown_topPathways <- result$combinedPathways
+deseq2_hallmarks_fgseaRes <- result$fgseaRes
+```
+
+```r
+result <- adjust_export_pathway(fgseaRes =deseq2_go_fgseaRes, nTop = 100)
+deseq2_go_UpDown_topPathways <- result$combinedPathways
+deseq2_go_fgseaRes <- result$fgseaRes
+```
+
+```r
+result <- adjust_export_pathway(fgseaRes =deseq2_kegg_fgseaRes, nTop = 10)
+deseq2_kegg_UpDown_topPathways <- result$combinedPathways
+deseq2_kegg_fgseaRes <- result$fgseaRes
+```
+
+
+### edgeR
+```r
+result <- adjust_export_pathway(fgseaRes =edgeR_hallmarks_fgseaRes, nTop = 10)
+edgeR_hallmarks_UpDown_topPathways <- result$combinedPathways
+edgeR_hallmarks_fgseaRes <- result$fgseaRes
+```
+
+```r
+result <- adjust_export_pathway(fgseaRes =edgeR_go_fgseaRes, nTop = 100)
+edgeR_go_UpDown_topPathways <- result$combinedPathways
+edgeR_go_fgseaRes <- result$fgseaRes
+```
+
+```r
+result <- adjust_export_pathway(fgseaRes =edgeR_kegg_fgseaRes, nTop = 10)
+edgeR_kegg_UpDown_topPathways <- result$combinedPathways
+edgeR_kegg_fgseaRes <- result$fgseaRes
+```
+
+### limma
+```r
+result <- adjust_export_pathway(fgseaRes =limma_hallmarks_fgseaRes, nTop = 10)
+limma_hallmarks_UpDown_topPathways <- result$combinedPathways
+limma_hallmarks_fgseaRes <- result$fgseaRes
+```
+
+```r
+result <- adjust_export_pathway(fgseaRes =limma_go_fgseaRes, nTop = 100)
+limma_go_UpDown_topPathways <- result$combinedPathways
+limma_go_fgseaRes <- result$fgseaRes
+```
+
+```r
+result <- adjust_export_pathway(fgseaRes =limma_kegg_fgseaRes, nTop = 10)
+limma_kegg_UpDown_topPathways <- result$combinedPathways
+limma_kegg_fgseaRes <- result$fgseaRes
+```
+
+
+```{r, include=FALSE}
+result <- adjust_export_pathway(fgseaRes =deseq2_hallmarks_fgseaRes, nTop = 10)
+deseq2_hallmarks_UpDown_topPathways <- result$combinedPathways
+deseq2_hallmarks_fgseaRes <- result$fgseaRes
+```
+
+```{r, include=FALSE}
+result <- adjust_export_pathway(fgseaRes =deseq2_go_fgseaRes, nTop = 100)
+deseq2_go_UpDown_topPathways <- result$combinedPathways
+deseq2_go_fgseaRes <- result$fgseaRes
+```
+
+```{r, include=FALSE}
+result <- adjust_export_pathway(fgseaRes =deseq2_kegg_fgseaRes, nTop = 10)
+deseq2_kegg_UpDown_topPathways <- result$combinedPathways
+deseq2_kegg_fgseaRes <- result$fgseaRes
+```
+
+
+```{r, include=FALSE}
+result <- adjust_export_pathway(fgseaRes =edgeR_hallmarks_fgseaRes, nTop = 10)
+edgeR_hallmarks_UpDown_topPathways <- result$combinedPathways
+edgeR_hallmarks_fgseaRes <- result$fgseaRes
+```
+
+```{r, include=FALSE}
+result <- adjust_export_pathway(fgseaRes =edgeR_go_fgseaRes, nTop = 100)
+edgeR_go_UpDown_topPathways <- result$combinedPathways
+edgeR_go_fgseaRes <- result$fgseaRes
+```
+
+```{r, include=FALSE}
+result <- adjust_export_pathway(fgseaRes =edgeR_kegg_fgseaRes, nTop = 10)
+edgeR_kegg_UpDown_topPathways <- result$combinedPathways
+edgeR_kegg_fgseaRes <- result$fgseaRes
+```
+
+
+```{r, include=FALSE}
+result <- adjust_export_pathway(fgseaRes =limma_hallmarks_fgseaRes, nTop = 10)
+limma_hallmarks_UpDown_topPathways <- result$combinedPathways
+#print(limma_hallmarks_UpDown_topPathways)
+limma_hallmarks_fgseaRes <- result$fgseaRes
+```
+
+```{r, include=FALSE}
+result <- adjust_export_pathway(fgseaRes =limma_go_fgseaRes, nTop = 100)
+limma_go_UpDown_topPathways <- result$combinedPathways
+#print(limma_go_UpDown_topPathways)
+limma_go_fgseaRes <- result$fgseaRes
+```
+
+```{r, include=FALSE}
+result <- adjust_export_pathway(fgseaRes =limma_kegg_fgseaRes, nTop = 10)
+limma_kegg_UpDown_topPathways <- result$combinedPathways
+#print(limma_kegg_UpDown_topPathways)
+limma_kegg_fgseaRes <- result$fgseaRes
+```
+
+
+## common_elements
+```{r}
+# Use Reduce and intersect to calculate the intersection of all vectors
+kegg_UpDown_common_elements <- Reduce(intersect, list(limma_kegg_UpDown_topPathways, 
+                                                      edgeR_kegg_UpDown_topPathways, 
+                                                      deseq2_kegg_UpDown_topPathways))
+# Print the intersection results
+print(kegg_UpDown_common_elements)
+
+
+# Use Reduce and intersect to calculate the intersection of all vectors
+go_UpDown_common_elements <- Reduce(intersect, list(limma_go_UpDown_topPathways,
+                                                    edgeR_go_UpDown_topPathways,
+                                                    deseq2_go_UpDown_topPathways))
+# Print the intersection results
+print(go_UpDown_common_elements)
+
+
+# Use Reduce and intersect to calculate the intersection of all vectors
+hallmarks_UpDown_common_elements <- Reduce(intersect, list(limma_hallmarks_UpDown_topPathways,
+                                                          edgeR_hallmarks_UpDown_topPathways,
+                                                          deseq2_hallmarks_UpDown_topPathways))
+# Print the intersection results
+print(hallmarks_UpDown_common_elements)
+
+```
+
+```{r}
+# Randomly select 10 pathways from the provided list, ensuring that each pathway name does not exceed 10 words.
+hallmarks_selected_pathways <- selectPathways(hallmarks_UpDown_common_elements, max_words = 10, num_select = 10)
+print(hallmarks_selected_pathways)
+
+go_selected_pathways <- selectPathways(go_UpDown_common_elements, max_words = 10, num_select = 10)
+print(go_selected_pathways)
+
+kegg_selected_pathways <- selectPathways(kegg_UpDown_common_elements, max_words = 10, num_select = 10)
+print(kegg_selected_pathways)
+
+```
+
+## Merge data
+### Hallmarks
+```{r}
+# Filter data
+deseq2_hallmarks_filtered_fgseaRes <- deseq2_hallmarks_fgseaRes[deseq2_hallmarks_fgseaRes$pathway %in% hallmarks_selected_pathways, ]
+# Select 'pathway' and 'genecount' columns
+deseq2_hallmarks_filtered_10fgseaRes <- deseq2_hallmarks_filtered_fgseaRes[, c("pathway", "genecount")]
+# Print results
+print(deseq2_hallmarks_filtered_10fgseaRes)
+colnames(deseq2_hallmarks_filtered_10fgseaRes) <- c("pathway", "deseq2")
+
+# Filter data
+edgeR_hallmarks_filtered_fgseaRes <- edgeR_hallmarks_fgseaRes[edgeR_hallmarks_fgseaRes$pathway %in% hallmarks_selected_pathways, ]
+# Select 'pathway' and 'genecount' columns
+edgeR_hallmarks_filtered_10fgseaRes <- edgeR_hallmarks_filtered_fgseaRes[, c("pathway", "genecount")]
+# Print results
+print(edgeR_hallmarks_filtered_10fgseaRes)
+colnames(edgeR_hallmarks_filtered_10fgseaRes) <- c("pathway", "edgeR")
+
+# Filter data
+limma_hallmarks_filtered_fgseaRes <- limma_hallmarks_fgseaRes[limma_hallmarks_fgseaRes$pathway %in% hallmarks_selected_pathways, ]
+# Select 'pathway' and 'genecount' columns
+limma_hallmarks_filtered_10fgseaRes <- limma_hallmarks_filtered_fgseaRes[, c("pathway", "genecount")]
+# Print results
+print(limma_hallmarks_filtered_10fgseaRes)
+colnames(limma_hallmarks_filtered_10fgseaRes) <- c("pathway", "limma")
+
+# Use full_join to merge dataframes
+hallmarks_combined_df <- deseq2_hallmarks_filtered_10fgseaRes %>%
+  full_join(edgeR_hallmarks_filtered_10fgseaRes, by = "pathway") %>%
+  full_join(limma_hallmarks_filtered_10fgseaRes, by = "pathway")
+
+# View the merged dataframe
+print(hallmarks_combined_df)
+# Add a prefix "hallmarks." to the pathway column
+hallmarks_combined_df <- hallmarks_combined_df %>%
+  mutate(pathway = paste("Hallmarks.", pathway))
+
+# Print the modified dataframe to view results
+print(hallmarks_combined_df)
+```
+
+### GO
+```{r}
+# Filter data
+deseq2_go_filtered_fgseaRes <- deseq2_go_fgseaRes[deseq2_go_fgseaRes$pathway %in% go_selected_pathways, ]
+# Select 'pathway' and 'genecount' columns
+deseq2_go_filtered_10fgseaRes <- deseq2_go_filtered_fgseaRes[, c("pathway", "genecount")]
+# Print results
+print(deseq2_go_filtered_10fgseaRes)
+colnames(deseq2_go_filtered_10fgseaRes) <- c("pathway", "deseq2")
+
+# Filter data
+edgeR_go_filtered_fgseaRes <- edgeR_go_fgseaRes[edgeR_go_fgseaRes$pathway %in% go_selected_pathways, ]
+# Select 'pathway' and 'genecount' columns
+edgeR_go_filtered_10fgseaRes <- edgeR_go_filtered_fgseaRes[, c("pathway", "genecount")]
+# Print results
+print(edgeR_go_filtered_10fgseaRes)
+colnames(edgeR_go_filtered_10fgseaRes) <- c("pathway", "edgeR")
+
+# Filter data
+limma_go_filtered_fgseaRes <- limma_go_fgseaRes[limma_go_fgseaRes$pathway %in% go_selected_pathways, ]
+# Select 'pathway' and 'genecount' columns
+limma_go_filtered_10fgseaRes <- limma_go_filtered_fgseaRes[, c("pathway", "genecount")]
+# Print results
+print(limma_go_filtered_10fgseaRes)
+colnames(limma_go_filtered_10fgseaRes) <- c("pathway", "limma")
+
+library(dplyr)
+# Use full_join to merge dataframes
+go_combined_df <- deseq2_go_filtered_10fgseaRes %>%
+  full_join(edgeR_go_filtered_10fgseaRes, by = "pathway") %>%
+  full_join(limma_go_filtered_10fgseaRes, by = "pathway")
+
+# View the merged dataframe
+print(go_combined_df)
+# Add a prefix "GO." to the pathway column
+go_combined_df <- go_combined_df %>%
+  mutate(pathway = paste("GO.", pathway))
+
+# Print the modified dataframe to view results
+print(go_combined_df)
+
+```
+
+### KEGG
+```{r}
+# Filter data
+deseq2_kegg_filtered_fgseaRes <- deseq2_kegg_fgseaRes[deseq2_kegg_fgseaRes$pathway %in% kegg_selected_pathways, ]
+# Select 'pathway' and 'genecount' columns
+deseq2_kegg_filtered_10fgseaRes <- deseq2_kegg_filtered_fgseaRes[, c("pathway", "genecount")]
+# Print results
+print(deseq2_kegg_filtered_10fgseaRes)
+colnames(deseq2_kegg_filtered_10fgseaRes) <- c("pathway", "deseq2")
+
+# Filter data
+edgeR_kegg_filtered_fgseaRes <- edgeR_kegg_fgseaRes[edgeR_kegg_fgseaRes$pathway %in% kegg_selected_pathways, ]
+# Select 'pathway' and 'genecount' columns
+edgeR_kegg_filtered_10fgseaRes <- edgeR_kegg_filtered_fgseaRes[, c("pathway", "genecount")]
+# Print results
+print(edgeR_kegg_filtered_10fgseaRes)
+colnames(edgeR_kegg_filtered_10fgseaRes) <- c("pathway", "edgeR")
+
+# Filter data
+limma_kegg_filtered_fgseaRes <- limma_kegg_fgseaRes[limma_kegg_fgseaRes$pathway %in% kegg_selected_pathways, ]
+# Select 'pathway' and 'genecount' columns
+limma_kegg_filtered_10fgseaRes <- limma_kegg_filtered_fgseaRes[, c("pathway", "genecount")]
+# Print results
+print(limma_kegg_filtered_10fgseaRes)
+colnames(limma_kegg_filtered_10fgseaRes) <- c("pathway", "limma")
+
+library(dplyr)
+# Use full_join to merge dataframes
+kegg_combined_df <- deseq2_kegg_filtered_10fgseaRes %>%
+  full_join(edgeR_kegg_filtered_10fgseaRes, by = "pathway") %>%
+  full_join(limma_kegg_filtered_10fgseaRes, by = "pathway")
+
+# View the merged dataframe
+print(kegg_combined_df)
+# Add a prefix "KEGG." to the pathway column
+kegg_combined_df <- kegg_combined_df %>%
+  mutate(pathway = paste("KEGG.", pathway))
+
+# Print the modified dataframe to view results
+print(kegg_combined_df)
+```
+
+### Calculate the total number of genes
+```{r}
+# Calculate the total number of genes across different samples/methods for the same pathway
+# Add 'hallmarks_count' column to the dataframe
+hallmarks_combined_count_df <- hallmarks_combined_df %>%
+  mutate(hallmarks_count = rowSums(select(., deseq2, edgeR, limma), na.rm = TRUE))
+hallmarks_combined_count_df <- hallmarks_combined_count_df %>%
+  arrange(hallmarks_count)  # Sort in ascending order by default
+print(hallmarks_combined_count_df)
+
+# Calculate the total number of genes across different samples/methods for the same pathway
+# Add 'go_count' column to the dataframe
+go_combined_count_df <- go_combined_df %>%
+  mutate(go_count = rowSums(select(., deseq2, edgeR, limma), na.rm = TRUE))
+go_combined_count_df <- go_combined_count_df %>%
+  arrange(go_count)  # Sort in ascending order by default
+print(go_combined_count_df)
+
+# Calculate the total number of genes across different samples/methods for the same pathway
+# Add 'kegg_count' column to the dataframe
+kegg_combined_count_df <- kegg_combined_df %>%
+  mutate(kegg_count = rowSums(select(., deseq2, edgeR, limma), na.rm = TRUE))
+kegg_combined_count_df <- kegg_combined_count_df %>%
+  arrange(kegg_count)  # Sort in ascending order by default
+print(kegg_combined_count_df)
+
+```
+
+## Convert to long format
+```{r}
+# Use pivot_longer to convert from wide to long format
+kegg_long_df <- kegg_combined_count_df %>%
+  pivot_longer(
+    cols = c(limma, deseq2, edgeR, kegg_count),
+    names_to = "method/group",
+    values_to = "genecount"
+  )
+# Print the transformed long format dataframe
+print(kegg_long_df)
+
+
+# Use pivot_longer to convert from wide to long format
+go_long_df <- go_combined_count_df %>%
+  pivot_longer(
+    cols = c(limma, deseq2, edgeR, go_count),
+    names_to = "method/group",
+    values_to = "genecount"
+  )
+# Print the transformed long format dataframe
+print(go_long_df)
+
+
+# Use pivot_longer to convert from wide to long format
+hallmarks_long_df <- hallmarks_combined_count_df %>%
+  pivot_longer(
+    cols = c(limma, deseq2, edgeR, hallmarks_count),
+    names_to = "method/group",
+    values_to = "genecount"
+  )
+# Print the transformed long format dataframe
+print(hallmarks_long_df)
+
+```
+
+
+
+```{r}
+# Use rbind to merge these three dataframes
+all_combined_df <- rbind(kegg_long_df, hallmarks_long_df, go_long_df)
+# Print the merged dataframe to check the results
+print(all_combined_df)
+colnames(all_combined_df) <- c("from", "to", "value")
+
+# Extract and deduplicate the 'from' column
+unique_from <- unique(all_combined_df$from)
+print("Unique 'from' values:")
+print(unique_from)
+
+# Extract and deduplicate the 'to' column
+unique_to <- unique(all_combined_df$to)
+print("Unique 'to' values:")
+print(unique_to)
+
+```
+
+## Enrichment Circlize
+### prepare data
+```{r}
+original_colors <- c(
+  `KEGG. Primary Immunodeficiency` = "#0d47a1",
+  `KEGG. Arachidonic Acid Metabolism` = "#2058ab",
+  `KEGG. Autoimmune Thyroid Disease` = "#3469b5",
+  `KEGG. Allograft Rejection` = "#4779bf",
+  `KEGG. Systemic Lupus Erythematosus` = "#5a8ac9",
+  `KEGG. Retinol Metabolism` = "#6e9bd3",
+  `KEGG. Type I Diabetes Mellitus` = "#81acdd",
+  `KEGG. Metabolism Of Xenobiotics By Cytochrome P450` = "#94bce7",
+  `KEGG. Drug Metabolism Cytochrome P450` = "#a8cdf1",
+  `KEGG. Antigen Processing And Presentation` = "#bbdefb",
+  `Hallmarks. Interferon Alpha Response` = "#1b5e20",
+  `Hallmarks. P53 Pathway` = "#2e6d33",
+  `Hallmarks. Myogenesis` = "#417c46",
+  `Hallmarks. Kras Signaling Dn` = "#558b58",
+  `Hallmarks. Estrogen Response Late` = "#689a6b",
+  `Hallmarks. Estrogen Response Early` = "#7baa7e",
+  `Hallmarks. Complement` = "#8eb991",
+  `Hallmarks. Allograft Rejection` = "#a2c8a3",
+  `Hallmarks. Interferon Gamma Response` = "#b5d7b6",
+  `Hallmarks. G2m Checkpoint` = "#c8e6c9",
+  `GO. Desmosome` = "#ff6f00",
+  `GO. Regulation Of Water Loss Via Skin` = "#ff7d14",
+  `GO. Regulation Of T Cell Receptor Signaling Pathway` = "#ff8b28",
+  `GO. Immunological Synapse` = "#ff993c",
+  `GO. Alpha Beta T Cell Differentiation` = "#ffa750",
+  `GO. Membrane Invagination` = "#ffb463",
+  `GO. Positive Regulation Of B Cell Activation` = "#ffc277",
+  `GO. Intermediate Filament Cytoskeleton` = "#ffd08b",
+  `GO. Epidermal Cell Differentiation` = "#ffde9f",
+  `GO. Skin Development` = "#ffecb3",
+  `limma` = "#ab47bc",
+  `deseq2` = "#7e57c2",
+  `edgeR` = "#3f51b5",
+  `kegg_count` = "#4979bb",
+  `hallmarks_count` = "#6a9a6f",
+  `go_count` = "#fda85d"
+)
+labels <- c(
+  "KEGG. Primary Immunodeficiency",                     
+  "KEGG. Arachidonic Acid Metabolism",                  
+  "KEGG. Autoimmune Thyroid Disease",                   
+  "KEGG. Allograft Rejection",                          
+  "KEGG. Systemic Lupus Erythematosus",                 
+  "KEGG. Retinol Metabolism",                           
+  "KEGG. Type I Diabetes Mellitus",                     
+  "KEGG. Metabolism Of Xenobiotics By Cytochrome P450", 
+  "KEGG. Drug Metabolism Cytochrome P450",              
+  "KEGG. Antigen Processing And Presentation",          
+  "Hallmarks. Interferon Alpha Response",               
+  "Hallmarks. P53 Pathway",                             
+  "Hallmarks. Myogenesis",                              
+  "Hallmarks. Kras Signaling Dn",                       
+  "Hallmarks. Estrogen Response Late",                  
+  "Hallmarks. Estrogen Response Early",                 
+  "Hallmarks. Complement",                              
+  "Hallmarks. Allograft Rejection",                     
+  "Hallmarks. Interferon Gamma Response",               
+  "Hallmarks. G2m Checkpoint",                          
+  "GO. Desmosome",                                      
+  "GO. Regulation Of Water Loss Via Skin",              
+  "GO. Regulation Of T Cell Receptor Signaling Pathway",
+  "GO. Immunological Synapse",                          
+  "GO. Alpha Beta T Cell Differentiation",              
+  "GO. Membrane Invagination",                         
+  "GO. Positive Regulation Of B Cell Activation",       
+  "GO. Intermediate Filament Cytoskeleton",             
+  "GO. Epidermal Cell Differentiation",                 
+  "GO. Skin Development"                  
+)
+
+# 定义颜色
+colors <- c(
+  "#0d47a1",
+  "#2058ab",
+  "#3469b5",
+  "#4779bf",
+  "#5a8ac9",
+  "#6e9bd3",
+  "#81acdd",
+  "#94bce7",
+  "#a8cdf1",
+  "#bbdefb",
+  "#1b5e20",
+  "#2e6d33",
+  "#417c46",
+  "#558b58",
+  "#689a6b",
+  "#7baa7e",
+  "#8eb991",
+  "#a2c8a3",
+  "#b5d7b6",
+  "#c8e6c9",
+  "#ff6f00",
+  "#ff7d14",
+  "#ff8b28",
+  "#ff993c",
+  "#ffa750",
+  "#ffb463",
+  "#ffc277",
+  "#ffd08b",
+  "#ffde9f",
+  "#ffecb3"
+)
+labels2 <- c("limma",
+            "deseq2",
+            "edgeR",
+            "kegg_count",
+            "hallmarks_count",
+            "go_count")
+colors2 <- c("#ab47bc",
+            "#7e57c2",
+            "#3f51b5",
+            "#4979bb",
+            "#6a9a6f",
+            "#fda85d")
+```
+
+```{r, fig.width=17, fig.height=12, out.width='100%'}
+enrichment_circlize(all_combined_df, original_colors, labels, colors, labels2, colors2, font_size = 10)
+```
+

@@ -11,6 +11,7 @@
 - If the database lacks the target sample type, users can input <b style="color: #6a926b;"> "skip"</b> in the default_input parameter of the Combat_Normal function.
 :::
 
+
 ::: {.callout-tip}
 
 - The ComBat_seq function called within requires the input data to be in <b style="color: #6a926b;">matrix form</b>, not a dataframe. If users want to change the function settings, they should take note of this key point during the modification.

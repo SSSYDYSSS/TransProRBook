@@ -1,5 +1,5 @@
 # Comparison of Four Methods
-
+## Data Preprocessing
 
 ```{r setup, include=FALSE}
 library(TransProR)
@@ -277,6 +277,7 @@ all_facet_density_foldchange_name7 <- facet_density_foldchange(
 
 all_facet_density_foldchange_name7
 ```
+
 
 
 ### facet, show_points = TRUE, show_density = FALSE

@@ -213,20 +213,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  <a href="./Merging TransProR and TransProPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Merging TransProR and TransProPy</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pipeline.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">pipeline</span></span></a>
+  <a href="./Enrichment ggtree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Enrichment ggtree</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./Enrichment ggraph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Enrichment ggraph</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Enrichment Circos Bar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Enrichment Circos Bar</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./EnrichPolarBubble.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">New Enrichment Polar Bubble</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Circos Fruit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Circos Fruit</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Enrichment Circlize.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Enrichment Circlize</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Contact.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Contact</span></span></a>
   </div>
 </li>
     </ul>
@@ -239,19 +269,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#group_var-name" id="toc-group_var-name" class="nav-link active" data-scroll-target="#group_var-name"><span class="header-section-number">5.1</span> group_var = “name”</a>
+  <li><a href="#data-preprocessing" id="toc-data-preprocessing" class="nav-link active" data-scroll-target="#data-preprocessing"><span class="header-section-number">5.1</span> Data Preprocessing</a></li>
+  <li><a href="#group_var-name" id="toc-group_var-name" class="nav-link" data-scroll-target="#group_var-name"><span class="header-section-number">5.2</span> group_var = “name”</a>
   <ul class="collapse">
-  <li><a href="#merge-show_points-false" id="toc-merge-show_points-false" class="nav-link" data-scroll-target="#merge-show_points-false"><span class="header-section-number">5.1.1</span> merge, show_points = FALSE</a></li>
-  <li><a href="#merge-show_points-true" id="toc-merge-show_points-true" class="nav-link" data-scroll-target="#merge-show_points-true"><span class="header-section-number">5.1.2</span> merge, show_points = TRUE</a></li>
-  <li><a href="#facet-show_points-false-show_density-true" id="toc-facet-show_points-false-show_density-true" class="nav-link" data-scroll-target="#facet-show_points-false-show_density-true"><span class="header-section-number">5.1.3</span> facet, show_points = FALSE, show_density = TRUE</a></li>
-  <li><a href="#facet-show_points-true-show_density-false" id="toc-facet-show_points-true-show_density-false" class="nav-link" data-scroll-target="#facet-show_points-true-show_density-false"><span class="header-section-number">5.1.4</span> facet, show_points = TRUE, show_density = FALSE</a></li>
+  <li><a href="#merge-show_points-false" id="toc-merge-show_points-false" class="nav-link" data-scroll-target="#merge-show_points-false"><span class="header-section-number">5.2.1</span> merge, show_points = FALSE</a></li>
+  <li><a href="#merge-show_points-true" id="toc-merge-show_points-true" class="nav-link" data-scroll-target="#merge-show_points-true"><span class="header-section-number">5.2.2</span> merge, show_points = TRUE</a></li>
+  <li><a href="#facet-show_points-false-show_density-true" id="toc-facet-show_points-false-show_density-true" class="nav-link" data-scroll-target="#facet-show_points-false-show_density-true"><span class="header-section-number">5.2.3</span> facet, show_points = FALSE, show_density = TRUE</a></li>
+  <li><a href="#facet-show_points-true-show_density-false" id="toc-facet-show_points-true-show_density-false" class="nav-link" data-scroll-target="#facet-show_points-true-show_density-false"><span class="header-section-number">5.2.4</span> facet, show_points = TRUE, show_density = FALSE</a></li>
   </ul></li>
-  <li><a href="#group_var-change" id="toc-group_var-change" class="nav-link" data-scroll-target="#group_var-change"><span class="header-section-number">5.2</span> group_var = “change”</a>
+  <li><a href="#group_var-change" id="toc-group_var-change" class="nav-link" data-scroll-target="#group_var-change"><span class="header-section-number">5.3</span> group_var = “change”</a>
   <ul class="collapse">
-  <li><a href="#merge-show_points-false-1" id="toc-merge-show_points-false-1" class="nav-link" data-scroll-target="#merge-show_points-false-1"><span class="header-section-number">5.2.1</span> merge, show_points = FALSE</a></li>
-  <li><a href="#merge-show_points-true-1" id="toc-merge-show_points-true-1" class="nav-link" data-scroll-target="#merge-show_points-true-1"><span class="header-section-number">5.2.2</span> merge, show_points = TRUE</a></li>
-  <li><a href="#facet-show_points-false-show_density-true-1" id="toc-facet-show_points-false-show_density-true-1" class="nav-link" data-scroll-target="#facet-show_points-false-show_density-true-1"><span class="header-section-number">5.2.3</span> facet, show_points = FALSE, show_density = TRUE</a></li>
-  <li><a href="#facet-show_points-true-show_density-false-1" id="toc-facet-show_points-true-show_density-false-1" class="nav-link" data-scroll-target="#facet-show_points-true-show_density-false-1"><span class="header-section-number">5.2.4</span> facet, show_points = TRUE, show_density = FALSE</a></li>
+  <li><a href="#merge-show_points-false-1" id="toc-merge-show_points-false-1" class="nav-link" data-scroll-target="#merge-show_points-false-1"><span class="header-section-number">5.3.1</span> merge, show_points = FALSE</a></li>
+  <li><a href="#merge-show_points-true-1" id="toc-merge-show_points-true-1" class="nav-link" data-scroll-target="#merge-show_points-true-1"><span class="header-section-number">5.3.2</span> merge, show_points = TRUE</a></li>
+  <li><a href="#facet-show_points-false-show_density-true-1" id="toc-facet-show_points-false-show_density-true-1" class="nav-link" data-scroll-target="#facet-show_points-false-show_density-true-1"><span class="header-section-number">5.3.3</span> facet, show_points = FALSE, show_density = TRUE</a></li>
+  <li><a href="#facet-show_points-true-show_density-false-1" id="toc-facet-show_points-true-show_density-false-1" class="nav-link" data-scroll-target="#facet-show_points-true-show_density-false-1"><span class="header-section-number">5.3.4</span> facet, show_points = TRUE, show_density = FALSE</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SSSYDYSSS/TransProRBook/edit/main/Comparison of Four Methods.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/blob/main/Comparison of Four Methods.qmd" class="toc-action">View source</a></p></div></div></nav>
@@ -276,6 +307,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<section id="data-preprocessing" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="data-preprocessing"><span class="header-section-number">5.1</span> Data Preprocessing</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>DEG_deseq2 <span class="ot">&lt;-</span> <span class="fu">prep_deseq2</span>(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"../test_TransProR/Select DEGs/DEG_deseq2.Rdata"</span></span>
@@ -453,10 +486,11 @@ AADACL2 8.023014 15.65356   down AADACL2</code></pre>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>pal3 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"#00897b"</span>,<span class="st">"#c0ca33"</span>)</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>pal4 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"#1e88e5"</span>,<span class="st">"#7cb342"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="group_var-name" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="group_var-name"><span class="header-section-number">5.1</span> group_var = “name”</h2>
-<section id="merge-show_points-false" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="merge-show_points-false"><span class="header-section-number">5.1.1</span> merge, show_points = FALSE</h3>
+</section>
+<section id="group_var-name" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="group_var-name"><span class="header-section-number">5.2</span> group_var = “name”</h2>
+<section id="merge-show_points-false" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="merge-show_points-false"><span class="header-section-number">5.2.1</span> merge, show_points = FALSE</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>all_density_foldchange_name1 <span class="ot">&lt;-</span> <span class="fu">merge_density_foldchange</span>(</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> combined_df,</span>
@@ -483,8 +517,8 @@ AADACL2 8.023014 15.65356   down AADACL2</code></pre>
 </div>
 </div>
 </section>
-<section id="merge-show_points-true" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="merge-show_points-true"><span class="header-section-number">5.1.2</span> merge, show_points = TRUE</h3>
+<section id="merge-show_points-true" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="merge-show_points-true"><span class="header-section-number">5.2.2</span> merge, show_points = TRUE</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>all_density_foldchange_name2 <span class="ot">&lt;-</span> <span class="fu">merge_density_foldchange</span>(</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> combined_df,</span>
@@ -511,8 +545,8 @@ AADACL2 8.023014 15.65356   down AADACL2</code></pre>
 </div>
 </div>
 </section>
-<section id="facet-show_points-false-show_density-true" class="level3" data-number="5.1.3">
-<h3 data-number="5.1.3" class="anchored" data-anchor-id="facet-show_points-false-show_density-true"><span class="header-section-number">5.1.3</span> facet, show_points = FALSE, show_density = TRUE</h3>
+<section id="facet-show_points-false-show_density-true" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="facet-show_points-false-show_density-true"><span class="header-section-number">5.2.3</span> facet, show_points = FALSE, show_density = TRUE</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>all_facet_density_foldchange_name3 <span class="ot">&lt;-</span> <span class="fu">facet_density_foldchange</span>(</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> combined_df,</span>
@@ -540,8 +574,8 @@ AADACL2 8.023014 15.65356   down AADACL2</code></pre>
 </div>
 </div>
 </section>
-<section id="facet-show_points-true-show_density-false" class="level3" data-number="5.1.4">
-<h3 data-number="5.1.4" class="anchored" data-anchor-id="facet-show_points-true-show_density-false"><span class="header-section-number">5.1.4</span> facet, show_points = TRUE, show_density = FALSE</h3>
+<section id="facet-show_points-true-show_density-false" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="facet-show_points-true-show_density-false"><span class="header-section-number">5.2.4</span> facet, show_points = TRUE, show_density = FALSE</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>all_facet_density_foldchange_name4 <span class="ot">&lt;-</span> <span class="fu">facet_density_foldchange</span>(</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> combined_df,</span>
@@ -570,10 +604,10 @@ AADACL2 8.023014 15.65356   down AADACL2</code></pre>
 </div>
 </section>
 </section>
-<section id="group_var-change" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="group_var-change"><span class="header-section-number">5.2</span> group_var = “change”</h2>
-<section id="merge-show_points-false-1" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="merge-show_points-false-1"><span class="header-section-number">5.2.1</span> merge, show_points = FALSE</h3>
+<section id="group_var-change" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="group_var-change"><span class="header-section-number">5.3</span> group_var = “change”</h2>
+<section id="merge-show_points-false-1" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="merge-show_points-false-1"><span class="header-section-number">5.3.1</span> merge, show_points = FALSE</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>all_density_foldchange_name5 <span class="ot">&lt;-</span> <span class="fu">merge_density_foldchange</span>(</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> combined_df,</span>
@@ -600,8 +634,8 @@ AADACL2 8.023014 15.65356   down AADACL2</code></pre>
 </div>
 </div>
 </section>
-<section id="merge-show_points-true-1" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="merge-show_points-true-1"><span class="header-section-number">5.2.2</span> merge, show_points = TRUE</h3>
+<section id="merge-show_points-true-1" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="merge-show_points-true-1"><span class="header-section-number">5.3.2</span> merge, show_points = TRUE</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>all_density_foldchange_name6 <span class="ot">&lt;-</span> <span class="fu">merge_density_foldchange</span>(</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> combined_df,</span>
@@ -628,8 +662,8 @@ AADACL2 8.023014 15.65356   down AADACL2</code></pre>
 </div>
 </div>
 </section>
-<section id="facet-show_points-false-show_density-true-1" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="facet-show_points-false-show_density-true-1"><span class="header-section-number">5.2.3</span> facet, show_points = FALSE, show_density = TRUE</h3>
+<section id="facet-show_points-false-show_density-true-1" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="facet-show_points-false-show_density-true-1"><span class="header-section-number">5.3.3</span> facet, show_points = FALSE, show_density = TRUE</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>all_facet_density_foldchange_name7 <span class="ot">&lt;-</span> <span class="fu">facet_density_foldchange</span>(</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> combined_df,</span>
@@ -656,8 +690,8 @@ AADACL2 8.023014 15.65356   down AADACL2</code></pre>
 </div>
 </div>
 </section>
-<section id="facet-show_points-true-show_density-false-1" class="level3" data-number="5.2.4">
-<h3 data-number="5.2.4" class="anchored" data-anchor-id="facet-show_points-true-show_density-false-1"><span class="header-section-number">5.2.4</span> facet, show_points = TRUE, show_density = FALSE</h3>
+<section id="facet-show_points-true-show_density-false-1" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="facet-show_points-true-show_density-false-1"><span class="header-section-number">5.3.4</span> facet, show_points = TRUE, show_density = FALSE</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>all_facet_density_foldchange_name8 <span class="ot">&lt;-</span> <span class="fu">facet_density_foldchange</span>(</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> combined_df,</span>
