@@ -225,38 +225,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Enrichment Spiralize.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Enrichment Spiralize</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Enrichment ggraph.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Enrichment ggraph</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Enrichment ggraph</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Enrichment Circos Bar.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Enrichment Circos Bar</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Enrichment Circos Bar</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EnrichPolarBubble.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">New Enrichment Polar Bubble</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">New Enrichment Polar Bubble</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Circos Fruit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Circos Fruit</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Circos Fruit</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Enrichment Circlize.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Enrichment Circlize</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Enrichment Circlize</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Contact.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Contact</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Contact</span></span></a>
   </div>
 </li>
     </ul>
@@ -356,10 +362,10 @@ dbl (2): Feature, AUC
 <h2 data-number="6.2" class="anchored" data-anchor-id="comparison-of-autofeatureselection-and-four-other-methods"><span class="header-section-number">6.2</span> Comparison of AutoFeatureSelection and four other methods</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>five_degs_venn1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">DESeq2 =</span> <span class="fu">deg_filter</span>(DEG_deseq2), </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">edgeR =</span> <span class="fu">deg_filter</span>(DEG_edgeR), </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">limma =</span> <span class="fu">deg_filter</span>(DEG_limma_voom), </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Wilcoxon_test =</span> <span class="fu">deg_filter</span>(outRst),</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">AutoFeatureSelection =</span> AutoFeatureSelection)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">edgeR =</span> <span class="fu">deg_filter</span>(DEG_edgeR), </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">limma =</span> <span class="fu">deg_filter</span>(DEG_limma_voom), </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">Wilcoxon_test =</span> <span class="fu">deg_filter</span>(outRst),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">AutoFeatureSelection =</span> AutoFeatureSelection)</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>edge_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">alpha</span>(<span class="st">"#1b64bb"</span>, <span class="fl">0.5</span>), <span class="fu">alpha</span>(<span class="st">"#13828e"</span>, <span class="fl">0.5</span>), <span class="fu">alpha</span>(<span class="st">"#337c3a"</span>, <span class="fl">0.5</span>), <span class="fu">alpha</span>(<span class="st">"#9e9d39"</span>, <span class="fl">0.5</span>), <span class="fu">alpha</span>(<span class="st">"#0288d1"</span>, <span class="fl">0.5</span>))</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
@@ -379,10 +385,10 @@ dbl (2): Feature, AUC
 <h2 data-number="6.3" class="anchored" data-anchor-id="comparison-of-autofeatureselection-and-four-other-methods-1"><span class="header-section-number">6.3</span> Comparison of AutoFeatureSelection and four other methods</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>five_degs_venn2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">DESeq2 =</span> <span class="fu">deg_filter</span>(DEG_deseq2), </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">edgeR =</span> <span class="fu">deg_filter</span>(DEG_edgeR), </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">limma =</span> <span class="fu">deg_filter</span>(DEG_limma_voom), </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Wilcoxon_test =</span> <span class="fu">deg_filter</span>(outRst),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">NewMACFCmain =</span> NewMACFCmain)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">edgeR =</span> <span class="fu">deg_filter</span>(DEG_edgeR), </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">limma =</span> <span class="fu">deg_filter</span>(DEG_limma_voom), </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">Wilcoxon_test =</span> <span class="fu">deg_filter</span>(outRst),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">NewMACFCmain =</span> NewMACFCmain)</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>edge_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">alpha</span>(<span class="st">"#1b64bb"</span>, <span class="fl">0.5</span>), <span class="fu">alpha</span>(<span class="st">"#13828e"</span>, <span class="fl">0.5</span>), <span class="fu">alpha</span>(<span class="st">"#337c3a"</span>, <span class="fl">0.5</span>), <span class="fu">alpha</span>(<span class="st">"#9e9d39"</span>, <span class="fl">0.5</span>), <span class="fu">alpha</span>(<span class="st">"#303f9f"</span>, <span class="fl">0.5</span>))</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
