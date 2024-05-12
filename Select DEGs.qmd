@@ -11,6 +11,7 @@
 library(TransProR)
 ```
 
+
 ```{r}
 DEG_deseq2 <- DESeq2_analyze(
     tumor_file = "../test_TransProR/generated_data1/removebatch_SKCM_Skin_TCGA_exp_tumor.rds", 

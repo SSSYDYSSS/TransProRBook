@@ -23,7 +23,6 @@ library(ggtree)
 library(ggplot2)
 ```
 
-
 ## Load data
 ```{r}
 tumor <- readRDS("../test_TransProR/generated_data1/removebatch_SKCM_Skin_TCGA_exp_tumor.rds")
@@ -351,7 +350,6 @@ p6
 ```
 
 
-
 ```{r, fig.width=18, fig.height=18, out.width='100%', warning=FALSE}
 gene_colors <- c("#491588", "#301b8d", "#1a237a", "#11479c", "#0a5797","#0b5f63","#074d41","#1f5e27","#366928","#827729")
 p7 <- circos_fruits(p1,
@@ -363,3 +361,23 @@ p_final <- p7 + geom_strip(25, 114, label="TCGA_GTEX", offset=100, barsize=2, ex
 print(p_final)
 ```
 
+## Reference
+>
+> - **ggplot2**:
+> 
+>><a href="https://github.com/tidyverse/ggplot2" style="color: #758b76; font-weight: bold;">github:ggplot2</a>
+>>
+>><a href="https://ggplot2.tidyverse.org/" style="color: #758b76; font-weight: bold;">An implementation of the Grammar of Graphics in R</a>
+>
+> - **ggtreeExtra**:
+> 
+>><a href="https://doi.org/10.1093/molbev/msab166" style="color: #758b76; font-weight: bold;">S Xu, Z Dai, P Guo, X Fu, S Liu, L Zhou, W Tang, T Feng, M Chen, L Zhan, T Wu, E Hu, Y Jiang*, X Bo* and G Yu*. ggtreeExtra: Compact visualization of richly annotated phylogenetic data. Molecular Biology and Evolution. 2021, 38(9):4039-4042. </a>
+>
+> - **ggtree**:
+> 
+>><a href="https://doi.org/10.1111/2041-210X.12628" style="color: #758b76; font-weight: bold;">G Yu, DK Smith, H Zhu, Y Guan, TTY Lam*. ggtree: an R package for visualization and annotation of phylogenetic trees with their covariates and other associated data. Methods in Ecology and Evolution. 2017, 8(1):28-36.</a>
+>
+> - **clusterProfiler 4.0**:
+> 
+>><a href="https://doi.org/10.1016/j.xinn.2021.100141" style="color: #758b76; font-weight: bold;">T Wu#, E Hu#, S Xu, M Chen, P Guo, Z Dai, T Feng, L Zhou, W Tang, L Zhan, X Fu, S Liu, X Bo*, G Yu*. clusterProfiler 4.0: A universal enrichment tool for interpreting omics data. The Innovation. 2021, 2(3):100141. </a>
+> 

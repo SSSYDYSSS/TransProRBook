@@ -1,4 +1,8 @@
 # Enrichment Circlize
+::: {.callout-tip}
+Integrated visualization of different samples, methods, and pathways: Includes specific naming annotations, sorting by the number of enriched genes, and unique arrangement without grouping.
+:::
+
 
 ```{r setup, include=FALSE}
 library(TransProR)
@@ -672,6 +676,7 @@ kegg_combined_df <- kegg_combined_df %>%
 print(kegg_combined_df)
 ```
 
+
 ### Calculate the total number of genes
 ```{r}
 # Calculate the total number of genes across different samples/methods for the same pathway
@@ -878,7 +883,33 @@ colors2 <- c("#ab47bc",
             "#fda85d")
 ```
 
+
+
 ```{r, fig.width=17, fig.height=12, out.width='100%'}
 enrichment_circlize(all_combined_df, original_colors, labels, colors, labels2, colors2, font_size = 10)
 ```
 
+## Reference
+>
+> - **ggplot2**:
+> 
+>><a href="https://github.com/tidyverse/ggplot2" style="color: #758b76; font-weight: bold;">github:ggplot2</a>
+>>
+>><a href="https://ggplot2.tidyverse.org/" style="color: #758b76; font-weight: bold;">An implementation of the Grammar of Graphics in R</a>
+>
+> - **GSVA**:
+> 
+>><a href="https://github.com/rcastelo/GSVA" style="color: #758b76; font-weight: bold;">GSVA: gene set variation analysis for microarray and RNA-seq data</a>
+>
+> - **fgsea**:
+> 
+>><a href="https://github.com/ctlab/fgsea" style="color: #758b76; font-weight: bold;">fgsea is an R-package for fast preranked gene set enrichment analysis (GSEA). </a>
+>
+> - **clusterProfiler 4.0**:
+> 
+>><a href="https://doi.org/10.1016/j.xinn.2021.100141" style="color: #758b76; font-weight: bold;">T Wu#, E Hu#, S Xu, M Chen, P Guo, Z Dai, T Feng, L Zhou, W Tang, L Zhan, X Fu, S Liu, X Bo*, G Yu*. clusterProfiler 4.0: A universal enrichment tool for interpreting omics data. The Innovation. 2021, 2(3):100141. </a>
+>
+> - **circlize**:
+> 
+>><a href="https://academic.oup.com/bioinformatics/article/30/19/2811/2422259?login=false" style="color: #758b76; font-weight: bold;">Zuguang Gu, et al., circlize Implements and enhances circular visualization in R. Bioinformatics (Oxford, England) 2014.</a>
+> 

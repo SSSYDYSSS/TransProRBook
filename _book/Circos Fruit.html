@@ -8,7 +8,7 @@
 
 <meta name="description" content="TransProR User Manual.">
 
-<title>TransProRBook - 12&nbsp; Circos Fruit</title>
+<title>TransProRBook - 13&nbsp; Circos Fruit</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -100,7 +100,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="custom.css">
-<meta property="og:title" content="TransProRBook - 12&nbsp; Circos Fruit">
+<meta property="og:title" content="TransProRBook - 13&nbsp; Circos Fruit">
 <meta property="og:description" content="R package TransProR.">
 <meta property="og:image" content="https://github.com/SSSYDYSSS/TransProRBook/blob/main/TransProR_rlogo.png">
 <meta property="og:site-name" content="TransProRBook">
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Circos Fruit.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Circos Fruit</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Circos Fruit.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Circos Fruit</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -225,38 +225,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Enrichment Spiralize.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Enrichment Spiralize</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Enrichment ggraph.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Enrichment ggraph</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Enrichment ggraph</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Enrichment Circos Bar.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Enrichment Circos Bar</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Enrichment Circos Bar</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./EnrichPolarBubble.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">New Enrichment Polar Bubble</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">New Enrichment Polar Bubble</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Circos Fruit.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Circos Fruit</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Circos Fruit</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Enrichment Circlize.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Enrichment Circlize</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Enrichment Circlize</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Contact.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Contact</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Contact</span></span></a>
   </div>
 </li>
     </ul>
@@ -269,9 +275,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#load-data" id="toc-load-data" class="nav-link active" data-scroll-target="#load-data"><span class="header-section-number">12.1</span> Load data</a></li>
-  <li><a href="#convert-from-symbol-to-entrezid" id="toc-convert-from-symbol-to-entrezid" class="nav-link" data-scroll-target="#convert-from-symbol-to-entrezid"><span class="header-section-number">12.2</span> Convert from SYMBOL to ENTREZID</a></li>
-  <li><a href="#select-differentially-expressed-genes" id="toc-select-differentially-expressed-genes" class="nav-link" data-scroll-target="#select-differentially-expressed-genes"><span class="header-section-number">12.3</span> Select differentially expressed genes</a></li>
+  <li><a href="#load-data" id="toc-load-data" class="nav-link active" data-scroll-target="#load-data"><span class="header-section-number">13.1</span> Load data</a></li>
+  <li><a href="#convert-from-symbol-to-entrezid" id="toc-convert-from-symbol-to-entrezid" class="nav-link" data-scroll-target="#convert-from-symbol-to-entrezid"><span class="header-section-number">13.2</span> Convert from SYMBOL to ENTREZID</a></li>
+  <li><a href="#select-differentially-expressed-genes" id="toc-select-differentially-expressed-genes" class="nav-link" data-scroll-target="#select-differentially-expressed-genes"><span class="header-section-number">13.3</span> Select differentially expressed genes</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">13.4</span> Reference</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SSSYDYSSS/TransProRBook/edit/main/Circos Fruit.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/blob/main/Circos Fruit.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
@@ -280,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Circos Fruit</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Circos Fruit</span></h1>
 </div>
 
 
@@ -315,8 +322,8 @@ Tip
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtree)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="load-data" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="load-data"><span class="header-section-number">12.1</span> Load data</h2>
+<section id="load-data" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="load-data"><span class="header-section-number">13.1</span> Load data</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tumor <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"../test_TransProR/generated_data1/removebatch_SKCM_Skin_TCGA_exp_tumor.rds"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>normal <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">'../test_TransProR/generated_data1/removebatch_SKCM_Skin_Normal_TCGA_GTEX_count.rds'</span>)</span>
@@ -339,8 +346,8 @@ AARSD1    567.8672      -2.082289 0.02275703 -91.50088      0    0 stable</code>
 </div>
 </div>
 </section>
-<section id="convert-from-symbol-to-entrezid" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="convert-from-symbol-to-entrezid"><span class="header-section-number">12.2</span> Convert from SYMBOL to ENTREZID</h2>
+<section id="convert-from-symbol-to-entrezid" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="convert-from-symbol-to-entrezid"><span class="header-section-number">13.2</span> Convert from SYMBOL to ENTREZID</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert from SYMBOL to ENTREZID for convenient enrichment analysis later. It's crucial to do this now as a direct conversion may result in a reduced set of genes due to non-one-to-one correspondence.</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -373,8 +380,8 @@ AARSD1    567.8672      -2.082289 0.02275703 -91.50088      0    0 stable</code>
 </div>
 </div>
 </section>
-<section id="select-differentially-expressed-genes" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="select-differentially-expressed-genes"><span class="header-section-number">12.3</span> Select differentially expressed genes</h2>
+<section id="select-differentially-expressed-genes" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="select-differentially-expressed-genes"><span class="header-section-number">13.3</span> Select differentially expressed genes</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Diff_deseq2 <span class="ot">&lt;-</span> <span class="fu">filter_diff_genes</span>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  DEG_deseq2, </span>
@@ -1960,6 +1967,36 @@ Warning: Some gene sets have size one. Consider setting 'min.sz &gt; 1'.</code><
 <p><img src="Circos-Fruit_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" style="width:100.0%"></p>
 </div>
 </div>
+</section>
+<section id="reference" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="reference"><span class="header-section-number">13.4</span> Reference</h2>
+<blockquote class="blockquote">
+<ul>
+<li><strong>ggplot2</strong>:</li>
+</ul>
+<blockquote class="blockquote">
+<p><a href="https://github.com/tidyverse/ggplot2" style="color: #758b76; font-weight: bold;">github:ggplot2</a></p>
+<p><a href="https://ggplot2.tidyverse.org/" style="color: #758b76; font-weight: bold;">An implementation of the Grammar of Graphics in R</a></p>
+</blockquote>
+<ul>
+<li><strong>ggtreeExtra</strong>:</li>
+</ul>
+<blockquote class="blockquote">
+<p><a href="https://doi.org/10.1093/molbev/msab166" style="color: #758b76; font-weight: bold;">S Xu, Z Dai, P Guo, X Fu, S Liu, L Zhou, W Tang, T Feng, M Chen, L Zhan, T Wu, E Hu, Y Jiang<em>, X Bo</em> and G Yu*. ggtreeExtra: Compact visualization of richly annotated phylogenetic data. Molecular Biology and Evolution. 2021, 38(9):4039-4042. </a></p>
+</blockquote>
+<ul>
+<li><strong>ggtree</strong>:</li>
+</ul>
+<blockquote class="blockquote">
+<p><a href="https://doi.org/10.1111/2041-210X.12628" style="color: #758b76; font-weight: bold;">G Yu, DK Smith, H Zhu, Y Guan, TTY Lam*. ggtree: an R package for visualization and annotation of phylogenetic trees with their covariates and other associated data. Methods in Ecology and Evolution. 2017, 8(1):28-36.</a></p>
+</blockquote>
+<ul>
+<li><strong>clusterProfiler 4.0</strong>:</li>
+</ul>
+<blockquote class="blockquote">
+<p><a href="https://doi.org/10.1016/j.xinn.2021.100141" style="color: #758b76; font-weight: bold;">T Wu#, E Hu#, S Xu, M Chen, P Guo, Z Dai, T Feng, L Zhou, W Tang, L Zhan, X Fu, S Liu, X Bo<em>, G Yu</em>. clusterProfiler 4.0: A universal enrichment tool for interpreting omics data. The Innovation. 2021, 2(3):100141. </a></p>
+</blockquote>
+</blockquote>
 
 
 </section>
@@ -2203,12 +2240,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./EnrichPolarBubble.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">New Enrichment Polar Bubble</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">New Enrichment Polar Bubble</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./Enrichment Circlize.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Enrichment Circlize</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Enrichment Circlize</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

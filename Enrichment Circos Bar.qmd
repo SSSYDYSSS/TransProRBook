@@ -7,7 +7,6 @@ This script primarily carries out the reading and merging of transcriptomic data
 
 ```{r setup, include=FALSE}
 library(TransProR)
-library(TransProR)
 library(clusterProfiler)
 library(org.Hs.eg.db)
 library(DOSE)
@@ -17,14 +16,12 @@ library(dplyr)
 
 ```r 
 library(TransProR)
-library(TransProR)
 library(clusterProfiler)
 library(org.Hs.eg.db)
 library(DOSE)
 library(ReactomePA)
 library(dplyr)
 ```
-
 
 ## Load data
 ```{r}
@@ -260,3 +257,13 @@ data_list <- list(
 combined_and_visualized_data <- enrich_circo_bar(data_list)
 print(combined_and_visualized_data)
 ```
+
+
+## Reference
+>
+> - **ggplot2**:
+> 
+>><a href="https://github.com/tidyverse/ggplot2" style="color: #758b76; font-weight: bold;">github:ggplot2</a>
+>>
+>><a href="https://ggplot2.tidyverse.org/" style="color: #758b76; font-weight: bold;">An implementation of the Grammar of Graphics in R</a>
+>

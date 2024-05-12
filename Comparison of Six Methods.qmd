@@ -37,10 +37,10 @@ outRst <- readRDS("../test_TransProR/Select DEGs/Wilcoxon_rank_sum_testoutRst.Rd
 ## Comparison of AutoFeatureSelection and four other methods
 ```{r}
 five_degs_venn1 <- list(DESeq2 = deg_filter(DEG_deseq2), 
-                         edgeR = deg_filter(DEG_edgeR), 
-                         limma = deg_filter(DEG_limma_voom), 
-                         Wilcoxon_test = deg_filter(outRst),
-                         AutoFeatureSelection = AutoFeatureSelection)
+                        edgeR = deg_filter(DEG_edgeR), 
+                        limma = deg_filter(DEG_limma_voom), 
+                        Wilcoxon_test = deg_filter(outRst),
+                        AutoFeatureSelection = AutoFeatureSelection)
 
 edge_colors <- c(alpha("#1b64bb", 0.5), alpha("#13828e", 0.5), alpha("#337c3a", 0.5), alpha("#9e9d39", 0.5), alpha("#0288d1", 0.5))
 
@@ -56,10 +56,10 @@ AutoFeatureSelection_FourMethods_ContrastVenn
 ## Comparison of AutoFeatureSelection and four other methods
 ```{r}
 five_degs_venn2 <- list(DESeq2 = deg_filter(DEG_deseq2), 
-                         edgeR = deg_filter(DEG_edgeR), 
-                         limma = deg_filter(DEG_limma_voom), 
-                         Wilcoxon_test = deg_filter(outRst),
-                         NewMACFCmain = NewMACFCmain)
+                        edgeR = deg_filter(DEG_edgeR), 
+                        limma = deg_filter(DEG_limma_voom), 
+                        Wilcoxon_test = deg_filter(outRst),
+                        NewMACFCmain = NewMACFCmain)
 
 edge_colors <- c(alpha("#1b64bb", 0.5), alpha("#13828e", 0.5), alpha("#337c3a", 0.5), alpha("#9e9d39", 0.5), alpha("#303f9f", 0.5))
 

@@ -15,7 +15,6 @@ print(SeekGtexOrgan)
 
 ## Get Tcga Exp
 
-
 ### SKCM-Skin-TCGA
 ```{r}
 SKCM_exp <- get_tcga_exp(
@@ -27,6 +26,8 @@ SKCM_exp <- get_tcga_exp(
 head(SKCM_exp[["tumor_tcga_data"]])[1:5, 1:5]
 head(SKCM_exp[["normal_tcga_data"]], n = 10) # Because there is only one column.
 ```
+
+
 
 ### BRCA-Breast-TCGA
 ```{r}

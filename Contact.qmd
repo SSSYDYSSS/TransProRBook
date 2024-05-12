@@ -4,7 +4,6 @@ Any problems encountered or inspiration gained from using this R package can be 
 
 
 
-
 ::: {.panel-tabset}
 
 ## email

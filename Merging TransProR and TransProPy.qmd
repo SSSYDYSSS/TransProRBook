@@ -8,8 +8,6 @@ The <b style="color: #6a926b;">reasons</b> for <b style="color: #6a926b;">mergin
 
 ::: {.callout-highlight}
 
-
-
 > * **Complementarity:**
 > 
 > >Univariate methods are effective in identifying significant features, while multivariate methods excel in evaluating interactions between features. Combining the two allows for the simultaneous utilization of the advantages of both methods.
@@ -26,6 +24,7 @@ The <b style="color: #6a926b;">reasons</b> for <b style="color: #6a926b;">mergin
 > 
 > >By combining techniques such as ensemble learning and recursive feature elimination, a more comprehensive consideration of feature performance within a predictive model framework can be Merging TransProR and TransProPyachieved.
 :::
+
 
 
 ::: {.callout-note}

@@ -35,6 +35,7 @@ book:
     - Comparison of Six Methods.qmd
     - Merging TransProR and TransProPy.qmd
     - Enrichment ggtree.qmd
+    - Enrichment Spiralize.qmd
     - Enrichment ggraph.qmd
     - Enrichment Circos Bar.qmd
     - EnrichPolarBubble.qmd

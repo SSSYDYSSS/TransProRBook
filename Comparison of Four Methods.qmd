@@ -35,7 +35,6 @@ head(Wilcoxon, 5)
 ```
 
 
-
 ```{r}
 deseq2_edgeR <-compare_merge(
   df1 = DEG_deseq2, 

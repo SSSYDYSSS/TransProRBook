@@ -12,7 +12,7 @@
 - Limited Quantity of Normal Tissue Samples:
 
 > Despite the richness of cancer sample data, TCGA has a relatively limited number of normal tissue samples, which to some extent, restricts its application in comparative studies between normal and cancerous tissues.
-  
+
 ## Characteristics of the GTEx Database:
 
 - Covers Normal Tissue Sample Data from Multiple Organs and Tissues:
@@ -32,6 +32,7 @@
 - Complexity of Data Integration:
 
 > The joint analysis of the TCGA and GTEx databases entails data integration and standardization, requiring a meticulous and scientific approach to ensure the efficacy of data integration and the accuracy of analysis results. This may include data cleansing, standardization, and a unified analysis workflow to ensure that data obtained from different databases can be accurately and effectively combined for analysis.
+
 
 
 # Data Download and Processing Statement
