@@ -29,6 +29,7 @@ head(SKCM_exp[["normal_tcga_data"]], n = 10) # Because there is only one column.
 
 
 
+
 ### BRCA-Breast-TCGA
 ```{r}
 BRCA_exp <- get_tcga_exp(

@@ -26,7 +26,6 @@ The <b style="color: #6a926b;">reasons</b> for <b style="color: #6a926b;">mergin
 :::
 
 
-
 ::: {.callout-note}
 In summary, merging the strengths of these two classes of methods helps in a more comprehensive and precise analysis and interpretation of data, especially in handling complex bioinformatics data, where this integrative approach may provide more accurate and thorough insights.
 :::

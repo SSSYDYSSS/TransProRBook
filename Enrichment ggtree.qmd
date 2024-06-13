@@ -63,6 +63,7 @@ DEG_deseq2 <- DEG_deseq2[rownames(DEG_deseq2) %in% symbols_vector, ]
 head(DEG_deseq2, 5)
 ```
 
+
 ## Select differentially expressed genes
 ```{r}
 Diff_deseq2 <- filter_diff_genes(

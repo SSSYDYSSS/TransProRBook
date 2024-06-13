@@ -27,6 +27,7 @@ limma <- prep_limma(
 head(limma, 5)
 ```
 
+
 ```{r}
 Wilcoxon <- prep_wilcoxon(
     "../test_TransProR/Select DEGs/Wilcoxon_rank_sum_testoutRst.Rdata"

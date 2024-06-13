@@ -30,6 +30,7 @@ library(scales)
 ```
 
 
+
 ## load data
 ```{r}
 tumor <- readRDS("../test_TransProR/generated_data1/removebatch_SKCM_Skin_TCGA_exp_tumor.rds")

@@ -19,15 +19,15 @@ four_methods_degs_union_combined_features <- read_csv("../test_TransProR/four_me
 all_degs_count_exp_gene_feature_auc_mapping_0_5_0_9 <- read_csv("../test_TransProR/all_degs_count_exp_gene_feature_auc_mapping_0.5_0.9.csv")
 all_degs_count_exp_gene_feature_auc_mapping_0_9 <- read_csv("../test_TransProR/all_degs_count_exp_gene_feature_auc_mapping_0.9.csv")
 
-NewMACFCmain<- four_methods_degs_union_combined_features$Feature
+AutoFeatureSelection<- four_methods_degs_union_combined_features$Feature
 
-AutoFeatureSelection_0_5_0_9<- all_degs_count_exp_gene_feature_auc_mapping_0_5_0_9$Gene
-AutoFeatureSelection_0_9<- all_degs_count_exp_gene_feature_auc_mapping_0_9$Gene
+NewMACFCmain_0_5_0_9<- all_degs_count_exp_gene_feature_auc_mapping_0_5_0_9$Gene
+NewMACFCmain_0_9<- all_degs_count_exp_gene_feature_auc_mapping_0_9$Gene
 
-AutoFeatureSelection <- c(AutoFeatureSelection_0_5_0_9, AutoFeatureSelection_0_9)
+NewMACFCmain <- c(NewMACFCmain_0_5_0_9, NewMACFCmain_0_9)
 
 DEG_deseq2 <- readRDS("../test_TransProR/Select DEGs/DEG_deseq2.Rdata")
-DEG_edgeR <- readRDS("../test_TransProR/Select DEGs/DEG_deseq2.Rdata")
+DEG_edgeR <- readRDS("../test_TransProR/Select DEGs/DEG_edgeR.Rdata")
 DEG_limma_voom <- readRDS("../test_TransProR/Select DEGs/DEG_limma_voom.Rdata")
 outRst <- readRDS("../test_TransProR/Select DEGs/Wilcoxon_rank_sum_testoutRst.Rdata")
 
@@ -53,7 +53,7 @@ AutoFeatureSelection_FourMethods_ContrastVenn <- Contrast_Venn(five_degs_venn1, 
 AutoFeatureSelection_FourMethods_ContrastVenn
 ```
 
-## Comparison of AutoFeatureSelection and four other methods
+## Comparison of NewMACFCmain and four other methods
 ```{r}
 five_degs_venn2 <- list(DESeq2 = deg_filter(DEG_deseq2), 
                         edgeR = deg_filter(DEG_edgeR), 

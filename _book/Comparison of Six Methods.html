@@ -277,7 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#load-data" id="toc-load-data" class="nav-link active" data-scroll-target="#load-data"><span class="header-section-number">6.1</span> Load data</a></li>
   <li><a href="#comparison-of-autofeatureselection-and-four-other-methods" id="toc-comparison-of-autofeatureselection-and-four-other-methods" class="nav-link" data-scroll-target="#comparison-of-autofeatureselection-and-four-other-methods"><span class="header-section-number">6.2</span> Comparison of AutoFeatureSelection and four other methods</a></li>
-  <li><a href="#comparison-of-autofeatureselection-and-four-other-methods-1" id="toc-comparison-of-autofeatureselection-and-four-other-methods-1" class="nav-link" data-scroll-target="#comparison-of-autofeatureselection-and-four-other-methods-1"><span class="header-section-number">6.3</span> Comparison of AutoFeatureSelection and four other methods</a></li>
+  <li><a href="#comparison-of-newmacfcmain-and-four-other-methods" id="toc-comparison-of-newmacfcmain-and-four-other-methods" class="nav-link" data-scroll-target="#comparison-of-newmacfcmain-and-four-other-methods"><span class="header-section-number">6.3</span> Comparison of NewMACFCmain and four other methods</a></li>
   <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">7</span> Reference</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SSSYDYSSS/TransProRBook/edit/main/Comparison of Six Methods.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/blob/main/Comparison of Six Methods.qmd" class="toc-action">View source</a></p></div></div></nav>
@@ -345,15 +345,15 @@ dbl (2): Feature, AUC
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>NewMACFCmain<span class="ot">&lt;-</span> four_methods_degs_union_combined_features<span class="sc">$</span>Feature</span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>AutoFeatureSelection<span class="ot">&lt;-</span> four_methods_degs_union_combined_features<span class="sc">$</span>Feature</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>AutoFeatureSelection_0_5_0_9<span class="ot">&lt;-</span> all_degs_count_exp_gene_feature_auc_mapping_0_5_0_9<span class="sc">$</span>Gene</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>AutoFeatureSelection_0_9<span class="ot">&lt;-</span> all_degs_count_exp_gene_feature_auc_mapping_0_9<span class="sc">$</span>Gene</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>NewMACFCmain_0_5_0_9<span class="ot">&lt;-</span> all_degs_count_exp_gene_feature_auc_mapping_0_5_0_9<span class="sc">$</span>Gene</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>NewMACFCmain_0_9<span class="ot">&lt;-</span> all_degs_count_exp_gene_feature_auc_mapping_0_9<span class="sc">$</span>Gene</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>AutoFeatureSelection <span class="ot">&lt;-</span> <span class="fu">c</span>(AutoFeatureSelection_0_5_0_9, AutoFeatureSelection_0_9)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>NewMACFCmain <span class="ot">&lt;-</span> <span class="fu">c</span>(NewMACFCmain_0_5_0_9, NewMACFCmain_0_9)</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>DEG_deseq2 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"../test_TransProR/Select DEGs/DEG_deseq2.Rdata"</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>DEG_edgeR <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"../test_TransProR/Select DEGs/DEG_deseq2.Rdata"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>DEG_edgeR <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"../test_TransProR/Select DEGs/DEG_edgeR.Rdata"</span>)</span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>DEG_limma_voom <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"../test_TransProR/Select DEGs/DEG_limma_voom.Rdata"</span>)</span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>outRst <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"../test_TransProR/Select DEGs/Wilcoxon_rank_sum_testoutRst.Rdata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -381,8 +381,8 @@ dbl (2): Feature, AUC
 </div>
 </div>
 </section>
-<section id="comparison-of-autofeatureselection-and-four-other-methods-1" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="comparison-of-autofeatureselection-and-four-other-methods-1"><span class="header-section-number">6.3</span> Comparison of AutoFeatureSelection and four other methods</h2>
+<section id="comparison-of-newmacfcmain-and-four-other-methods" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="comparison-of-newmacfcmain-and-four-other-methods"><span class="header-section-number">6.3</span> Comparison of NewMACFCmain and four other methods</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>five_degs_venn2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">DESeq2 =</span> <span class="fu">deg_filter</span>(DEG_deseq2), </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">edgeR =</span> <span class="fu">deg_filter</span>(DEG_edgeR), </span>
