@@ -15,6 +15,7 @@ library(dplyr)
 library(tidyr)
 ```
 
+
 ```r 
 library(TransProR)
 library(clusterProfiler)
@@ -25,6 +26,7 @@ library(stringr)
 library(dplyr)
 library(tidyr)
 ```
+
 ## geneList 
 ```{r}
 DEG_deseq2 <- readRDS('../test_TransProR/Select DEGs/DEG_deseq2.Rdata')
@@ -763,6 +765,7 @@ print(unique_to)
 
 ```
 
+
 ## Enrichment Circlize
 ### prepare data
 ```{r}
@@ -883,7 +886,6 @@ colors2 <- c("#ab47bc",
             "#6a9a6f",
             "#fda85d")
 ```
-
 
 
 ```{r, fig.width=17, fig.height=12, out.width='100%'}

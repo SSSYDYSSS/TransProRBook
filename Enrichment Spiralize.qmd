@@ -31,6 +31,7 @@ library(scales)
 
 
 
+
 ## load data
 ```{r}
 tumor <- readRDS("../test_TransProR/generated_data1/removebatch_SKCM_Skin_TCGA_exp_tumor.rds")
@@ -234,6 +235,7 @@ results2$SampleColor <- Sample_colors2[results2$Sample]
 print(head(results1))
 print(head(results2))
 ```
+
 
 ## Sort
 ```{r, fig.width=15, fig.height=9, out.width='100%'}

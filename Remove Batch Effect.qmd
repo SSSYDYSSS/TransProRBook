@@ -12,6 +12,7 @@
 :::
 
 
+
 ::: {.callout-tip}
 
 - The ComBat_seq function called within requires the input data to be in <b style="color: #6a926b;">matrix form</b>, not a dataframe. If users want to change the function settings, they should take note of this key point during the modification.
@@ -115,6 +116,9 @@ LGG_Brain_Combat_Normal_TCGA_GTEX_count <- Combat_Normal(
 )
 head(LGG_Brain_Combat_Normal_TCGA_GTEX_count)[1:5, 1:5]
 ```
+
+
+
 
 ### THCA_Thyroid_Combat_Normal_TCGA_GTEX_count
 ```{r}

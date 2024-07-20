@@ -5,6 +5,7 @@
 ```{r}
 library(TransProR)
 print(paste("TransProR version:", packageVersion("TransProR")))
+library(grid)
 ```
 
 ## Seek Gtex Organ
@@ -12,6 +13,7 @@ print(paste("TransProR version:", packageVersion("TransProR")))
 SeekGtexOrgan <- seek_gtex_organ(path = "../test_TransProR/download_data/GTEX_phenotype")
 print(SeekGtexOrgan)
 ```
+
 
 ## Get Tcga Exp
 
@@ -103,6 +105,9 @@ Breast_BRCA_gtex <- get_gtex_exp(
 )
 head(Breast_BRCA_gtex)[1:5, 1:5]
 ```
+
+
+
 
 ### Thyroid-THCA-Gtex
 ```{r}

@@ -13,6 +13,7 @@ library(ggtree)
 library(ggplot2)
 ```
 
+
 ```r 
 library(TransProR)
 library(org.Hs.eg.db)
@@ -22,6 +23,7 @@ library(dplyr)
 library(ggtree)
 library(ggplot2)
 ```
+
 
 
 ## Load data
@@ -294,8 +296,9 @@ heatdata.clust_new<-hclust(dist(iindata,method = "euclidean"),method = "complete
 
 p1=ggtree(heatdata.clust_new,branch.length='none',layout="circular",size=0.3, xlim=c(30,NA))
 #p1
-p2<-p1+geom_text(aes(label=node))##watch node
-p2
+p0<-p1+geom_text(aes(label=node))##watch node
+
+p0
 ```
 
 
@@ -317,6 +320,7 @@ p1
 ```{r, fig.width=16, fig.height=16, out.width='100%', warning=FALSE}
 gene_colors <- c("#491588", "#301b8d", "#1a237a", "#11479c", "#0a5797","#0b5f63","#074d41","#1f5e27","#366928","#827729")
 p2 <- create_base_plot(p1, long_format_HeatdataDeseq, gene_colors)
+
 p2
 ```
 
@@ -324,6 +328,7 @@ p2
 ```{r, fig.width=16, fig.height=16, out.width='100%', warning=FALSE}
 # Add a boxplot layer to the base plot
 p3 <- add_boxplot(p2, long_format_HeatdataDeseq)
+
 p3
 ```
 
@@ -332,6 +337,7 @@ p3
 gene_colors <- c("#491588", "#301b8d", "#1a237a", "#11479c", "#0a5797","#0b5f63","#074d41","#1f5e27","#366928","#827729")
 # Add a new tile layer for SSGSEA data
 p4 <- add_new_tile_layer(p3, ssgsea_kegg_HeatdataDeseq, gene_colors, "Ssgsea Term")
+
 p4
 ```
 
@@ -339,6 +345,7 @@ p4
 ```{r, fig.width=16, fig.height=16, out.width='100%', warning=FALSE}
 # Add another boxplot layer with specific aesthetic adjustments
 p5 <- add_boxplot(p4, ssgsea_kegg_HeatdataDeseq, fill_color="#f28131", alpha=0.65, offset=0.32)
+
 p5
 ```
 
@@ -347,6 +354,7 @@ p5
 gene_colors <- c("#491588", "#301b8d", "#1a237a", "#11479c", "#0a5797","#0b5f63","#074d41","#1f5e27","#366928","#827729")
 # Add a new tile layer for GSVA data with specific alpha and offset adjustments
 p6 <- add_new_tile_layer(p5, gsva_kegg_HeatdataDeseq, gene_colors, "Gsva Term", alpha_value=c(0.3, 0.9), offset=0.02)
+
 p6
 ```
 
@@ -359,6 +367,8 @@ p7 <- circos_fruits(p1,
                             gsva_kegg_HeatdataDeseq,
                             gene_colors)
 p_final <- p7 + geom_strip(25, 114, label="TCGA_GTEX", offset=100, barsize=2, extend=1, color="#9575cd", alpha=0.5, hjust="center", align=TRUE, offset.text=19, angle=-90)
+
+
 print(p_final)
 ```
 

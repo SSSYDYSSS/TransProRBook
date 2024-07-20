@@ -22,7 +22,8 @@
 - Focus on Gene Expression Patterns in Normal Tissues:
 
 > GTEx aims to reveal the patterns and variations of gene expression in normal tissues, providing a valuable foundation for researching gene functionality and regulatory mechanisms.
-  
+
+
 ## Demands and Challenges of Joint Analysis:
 
 - Need to Augment Normal Tissue Sample Volume:
@@ -73,6 +74,11 @@
 > 
 >     - <a href="https://xenabrowser.net/datapages/?dataset=GTEX_phenotype&host=https%3A%2F%2Ftoil.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443" style="color: #6a926b; font-style: italic; font-weight: bold; ">GTEX phenotype (n=9,783) UCSC Toil RNA-seq Recompute</a>   
 >       - <a href="https://toil-xena-hub.s3.us-east-1.amazonaws.com/download/GTEX_phenotype.gz; Full metadata" style="color: #6a926b; font-style: italic; font-weight: bold;">download (Download link, copyable)</a> 
+
+
+
+
+
 
 ## Data Type
 

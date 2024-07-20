@@ -6,6 +6,7 @@ Analysis and visualization of transcriptomic data are currently in progress. Fut
 
 You can install the released version of TransProR from CRAN with:
 
+
 ``` r
 install.packages("TransProR")
 ```
@@ -20,7 +21,6 @@ install.packages("remotes")
 devtools::install_github("SSSYDYSSS/TransProR")
 ```
 
-
 ## System Requirements
 
 -   R (>= 2.10)
@@ -29,6 +29,8 @@ devtools::install_github("SSSYDYSSS/TransProR")
 Yu Dongyue (2023). TransProR: Analysis and visualization of transcriptomic data are currently in progress. Future directions include multi-modal fusion, sparse learning, and the investigation of spatio-temporal effects.
 <https://github.com/SSSYDYSSS/TransProR>, 
 <https://sssydysss.github.io/TransProRBook/>.
+
+
 
 
 ## Contributing

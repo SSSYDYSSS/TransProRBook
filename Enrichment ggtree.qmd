@@ -140,6 +140,7 @@ p2 <- highlight_by_node(
   alpha_values, 
   extend_values
   )
+
 p2
 ```
 
@@ -309,6 +310,7 @@ result_deseq2 <- gene_color(selected_genes_deseq2, Diff_deseq2, "#0000EE", "#fc4
 
 # Add gene highlights to the plot
 add_gene_highlights_p3 <- highlight_genes(p2, result_deseq2, hilight_extend = 26)
+
 add_gene_highlights_p3
 
 ```
@@ -357,6 +359,8 @@ p8 <- p7 + new_scale_fill() +
 
 p8
 ```
+
+
 
 
 # Reference

@@ -12,6 +12,14 @@ library(org.Hs.eg.db)
 library(DOSE)
 library(ReactomePA)
 library(dplyr)
+library(grid)
+library(ggplot2)
+library(magick)
+library(htmlwidgets)
+library(webshot)
+library(graphics)
+library(cowplot)
+library(pcutils)
 ```
 
 
@@ -22,6 +30,14 @@ library(org.Hs.eg.db)
 library(DOSE)
 library(ReactomePA)
 library(dplyr)
+library(grid)
+library(ggplot2)
+library(magick)
+library(htmlwidgets)
+library(webshot)
+library(graphics)
+library(cowplot)
+library(pcutils)
 ```
 
 ## Load data
@@ -245,6 +261,7 @@ print(filtered_data_kegg)
 ```
 
 
+
 ## enrich_circo_bar
 ```{r, fig.width=10, fig.height=10, out.width='100%'}
 data_list <- list(
@@ -256,7 +273,246 @@ data_list <- list(
   filtered_data_kegg
 )
 combined_and_visualized_data <- enrich_circo_bar(data_list)
+
 print(combined_and_visualized_data)
+```
+
+
+## enrich_circo_bar and sunburst
+
+### data
+```{r}
+descriptions_to_filter <- c("IgG immunoglobulin complex")
+filtered_data_CC <- extract_descriptions_counts(erich.go.CC.outdata_deseq2, descriptions_to_filter, "#ff9800")
+print(filtered_data_CC)
+
+descriptions_to_filter <- c("prostatic hypertrophy")
+filtered_data_DO <- extract_descriptions_counts(erich.go.DO.outdata_deseq2, descriptions_to_filter, "#4caf50")
+print(filtered_data_DO)
+
+descriptions_to_filter <- c("immunoglobulin receptor binding")
+filtered_data_MF <- extract_descriptions_counts(erich.go.MF.outdata_deseq2, descriptions_to_filter, "#009688")
+print(filtered_data_MF)
+
+descriptions_to_filter <- c("Staphylococcus aureus infection","Salivary secretion")
+filtered_data_kegg <- extract_descriptions_counts(kegg.out1.outdata_deseq2, descriptions_to_filter, "#3f51b5")
+print(filtered_data_kegg)
+
+
+data_list <- list(
+  filtered_data_kegg,
+  filtered_data_MF,
+  filtered_data_DO,
+  filtered_data_CC
+)
+
+
+
+enrichment <- c ("enrichment","enrichment","enrichment",
+                 "enrichment","enrichment","enrichment",
+                 "enrichment","enrichment","enrichment",
+                 "enrichment","enrichment","enrichment","enrichment",
+                 "enrichment","enrichment","enrichment","enrichment","enrichment","enrichment")
+
+
+methods1 <- c("go CC","go CC","go CC",
+              "go DO","go DO","go DO",
+              "go MF","go MF","go MF",
+              "KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG")
+
+pathways1 <- c("IgG immunoglobulin complex","IgG immunoglobulin complex","IgG immunoglobulin complex",
+               "prostatic hypertrophy","prostatic hypertrophy","prostatic hypertrophy",
+               "immunoglobulin receptor binding","immunoglobulin receptor binding","immunoglobulin receptor binding",
+               "Salivary secretion","Salivary secretion","Salivary secretion","Salivary secretion",
+               "Staphylococcus aureus infection","Staphylococcus aureus infection","Staphylococcus aureus infection",
+               "Staphylococcus aureus infection","Staphylococcus aureus infection","Staphylococcus aureus infection")
+
+change1 <- c("CC_up","CC_up", "CC_down",
+             "DO_up","DO_up", "DO_up",
+             "MF_up","MF_up", "MF_up",
+             "KEGG1_down","KEGG1_up", "KEGG1_up", "KEGG1_up",
+             "KEGG2_down","KEGG2_down","KEGG2_down","KEGG2_down","KEGG2_down","KEGG2_down")
+
+genes1 <- c("CC IGHG1","CC IGHG3", "IGLC1",
+            "MAGEA1", "MAGEA3", "MAGEA4",
+            "MF IGHG1", "MF IGHG3", "MF IGHM",
+            "BEST2","CST5","HTN1","HTN3",
+            "KRT25","KRT26","KRT31","KRT33A","KRT35","KRT38")
+
+
+logFC1<- c(8.79, 8.52, 8.55, 
+           11.21, 11.28, 12.46, 
+           8.79, 8.52, 8.77,
+           8.66, 8.97,12.70,13.31,
+           10.22, 8.31,8.48,8.42,9.21,8.43)
+
+
+test1 <- data.frame(enrichment, methods1, pathways1, change1, genes1, logFC1)
+
+# Custom colors
+colors <- rev(c("#009688","#4caf50","#ff9800","#3f51b5"))
+
+
+```
+
+
+### function
+
+```{r}
+# Function to create the circular bar chart
+enrich_circo_bar1 <- function(data_list, num_dummy) {
+  # Combine data and arrange by Count
+  combined_data <- dplyr::bind_rows(data_list)
+  combined_data <- combined_data %>% dplyr::arrange(dplyr::desc(.data$Count)) %>%
+    dplyr::mutate(id = dplyr::row_number())
+  
+  # Add dummy rows to create empty space in the center
+  num_dummy <- num_dummy  # Number of dummy rows
+  dummy_data <- data.frame(
+    Description = rep("dummy", num_dummy),
+    Count = rep(0, num_dummy),
+    color = rep("#FFFFFF", num_dummy)  # White color for dummy bars
+  )
+  dummy_data <- dummy_data %>% dplyr::mutate(id = max(combined_data$id) + dplyr::row_number())
+  
+  # Combine real and dummy data
+  combined_data <- dplyr::bind_rows(combined_data, dummy_data)
+  
+  # Mutate Description to a factor with levels in the order of appearance
+  combined_data <- combined_data %>% dplyr::mutate(Description = factor(.data$Description, 
+                                                                        levels = unique(.data$Description)))
+  
+  # Set fill colors, including dummy color
+  fill_colors <- c(combined_data$color[match(levels(combined_data$Description), combined_data$Description)], "#FFFFFF")
+  
+  # Calculate maximum values for limits
+  max_count <- max(combined_data$Count) + (max(combined_data$Count) / 5)
+  max_id <- max(combined_data$id) + 1.5
+  
+  # Create plot
+  p <- ggplot2::ggplot(combined_data, ggplot2::aes(x = .data$id, y = .data$Count, fill = .data$Description)) +
+    ggplot2::geom_bar(stat = "identity", width = 0.7) +
+    ggplot2::geom_text(ggplot2::aes(x = .data$id, y = 0, label = ifelse(.data$Description == "dummy", "", as.character(.data$Description)), 
+                                    color = .data$Description), 
+                       hjust = 1.03, size = 3.5) +  # Remove color assignment from here
+    ggplot2::scale_fill_manual(values = fill_colors, guide = "none") +
+    ggplot2::scale_color_manual(values = fill_colors, guide = "none") +  # Assign colors to text
+    ggplot2::scale_y_continuous(expand = c(0, 0), limits = c(0, max_count), position = "right") +
+    ggplot2::scale_x_reverse(expand = c(0, 0), limits = c(max_id, -0.1)) +  # Reverse the x-axis
+    ggplot2::coord_polar(theta = "y", start = 0) +
+    ggplot2::labs(title = "Enrichment CircularBar Chart", 
+                  subtitle = "Including: BP/MF/CC/DO/KEGG/Reactome") +
+    ggplot2::theme_minimal() +
+    ggplot2::theme(plot.background = ggplot2::element_rect(fill = "white", color = "white"), 
+                   axis.title = ggplot2::element_blank(), axis.text = ggplot2::element_blank())
+  
+  return(p)
+}
+
+
+
+
+my_sunburst1 <- function (test, custom_colors = NULL, ...) 
+{
+  test <- as.data.frame(test)
+  if (length(unique(test[, 1])) > 1) {
+    test <- cbind(Root = " ", test)
+  }
+  nc <- ncol(test)
+  if (nc < 3) 
+    stop("as least 3-columns dataframe")
+  if (!is.numeric(test[, nc])) 
+    stop("the last column must be numeric")
+  
+  lib_ps("plotly", library = FALSE)
+  target <- source <- weight <- NULL
+  links <- data.frame()
+  for (i in 1:(nc - 2)) {
+    tmp <- test[, c(i, i + 1, nc)]
+    colnames(tmp) <- c("source", "target", "weight")
+    tmp <- dplyr::group_by(tmp, source, target) %>% dplyr::summarise(weight = sum(weight), 
+                                                                     .groups = "keep")
+    links <- rbind(links, tmp)
+  }
+  
+  if (is.null(custom_colors)) {
+    # Use default colors if no custom colors provided
+    fig <- plotly::plot_ly(labels = links$target, parents = links$source, 
+                           values = links$weight, text = links$weight, type = "sunburst", 
+                           ...)
+  } else {
+    # Use custom colors
+    fig <- plotly::plot_ly(labels = links$target, parents = links$source, 
+                           values = links$weight, text = links$weight, type = "sunburst", 
+                           marker = list(colors = custom_colors), ...)
+  }
+  
+  fig
+}
+
+
+
+
+```
+
+### bar
+
+```{r, fig.width=10, fig.height=10, out.width='100%'}
+# Call the function to create the plot
+combined_and_visualized_data <- enrich_circo_bar1(data_list, 15)
+
+# Print the plot
+print(combined_and_visualized_data)
+
+```
+
+
+### sunburst
+
+```{r, fig.width=10, fig.height=10, out.width='100%'}
+# Create the sunburst plot with custom colors
+fig <- my_sunburst1(test1, custom_colors = colors)
+
+# Display the plot
+fig
+```
+
+
+### combined_plot 
+
+```{r, fig.width=10, fig.height=10, out.width='100%'}
+# Convert ggplot to image
+circular_bar_image <- image_graph(width = 1000, height = 1000, res = 96)
+print(combined_and_visualized_data)
+dev.off()
+
+# Save the sunburst chart as HTML and convert it to an image
+html_file <- tempfile(fileext = ".html")
+png_file <- tempfile(fileext = ".png")
+saveWidget(fig, html_file, selfcontained = TRUE)
+webshot(html_file, png_file, vwidth = 800, vheight = 800, cliprect = c(0, 0, 800, 800))
+
+# Read the saved image
+img <- image_read(png_file)
+
+# Create a circular mask
+mask <- image_draw(image_blank(800, 800, color = "none"))
+symbols(400, 400, circles = 400, inches = FALSE, add = TRUE, fg = "grey50", bg = "grey50")
+dev.off()
+
+# Apply the mask to generate a circular image
+img_circular <- image_composite(img, mask, operator = "copyopacity")
+
+# Convert the generated circular bar chart and circular sunburst chart to ggplot objects
+circular_bar_plot <- ggdraw() + draw_image(circular_bar_image, scale = 1)
+sunburst_plot <- ggdraw() + draw_image(img_circular, scale = 0.5)
+
+# Overlay the sunburst chart at the center of the circular bar chart
+combined_plot <- circular_bar_plot + draw_plot(sunburst_plot, x = -0.02, y = -0.02, width = 1, height = 1)
+
+# Print the combined plot
+print(combined_plot)
+
 ```
 
 

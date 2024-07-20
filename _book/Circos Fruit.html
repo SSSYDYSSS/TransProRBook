@@ -1890,8 +1890,9 @@ Warning: Some gene sets have size one. Consider setting 'min.sz &gt; 1'.</code><
 <span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>p1<span class="ot">=</span><span class="fu">ggtree</span>(heatdata.clust_new,<span class="at">branch.length=</span><span class="st">'none'</span>,<span class="at">layout=</span><span class="st">"circular"</span>,<span class="at">size=</span><span class="fl">0.3</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">30</span>,<span class="cn">NA</span>))</span>
 <span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co">#p1</span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>p2<span class="ot">&lt;-</span>p1<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>node))<span class="do">##watch node</span></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>p0<span class="ot">&lt;-</span>p1<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>node))<span class="do">##watch node</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>p0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Circos-Fruit_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -1915,7 +1916,8 @@ Warning: Some gene sets have size one. Consider setting 'min.sz &gt; 1'.</code><
 <div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>gene_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#491588"</span>, <span class="st">"#301b8d"</span>, <span class="st">"#1a237a"</span>, <span class="st">"#11479c"</span>, <span class="st">"#0a5797"</span>,<span class="st">"#0b5f63"</span>,<span class="st">"#074d41"</span>,<span class="st">"#1f5e27"</span>,<span class="st">"#366928"</span>,<span class="st">"#827729"</span>)</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">create_base_plot</span>(p1, long_format_HeatdataDeseq, gene_colors)</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Circos-Fruit_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" style="width:100.0%"></p>
 </div>
@@ -1923,7 +1925,8 @@ Warning: Some gene sets have size one. Consider setting 'min.sz &gt; 1'.</code><
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a boxplot layer to the base plot</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">add_boxplot</span>(p2, long_format_HeatdataDeseq)</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Circos-Fruit_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" style="width:100.0%"></p>
 </div>
@@ -1932,7 +1935,8 @@ Warning: Some gene sets have size one. Consider setting 'min.sz &gt; 1'.</code><
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>gene_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#491588"</span>, <span class="st">"#301b8d"</span>, <span class="st">"#1a237a"</span>, <span class="st">"#11479c"</span>, <span class="st">"#0a5797"</span>,<span class="st">"#0b5f63"</span>,<span class="st">"#074d41"</span>,<span class="st">"#1f5e27"</span>,<span class="st">"#366928"</span>,<span class="st">"#827729"</span>)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a new tile layer for SSGSEA data</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">add_new_tile_layer</span>(p3, ssgsea_kegg_HeatdataDeseq, gene_colors, <span class="st">"Ssgsea Term"</span>)</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>p4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>p4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Circos-Fruit_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" style="width:100.0%"></p>
 </div>
@@ -1940,7 +1944,8 @@ Warning: Some gene sets have size one. Consider setting 'min.sz &gt; 1'.</code><
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add another boxplot layer with specific aesthetic adjustments</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">add_boxplot</span>(p4, ssgsea_kegg_HeatdataDeseq, <span class="at">fill_color=</span><span class="st">"#f28131"</span>, <span class="at">alpha=</span><span class="fl">0.65</span>, <span class="at">offset=</span><span class="fl">0.32</span>)</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>p5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>p5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Circos-Fruit_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" style="width:100.0%"></p>
 </div>
@@ -1949,7 +1954,8 @@ Warning: Some gene sets have size one. Consider setting 'min.sz &gt; 1'.</code><
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>gene_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#491588"</span>, <span class="st">"#301b8d"</span>, <span class="st">"#1a237a"</span>, <span class="st">"#11479c"</span>, <span class="st">"#0a5797"</span>,<span class="st">"#0b5f63"</span>,<span class="st">"#074d41"</span>,<span class="st">"#1f5e27"</span>,<span class="st">"#366928"</span>,<span class="st">"#827729"</span>)</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a new tile layer for GSVA data with specific alpha and offset adjustments</span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> <span class="fu">add_new_tile_layer</span>(p5, gsva_kegg_HeatdataDeseq, gene_colors, <span class="st">"Gsva Term"</span>, <span class="at">alpha_value=</span><span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.9</span>), <span class="at">offset=</span><span class="fl">0.02</span>)</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>p6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>p6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Circos-Fruit_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" style="width:100.0%"></p>
 </div>
@@ -1962,7 +1968,9 @@ Warning: Some gene sets have size one. Consider setting 'min.sz &gt; 1'.</code><
 <span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>                            gsva_kegg_HeatdataDeseq,</span>
 <span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>                            gene_colors)</span>
 <span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>p_final <span class="ot">&lt;-</span> p7 <span class="sc">+</span> <span class="fu">geom_strip</span>(<span class="dv">25</span>, <span class="dv">114</span>, <span class="at">label=</span><span class="st">"TCGA_GTEX"</span>, <span class="at">offset=</span><span class="dv">100</span>, <span class="at">barsize=</span><span class="dv">2</span>, <span class="at">extend=</span><span class="dv">1</span>, <span class="at">color=</span><span class="st">"#9575cd"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">hjust=</span><span class="st">"center"</span>, <span class="at">align=</span><span class="cn">TRUE</span>, <span class="at">offset.text=</span><span class="dv">19</span>, <span class="at">angle=</span><span class="sc">-</span><span class="dv">90</span>)</span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p_final)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p_final)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Circos-Fruit_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" style="width:100.0%"></p>
 </div>

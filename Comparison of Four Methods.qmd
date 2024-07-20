@@ -20,6 +20,8 @@ DEG_edgeR <- prep_edgeR(
 head(DEG_edgeR, 5)
 ```
 
+
+
 ```{r}
 limma <- prep_limma(
     "../test_TransProR/Select DEGs/DEG_limma_voom.Rdata"
@@ -277,7 +279,6 @@ all_facet_density_foldchange_name7 <- facet_density_foldchange(
 
 all_facet_density_foldchange_name7
 ```
-
 
 
 ### facet, show_points = TRUE, show_density = FALSE

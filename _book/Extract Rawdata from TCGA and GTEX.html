@@ -351,13 +351,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "TransProR version: 0.0.1"</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="seek-gtex-organ" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="seek-gtex-organ"><span class="header-section-number">2.2</span> Seek Gtex Organ</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>SeekGtexOrgan <span class="ot">&lt;-</span> <span class="fu">seek_gtex_organ</span>(<span class="at">path =</span> <span class="st">"../test_TransProR/download_data/GTEX_phenotype"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(SeekGtexOrgan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>SeekGtexOrgan <span class="ot">&lt;-</span> <span class="fu">seek_gtex_organ</span>(<span class="at">path =</span> <span class="st">"../test_TransProR/download_data/GTEX_phenotype"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(SeekGtexOrgan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  &lt;not provided&gt;  Adipose Tissue   Adrenal Gland         Bladder           Blood 
@@ -382,17 +383,17 @@ Small Intestine          Spleen         Stomach          Testis         Thyroid
 <section id="skcm-skin-tcga" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="skcm-skin-tcga"><span class="header-section-number">2.3.1</span> SKCM-Skin-TCGA</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>SKCM_exp <span class="ot">&lt;-</span> <span class="fu">get_tcga_exp</span>(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">counts_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-SKCM.htseq_counts.tsv"</span>, </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene_probes_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA_gencode.v22.annotation.gene.probeMap"</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">phenotype_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-skcm.GDC_phenotype.tsv"</span>, </span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_file_path =</span> <span class="st">'../test_TransProR/generated_data1/SKCM_Skin_TCGA_exp.rds'</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>SKCM_exp <span class="ot">&lt;-</span> <span class="fu">get_tcga_exp</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">counts_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-SKCM.htseq_counts.tsv"</span>, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene_probes_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA_gencode.v22.annotation.gene.probeMap"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">phenotype_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-skcm.GDC_phenotype.tsv"</span>, </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_file_path =</span> <span class="st">'../test_TransProR/generated_data1/SKCM_Skin_TCGA_exp.rds'</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of 'Primary Tumor' or 'Metastatic' samples:  474 
 Number of 'normal' samples: 3 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(SKCM_exp[[<span class="st">"tumor_tcga_data"</span>]])[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(SKCM_exp[[<span class="st">"tumor_tcga_data"</span>]])[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         TCGA-D9-A4Z2-01A TCGA-ER-A2NH-06A TCGA-BF-A5EO-01A TCGA-D9-A6EA-06A
 TSPAN6          12.107871        10.504819        10.055282        10.642052
@@ -407,7 +408,7 @@ DPM1             9.981567
 SCYL3            8.754888
 C1orf112         8.854868</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(SKCM_exp[[<span class="st">"normal_tcga_data"</span>]], <span class="at">n =</span> <span class="dv">10</span>) <span class="co"># Because there is only one column.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(SKCM_exp[[<span class="st">"normal_tcga_data"</span>]], <span class="at">n =</span> <span class="dv">10</span>) <span class="co"># Because there is only one column.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         TCGA-GN-A4U8-11A
 TSPAN6           8.344296
@@ -426,17 +427,17 @@ NFYA            11.457381</code></pre>
 <section id="brca-breast-tcga" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="brca-breast-tcga"><span class="header-section-number">2.3.2</span> BRCA-Breast-TCGA</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>BRCA_exp <span class="ot">&lt;-</span> <span class="fu">get_tcga_exp</span>(</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">counts_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-BRCA.htseq_counts.tsv"</span>, </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene_probes_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA_gencode.v22.annotation.gene.probeMap"</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">phenotype_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-BRCA.GDC_phenotype.tsv"</span>, </span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_file_path =</span> <span class="st">'../test_TransProR/generated_data1/BRCA_Breast_TCGA_exp.rds'</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>BRCA_exp <span class="ot">&lt;-</span> <span class="fu">get_tcga_exp</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">counts_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-BRCA.htseq_counts.tsv"</span>, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene_probes_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA_gencode.v22.annotation.gene.probeMap"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">phenotype_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-BRCA.GDC_phenotype.tsv"</span>, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_file_path =</span> <span class="st">'../test_TransProR/generated_data1/BRCA_Breast_TCGA_exp.rds'</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of 'Primary Tumor' or 'Metastatic' samples:  1121 
 Number of 'normal' samples: 162 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(BRCA_exp[[<span class="st">"tumor_tcga_data"</span>]])[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(BRCA_exp[[<span class="st">"tumor_tcga_data"</span>]])[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         TCGA-A2-A0CY-01A TCGA-B6-A40B-01A TCGA-AO-A0J8-01A TCGA-A8-A08J-01A
 TSPAN6           11.62890        11.924813        11.921469        11.209453
@@ -451,7 +452,7 @@ DPM1            11.253257
 SCYL3            9.873444
 C1orf112        10.255029</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(BRCA_exp[[<span class="st">"normal_tcga_data"</span>]])[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(BRCA_exp[[<span class="st">"normal_tcga_data"</span>]])[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         TCGA-BH-A1F0-11B TCGA-BH-A0BZ-11A TCGA-AC-A2FM-11B TCGA-BH-A0HA-11A
 TSPAN6          12.782998        12.245256        11.983706        12.296916
@@ -471,17 +472,17 @@ C1orf112         8.290019</code></pre>
 <section id="lgg-brain-tcga" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="lgg-brain-tcga"><span class="header-section-number">2.3.3</span> LGG-Brain-TCGA</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>LGG_exp <span class="ot">&lt;-</span> <span class="fu">get_tcga_exp</span>(</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">counts_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-LGG.htseq_counts.tsv"</span>, </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene_probes_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA_gencode.v22.annotation.gene.probeMap"</span>,</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">phenotype_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-LGG.GDC_phenotype.tsv"</span>, </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_file_path =</span> <span class="st">'../test_TransProR/generated_data1/LGG_Brain_TCGA_exp.rds'</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>LGG_exp <span class="ot">&lt;-</span> <span class="fu">get_tcga_exp</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">counts_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-LGG.htseq_counts.tsv"</span>, </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene_probes_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA_gencode.v22.annotation.gene.probeMap"</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">phenotype_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-LGG.GDC_phenotype.tsv"</span>, </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_file_path =</span> <span class="st">'../test_TransProR/generated_data1/LGG_Brain_TCGA_exp.rds'</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of 'Primary Tumor' or 'Metastatic' samples:  516 
 Number of 'normal' samples: 2 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(LGG_exp[[<span class="st">"tumor_tcga_data"</span>]])[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(LGG_exp[[<span class="st">"tumor_tcga_data"</span>]])[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         TCGA-VM-A8C8-01A TCGA-VV-A829-01A TCGA-DH-5141-01A TCGA-RY-A840-01A
 TSPAN6          10.797662        11.439311        11.856815        11.157978
@@ -496,7 +497,7 @@ DPM1            10.193525
 SCYL3            9.105909
 C1orf112         7.584963</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>LGG_exp[[<span class="st">"normal_tcga_data"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>LGG_exp[[<span class="st">"normal_tcga_data"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>data frame with 0 columns and 58387 rows</code></pre>
 </div>
@@ -505,17 +506,17 @@ C1orf112         7.584963</code></pre>
 <section id="thca-thyroid-tcga" class="level3" data-number="2.3.4">
 <h3 data-number="2.3.4" class="anchored" data-anchor-id="thca-thyroid-tcga"><span class="header-section-number">2.3.4</span> THCA-Thyroid-TCGA</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>THCA_exp <span class="ot">&lt;-</span> <span class="fu">get_tcga_exp</span>(</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">counts_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-THCA.htseq_counts.tsv"</span>, </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene_probes_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA_gencode.v22.annotation.gene.probeMap"</span>,</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">phenotype_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-THCA.GDC_phenotype.tsv"</span>, </span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_file_path =</span> <span class="st">'../test_TransProR/generated_data1/THCA_Thyroid_TCGA_exp.rds'</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>THCA_exp <span class="ot">&lt;-</span> <span class="fu">get_tcga_exp</span>(</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">counts_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-THCA.htseq_counts.tsv"</span>, </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene_probes_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA_gencode.v22.annotation.gene.probeMap"</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">phenotype_file_path =</span> <span class="st">"../test_TransProR/download_data/TCGA-THCA.GDC_phenotype.tsv"</span>, </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_file_path =</span> <span class="st">'../test_TransProR/generated_data1/THCA_Thyroid_TCGA_exp.rds'</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of 'Primary Tumor' or 'Metastatic' samples:  515 
 Number of 'normal' samples: 100 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(THCA_exp[[<span class="st">"tumor_tcga_data"</span>]])[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(THCA_exp[[<span class="st">"tumor_tcga_data"</span>]])[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         TCGA-BJ-A28W-01A TCGA-EM-A1CT-01A TCGA-EL-A4JZ-01A TCGA-EL-A3CT-01A
 TSPAN6          10.029287        10.314017        11.273796        12.054943
@@ -530,7 +531,7 @@ DPM1            10.754052
 SCYL3           10.034799
 C1orf112         7.912889</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(THCA_exp[[<span class="st">"normal_tcga_data"</span>]])[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(THCA_exp[[<span class="st">"normal_tcga_data"</span>]])[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         TCGA-BJ-A28W-11A TCGA-EM-A1CT-11A TCGA-EL-A3MX-11A TCGA-DO-A1JZ-11A
 TSPAN6           9.946906        12.236612        12.162706        11.880349
@@ -553,17 +554,17 @@ C1orf112         7.800900</code></pre>
 <section id="skin-skcm-gtex" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="skin-skcm-gtex"><span class="header-section-number">2.4.1</span> Skin-SKCM-Gtex</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>Skin_SKCM_gtex <span class="ot">&lt;-</span> <span class="fu">get_gtex_exp</span>(</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">organ_specific =</span> <span class="st">"Skin"</span>,</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file_path =</span> <span class="st">"../test_TransProR/download_data/gtex_gene_expected_count"</span>, </span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">probe_map_path =</span> <span class="st">"../test_TransProR/download_data/gtex_probeMap_gencode.v23.annotation.gene.probemap"</span>,</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pheno_path =</span> <span class="st">"../test_TransProR/download_data/GTEX_phenotype"</span>, </span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_path =</span> <span class="st">'../test_TransProR/generated_data1/Skin_SKCM_Gtex.rds'</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>Skin_SKCM_gtex <span class="ot">&lt;-</span> <span class="fu">get_gtex_exp</span>(</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">organ_specific =</span> <span class="st">"Skin"</span>,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file_path =</span> <span class="st">"../test_TransProR/download_data/gtex_gene_expected_count"</span>, </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">probe_map_path =</span> <span class="st">"../test_TransProR/download_data/gtex_probeMap_gencode.v23.annotation.gene.probemap"</span>,</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pheno_path =</span> <span class="st">"../test_TransProR/download_data/GTEX_phenotype"</span>, </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_path =</span> <span class="st">'../test_TransProR/generated_data1/Skin_SKCM_Gtex.rds'</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of samples for Skin : 977 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Skin_SKCM_gtex)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Skin_SKCM_gtex)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         GTEX-111CU-1126-SM-5EGIM GTEX-111CU-1926-SM-5GZYZ
 TSPAN6                     7.9715                   9.6935
@@ -589,17 +590,17 @@ C1orf112                   8.1122</code></pre>
 <section id="brain-lgg-gtex" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="brain-lgg-gtex"><span class="header-section-number">2.4.2</span> Brain-LGG-Gtex</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>Brain_LGG_gtex <span class="ot">&lt;-</span> <span class="fu">get_gtex_exp</span>(</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">organ_specific =</span> <span class="st">"Brain"</span>,</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file_path =</span> <span class="st">"../test_TransProR/download_data/gtex_gene_expected_count"</span>, </span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">probe_map_path =</span> <span class="st">"../test_TransProR/download_data/gtex_probeMap_gencode.v23.annotation.gene.probemap"</span>,</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pheno_path =</span> <span class="st">"../test_TransProR/download_data/GTEX_phenotype"</span>, </span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_path =</span> <span class="st">'../test_TransProR/generated_data1/Brain_LGG_Gtex.rds'</span></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>Brain_LGG_gtex <span class="ot">&lt;-</span> <span class="fu">get_gtex_exp</span>(</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">organ_specific =</span> <span class="st">"Brain"</span>,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file_path =</span> <span class="st">"../test_TransProR/download_data/gtex_gene_expected_count"</span>, </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">probe_map_path =</span> <span class="st">"../test_TransProR/download_data/gtex_probeMap_gencode.v23.annotation.gene.probemap"</span>,</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pheno_path =</span> <span class="st">"../test_TransProR/download_data/GTEX_phenotype"</span>, </span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_path =</span> <span class="st">'../test_TransProR/generated_data1/Brain_LGG_Gtex.rds'</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of samples for Brain : 1426 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Brain_LGG_gtex)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Brain_LGG_gtex)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         GTEX-1117F-3226-SM-5N9CT GTEX-111FC-3126-SM-5GZZ2
 TSPAN6                     9.3354                   7.9189
@@ -625,17 +626,17 @@ C1orf112                   7.9459</code></pre>
 <section id="breast-brca-gtex" class="level3" data-number="2.4.3">
 <h3 data-number="2.4.3" class="anchored" data-anchor-id="breast-brca-gtex"><span class="header-section-number">2.4.3</span> Breast-BRCA-Gtex</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>Breast_BRCA_gtex <span class="ot">&lt;-</span> <span class="fu">get_gtex_exp</span>(</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">organ_specific =</span> <span class="st">"Breast"</span>,</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file_path =</span> <span class="st">"../test_TransProR/download_data/gtex_gene_expected_count"</span>, </span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">probe_map_path =</span> <span class="st">"../test_TransProR/download_data/gtex_probeMap_gencode.v23.annotation.gene.probemap"</span>,</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pheno_path =</span> <span class="st">"../test_TransProR/download_data/GTEX_phenotype"</span>, </span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_path =</span> <span class="st">'../test_TransProR/generated_data1/Breast_BRCA_Gtex.rds'</span></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>Breast_BRCA_gtex <span class="ot">&lt;-</span> <span class="fu">get_gtex_exp</span>(</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">organ_specific =</span> <span class="st">"Breast"</span>,</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file_path =</span> <span class="st">"../test_TransProR/download_data/gtex_gene_expected_count"</span>, </span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">probe_map_path =</span> <span class="st">"../test_TransProR/download_data/gtex_probeMap_gencode.v23.annotation.gene.probemap"</span>,</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pheno_path =</span> <span class="st">"../test_TransProR/download_data/GTEX_phenotype"</span>, </span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_path =</span> <span class="st">'../test_TransProR/generated_data1/Breast_BRCA_Gtex.rds'</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of samples for Breast : 221 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Breast_BRCA_gtex)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Breast_BRCA_gtex)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         GTEX-1117F-2826-SM-5GZXL GTEX-111YS-1926-SM-5GICC
 TSPAN6                    11.1799                  11.3761
@@ -661,17 +662,17 @@ C1orf112                   8.7283</code></pre>
 <section id="thyroid-thca-gtex" class="level3" data-number="2.4.4">
 <h3 data-number="2.4.4" class="anchored" data-anchor-id="thyroid-thca-gtex"><span class="header-section-number">2.4.4</span> Thyroid-THCA-Gtex</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>Thyroid_THCA_gtex <span class="ot">&lt;-</span> <span class="fu">get_gtex_exp</span>(</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">organ_specific =</span> <span class="st">"Thyroid"</span>,</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file_path =</span> <span class="st">"../test_TransProR/download_data/gtex_gene_expected_count"</span>, </span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">probe_map_path =</span> <span class="st">"../test_TransProR/download_data/gtex_probeMap_gencode.v23.annotation.gene.probemap"</span>,</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pheno_path =</span> <span class="st">"../test_TransProR/download_data/GTEX_phenotype"</span>, </span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_path =</span> <span class="st">'../test_TransProR/generated_data1/Thyroid_THCA_Gtex.rds'</span></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>Thyroid_THCA_gtex <span class="ot">&lt;-</span> <span class="fu">get_gtex_exp</span>(</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">organ_specific =</span> <span class="st">"Thyroid"</span>,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file_path =</span> <span class="st">"../test_TransProR/download_data/gtex_gene_expected_count"</span>, </span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">probe_map_path =</span> <span class="st">"../test_TransProR/download_data/gtex_probeMap_gencode.v23.annotation.gene.probemap"</span>,</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pheno_path =</span> <span class="st">"../test_TransProR/download_data/GTEX_phenotype"</span>, </span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_path =</span> <span class="st">'../test_TransProR/generated_data1/Thyroid_THCA_Gtex.rds'</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of samples for Thyroid : 366 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Thyroid_THCA_gtex)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Thyroid_THCA_gtex)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         GTEX-111CU-0226-SM-5GZXC GTEX-111FC-1026-SM-5GZX1
 TSPAN6                    10.0553                  10.0701

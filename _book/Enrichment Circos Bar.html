@@ -97,6 +97,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <link rel="stylesheet" href="custom.css">
@@ -290,7 +299,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#usage-example" id="toc-usage-example" class="nav-link" data-scroll-target="#usage-example"><span class="header-section-number">11.4.8</span> Usage example</a></li>
   </ul></li>
   <li><a href="#enrich_circo_bar" id="toc-enrich_circo_bar" class="nav-link" data-scroll-target="#enrich_circo_bar"><span class="header-section-number">11.5</span> enrich_circo_bar</a></li>
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">11.6</span> Reference</a></li>
+  <li><a href="#enrich_circo_bar-and-sunburst" id="toc-enrich_circo_bar-and-sunburst" class="nav-link" data-scroll-target="#enrich_circo_bar-and-sunburst"><span class="header-section-number">11.6</span> enrich_circo_bar and sunburst</a>
+  <ul class="collapse">
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">11.6.1</span> data</a></li>
+  <li><a href="#function" id="toc-function" class="nav-link" data-scroll-target="#function"><span class="header-section-number">11.6.2</span> function</a></li>
+  <li><a href="#bar" id="toc-bar" class="nav-link" data-scroll-target="#bar"><span class="header-section-number">11.6.3</span> bar</a></li>
+  <li><a href="#sunburst" id="toc-sunburst" class="nav-link" data-scroll-target="#sunburst"><span class="header-section-number">11.6.4</span> sunburst</a></li>
+  <li><a href="#combined_plot" id="toc-combined_plot" class="nav-link" data-scroll-target="#combined_plot"><span class="header-section-number">11.6.5</span> combined_plot</a></li>
+  </ul></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">11.7</span> Reference</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/SSSYDYSSS/TransProRBook/edit/main/Enrichment Circos Bar.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/SSSYDYSSS/TransProRBook/blob/main/Enrichment Circos Bar.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
@@ -332,7 +349,15 @@ Tip
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DOSE)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ReactomePA)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(htmlwidgets)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(webshot)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(graphics)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pcutils)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="load-data" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="load-data"><span class="header-section-number">11.1</span> Load data</h2>
 <div class="cell">
@@ -590,13 +615,13 @@ hsa05150     Human Diseases Infectious disease: bacterial hsa05150
 hsa04915 Organismal Systems              Endocrine system hsa04915
 hsa04970 Organismal Systems              Digestive system hsa04970
                              Description GeneRatio  BgRatio       pvalue
-hsa05150 Staphylococcus aureus infection      6/43 100/8840 7.829937e-06
-hsa04915      Estrogen signaling pathway      6/43 139/8840 5.124725e-05
-hsa04970              Salivary secretion      4/43  97/8840 1.211290e-03
+hsa05150 Staphylococcus aureus infection      6/43 100/8842 7.819914e-06
+hsa04915      Estrogen signaling pathway      6/43 139/8842 5.118328e-05
+hsa04970              Salivary secretion      4/43  97/8842 1.210284e-03
              p.adjust       qvalue                            geneID Count
-hsa05150 0.0006263949 0.0005934268 147183/353288/3881/3883/3886/8687     6
-hsa04915 0.0020498898 0.0019420009 147183/353288/3881/3883/3886/8687     6
-hsa04970 0.0323010774 0.0306010207              54831/1473/3346/3347     4</code></pre>
+hsa05150 0.0006255931 0.0005926672 147183/353288/3881/3883/3886/8687     6
+hsa04915 0.0020473312 0.0019395769 147183/353288/3881/3883/3886/8687     6
+hsa04970 0.0322742503 0.0305756056              54831/1473/3346/3347     4</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kegg.out1.outdata_deseq2, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -605,13 +630,13 @@ hsa05150     Human Diseases Infectious disease: bacterial hsa05150
 hsa04915 Organismal Systems              Endocrine system hsa04915
 hsa04970 Organismal Systems              Digestive system hsa04970
                              Description GeneRatio  BgRatio       pvalue
-hsa05150 Staphylococcus aureus infection      6/43 100/8840 7.829937e-06
-hsa04915      Estrogen signaling pathway      6/43 139/8840 5.124725e-05
-hsa04970              Salivary secretion      4/43  97/8840 1.211290e-03
+hsa05150 Staphylococcus aureus infection      6/43 100/8842 7.819914e-06
+hsa04915      Estrogen signaling pathway      6/43 139/8842 5.118328e-05
+hsa04970              Salivary secretion      4/43  97/8842 1.210284e-03
              p.adjust       qvalue                               geneID Count
-hsa05150 0.0006263949 0.0005934268 KRT25/KRT26/KRT31/KRT33A/KRT35/KRT38     6
-hsa04915 0.0020498898 0.0019420009 KRT25/KRT26/KRT31/KRT33A/KRT35/KRT38     6
-hsa04970 0.0323010774 0.0306010207                 BEST2/CST5/HTN1/HTN3     4</code></pre>
+hsa05150 0.0006255931 0.0005926672 KRT25/KRT26/KRT31/KRT33A/KRT35/KRT38     6
+hsa04915 0.0020473312 0.0019395769 KRT25/KRT26/KRT31/KRT33A/KRT35/KRT38     6
+hsa04970 0.0322742503 0.0305756056                 BEST2/CST5/HTN1/HTN3     4</code></pre>
 </div>
 </div>
 </section>
@@ -743,14 +768,273 @@ hsa04970              Salivary secretion     4 #ff9800</code></pre>
 <span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  filtered_data_kegg</span>
 <span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>combined_and_visualized_data <span class="ot">&lt;-</span> <span class="fu">enrich_circo_bar</span>(data_list)</span>
-<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(combined_and_visualized_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(combined_and_visualized_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Enrichment-Circos-Bar_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" style="width:100.0%"></p>
 </div>
 </div>
 </section>
-<section id="reference" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="reference"><span class="header-section-number">11.6</span> Reference</h2>
+<section id="enrich_circo_bar-and-sunburst" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="enrich_circo_bar-and-sunburst"><span class="header-section-number">11.6</span> enrich_circo_bar and sunburst</h2>
+<section id="data" class="level3" data-number="11.6.1">
+<h3 data-number="11.6.1" class="anchored" data-anchor-id="data"><span class="header-section-number">11.6.1</span> data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>descriptions_to_filter <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"IgG immunoglobulin complex"</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>filtered_data_CC <span class="ot">&lt;-</span> <span class="fu">extract_descriptions_counts</span>(erich.go.CC.outdata_deseq2, descriptions_to_filter, <span class="st">"#ff9800"</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filtered_data_CC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                          Description Count   color
+GO:0071735 IgG immunoglobulin complex     3 #ff9800</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>descriptions_to_filter <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"prostatic hypertrophy"</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>filtered_data_DO <span class="ot">&lt;-</span> <span class="fu">extract_descriptions_counts</span>(erich.go.DO.outdata_deseq2, descriptions_to_filter, <span class="st">"#4caf50"</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filtered_data_DO)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     Description Count   color
+DOID:11132 prostatic hypertrophy     3 #4caf50</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>descriptions_to_filter <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"immunoglobulin receptor binding"</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>filtered_data_MF <span class="ot">&lt;-</span> <span class="fu">extract_descriptions_counts</span>(erich.go.MF.outdata_deseq2, descriptions_to_filter, <span class="st">"#009688"</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filtered_data_MF)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                               Description Count   color
+GO:0034987 immunoglobulin receptor binding     3 #009688</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>descriptions_to_filter <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Staphylococcus aureus infection"</span>,<span class="st">"Salivary secretion"</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>filtered_data_kegg <span class="ot">&lt;-</span> <span class="fu">extract_descriptions_counts</span>(kegg.out1.outdata_deseq2, descriptions_to_filter, <span class="st">"#3f51b5"</span>)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filtered_data_kegg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                             Description Count   color
+hsa05150 Staphylococcus aureus infection     6 #3f51b5
+hsa04970              Salivary secretion     4 #3f51b5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  filtered_data_kegg,</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  filtered_data_MF,</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  filtered_data_DO,</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  filtered_data_CC</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>enrichment <span class="ot">&lt;-</span> <span class="fu">c</span> (<span class="st">"enrichment"</span>,<span class="st">"enrichment"</span>,<span class="st">"enrichment"</span>,</span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"enrichment"</span>,<span class="st">"enrichment"</span>,<span class="st">"enrichment"</span>,</span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"enrichment"</span>,<span class="st">"enrichment"</span>,<span class="st">"enrichment"</span>,</span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"enrichment"</span>,<span class="st">"enrichment"</span>,<span class="st">"enrichment"</span>,<span class="st">"enrichment"</span>,</span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"enrichment"</span>,<span class="st">"enrichment"</span>,<span class="st">"enrichment"</span>,<span class="st">"enrichment"</span>,<span class="st">"enrichment"</span>,<span class="st">"enrichment"</span>)</span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a>methods1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"go CC"</span>,<span class="st">"go CC"</span>,<span class="st">"go CC"</span>,</span>
+<span id="cb55-18"><a href="#cb55-18" aria-hidden="true" tabindex="-1"></a>              <span class="st">"go DO"</span>,<span class="st">"go DO"</span>,<span class="st">"go DO"</span>,</span>
+<span id="cb55-19"><a href="#cb55-19" aria-hidden="true" tabindex="-1"></a>              <span class="st">"go MF"</span>,<span class="st">"go MF"</span>,<span class="st">"go MF"</span>,</span>
+<span id="cb55-20"><a href="#cb55-20" aria-hidden="true" tabindex="-1"></a>              <span class="st">"KEGG"</span>,<span class="st">"KEGG"</span>,<span class="st">"KEGG"</span>,<span class="st">"KEGG"</span>,<span class="st">"KEGG"</span>,<span class="st">"KEGG"</span>,<span class="st">"KEGG"</span>,<span class="st">"KEGG"</span>,<span class="st">"KEGG"</span>,<span class="st">"KEGG"</span>)</span>
+<span id="cb55-21"><a href="#cb55-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-22"><a href="#cb55-22" aria-hidden="true" tabindex="-1"></a>pathways1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"IgG immunoglobulin complex"</span>,<span class="st">"IgG immunoglobulin complex"</span>,<span class="st">"IgG immunoglobulin complex"</span>,</span>
+<span id="cb55-23"><a href="#cb55-23" aria-hidden="true" tabindex="-1"></a>               <span class="st">"prostatic hypertrophy"</span>,<span class="st">"prostatic hypertrophy"</span>,<span class="st">"prostatic hypertrophy"</span>,</span>
+<span id="cb55-24"><a href="#cb55-24" aria-hidden="true" tabindex="-1"></a>               <span class="st">"immunoglobulin receptor binding"</span>,<span class="st">"immunoglobulin receptor binding"</span>,<span class="st">"immunoglobulin receptor binding"</span>,</span>
+<span id="cb55-25"><a href="#cb55-25" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Salivary secretion"</span>,<span class="st">"Salivary secretion"</span>,<span class="st">"Salivary secretion"</span>,<span class="st">"Salivary secretion"</span>,</span>
+<span id="cb55-26"><a href="#cb55-26" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Staphylococcus aureus infection"</span>,<span class="st">"Staphylococcus aureus infection"</span>,<span class="st">"Staphylococcus aureus infection"</span>,</span>
+<span id="cb55-27"><a href="#cb55-27" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Staphylococcus aureus infection"</span>,<span class="st">"Staphylococcus aureus infection"</span>,<span class="st">"Staphylococcus aureus infection"</span>)</span>
+<span id="cb55-28"><a href="#cb55-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-29"><a href="#cb55-29" aria-hidden="true" tabindex="-1"></a>change1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"CC_up"</span>,<span class="st">"CC_up"</span>, <span class="st">"CC_down"</span>,</span>
+<span id="cb55-30"><a href="#cb55-30" aria-hidden="true" tabindex="-1"></a>             <span class="st">"DO_up"</span>,<span class="st">"DO_up"</span>, <span class="st">"DO_up"</span>,</span>
+<span id="cb55-31"><a href="#cb55-31" aria-hidden="true" tabindex="-1"></a>             <span class="st">"MF_up"</span>,<span class="st">"MF_up"</span>, <span class="st">"MF_up"</span>,</span>
+<span id="cb55-32"><a href="#cb55-32" aria-hidden="true" tabindex="-1"></a>             <span class="st">"KEGG1_down"</span>,<span class="st">"KEGG1_up"</span>, <span class="st">"KEGG1_up"</span>, <span class="st">"KEGG1_up"</span>,</span>
+<span id="cb55-33"><a href="#cb55-33" aria-hidden="true" tabindex="-1"></a>             <span class="st">"KEGG2_down"</span>,<span class="st">"KEGG2_down"</span>,<span class="st">"KEGG2_down"</span>,<span class="st">"KEGG2_down"</span>,<span class="st">"KEGG2_down"</span>,<span class="st">"KEGG2_down"</span>)</span>
+<span id="cb55-34"><a href="#cb55-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-35"><a href="#cb55-35" aria-hidden="true" tabindex="-1"></a>genes1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"CC IGHG1"</span>,<span class="st">"CC IGHG3"</span>, <span class="st">"IGLC1"</span>,</span>
+<span id="cb55-36"><a href="#cb55-36" aria-hidden="true" tabindex="-1"></a>            <span class="st">"MAGEA1"</span>, <span class="st">"MAGEA3"</span>, <span class="st">"MAGEA4"</span>,</span>
+<span id="cb55-37"><a href="#cb55-37" aria-hidden="true" tabindex="-1"></a>            <span class="st">"MF IGHG1"</span>, <span class="st">"MF IGHG3"</span>, <span class="st">"MF IGHM"</span>,</span>
+<span id="cb55-38"><a href="#cb55-38" aria-hidden="true" tabindex="-1"></a>            <span class="st">"BEST2"</span>,<span class="st">"CST5"</span>,<span class="st">"HTN1"</span>,<span class="st">"HTN3"</span>,</span>
+<span id="cb55-39"><a href="#cb55-39" aria-hidden="true" tabindex="-1"></a>            <span class="st">"KRT25"</span>,<span class="st">"KRT26"</span>,<span class="st">"KRT31"</span>,<span class="st">"KRT33A"</span>,<span class="st">"KRT35"</span>,<span class="st">"KRT38"</span>)</span>
+<span id="cb55-40"><a href="#cb55-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-41"><a href="#cb55-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-42"><a href="#cb55-42" aria-hidden="true" tabindex="-1"></a>logFC1<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">8.79</span>, <span class="fl">8.52</span>, <span class="fl">8.55</span>, </span>
+<span id="cb55-43"><a href="#cb55-43" aria-hidden="true" tabindex="-1"></a>           <span class="fl">11.21</span>, <span class="fl">11.28</span>, <span class="fl">12.46</span>, </span>
+<span id="cb55-44"><a href="#cb55-44" aria-hidden="true" tabindex="-1"></a>           <span class="fl">8.79</span>, <span class="fl">8.52</span>, <span class="fl">8.77</span>,</span>
+<span id="cb55-45"><a href="#cb55-45" aria-hidden="true" tabindex="-1"></a>           <span class="fl">8.66</span>, <span class="fl">8.97</span>,<span class="fl">12.70</span>,<span class="fl">13.31</span>,</span>
+<span id="cb55-46"><a href="#cb55-46" aria-hidden="true" tabindex="-1"></a>           <span class="fl">10.22</span>, <span class="fl">8.31</span>,<span class="fl">8.48</span>,<span class="fl">8.42</span>,<span class="fl">9.21</span>,<span class="fl">8.43</span>)</span>
+<span id="cb55-47"><a href="#cb55-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-48"><a href="#cb55-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-49"><a href="#cb55-49" aria-hidden="true" tabindex="-1"></a>test1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(enrichment, methods1, pathways1, change1, genes1, logFC1)</span>
+<span id="cb55-50"><a href="#cb55-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-51"><a href="#cb55-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom colors</span></span>
+<span id="cb55-52"><a href="#cb55-52" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">rev</span>(<span class="fu">c</span>(<span class="st">"#009688"</span>,<span class="st">"#4caf50"</span>,<span class="st">"#ff9800"</span>,<span class="st">"#3f51b5"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="function" class="level3" data-number="11.6.2">
+<h3 data-number="11.6.2" class="anchored" data-anchor-id="function"><span class="header-section-number">11.6.2</span> function</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to create the circular bar chart</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>enrich_circo_bar1 <span class="ot">&lt;-</span> <span class="cf">function</span>(data_list, num_dummy) {</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine data and arrange by Count</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  combined_data <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(data_list)</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>  combined_data <span class="ot">&lt;-</span> combined_data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">arrange</span>(dplyr<span class="sc">::</span><span class="fu">desc</span>(.data<span class="sc">$</span>Count)) <span class="sc">%&gt;%</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">id =</span> dplyr<span class="sc">::</span><span class="fu">row_number</span>())</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add dummy rows to create empty space in the center</span></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>  num_dummy <span class="ot">&lt;-</span> num_dummy  <span class="co"># Number of dummy rows</span></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>  dummy_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Description =</span> <span class="fu">rep</span>(<span class="st">"dummy"</span>, num_dummy),</span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">Count =</span> <span class="fu">rep</span>(<span class="dv">0</span>, num_dummy),</span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">rep</span>(<span class="st">"#FFFFFF"</span>, num_dummy)  <span class="co"># White color for dummy bars</span></span>
+<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a>  dummy_data <span class="ot">&lt;-</span> dummy_data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">max</span>(combined_data<span class="sc">$</span>id) <span class="sc">+</span> dplyr<span class="sc">::</span><span class="fu">row_number</span>())</span>
+<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine real and dummy data</span></span>
+<span id="cb56-18"><a href="#cb56-18" aria-hidden="true" tabindex="-1"></a>  combined_data <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(combined_data, dummy_data)</span>
+<span id="cb56-19"><a href="#cb56-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb56-20"><a href="#cb56-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Mutate Description to a factor with levels in the order of appearance</span></span>
+<span id="cb56-21"><a href="#cb56-21" aria-hidden="true" tabindex="-1"></a>  combined_data <span class="ot">&lt;-</span> combined_data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Description =</span> <span class="fu">factor</span>(.data<span class="sc">$</span>Description, </span>
+<span id="cb56-22"><a href="#cb56-22" aria-hidden="true" tabindex="-1"></a>                                                                        <span class="at">levels =</span> <span class="fu">unique</span>(.data<span class="sc">$</span>Description)))</span>
+<span id="cb56-23"><a href="#cb56-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb56-24"><a href="#cb56-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set fill colors, including dummy color</span></span>
+<span id="cb56-25"><a href="#cb56-25" aria-hidden="true" tabindex="-1"></a>  fill_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(combined_data<span class="sc">$</span>color[<span class="fu">match</span>(<span class="fu">levels</span>(combined_data<span class="sc">$</span>Description), combined_data<span class="sc">$</span>Description)], <span class="st">"#FFFFFF"</span>)</span>
+<span id="cb56-26"><a href="#cb56-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb56-27"><a href="#cb56-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate maximum values for limits</span></span>
+<span id="cb56-28"><a href="#cb56-28" aria-hidden="true" tabindex="-1"></a>  max_count <span class="ot">&lt;-</span> <span class="fu">max</span>(combined_data<span class="sc">$</span>Count) <span class="sc">+</span> (<span class="fu">max</span>(combined_data<span class="sc">$</span>Count) <span class="sc">/</span> <span class="dv">5</span>)</span>
+<span id="cb56-29"><a href="#cb56-29" aria-hidden="true" tabindex="-1"></a>  max_id <span class="ot">&lt;-</span> <span class="fu">max</span>(combined_data<span class="sc">$</span>id) <span class="sc">+</span> <span class="fl">1.5</span></span>
+<span id="cb56-30"><a href="#cb56-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb56-31"><a href="#cb56-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create plot</span></span>
+<span id="cb56-32"><a href="#cb56-32" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(combined_data, ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> .data<span class="sc">$</span>id, <span class="at">y =</span> .data<span class="sc">$</span>Count, <span class="at">fill =</span> .data<span class="sc">$</span>Description)) <span class="sc">+</span></span>
+<span id="cb56-33"><a href="#cb56-33" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb56-34"><a href="#cb56-34" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_text</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> .data<span class="sc">$</span>id, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">label =</span> <span class="fu">ifelse</span>(.data<span class="sc">$</span>Description <span class="sc">==</span> <span class="st">"dummy"</span>, <span class="st">""</span>, <span class="fu">as.character</span>(.data<span class="sc">$</span>Description)), </span>
+<span id="cb56-35"><a href="#cb56-35" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">color =</span> .data<span class="sc">$</span>Description), </span>
+<span id="cb56-36"><a href="#cb56-36" aria-hidden="true" tabindex="-1"></a>                       <span class="at">hjust =</span> <span class="fl">1.03</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span>  <span class="co"># Remove color assignment from here</span></span>
+<span id="cb56-37"><a href="#cb56-37" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> fill_colors, <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb56-38"><a href="#cb56-38" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">scale_color_manual</span>(<span class="at">values =</span> fill_colors, <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span>  <span class="co"># Assign colors to text</span></span>
+<span id="cb56-39"><a href="#cb56-39" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, max_count), <span class="at">position =</span> <span class="st">"right"</span>) <span class="sc">+</span></span>
+<span id="cb56-40"><a href="#cb56-40" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">scale_x_reverse</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(max_id, <span class="sc">-</span><span class="fl">0.1</span>)) <span class="sc">+</span>  <span class="co"># Reverse the x-axis</span></span>
+<span id="cb56-41"><a href="#cb56-41" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">"y"</span>, <span class="at">start =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb56-42"><a href="#cb56-42" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Enrichment CircularBar Chart"</span>, </span>
+<span id="cb56-43"><a href="#cb56-43" aria-hidden="true" tabindex="-1"></a>                  <span class="at">subtitle =</span> <span class="st">"Including: BP/MF/CC/DO/KEGG/Reactome"</span>) <span class="sc">+</span></span>
+<span id="cb56-44"><a href="#cb56-44" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb56-45"><a href="#cb56-45" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">plot.background =</span> ggplot2<span class="sc">::</span><span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">color =</span> <span class="st">"white"</span>), </span>
+<span id="cb56-46"><a href="#cb56-46" aria-hidden="true" tabindex="-1"></a>                   <span class="at">axis.title =</span> ggplot2<span class="sc">::</span><span class="fu">element_blank</span>(), <span class="at">axis.text =</span> ggplot2<span class="sc">::</span><span class="fu">element_blank</span>())</span>
+<span id="cb56-47"><a href="#cb56-47" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb56-48"><a href="#cb56-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(p)</span>
+<span id="cb56-49"><a href="#cb56-49" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb56-50"><a href="#cb56-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-51"><a href="#cb56-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-52"><a href="#cb56-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-53"><a href="#cb56-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-54"><a href="#cb56-54" aria-hidden="true" tabindex="-1"></a>my_sunburst1 <span class="ot">&lt;-</span> <span class="cf">function</span> (test, <span class="at">custom_colors =</span> <span class="cn">NULL</span>, ...) </span>
+<span id="cb56-55"><a href="#cb56-55" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb56-56"><a href="#cb56-56" aria-hidden="true" tabindex="-1"></a>  test <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(test)</span>
+<span id="cb56-57"><a href="#cb56-57" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">unique</span>(test[, <span class="dv">1</span>])) <span class="sc">&gt;</span> <span class="dv">1</span>) {</span>
+<span id="cb56-58"><a href="#cb56-58" aria-hidden="true" tabindex="-1"></a>    test <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">Root =</span> <span class="st">" "</span>, test)</span>
+<span id="cb56-59"><a href="#cb56-59" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb56-60"><a href="#cb56-60" aria-hidden="true" tabindex="-1"></a>  nc <span class="ot">&lt;-</span> <span class="fu">ncol</span>(test)</span>
+<span id="cb56-61"><a href="#cb56-61" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (nc <span class="sc">&lt;</span> <span class="dv">3</span>) </span>
+<span id="cb56-62"><a href="#cb56-62" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"as least 3-columns dataframe"</span>)</span>
+<span id="cb56-63"><a href="#cb56-63" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(test[, nc])) </span>
+<span id="cb56-64"><a href="#cb56-64" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"the last column must be numeric"</span>)</span>
+<span id="cb56-65"><a href="#cb56-65" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb56-66"><a href="#cb56-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lib_ps</span>(<span class="st">"plotly"</span>, <span class="at">library =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb56-67"><a href="#cb56-67" aria-hidden="true" tabindex="-1"></a>  target <span class="ot">&lt;-</span> source <span class="ot">&lt;-</span> weight <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb56-68"><a href="#cb56-68" aria-hidden="true" tabindex="-1"></a>  links <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb56-69"><a href="#cb56-69" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(nc <span class="sc">-</span> <span class="dv">2</span>)) {</span>
+<span id="cb56-70"><a href="#cb56-70" aria-hidden="true" tabindex="-1"></a>    tmp <span class="ot">&lt;-</span> test[, <span class="fu">c</span>(i, i <span class="sc">+</span> <span class="dv">1</span>, nc)]</span>
+<span id="cb56-71"><a href="#cb56-71" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colnames</span>(tmp) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"source"</span>, <span class="st">"target"</span>, <span class="st">"weight"</span>)</span>
+<span id="cb56-72"><a href="#cb56-72" aria-hidden="true" tabindex="-1"></a>    tmp <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">group_by</span>(tmp, source, target) <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">weight =</span> <span class="fu">sum</span>(weight), </span>
+<span id="cb56-73"><a href="#cb56-73" aria-hidden="true" tabindex="-1"></a>                                                                     <span class="at">.groups =</span> <span class="st">"keep"</span>)</span>
+<span id="cb56-74"><a href="#cb56-74" aria-hidden="true" tabindex="-1"></a>    links <span class="ot">&lt;-</span> <span class="fu">rbind</span>(links, tmp)</span>
+<span id="cb56-75"><a href="#cb56-75" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb56-76"><a href="#cb56-76" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb56-77"><a href="#cb56-77" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(custom_colors)) {</span>
+<span id="cb56-78"><a href="#cb56-78" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use default colors if no custom colors provided</span></span>
+<span id="cb56-79"><a href="#cb56-79" aria-hidden="true" tabindex="-1"></a>    fig <span class="ot">&lt;-</span> plotly<span class="sc">::</span><span class="fu">plot_ly</span>(<span class="at">labels =</span> links<span class="sc">$</span>target, <span class="at">parents =</span> links<span class="sc">$</span>source, </span>
+<span id="cb56-80"><a href="#cb56-80" aria-hidden="true" tabindex="-1"></a>                           <span class="at">values =</span> links<span class="sc">$</span>weight, <span class="at">text =</span> links<span class="sc">$</span>weight, <span class="at">type =</span> <span class="st">"sunburst"</span>, </span>
+<span id="cb56-81"><a href="#cb56-81" aria-hidden="true" tabindex="-1"></a>                           ...)</span>
+<span id="cb56-82"><a href="#cb56-82" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb56-83"><a href="#cb56-83" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use custom colors</span></span>
+<span id="cb56-84"><a href="#cb56-84" aria-hidden="true" tabindex="-1"></a>    fig <span class="ot">&lt;-</span> plotly<span class="sc">::</span><span class="fu">plot_ly</span>(<span class="at">labels =</span> links<span class="sc">$</span>target, <span class="at">parents =</span> links<span class="sc">$</span>source, </span>
+<span id="cb56-85"><a href="#cb56-85" aria-hidden="true" tabindex="-1"></a>                           <span class="at">values =</span> links<span class="sc">$</span>weight, <span class="at">text =</span> links<span class="sc">$</span>weight, <span class="at">type =</span> <span class="st">"sunburst"</span>, </span>
+<span id="cb56-86"><a href="#cb56-86" aria-hidden="true" tabindex="-1"></a>                           <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">colors =</span> custom_colors), ...)</span>
+<span id="cb56-87"><a href="#cb56-87" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb56-88"><a href="#cb56-88" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb56-89"><a href="#cb56-89" aria-hidden="true" tabindex="-1"></a>  fig</span>
+<span id="cb56-90"><a href="#cb56-90" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bar" class="level3" data-number="11.6.3">
+<h3 data-number="11.6.3" class="anchored" data-anchor-id="bar"><span class="header-section-number">11.6.3</span> bar</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function to create the plot</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>combined_and_visualized_data <span class="ot">&lt;-</span> <span class="fu">enrich_circo_bar1</span>(data_list, <span class="dv">15</span>)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the plot</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(combined_and_visualized_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Enrichment-Circos-Bar_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+</section>
+<section id="sunburst" class="level3" data-number="11.6.4">
+<h3 data-number="11.6.4" class="anchored" data-anchor-id="sunburst"><span class="header-section-number">11.6.4</span> sunburst</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the sunburst plot with custom colors</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> <span class="fu">my_sunburst1</span>(test1, <span class="at">custom_colors =</span> colors)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the plot</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-5f3342f5b9570b000e59" style="width:100%;height:960px;"></div>
+<script type="application/json" data-for="htmlwidget-5f3342f5b9570b000e59">{"x":{"visdat":{"9dc04e886a29":["function () ","plotlyVisDat"]},"cur_data":"9dc04e886a29","attrs":{"9dc04e886a29":{"labels":["KEGG","go CC","go DO","go MF","Salivary secretion","Staphylococcus aureus infection","IgG immunoglobulin complex","prostatic hypertrophy","immunoglobulin receptor binding","CC_down","CC_up","KEGG1_down","KEGG1_up","KEGG2_down","MF_up","DO_up","IGLC1","CC IGHG1","CC IGHG3","MAGEA1","MAGEA3","MAGEA4","BEST2","CST5","HTN1","HTN3","KRT25","KRT26","KRT31","KRT33A","KRT35","KRT38","MF IGHG1","MF IGHG3","MF IGHM"],"parents":["enrichment","enrichment","enrichment","enrichment","KEGG","KEGG","go CC","go DO","go MF","IgG immunoglobulin complex","IgG immunoglobulin complex","Salivary secretion","Salivary secretion","Staphylococcus aureus infection","immunoglobulin receptor binding","prostatic hypertrophy","CC_down","CC_up","CC_up","DO_up","DO_up","DO_up","KEGG1_down","KEGG1_up","KEGG1_up","KEGG1_up","KEGG2_down","KEGG2_down","KEGG2_down","KEGG2_down","KEGG2_down","KEGG2_down","MF_up","MF_up","MF_up"],"values":[96.710000000000008,25.859999999999999,34.950000000000003,26.079999999999998,43.640000000000001,53.07,25.859999999999999,34.950000000000003,26.079999999999998,8.5500000000000007,17.309999999999999,8.6600000000000001,34.980000000000004,53.07,26.079999999999998,34.950000000000003,8.5500000000000007,8.7899999999999991,8.5199999999999996,11.210000000000001,11.279999999999999,12.460000000000001,8.6600000000000001,8.9700000000000006,12.699999999999999,13.31,10.220000000000001,8.3100000000000005,8.4800000000000004,8.4199999999999999,9.2100000000000009,8.4299999999999997,8.7899999999999991,8.5199999999999996,8.7699999999999996],"text":[96.710000000000008,25.859999999999999,34.950000000000003,26.079999999999998,43.640000000000001,53.07,25.859999999999999,34.950000000000003,26.079999999999998,8.5500000000000007,17.309999999999999,8.6600000000000001,34.980000000000004,53.07,26.079999999999998,34.950000000000003,8.5500000000000007,8.7899999999999991,8.5199999999999996,11.210000000000001,11.279999999999999,12.460000000000001,8.6600000000000001,8.9700000000000006,12.699999999999999,13.31,10.220000000000001,8.3100000000000005,8.4800000000000004,8.4199999999999999,9.2100000000000009,8.4299999999999997,8.7899999999999991,8.5199999999999996,8.7699999999999996],"marker":{"colors":["#3f51b5","#ff9800","#4caf50","#009688"]},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sunburst"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["KEGG","go CC","go DO","go MF","Salivary secretion","Staphylococcus aureus infection","IgG immunoglobulin complex","prostatic hypertrophy","immunoglobulin receptor binding","CC_down","CC_up","KEGG1_down","KEGG1_up","KEGG2_down","MF_up","DO_up","IGLC1","CC IGHG1","CC IGHG3","MAGEA1","MAGEA3","MAGEA4","BEST2","CST5","HTN1","HTN3","KRT25","KRT26","KRT31","KRT33A","KRT35","KRT38","MF IGHG1","MF IGHG3","MF IGHM"],"parents":["enrichment","enrichment","enrichment","enrichment","KEGG","KEGG","go CC","go DO","go MF","IgG immunoglobulin complex","IgG immunoglobulin complex","Salivary secretion","Salivary secretion","Staphylococcus aureus infection","immunoglobulin receptor binding","prostatic hypertrophy","CC_down","CC_up","CC_up","DO_up","DO_up","DO_up","KEGG1_down","KEGG1_up","KEGG1_up","KEGG1_up","KEGG2_down","KEGG2_down","KEGG2_down","KEGG2_down","KEGG2_down","KEGG2_down","MF_up","MF_up","MF_up"],"values":[96.710000000000008,25.859999999999999,34.950000000000003,26.079999999999998,43.640000000000001,53.07,25.859999999999999,34.950000000000003,26.079999999999998,8.5500000000000007,17.309999999999999,8.6600000000000001,34.980000000000004,53.07,26.079999999999998,34.950000000000003,8.5500000000000007,8.7899999999999991,8.5199999999999996,11.210000000000001,11.279999999999999,12.460000000000001,8.6600000000000001,8.9700000000000006,12.699999999999999,13.31,10.220000000000001,8.3100000000000005,8.4800000000000004,8.4199999999999999,9.2100000000000009,8.4299999999999997,8.7899999999999991,8.5199999999999996,8.7699999999999996],"text":[96.710000000000008,25.859999999999999,34.950000000000003,26.079999999999998,43.640000000000001,53.07,25.859999999999999,34.950000000000003,26.079999999999998,8.5500000000000007,17.309999999999999,8.6600000000000001,34.980000000000004,53.07,26.079999999999998,34.950000000000003,8.5500000000000007,8.7899999999999991,8.5199999999999996,11.210000000000001,11.279999999999999,12.460000000000001,8.6600000000000001,8.9700000000000006,12.699999999999999,13.31,10.220000000000001,8.3100000000000005,8.4800000000000004,8.4199999999999999,9.2100000000000009,8.4299999999999997,8.7899999999999991,8.5199999999999996,8.7699999999999996],"marker":{"color":"rgba(31,119,180,1)","colors":["#3f51b5","#ff9800","#4caf50","#009688"],"line":{"color":"rgba(255,255,255,1)"}},"type":"sunburst","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="combined_plot" class="level3" data-number="11.6.5">
+<h3 data-number="11.6.5" class="anchored" data-anchor-id="combined_plot"><span class="header-section-number">11.6.5</span> combined_plot</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert ggplot to image</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>circular_bar_image <span class="ot">&lt;-</span> <span class="fu">image_graph</span>(<span class="at">width =</span> <span class="dv">1000</span>, <span class="at">height =</span> <span class="dv">1000</span>, <span class="at">res =</span> <span class="dv">96</span>)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(combined_and_visualized_data)</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>png 
+  2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the sunburst chart as HTML and convert it to an image</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>html_file <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".html"</span>)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>png_file <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".png"</span>)</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWidget</span>(fig, html_file, <span class="at">selfcontained =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="fu">webshot</span>(html_file, png_file, <span class="at">vwidth =</span> <span class="dv">800</span>, <span class="at">vheight =</span> <span class="dv">800</span>, <span class="at">cliprect =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">800</span>, <span class="dv">800</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Enrichment-Circos-Bar_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the saved image</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>img <span class="ot">&lt;-</span> <span class="fu">image_read</span>(png_file)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a circular mask</span></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>mask <span class="ot">&lt;-</span> <span class="fu">image_draw</span>(<span class="fu">image_blank</span>(<span class="dv">800</span>, <span class="dv">800</span>, <span class="at">color =</span> <span class="st">"none"</span>))</span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="fu">symbols</span>(<span class="dv">400</span>, <span class="dv">400</span>, <span class="at">circles =</span> <span class="dv">400</span>, <span class="at">inches =</span> <span class="cn">FALSE</span>, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">fg =</span> <span class="st">"grey50"</span>, <span class="at">bg =</span> <span class="st">"grey50"</span>)</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>png 
+  2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the mask to generate a circular image</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>img_circular <span class="ot">&lt;-</span> <span class="fu">image_composite</span>(img, mask, <span class="at">operator =</span> <span class="st">"copyopacity"</span>)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the generated circular bar chart and circular sunburst chart to ggplot objects</span></span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>circular_bar_plot <span class="ot">&lt;-</span> <span class="fu">ggdraw</span>() <span class="sc">+</span> <span class="fu">draw_image</span>(circular_bar_image, <span class="at">scale =</span> <span class="dv">1</span>)</span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>sunburst_plot <span class="ot">&lt;-</span> <span class="fu">ggdraw</span>() <span class="sc">+</span> <span class="fu">draw_image</span>(img_circular, <span class="at">scale =</span> <span class="fl">0.5</span>)</span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Overlay the sunburst chart at the center of the circular bar chart</span></span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">&lt;-</span> circular_bar_plot <span class="sc">+</span> <span class="fu">draw_plot</span>(sunburst_plot, <span class="at">x =</span> <span class="sc">-</span><span class="fl">0.02</span>, <span class="at">y =</span> <span class="sc">-</span><span class="fl">0.02</span>, <span class="at">width =</span> <span class="dv">1</span>, <span class="at">height =</span> <span class="dv">1</span>)</span>
+<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the combined plot</span></span>
+<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(combined_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Enrichment-Circos-Bar_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="reference" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="reference"><span class="header-section-number">11.7</span> Reference</h2>
 <blockquote class="blockquote">
 <ul>
 <li><strong>ggplot2</strong>:</li>

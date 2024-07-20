@@ -73,12 +73,13 @@ NewMACFCmain_FourMethods_ContrastVenn
 ```
 
 
+
+
 ::: {.callout-note}
 In the domain of feature selection methodologies within the TransPro project, the TransProR and TransProPy components respectively introduce two distinct classes of approaches.
 :::
 
 ::: {.panel-tabset}
-
 
 ## TransProR
 The first class, as represented in TransProR, includes methods such as DESeq2, edgeR, limma, and the Wilcoxon rank-sum test, which focus on univariate statistical tests. These techniques evaluate the independent correlation between individual features, like gene expression levels, and outcome variables such as disease status. Defined by their unique statistical models and assumptions about data distribution and variability, these methods do not incorporate direct considerations for interactions between features. Their forte lies in identifying features that statistically stand out from control conditions.

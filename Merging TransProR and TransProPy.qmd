@@ -6,6 +6,7 @@ The <b style="color: #6a926b;">reasons</b> for <b style="color: #6a926b;">mergin
 :::
 
 
+
 ::: {.callout-highlight}
 
 > * **Complementarity:**
@@ -24,6 +25,8 @@ The <b style="color: #6a926b;">reasons</b> for <b style="color: #6a926b;">mergin
 > 
 > >By combining techniques such as ensemble learning and recursive feature elimination, a more comprehensive consideration of feature performance within a predictive model framework can be Merging TransProR and TransProPyachieved.
 :::
+
+
 
 
 ::: {.callout-note}

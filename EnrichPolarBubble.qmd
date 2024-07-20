@@ -31,6 +31,7 @@ library(ReactomePA)
 
 
 
+
 ## Load data
 ```{r}
 # Load the tumor and normal datasets
@@ -646,7 +647,6 @@ highlight_ids <- c(3,9,12, 20, 25, 33,36,42)
 pal = c( "#5c6bc0", "#7e57c2","#9ccc65","#ffca28")
 enrich_polar_bubble(final_combined_df_with_id_and_position, pal, highlight_ids)
 ```
-
 
 
 ## Reference
